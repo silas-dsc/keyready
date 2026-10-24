@@ -78,6 +78,14 @@ export interface RateTier {
   rate: number;
 }
 
+export interface PolicySource {
+  url: string;
+  /** ISO date the page was checked. */
+  retrieved: string;
+  /** Short quote from the page supporting the figure. */
+  quote?: string;
+}
+
 export interface LenderPolicy {
   id: string;
   name: string;
@@ -113,6 +121,8 @@ export interface LenderPolicy {
   brand?: string;
   /** Where the rates, LVR limits and residency rules come from. */
   source: 'open-banking' | 'illustrative';
+  /** Set when some credit-policy rules were verified from the lender's own website. */
+  policySources?: PolicySource[];
 }
 
 export type CheckStatus = 'pass' | 'warn' | 'fail';
