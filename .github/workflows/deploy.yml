@@ -5,14 +5,19 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Commits pushed by the weekly data refresh use GITHUB_TOKEN, which doesn't trigger push workflows.
+  workflow_run:
+    workflows: [Refresh Open Banking data]
+    types: [completed]
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Per-branch group: a PR run must never cancel a main deploy.
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -32,13 +37,12 @@ jobs:
           VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
       - uses: actions/upload-pages-artifact@v3
-        if: github.ref == 'refs/heads/main' && vars.DEPLOY_PAGES == 'true'
+        if: github.ref == 'refs/heads/main'
         with:
           path: dist
 
-  # Set the repo variable DEPLOY_PAGES=true once Pages is enabled (Pages needs a public repo on free plans).
   deploy:
-    if: github.ref == 'refs/heads/main' && vars.DEPLOY_PAGES == 'true'
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
     needs: build
     runs-on: ubuntu-latest
     environment:

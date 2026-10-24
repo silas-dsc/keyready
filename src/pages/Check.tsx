@@ -5,6 +5,7 @@ import { Button, CountUp, Logo } from '../components/ui';
 import { fmtShortMoney, lvr } from '../engine/finance';
 import { assess } from '../engine/match';
 import type { Profile } from '../engine/types';
+import { LENDER_COUNT } from '../lib/lenderDisplay';
 import { useSavedProfile } from '../lib/store';
 import { buildSteps, SECTIONS, type Step } from '../wizard/steps';
 
@@ -211,12 +212,12 @@ function Sidebar({ step, p, answered, onEdit }: { step: Step; p: Profile; answer
 }
 
 function Crunching() {
-  const lines = ['Checking residency & employment rules', 'Applying each lender’s income shading', 'Stress-testing at +3% (APRA buffer)', 'Checking LVR, LMI & the 5% Deposit Scheme', 'Ranking your fastest wins'];
+  const lines = ['Loading live rates from Open Banking', 'Checking residency & employment rules', 'Applying each lender’s income shading', 'Stress-testing at +3% (APRA buffer)', 'Calculating your state’s stamp duty & grants', 'Ranking your fastest wins'];
   return (
     <div className="grid min-h-dvh place-items-center bg-ink px-6 text-white" role="status" aria-live="polite">
       <div className="w-full max-w-md">
         <motion.div className="mx-auto mb-8 h-16 w-16 rounded-2xl border-4 border-mint border-t-transparent" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }} />
-        <h1 className="text-center text-2xl font-extrabold">Matching you against 12 lenders…</h1>
+        <h1 className="text-center text-2xl font-extrabold">Matching you against {LENDER_COUNT} lenders…</h1>
         <ul className="mt-8 space-y-3">
           {lines.map((l, i) => (
             <motion.li key={l} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 + i * 0.45 }} className="flex items-center gap-3">

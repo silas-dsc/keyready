@@ -5,13 +5,14 @@ import { Logo, Pill } from '../components/ui';
 import { fmtShortMoney } from '../engine/finance';
 import { assess } from '../engine/match';
 import { sampleProfile } from '../engine/profile';
+import { DATA_DATE, LENDER_COUNT, LIVE_COUNT, lenderName } from '../lib/lenderDisplay';
 import { clearSaved, loadSaved } from '../lib/store';
 
 const FAQ: [string, string][] = [
   ['Is it really free?', 'Yes. You can answer the questions, see your report and play with the what-if tools without paying or signing up. If you choose to talk to a broker, they pay us — you never do.'],
   ['Will this affect my credit score?', 'No. We don’t run a credit check. Your score is only touched when you formally apply with a lender — and a broker helps you apply once, to the right one, instead of collecting enquiries.'],
   ['How does the matching work?', 'We model each lender’s policy rules — residency, time in job, how they shade overtime and bonuses, LVR limits, genuine savings, debt-to-income caps — and stress-test your repayments at 3% above the rate, as APRA requires.'],
-  ['Which lenders do you check?', 'Twelve lender profiles covering major banks, regional banks, customer-owned banks, online lenders and specialists. In this prototype the policies are illustrative models, not any named bank’s policy.'],
+  ['Which lenders do you check?', `${LIVE_COUNT} Australian banks and lenders — majors, customer-owned banks, online lenders and more — using the rates, LVR limits and residency rules they publish through Open Banking (updated ${DATA_DATE}), plus two modelled specialist lenders. Rules banks don’t publish, like time in job, are typical settings for each type of lender.`],
   ['What happens to my answers?', 'They stay in your browser until you choose to share them with a broker. You can clear them at any time.'],
   ['How is this different from a broker?', 'Think of it as preparation. You walk in knowing where you stand and what to fix, so the conversation starts at “let’s apply” instead of “let’s see”.'],
 ];
@@ -42,7 +43,7 @@ export default function Landing() {
               Know which lenders will say <span className="relative whitespace-nowrap text-go">yes<svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden><path d="M2 7 Q 50 1 98 6" stroke="#50e3a4" strokeWidth="4" fill="none" strokeLinecap="round" /></svg></span> — before you apply.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-ink-soft sm:text-xl">
-              Answer a few easy questions. We check your situation against 12 lenders’ rules and show who’d say yes, who’s close, and exactly what to fix.
+              Answer a few easy questions. We check your situation against {LENDER_COUNT} lenders’ rules and show who’d say yes, who’s close, and exactly what to fix.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/check" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-ink px-7 py-4 text-lg font-semibold text-white shadow-[0_10px_30px_-10px_rgba(14,59,58,.7)] transition hover:-translate-y-0.5">
@@ -73,14 +74,14 @@ export default function Landing() {
             <div className="rounded-3xl bg-card p-6 shadow-2xl ring-1 ring-line">
               <p className="text-xs font-bold uppercase tracking-wider text-muted">Example readiness report</p>
               <p className="mt-2 text-2xl font-extrabold leading-snug">
-                <span className="text-go">{sample.ready} of 12 lenders</span> would likely say yes.
+                <span className="text-go">{sample.ready} of {LENDER_COUNT} lenders</span> would likely say yes.
               </p>
               <p className="text-sm text-ink-soft">Borrowing power ~{fmtShortMoney(sample.borrowingPower.typical)} · LVR {sample.lvr.toFixed(0)}%</p>
               <ul className="mt-5 space-y-2">
                 {sample.results.slice(0, 2).concat(sample.results.filter(r => r.status !== 'ready').slice(0, 2)).map(r => (
                   <li key={r.lender.id} className="rounded-2xl bg-paper p-3">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold">{r.lender.name}</span>
+                      <span className="font-bold">{lenderName(r.lender)}</span>
                       <span className="flex items-center gap-2">
                         <Pill tone={r.status === 'ready' ? 'go' : r.status === 'close' ? 'amber' : 'rose'}>{r.status === 'ready' ? 'Likely yes' : r.status === 'close' ? 'Close' : 'Not yet'}</Pill>
                         <span className="font-extrabold tabular-nums">{r.score}%</span>
@@ -121,7 +122,7 @@ export default function Landing() {
           <ol className="mt-10 grid gap-6 md:grid-cols-3">
             {[
               ['Tell us your situation', 'One question at a time: work, money, the home you want. Ballparks are fine — no documents.'],
-              ['We run the numbers', 'Income shading, a 3% stress test, living-cost benchmarks, LVR and scheme rules — for each of 12 lenders.'],
+              ['We run the numbers', 'Income shading, a 3% stress test, living-cost benchmarks, LVR, stamp duty and scheme rules — for each lender.'],
               ['Walk in prepared', 'See your result instantly. Share it with a broker only if and when you want to.'],
             ].map(([t, d], i) => (
               <li key={t} className="rounded-3xl bg-card p-6 ring-1 ring-line">
@@ -156,8 +157,8 @@ export default function Landing() {
         <div className="mx-auto max-w-6xl space-y-3 px-4 py-10 text-sm text-muted">
           <Logo />
           <p className="max-w-3xl">
-            KeyReady is a prototype that provides general information only. It is not credit assistance or financial advice. Lender policies shown are illustrative
-            and do not represent any named bank. Always confirm with a licensed mortgage broker or lender.
+            KeyReady is a prototype that provides general information only. It is not credit assistance or financial advice. Rates, LVR limits and residency rules come from lenders’ public Open Banking data;
+            other policy rules are typical settings, not any lender’s own policy. Always confirm with a licensed mortgage broker or lender.
           </p>
         </div>
       </footer>

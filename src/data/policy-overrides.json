@@ -1,0 +1,4 @@
+{
+  "$comment": "Lender credit-policy facts that Open Banking doesn't publish, verified by hand from each lender's own public website. Keyed by brand exactly as in market.json. `set` takes any LenderPolicy fields (objects are merged); every entry needs at least one source. See .claude/skills/verify-data/SKILL.md.",
+  "lenders": {}
+}

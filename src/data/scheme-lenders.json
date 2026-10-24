@@ -1,0 +1,13 @@
+{
+  "source": "https://firsthomebuyers.gov.au/australian-government-5-deposit-scheme/australian-government-5-deposit-scheme-participating-lenders",
+  "retrieved": "2026-10-24",
+  "lenders": [
+    "ANZ", "Australian Military Bank", "Australian Mutual Bank", "Bank Australia", "Bank Orange", "Bank First", "Bank of Melbourne", "BankSA",
+    "Bank of Us", "BankVic", "BCU", "Bendigo Bank", "Beyond Bank", "Border Bank", "Cairns Bank", "Central Murray Bank", "Coastline Bank",
+    "Community First Bank", "Commonwealth Bank", "Credit Union SA", "Darling Downs Bank", "Defence Bank", "Dnister Bank", "Firefighters Mutual Bank",
+    "Fire Service Credit Union", "First Option Bank", "Gateway Bank", "Great Southern Bank", "Health Professionals Bank", "Horizon Bank", "Hume Bank",
+    "Indigenous Business Australia", "IMB Bank", "Liberty", "MyState Bank", "National Australia Bank", "Newcastle Permanent", "Northern Inland Credit Union",
+    "People First Bank", "P&N Bank", "Police Bank", "Police Credit Union", "QBank", "Queensland Country Bank", "Regional Australia Bank",
+    "Southern Cross Credit Union", "St George Bank", "Teachers Mutual Bank", "The Mac", "The Mutual Bank", "UniBank", "Unity Bank", "Westpac", "Bank WAW"
+  ]
+}

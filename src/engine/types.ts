@@ -70,7 +70,21 @@ export interface Profile {
   creditScore: number | null;
 }
 
-export type LenderKind = 'Major bank' | 'Regional bank' | 'Customer-owned' | 'Online lender' | 'Specialist';
+export type LenderKind = 'Major bank' | 'Other bank' | 'Regional bank' | 'Customer-owned' | 'Online lender' | 'Specialist';
+
+export interface RateTier {
+  /** Upper LVR bound (%) this rate applies to. */
+  maxLvr: number;
+  rate: number;
+}
+
+export interface PolicySource {
+  url: string;
+  /** ISO date the page was checked. */
+  retrieved: string;
+  /** Short quote from the page supporting the figure. */
+  quote?: string;
+}
 
 export interface LenderPolicy {
   id: string;
@@ -100,6 +114,15 @@ export interface LenderPolicy {
   /** Participates in the 5% Deposit Scheme panel. */
   depositScheme: boolean;
   maxAgeAtTermEnd: number;
+  /** Live rates by LVR band, when the lender publishes them (Open Banking). */
+  rateTiers?: RateTier[];
+  investRateTiers?: RateTier[];
+  /** Real brand name — kept out of the UI unless names are switched on. */
+  brand?: string;
+  /** Where the rates, LVR limits and residency rules come from. */
+  source: 'open-banking' | 'illustrative';
+  /** Set when some credit-policy rules were verified from the lender's own website. */
+  policySources?: PolicySource[];
 }
 
 export type CheckStatus = 'pass' | 'warn' | 'fail';
@@ -123,6 +146,8 @@ export interface LenderResult {
   checks: Check[];
   maxBorrow: number;
   usesScheme: boolean;
+  /** Product rate at this borrower's LVR and purpose. */
+  rate: number;
   assessmentRate: number;
   monthlyRepayment: number;
 }

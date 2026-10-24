@@ -6,4 +6,6 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   plugins: [react(), tailwindcss()],
+  // The bundled Open Banking snapshot adds ~85 kB; still well under 200 kB gzipped overall.
+  build: { chunkSizeWarningLimit: 700 },
 });
