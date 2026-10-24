@@ -104,7 +104,7 @@ function PriceStep({ ctx }: { ctx: StepCtx }) {
   const scheme = depositScheme(p);
   const costs = upfrontCosts(p);
   const funds = p.savings + p.gift;
-  const fill = () => set(q => ({ ...q, loan: Math.max(0, q.price - Math.max(0, funds - upfrontCosts(q).total)) }));
+  const fill = () => set(q => { const c = upfrontCosts(q); return { ...q, loan: Math.max(0, q.price - Math.max(0, funds + c.fhog - c.total)) }; });
   return (
     <div className="space-y-5">
       <Field label="Roughly what price are you looking at?" hint="A ballpark is fine — you can play with this on your report.">
@@ -126,10 +126,11 @@ function PriceStep({ ctx }: { ctx: StepCtx }) {
         <LvrMeter lvr={lvr(p)} schemeEligible={scheme.eligible} />
         {p.price > 0 && p.loan > 0 && (
           <dl className="mt-4 grid grid-cols-2 gap-3 border-t border-line pt-4 text-sm">
-            <div><dt className="text-muted">Deposit</dt><dd className="font-bold">{fmtMoney(deposit(p))}</dd></div>
+            <div><dt className="text-muted">Deposit</dt><dd className="font-bold">{fmtMoney(deposit(p))}</dd>{costs.fhog > 0 && <dd className="text-xs text-go">+ {fmtMoney(costs.fhog)} first home grant</dd>}</div>
             <div>
               <dt className="text-muted">Stamp duty (est.)</dt>
-              <dd className="font-bold">{costs.fhbConcession ? 'Likely $0 🎉' : fmtMoney(costs.stampDuty)}</dd>
+              <dd className="font-bold">{costs.stampDuty === 0 ? '$0 🎉' : fmtMoney(costs.stampDuty)}</dd>
+              {costs.concession && costs.fhbConcession && <dd className="text-xs text-go">{costs.concession}</dd>}
             </div>
           </dl>
         )}

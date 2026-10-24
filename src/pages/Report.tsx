@@ -5,11 +5,13 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import LvrMeter from '../components/LvrMeter';
 import { Button, CountUp, Logo, Pill } from '../components/ui';
 import { fixActions, type FixAction } from '../engine/actions';
+import { stampDuty } from '../engine/duty';
 import { deposit, depositScheme, fmtMoney, fmtShortMoney, lmiEstimate, lvr, upfrontCosts } from '../engine/finance';
 import { assess, type Assessment } from '../engine/match';
 import { sampleProfile } from '../engine/profile';
 import type { LenderResult, MatchStatus, Profile } from '../engine/types';
 import { backendMode, submitLead } from '../lib/leads';
+import { DATA_DATE, lenderName } from '../lib/lenderDisplay';
 import { loadSaved, useSavedProfile } from '../lib/store';
 
 const STATUS: Record<MatchStatus, { label: string; tone: 'go' | 'amber' | 'rose'; color: string }> = {
@@ -87,6 +89,7 @@ export default function Report() {
           </div>
           <div className="space-y-6">
             <WhatIf p={sim} base={base} onChange={setSim} />
+            <Duty p={sim} />
             <Scheme p={sim} />
           </div>
         </div>
@@ -105,8 +108,9 @@ export default function Report() {
 
         <p className="text-xs leading-relaxed text-muted">
           KeyReady provides general information only — not credit assistance or financial advice — and doesn’t consider your full objectives or circumstances.
-          Lender policies are illustrative models of common Australian lending rules, not the policies of any named bank. Estimates use a 3% serviceability buffer,
-          an expense benchmark in the style of HEM, and approximate stamp duty, LMI and 5% Deposit Scheme settings. Always confirm with a licensed broker or lender.
+          Rates, maximum LVRs and residency rules come from each lender’s public Open Banking product data (updated {DATA_DATE}); other policy rules (time in job, income
+          shading, debt-to-income caps) are typical settings for that type of lender, not its own policy. Stamp duty and grants use 2026–27 state rules. Estimates use a 3%
+          serviceability buffer and an expense benchmark in the style of HEM; LMI is approximate. Always confirm with a licensed broker or lender.
         </p>
       </main>
 
@@ -129,7 +133,7 @@ function Hero({ a, p, whatIf, onConnect }: { a: Assessment; p: Profile; whatIf: 
     );
   const sub =
     a.ready > 0
-      ? `${a.close ? `${a.close} more ${a.close === 1 ? 'is' : 'are'} close. ` : ''}Your strongest match is ${a.results[0].lender.name} at ${a.results[0].score}% policy fit.`
+      ? `${a.close ? `${a.close} more ${a.close === 1 ? 'is' : 'are'} close. ` : ''}Your strongest match is ${lenderName(a.results[0].lender)} at ${a.results[0].score}% policy fit.`
       : a.close > 0
         ? 'Small, specific changes would get you over the line. Your fastest wins are below.'
         : 'Use the what-if tools to find a price and deposit that work, or talk to a broker about specialist options.';
@@ -195,7 +199,7 @@ function Dial({ a }: { a: Assessment }) {
 function KeyNumbers({ a, p }: { a: Assessment; p: Profile }) {
   const costs = upfrontCosts(p);
   const need = deposit(p) + costs.total;
-  const have = p.savings + p.gift;
+  const have = p.savings + p.gift + costs.fhog;
   const best = a.results.find(r => r.status === 'ready') ?? a.results[0];
   const scheme = depositScheme(p);
   const theLvr = lvr(p);
@@ -215,11 +219,11 @@ function KeyNumbers({ a, p }: { a: Assessment; p: Profile }) {
         <p className="text-3xl font-extrabold tabular-nums">{fmtShortMoney(need)}</p>
         <p className="text-sm text-muted">deposit {fmtShortMoney(deposit(p))} + costs {fmtShortMoney(costs.total)}</p>
         <Bar value={Math.min(have, need)} max={need || 1} tone={have >= need ? 'bg-go' : 'bg-amber'} />
-        <p className="mt-1 text-xs text-muted">{have >= need ? `✓ Covered, ${fmtShortMoney(have - need)} spare` : `${fmtShortMoney(need - have)} short`}{costs.fhbConcession ? ' · stamp duty concession applied' : ''}</p>
+        <p className="mt-1 text-xs text-muted">{have >= need ? `✓ Covered, ${fmtShortMoney(have - need)} spare` : `${fmtShortMoney(need - have)} short`}{costs.fhog ? ` · incl. ${fmtShortMoney(costs.fhog)} grant` : ''}</p>
       </Card>
       <Card title="Repayments">
         <p className="text-3xl font-extrabold tabular-nums"><CountUp value={best.monthlyRepayment} format={fmtMoney} /></p>
-        <p className="text-sm text-muted">per month at {(p.purpose === 'investment' ? best.lender.investRate : best.lender.rate).toFixed(2)}%, 30 yrs</p>
+        <p className="text-sm text-muted">per month at {best.rate.toFixed(2)}%, 30 yrs</p>
         <p className="mt-3 text-xs text-muted">{lmi ? `Plus ~${fmtMoney(lmi)} mortgage insurance` : best.usesScheme ? 'No LMI via the 5% Deposit Scheme' : 'No mortgage insurance'}</p>
       </Card>
     </section>
@@ -270,7 +274,9 @@ function Fixes({ fixes, onTry }: { fixes: FixAction[]; onTry: (f: FixAction) => 
 
 function Lenders({ results }: { results: LenderResult[] }) {
   const [filter, setFilter] = useState<MatchStatus | 'all'>('all');
-  const shown = results.filter(r => filter === 'all' || r.status === filter);
+  const [all, setAll] = useState(false);
+  const matching = results.filter(r => filter === 'all' || r.status === filter);
+  const shown = all ? matching : matching.slice(0, 12);
   const count = (s: MatchStatus) => results.filter(r => r.status === s).length;
   return (
     <section id="lenders" className="scroll-mt-6">
@@ -282,7 +288,7 @@ function Lenders({ results }: { results: LenderResult[] }) {
             key={f}
             role="tab"
             aria-selected={filter === f}
-            onClick={() => setFilter(f)}
+            onClick={() => { setFilter(f); setAll(false); }}
             className={`rounded-full px-4 py-2 text-sm font-semibold transition ${filter === f ? 'bg-ink text-white' : 'bg-card text-ink-soft ring-1 ring-line hover:ring-ink/40'}`}
           >
             {f === 'all' ? `All ${results.length}` : `${STATUS[f].label} ${count(f)}`}
@@ -299,6 +305,11 @@ function Lenders({ results }: { results: LenderResult[] }) {
         </AnimatePresence>
         {shown.length === 0 && <li className="rounded-2xl bg-card p-6 text-center text-muted ring-1 ring-line">No lenders in this group.</li>}
       </ul>
+      {matching.length > shown.length && (
+        <button onClick={() => setAll(true)} className="no-print mt-3 w-full rounded-2xl bg-card py-3 font-semibold text-ink-soft ring-1 ring-line hover:ring-ink/40">
+          Show all {matching.length} lenders
+        </button>
+      )}
     </section>
   );
 }
@@ -314,8 +325,8 @@ function LenderRow({ r }: { r: LenderResult }) {
       <button onClick={() => setOpen(o => !o)} aria-expanded={open} className="flex w-full items-center gap-4 p-5 text-left">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-bold">{r.lender.name}</span>
-            <span className="text-sm text-muted">{r.lender.kind}</span>
+            <span className="font-bold">{lenderName(r.lender)}</span>
+            <span className="text-sm text-muted">{r.lender.kind} · {r.rate.toFixed(2)}%</span>
             <Pill tone={st.tone}>{st.label}</Pill>
           </div>
           <p className="mt-1 text-sm text-ink-soft">{lead}{issues.length > 1 ? ` (+${issues.length - 1} more)` : ''}</p>
@@ -342,7 +353,7 @@ function LenderRow({ r }: { r: LenderResult }) {
                 </li>
               ))}
               <li className="pt-2 text-xs text-muted">
-                Rate {r.lender.rate.toFixed(2)}% · assessed at {r.assessmentRate.toFixed(2)}% · serviceable up to {fmtMoney(r.maxBorrow)}
+                {r.lender.source === 'open-banking' ? `Live rate ${r.rate.toFixed(2)}% at your LVR (Open Banking, ${DATA_DATE})` : `Modelled rate ${r.rate.toFixed(2)}%`} · assessed at {r.assessmentRate.toFixed(2)}% · serviceable up to {fmtMoney(r.maxBorrow)}
               </li>
             </ul>
           </motion.div>
@@ -381,6 +392,26 @@ function WhatIf({ p, base, onChange }: { p: Profile; base: Profile; onChange: (p
           </label>
         ))}
       </div>
+    </section>
+  );
+}
+
+function Duty({ p }: { p: Profile }) {
+  const d = stampDuty(p);
+  const saving = d.generalDuty - d.duty;
+  return (
+    <section className="rounded-3xl bg-card p-6 ring-1 ring-line">
+      <p className="text-sm font-bold uppercase tracking-wider text-go">{p.state} stamp duty & grants</p>
+      <p className="mt-1 text-3xl font-extrabold tabular-nums">{d.duty === 0 ? '$0 🎉' : fmtMoney(d.duty)}</p>
+      <ul className="mt-3 space-y-1.5 text-sm">
+        {d.concession && saving > 0 && <li className="text-go">✓ {d.concession} saves you {fmtMoney(saving)}</li>}
+        {!d.concession && p.firstHome && <li className="text-ink-soft">No first home buyer concession applies to this purchase in {p.state}.</li>}
+        {d.fhog > 0 && <li className="text-go">✓ First Home Owner Grant: {fmtMoney(d.fhog)}</li>}
+        {d.foreignSurcharge > 0 && <li className="text-rose">Foreign purchaser surcharge: {fmtMoney(d.foreignSurcharge)}</li>}
+      </ul>
+      <p className="mt-3 text-xs text-muted">
+        2026–27 rules. <a className="underline" href={d.source} target="_blank" rel="noreferrer">Official source</a>. Conditions apply — e.g. moving in within 12 months.
+      </p>
     </section>
   );
 }
@@ -440,7 +471,7 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
           close: a.close,
           lvr: Math.round(a.lvr * 10) / 10,
           borrowingPower: Math.round(a.borrowingPower.typical),
-          topLenders: a.results.filter(r => r.status === 'ready').slice(0, 3).map(r => r.lender.name),
+          topLenders: a.results.filter(r => r.status === 'ready').slice(0, 3).map(r => r.lender.brand ?? r.lender.name),
         },
       });
       setState('done');
