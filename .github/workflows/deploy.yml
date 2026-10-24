@@ -11,8 +11,9 @@ permissions:
   pages: write
   id-token: write
 
+# Per-branch group: a PR run must never cancel a main deploy.
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
