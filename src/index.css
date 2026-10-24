@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0e3b3a;
+  --color-ink-soft: #3d5f5d;
+  --color-muted: #6b7f7d;
+  --color-paper: #f7f5ef;
+  --color-card: #ffffff;
+  --color-line: #e4e0d5;
+  --color-mint: #50e3a4;
+  --color-mint-soft: #dcf8ea;
+  --color-go: #12805c;
+  --color-amber: #c27c0e;
+  --color-amber-soft: #fdf1d8;
+  --color-rose: #b4443b;
+  --color-rose-soft: #fbe5e2;
+}
+
+html { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+body { min-height: 100dvh; }
+
+/* Large, comfortable focus ring for keyboard users (in the base layer so utilities can opt out). */
+@layer base {
+  :focus-visible { outline: 3px solid var(--color-mint); outline-offset: 2px; border-radius: 12px; }
+}
+
+input[type='number']::-webkit-inner-spin-button { -webkit-appearance: none; }
+input[type='number'] { -moz-appearance: textfield; }
+
+input[type='range'] { accent-color: var(--color-ink); }
+
+@media print {
+  .no-print { display: none !important; }
+  html, body { background: white; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
