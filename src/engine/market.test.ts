@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { assess } from './match';
-import { MARKET_LENDERS, productRate, toPolicy } from './market';
+import { applyOverride, MARKET_LENDERS, productRate, toPolicy } from './market';
 import { emptyProfile, newApplicant } from './profile';
 
 const sample = {
@@ -41,5 +41,25 @@ describe('Open Banking lenders', () => {
     expect(a.results.length).toBe(MARKET_LENDERS.length);
     expect(a.ready).toBeGreaterThan(a.results.length / 2);
     expect(a.results.every(r => r.rate > 4 && r.rate < 12)).toBe(true);
+  });
+});
+
+describe('policy overrides', () => {
+  it('merges verified lender facts over the modelled defaults', () => {
+    const L = applyOverride(toPolicy(sample, 1), {
+      set: { minTenure: { casual: 3 }, residency: { temporary_visa: 80 }, maxDti: 8 },
+      sources: [{ url: 'https://example/eligibility', retrieved: '2026-10-25' }],
+    });
+    expect(L.minTenure.casual).toBe(3);
+    expect(L.minTenure.full_time).toBe(3);
+    expect(L.residency.temporary_visa).toBe(80);
+    expect(L.residency.permanent_resident).toBe(95);
+    expect(L.maxDti).toBe(8);
+    expect(L.policySources?.[0].retrieved).toBe('2026-10-25');
+  });
+
+  it('ignores overrides without a source', () => {
+    const base = toPolicy(sample, 1);
+    expect(applyOverride(base, { set: { maxDti: 99 }, sources: [] }).maxDti).toBe(base.maxDti);
   });
 });

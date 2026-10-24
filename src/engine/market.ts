@@ -1,7 +1,8 @@
 import market from '../data/market.json';
+import overrides from '../data/policy-overrides.json';
 import scheme from '../data/scheme-lenders.json';
 import { BASE_POLICY, ILLUSTRATIVE_LENDERS } from './lenders';
-import type { Employment, LenderKind, LenderPolicy, RateTier, Residency } from './types';
+import type { Employment, LenderKind, LenderPolicy, PolicySource, RateTier, Residency } from './types';
 
 interface MarketLender {
   brand: string;
@@ -55,6 +56,33 @@ const hash = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >
 
 const rateAt = (tiers: RateTier[], lvr: number) => tiers.find(t => lvr <= t.maxLvr)?.rate ?? tiers[tiers.length - 1]?.rate;
 
+export interface PolicyOverride {
+  set: Partial<Omit<LenderPolicy, 'minTenure' | 'residency' | 'maxLvr' | 'shading'>> & {
+    minTenure?: Partial<LenderPolicy['minTenure']>;
+    residency?: Partial<LenderPolicy['residency']>;
+    maxLvr?: Partial<LenderPolicy['maxLvr']>;
+    shading?: Partial<LenderPolicy['shading']>;
+  };
+  sources: PolicySource[];
+}
+
+/** Layer hand-verified facts from a lender's own website over the modelled defaults. */
+export function applyOverride(L: LenderPolicy, o: PolicyOverride | undefined): LenderPolicy {
+  if (!o?.sources?.length) return L;
+  const { minTenure, residency, maxLvr, shading, ...rest } = o.set;
+  return {
+    ...L,
+    ...rest,
+    minTenure: { ...L.minTenure, ...minTenure },
+    residency: { ...L.residency, ...residency },
+    maxLvr: { ...L.maxLvr, ...maxLvr },
+    shading: { ...L.shading, ...shading },
+    policySources: o.sources,
+  };
+}
+
+const OVERRIDES = overrides.lenders as Record<string, PolicyOverride>;
+
 export function toPolicy(m: MarketLender, n: number): LenderPolicy {
   const kind = (KIND_DEFAULTS[m.kind] ? m.kind : 'Other bank') as LenderKind;
   const d = KIND_DEFAULTS[kind];
@@ -73,7 +101,7 @@ export function toPolicy(m: MarketLender, n: number): LenderPolicy {
         other: null,
       }
     : { ...BASE_POLICY.residency, citizen: owner, permanent_resident: owner };
-  return {
+  return applyOverride({
     ...BASE_POLICY,
     ...d,
     id: String(n).padStart(2, '0'),
@@ -98,7 +126,7 @@ export function toPolicy(m: MarketLender, n: number): LenderPolicy {
     depositScheme: onSchemePanel(m.brand),
     shading: { ...BASE_POLICY.shading },
     minTenure: d.minTenure,
-  };
+  }, OVERRIDES[m.brand]);
 }
 
 /** Product rate for a borrower's LVR and purpose, using live tiers when available. */
