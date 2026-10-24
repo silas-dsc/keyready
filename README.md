@@ -29,7 +29,7 @@ A scheduled GitHub Action (`refresh-data.yml`) re-imports the data weekly and co
 
 The app is a static single-page app. Everything, including the matching engine, runs in the browser, so it costs nothing to host.
 
-- **GitHub Pages** (configured): enable *Settings → Pages → Source: GitHub Actions* and add the repo variable `DEPLOY_PAGES=true`. Each push to `main` then runs the tests and deploys. On a free GitHub plan, Pages requires the repo to be public.
+- **GitHub Pages** (configured): *Settings → Pages → Source: GitHub Actions*. Each push to `main` (and each weekly data refresh) runs the tests and deploys to https://silas-dsc.github.io/keyready/. On a free GitHub plan, Pages requires the repo to be public.
 - **Cloudflare Pages / Netlify / Vercel**: build command `npm run build`, output `dist`.
 
 ### Optional backend: Supabase free tier
