@@ -5,7 +5,7 @@ import type { LenderPolicy } from './types';
  * archetypes. They are NOT any real bank's policy — swap this file for licensed
  * or curated policy data before relying on it.
  */
-const base: Omit<LenderPolicy, 'id' | 'name' | 'kind'> = {
+export const BASE_POLICY: Omit<LenderPolicy, 'id' | 'name' | 'kind'> = {
   rate: 6.09,
   investRate: 6.39,
   floorRate: 8.5,
@@ -23,23 +23,24 @@ const base: Omit<LenderPolicy, 'id' | 'name' | 'kind'> = {
   minCreditScore: 550,
   depositScheme: false,
   maxAgeAtTermEnd: 75,
+  source: 'illustrative',
 };
 
 function lender(id: string, kind: LenderPolicy['kind'], o: Partial<LenderPolicy>): LenderPolicy {
   return {
-    ...base,
+    ...BASE_POLICY,
     ...o,
     id,
     name: `Lender ${id}`,
     kind,
-    maxLvr: { ...base.maxLvr, ...o.maxLvr },
-    minTenure: { ...base.minTenure, ...o.minTenure },
-    shading: { ...base.shading, ...o.shading },
-    residency: { ...base.residency, ...o.residency },
+    maxLvr: { ...BASE_POLICY.maxLvr, ...o.maxLvr },
+    minTenure: { ...BASE_POLICY.minTenure, ...o.minTenure },
+    shading: { ...BASE_POLICY.shading, ...o.shading },
+    residency: { ...BASE_POLICY.residency, ...o.residency },
   };
 }
 
-export const LENDERS: LenderPolicy[] = [
+export const ILLUSTRATIVE_LENDERS: LenderPolicy[] = [
   lender('A', 'Major bank', {
     rate: 6.04, investRate: 6.34, maxDti: 6, depositScheme: true,
     minTenure: { full_time: 3, part_time: 6, casual: 12, contractor: 12, self_employed: 24, not_working: null, retired: null },
