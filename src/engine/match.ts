@@ -2,7 +2,7 @@ import {
   applicantGross, debtToIncome, deposit, depositScheme, fmtMoney, hecsRepayment, incomeTax,
   livingExpensesMonthly, lmiEstimate, lvr, principalFor, repayment, totalGross, upfrontCosts,
 } from './finance';
-import { LENDERS } from './lenders';
+import { MARKET_LENDERS, productRate } from './market';
 import type { Check, Employment, LenderPolicy, LenderResult, MatchStatus, Profile, Residency } from './types';
 
 export const EMPLOYMENT_LABEL: Record<Employment, string> = {
@@ -48,7 +48,7 @@ export function serviceability(p: Profile, L: LenderPolicy): Serviceability {
   const hecsIncome = p.applicants[0] ? applicantGross(p.applicants[0]) : 0;
   const commitments = p.cardLimits * L.cardFactor + p.personalLoans * 0.025 + hecsRepayment(hecsIncome, p.hecs) / 12;
   const surplus = netMonthly - expenses - commitments;
-  const rate = p.purpose === 'investment' ? L.investRate : L.rate;
+  const rate = productRate(L, p.purpose, lvr(p));
   const assessmentRate = Math.max(rate + L.buffer, L.floorRate);
   const oldest = Math.max(...p.applicants.map(a => a.age || 30));
   const termYears = Math.max(5, Math.min(30, L.maxAgeAtTermEnd - oldest));
@@ -153,11 +153,11 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   // Funds to complete
   const costs = upfrontCosts(p);
   const need = deposit(p) + costs.total;
-  const have = p.savings + p.gift;
+  const have = p.savings + p.gift + costs.fhog;
   if (have < need) {
     const short = need - have;
     add({ id: 'funds', label: 'Funds to complete', status: 'fail', gap: short <= Math.max(25_000, p.price * 0.03) ? 'close' : 'far', weight: 3,
-      detail: `Your deposit plus about ${fmtMoney(costs.total)} in upfront costs needs ${fmtMoney(need)}; you have ${fmtMoney(have)}.` });
+      detail: `Your deposit plus about ${fmtMoney(costs.total)} in upfront costs needs ${fmtMoney(need)}; you have ${fmtMoney(have)}${costs.fhog ? ` including the ${fmtMoney(costs.fhog)} grant` : ''}.` });
   } else {
     add({ id: 'funds', label: 'Funds to complete', status: 'pass', weight: 3,
       detail: `You have the ${fmtMoney(need)} needed for deposit and costs.` });
@@ -195,7 +195,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     s + (c.status === 'pass' ? c.weight : c.status === 'warn' ? c.weight * 0.85 : c.gap === 'close' ? c.weight * 0.4 : 0), 0);
   const fails = checks.filter(c => c.status === 'fail');
   const status: MatchStatus = fails.length === 0 ? 'ready' : fails.every(f => f.gap === 'close') && fails.length <= 2 ? 'close' : 'not_yet';
-  const rate = p.purpose === 'investment' ? L.investRate : L.rate;
+  const rate = productRate(L, p.purpose, theLvr);
 
   return {
     lender: L,
@@ -204,6 +204,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     checks,
     maxBorrow: Math.min(sv.byService, sv.byDti),
     usesScheme,
+    rate,
     assessmentRate: sv.assessmentRate,
     monthlyRepayment: repayment(p.loan, rate, 30),
   };
@@ -220,8 +221,8 @@ export interface Assessment {
 
 const ORDER: Record<MatchStatus, number> = { ready: 0, close: 1, not_yet: 2 };
 
-export function assess(p: Profile, lenders: LenderPolicy[] = LENDERS): Assessment {
-  const results = lenders.map(L => evaluate(p, L)).sort((a, b) => ORDER[a.status] - ORDER[b.status] || b.score - a.score);
+export function assess(p: Profile, lenders: LenderPolicy[] = MARKET_LENDERS): Assessment {
+  const results = lenders.map(L => evaluate(p, L)).sort((a, b) => ORDER[a.status] - ORDER[b.status] || b.score - a.score || a.rate - b.rate);
   // Borrowing power only counts lenders that would take you on non-financial grounds.
   const eligible = results.filter(r => !r.checks.some(c => c.status === 'fail' && ['residency', 'employment', 'credit'].includes(c.id) && c.gap === 'far'));
   const powers = (eligible.length ? eligible : results).map(r => r.maxBorrow).sort((a, b) => a - b);

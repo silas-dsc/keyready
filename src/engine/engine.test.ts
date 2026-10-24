@@ -1,9 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { fixActions } from './actions';
 import { depositScheme, hecsRepayment, incomeTax, lvr, principalFor, repayment, upfrontCosts } from './finance';
-import { assess } from './match';
+import { ILLUSTRATIVE_LENDERS } from './lenders';
+import { assess as assessWith } from './match';
 import { emptyProfile, newApplicant, sampleProfile } from './profile';
 import type { Profile } from './types';
+
+// Engine behaviour is tested against the fixed illustrative lenders so live rate changes can't break it.
+const assess = (p: Profile) => assessWith(p, ILLUSTRATIVE_LENDERS);
 
 const strong = (): Profile => ({
   ...emptyProfile(),

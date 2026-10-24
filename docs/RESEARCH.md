@@ -59,3 +59,47 @@ Vendor claims that multi-step forms convert "up to 300%" better weren't verifiab
 - Add an optional soft credit score check (Equifax/illion APIs) *after* showing value, not before.
 - Hold an Australian Credit Licence, or act as a credit representative, before giving anything that could be read as credit assistance.
 - Run broker onboarding with ASIC register checks, plus lead billing (Stripe).
+
+## 5. Live lender data: Open Banking (Consumer Data Right)
+
+Every Australian bank must publish its products through public, unauthenticated **Product Reference Data** APIs. The [CDR Register](https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary) lists each brand's endpoint (116 banking brands as of October 2026).
+
+`scripts/import-cdr.mjs` (`npm run import:cdr`) pulls every brand's `RESIDENTIAL_MORTGAGES` products and keeps four things:
+- **Variable P&I rate by LVR band** (60/70/80/85/90/95%). Where a bank publishes a base rate plus a separate `DISCOUNT` rate for the same LVR band (e.g. Great Southern Bank), the discount is subtracted.
+- **Maximum LVR**, from LVR tiers or eligibility text.
+- **Residency eligibility**, normalised from free text to citizen / PR / NZ / temporary visa.
+- **Owner-occupier vs investment** rates.
+
+Niche products (green upgrades, bridging, construction, SMSF, staff) and implausible rates (<4.5% or >12%) are excluded so they don't stand in for a lender's mainstream loan.
+
+Lessons from building the importer:
+- Many hosts reject API versions they don't serve instead of negotiating. The importer tries versions per host and caches what works (Westpac's detail endpoint only accepts v7).
+- Banks that publish no `RESIDENCY_STATUS` are treated as "not stated", not "unrestricted to temporary visas", and fall back to typical settings for that lender type.
+
+**What Open Banking does not publish** (and is therefore modelled per lender type in `src/engine/market.ts`): minimum time in job, income shading, card-limit loading, DTI caps, credit-score cut-offs and assessment-rate floors. That's the credit policy found in broker portals. Getting it legitimately means a broker partnership, licensed policy data, or the published guidelines of mortgage insurers and non-bank lenders.
+
+**5% Deposit Scheme panel:** matched against the [Australian Government participating-lender list](https://firsthomebuyers.gov.au/australian-government-5-deposit-scheme/australian-government-5-deposit-scheme-participating-lenders) (54 lenders, retrieved 24 Oct 2026), stored in `src/data/scheme-lenders.json`.
+
+**Naming lenders:** results show masked names ("Lender 08") by default. `VITE_SHOW_LENDER_NAMES=true` reveals brands. Get legal advice before doing that publicly: saying a named bank "would say yes" carries accuracy and advertising risk (ASIC RG 234). Brokers receiving a lead see real brand names.
+
+## 6. Stamp duty and grants (2026–27)
+
+`src/engine/duty.ts` implements the official schedules for all eight jurisdictions. `src/engine/duty.test.ts` checks them against **official worked examples and calculator outputs** (e.g. NSW FHBAS table to the cent, VIC SRO calculator, QLD and SA published examples). Rules that changed recently and are reflected:
+
+| State | General duty | First home buyers | FHOG (new homes) |
+|---|---|---|---|
+| NSW | Indexed brackets; premium rate above $3.87m | Nil to $800k, sliding concession to $1m (land $350k–$450k) | $10k (cap $600k; $750k land + build) |
+| VIC | Schedule; flat 5.5% from $960k to $2m; PPR concession ≤ $550k | Nil to $600k, concession to $750k | $10k (cap $750k) |
+| QLD | Per $100 or part; home concession for owner-occupiers (citizen/PR from 1 Aug 2026) | Established: nil to $700k, stepped to $800k. New home or vacant land: nil, no cap | $30k (under $750k) |
+| WA | Per $100 or part | From 7 May 2026: nil to $600k, $16.15 per $100 to $800k (land $450k–$550k) | $10k (cap $800k south / $1m north) |
+| SA | Per $100 or part | New home or land: nil, no cap. Established: no relief | $15k, no cap |
+| TAS | Per $100 or part | **Established-home exemption ended 30 Jun 2026** | $20k (2026–27) |
+| ACT | Separate owner-occupier and investor tables; flat 4.54% above $1.455m | **Home Buyer Concession Scheme: nil, no income or price cap from 1 Jul 2026** | Nil |
+| NT | Formula to $525k, then 4.95% | House and land package exemption (to 30 Jun 2027) | **$50k HomeGrown Territory Grant** |
+
+Foreign purchaser surcharges (NSW 9%, VIC/QLD/TAS 8%, WA/SA 7%) apply in proportion to the share of foreign buyers. The grant is counted toward funds to complete.
+
+**Not fully verified:**
+- SA figures came via search extracts of revenuesa.sa.gov.au, which blocks automated access; they match two official worked examples.
+- NSW's concession formula is derived; it matches all eight official table values to the cent.
+- The ACT explanatory statement's $580k owner-occupier example ($11,128) contradicts its own schedule ($11,864); the schedule is implemented.

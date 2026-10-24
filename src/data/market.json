@@ -1,0 +1,5811 @@
+{
+ "fetchedAt": "2026-10-24T11:17:38.769Z",
+ "source": "https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary",
+ "lenders": [
+  {
+   "brand": "AFG Home Loans Alpha",
+   "kind": "Other bank",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.39
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.afg.app.bendigobank.com.au"
+  },
+  {
+   "brand": "AMP - My AMP",
+   "kind": "Other bank",
+   "products": 7,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.33
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.33
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.47
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.47
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.14
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.cdr-api.amp.com.au"
+  },
+  {
+   "brand": "ANZ",
+   "kind": "Major bank",
+   "products": 3,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.34
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.34
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.69
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 80,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 95,
+      "rate": 8.24
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.anz"
+  },
+  {
+   "brand": "ANZ Plus",
+   "kind": "Online lender",
+   "products": 1,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.5
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.5
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.5
+     }
+    ],
+    "maxLvr": 80
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.8
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.8
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.8
+     }
+    ],
+    "maxLvr": 80
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://cdr.apix.anz"
+  },
+  {
+   "brand": "Arab Bank Australia Limited",
+   "kind": "Specialist",
+   "products": 10,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 9.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 9.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 9.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 9.54
+     },
+     {
+      "maxLvr": 90,
+      "rate": 9.54
+     },
+     {
+      "maxLvr": 95,
+      "rate": 9.54
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 9.79
+     },
+     {
+      "maxLvr": 70,
+      "rate": 9.79
+     },
+     {
+      "maxLvr": 80,
+      "rate": 9.79
+     },
+     {
+      "maxLvr": 85,
+      "rate": 9.79
+     },
+     {
+      "maxLvr": 90,
+      "rate": 9.79
+     },
+     {
+      "maxLvr": 95,
+      "rate": 9.79
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://public.cdr.arabbank.com.au"
+  },
+  {
+   "brand": "Aussie Elevate",
+   "kind": "Online lender",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.39
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.aussie.app.bendigobank.com.au"
+  },
+  {
+   "brand": "Australian Military Bank",
+   "kind": "Customer-owned",
+   "products": 18,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.89
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.84
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.open.australianmilitarybank.com.au"
+  },
+  {
+   "brand": "Australian Mutual Bank LTD",
+   "kind": "Customer-owned",
+   "products": 16,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.49
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ob.tmbl.com.au/ambank"
+  },
+  {
+   "brand": "Auswide Bank Ltd",
+   "kind": "Other bank",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.64
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.89
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.auswidebank.com.au/openbanking"
+  },
+  {
+   "brand": "Bank Australia",
+   "kind": "Customer-owned",
+   "products": 16,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.9
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.29
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": false,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.bankaust.com.au"
+  },
+  {
+   "brand": "Bank First",
+   "kind": "Customer-owned",
+   "products": 40,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.28
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.28
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.78
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.68
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.68
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.bankfirst.com.au"
+  },
+  {
+   "brand": "Bank of China",
+   "kind": "Specialist",
+   "products": 14,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.18
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.38
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api-gateway.bankofchina.com.au"
+  },
+  {
+   "brand": "Bank of Melbourne",
+   "kind": "Other bank",
+   "products": 5,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://digital-api.bankofmelbourne.com.au"
+  },
+  {
+   "brand": "Bank of Queensland Limited",
+   "kind": "Other bank",
+   "products": 5,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.28
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.28
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.33
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.84
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.24
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.cds.boq.com.au"
+  },
+  {
+   "brand": "Bank of Sydney",
+   "kind": "Specialist",
+   "products": 6,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.84
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     }
+    ],
+    "maxLvr": 80
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://openbank.api.banksyd.com.au"
+  },
+  {
+   "brand": "Bank of us",
+   "kind": "Customer-owned",
+   "products": 6,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.39
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.64
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": true
+   },
+   "minAge": 18,
+   "source": "https://api.bankofus.com.au/OpenBanking"
+  },
+  {
+   "brand": "BankSA",
+   "kind": "Other bank",
+   "products": 5,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://digital-api.banksa.com.au"
+  },
+  {
+   "brand": "BankVic",
+   "kind": "Customer-owned",
+   "products": 29,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.18
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.18
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.38
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": false,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ib.bankvic.com.au/openbanking"
+  },
+  {
+   "brand": "bankWAW",
+   "kind": "Customer-owned",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     }
+    ],
+    "maxLvr": 80
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     }
+    ],
+    "maxLvr": 80
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://onlinebanking.wawcu.com.au/OpenBanking"
+  },
+  {
+   "brand": "Bankwest",
+   "kind": "Other bank",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.14
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.74
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://open-api.bankwest.com.au/bwpublic"
+  },
+  {
+   "brand": "BCU Bank",
+   "kind": "Customer-owned",
+   "products": 15,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.54
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.64
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr-api.bcu.com.au"
+  },
+  {
+   "brand": "Bendigo Bank",
+   "kind": "Other bank",
+   "products": 8,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.43
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.43
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.43
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.48
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.63
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.63
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.cdr.bendigobank.com.au"
+  },
+  {
+   "brand": "Beyond Bank Australia",
+   "kind": "Customer-owned",
+   "products": 7,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.39
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.49
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": false,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.api.beyondbank.com.au"
+  },
+  {
+   "brand": "BNK Bank (Goldfields Money/BCHL)",
+   "kind": "Other bank",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.3
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.3
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.35
+     },
+     {
+      "maxLvr": 85,
+      "rate": 8.09
+     },
+     {
+      "maxLvr": 90,
+      "rate": 8.22
+     },
+     {
+      "maxLvr": 95,
+      "rate": 8.64
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.5
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.5
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.55
+     },
+     {
+      "maxLvr": 85,
+      "rate": 8.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 8.27
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.bnk.com.au"
+  },
+  {
+   "brand": "BOQ Specialist",
+   "kind": "Specialist",
+   "products": 3,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 8.27
+     },
+     {
+      "maxLvr": 70,
+      "rate": 8.27
+     },
+     {
+      "maxLvr": 80,
+      "rate": 8.27
+     },
+     {
+      "maxLvr": 85,
+      "rate": 8.27
+     },
+     {
+      "maxLvr": 90,
+      "rate": 8.27
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 8.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 8.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 8.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 8.34
+     },
+     {
+      "maxLvr": 90,
+      "rate": 8.34
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.cds.boqspecialist.com.au"
+  },
+  {
+   "brand": "Border Bank",
+   "kind": "Customer-owned",
+   "products": 3,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.09
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.prd.borderbank.com.au"
+  },
+  {
+   "brand": "Broken Hill Bank",
+   "kind": "Customer-owned",
+   "products": 11,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 5.94
+     },
+     {
+      "maxLvr": 70,
+      "rate": 5.94
+     },
+     {
+      "maxLvr": 80,
+      "rate": 5.94
+     }
+    ],
+    "maxLvr": 80
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.59
+     }
+    ],
+    "maxLvr": 80
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr-api.bhccu.com.au"
+  },
+  {
+   "brand": "Cairns bank",
+   "kind": "Customer-owned",
+   "products": 39,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.24
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.34
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": false,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://openbanking.cairnsbank.com.au/OpenBanking"
+  },
+  {
+   "brand": "Central Murray Bank",
+   "kind": "Customer-owned",
+   "products": 17,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.74
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 70,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 80,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 85,
+      "rate": 8.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 8.24
+     },
+     {
+      "maxLvr": 95,
+      "rate": 8.24
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://secure.centralmurray.bank/openbanking"
+  },
+  {
+   "brand": "Central West CUL",
+   "kind": "Customer-owned",
+   "products": 9,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 7.46
+     },
+     {
+      "maxLvr": 70,
+      "rate": 7.46
+     },
+     {
+      "maxLvr": 80,
+      "rate": 7.46
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ib.cwcu.com.au/openbanking"
+  },
+  {
+   "brand": "Coastline Bank",
+   "kind": "Customer-owned",
+   "products": 11,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.14
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": false,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 15,
+   "source": "https://public.cdr-api.coastline.com.au"
+  },
+  {
+   "brand": "CommBank",
+   "kind": "Major bank",
+   "products": 16,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.37
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.99
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 95,
+      "rate": 8.09
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.commbank.com.au/public"
+  },
+  {
+   "brand": "CommFCU",
+   "kind": "Customer-owned",
+   "products": 39,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.15
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.15
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.15
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.45
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.45
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.45
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.69
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://netbank.communityfirst.com.au/cf-OpenBanking"
+  },
+  {
+   "brand": "Connective Select",
+   "kind": "Other bank",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.39
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.connective.app.bendigobank.com.au"
+  },
+  {
+   "brand": "Credit Union SA",
+   "kind": "Customer-owned",
+   "products": 25,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.24
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.24
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.49
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://openbanking.api.creditunionsa.com.au"
+  },
+  {
+   "brand": "Darling Downs Bank",
+   "kind": "Customer-owned",
+   "products": 40,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.99
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.99
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.99
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.99
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.99
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.99
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 70,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 80,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.04
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ibanking.ddbank.com.au/OpenBanking"
+  },
+  {
+   "brand": "Defence Bank",
+   "kind": "Customer-owned",
+   "products": 15,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.34
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://product.defencebank.com.au"
+  },
+  {
+   "brand": "Dnister",
+   "kind": "Customer-owned",
+   "products": 6,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.54
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.9
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.9
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.9
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.9
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.9
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.9
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr-api.dnister.com.au"
+  },
+  {
+   "brand": "Easy Street",
+   "kind": "Other bank",
+   "products": 13,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     }
+    ],
+    "maxLvr": 80
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     }
+    ],
+    "maxLvr": 80
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ebranch.easystreet.com.au/es-OpenBanking"
+  },
+  {
+   "brand": "Fire Service Credit Union",
+   "kind": "Customer-owned",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.14
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.69
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr-api.fscu.com.au"
+  },
+  {
+   "brand": "Firefighters Mutual Bank",
+   "kind": "Customer-owned",
+   "products": 16,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.49
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ob.tmbl.com.au/fmbank"
+  },
+  {
+   "brand": "First Option Bank",
+   "kind": "Customer-owned",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 5.99
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.44
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://internetbanking.firstoption.com.au/OpenBanking"
+  },
+  {
+   "brand": "Gateway Bank",
+   "kind": "Customer-owned",
+   "products": 40,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.14
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.64
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://public.cdr-api.gatewaybank.com.au"
+  },
+  {
+   "brand": "gmcu",
+   "kind": "Customer-owned",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.59
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.79
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": false,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://secure.gmcu.com.au/OpenBanking"
+  },
+  {
+   "brand": "Great Southern Bank",
+   "kind": "Customer-owned",
+   "products": 23,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.89
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.open-banking.greatsouthernbank.com.au"
+  },
+  {
+   "brand": "Greater Bank",
+   "kind": "Customer-owned",
+   "products": 40,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.91
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.91
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.91
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 8.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 8.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 8.49
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.greater.com.au"
+  },
+  {
+   "brand": "Health Professionals Bank",
+   "kind": "Customer-owned",
+   "products": 16,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.49
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ob.tmbl.com.au/hpbank"
+  },
+  {
+   "brand": "Horizon Bank",
+   "kind": "Customer-owned",
+   "products": 24,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 5.99
+     },
+     {
+      "maxLvr": 70,
+      "rate": 5.99
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.14
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.39
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://onlinebanking.horizonbank.com.au/openbanking"
+  },
+  {
+   "brand": "Hume Bank",
+   "kind": "Customer-owned",
+   "products": 40,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.24
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ibankob.humebank.com.au/OpenBanking"
+  },
+  {
+   "brand": "IMB Bank",
+   "kind": "Customer-owned",
+   "products": 8,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.89
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.34
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://openbank.openbanking.imb.com.au"
+  },
+  {
+   "brand": "ING BANK (Australia) Ltd",
+   "kind": "Online lender",
+   "products": 3,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.89
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.74
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": false,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://id.ob.ing.com.au"
+  },
+  {
+   "brand": "Laboratories Credit Union",
+   "kind": "Customer-owned",
+   "products": 10,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.6
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.6
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.6
+     }
+    ],
+    "maxLvr": 80
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.75
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.75
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.75
+     }
+    ],
+    "maxLvr": 80
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://internetbanking.lcu.com.au/OpenBanking"
+  },
+  {
+   "brand": "Liberty Financial",
+   "kind": "Specialist",
+   "products": 12,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.74
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 7.09
+     },
+     {
+      "maxLvr": 70,
+      "rate": 7.09
+     },
+     {
+      "maxLvr": 80,
+      "rate": 7.09
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.09
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.09
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.09
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://services.liberty.com.au/api/data-holder-public"
+  },
+  {
+   "brand": "Macquarie Bank Limited",
+   "kind": "Other bank",
+   "products": 3,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.34
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.35
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.35
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.macquariebank.io"
+  },
+  {
+   "brand": "Maitland Mutual Limited",
+   "kind": "Customer-owned",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.04
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.04
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.04
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.04
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.04
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.04
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://openbanking.themutual.com.au/OpenBanking"
+  },
+  {
+   "brand": "ME Bank - ME Go",
+   "kind": "Online lender",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.29
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.43
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.43
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.cds.mebank.com.au"
+  },
+  {
+   "brand": "MoveBank",
+   "kind": "Customer-owned",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.09
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.24
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://od1.cdr.digital.move.bank/api"
+  },
+  {
+   "brand": "MyState Bank",
+   "kind": "Other bank",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.04
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.04
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.39
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.mystate.com.au"
+  },
+  {
+   "brand": "NATIONAL AUSTRALIA BANK",
+   "kind": "Major bank",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.29
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.45
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.45
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.55
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.21
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.21
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.21
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://openbank.api.nab.com.au"
+  },
+  {
+   "brand": "Newcastle Permanent",
+   "kind": "Customer-owned",
+   "products": 16,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.99
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.99
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.99
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.09
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.09
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.09
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://openbank.newcastlepermanent.com.au"
+  },
+  {
+   "brand": "Northern Inland Credit Union Limited",
+   "kind": "Customer-owned",
+   "products": 13,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 5.94
+     },
+     {
+      "maxLvr": 70,
+      "rate": 5.94
+     },
+     {
+      "maxLvr": 80,
+      "rate": 5.94
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 5.94
+     },
+     {
+      "maxLvr": 70,
+      "rate": 5.94
+     },
+     {
+      "maxLvr": 80,
+      "rate": 5.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": false,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://secure.nicu.com.au/OpenBanking"
+  },
+  {
+   "brand": "NRMA Home Loans",
+   "kind": "Other bank",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.28
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.33
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.58
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.58
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.13
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.nrma.app.bendigobank.com.au"
+  },
+  {
+   "brand": "ORANGE CREDIT UNION LTD",
+   "kind": "Customer-owned",
+   "products": 14,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.54
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.79
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://online.orangecu.com.au/openbanking"
+  },
+  {
+   "brand": "P&N Bank",
+   "kind": "Customer-owned",
+   "products": 30,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.42
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.04
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.84
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://public.cdr-api.pnbank.com.au"
+  },
+  {
+   "brand": "Police Bank",
+   "kind": "Customer-owned",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.09
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.prd.policebank.com.au"
+  },
+  {
+   "brand": "Police Credit Union Ltd",
+   "kind": "Customer-owned",
+   "products": 40,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 70,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 80,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.74
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.74
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 8.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 8.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 8.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 8.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 8.24
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.policecu.com.au/OpenBanking"
+  },
+  {
+   "brand": "Qantas Money Basic/Offset Home Loans",
+   "kind": "Online lender",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.33
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.33
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.53
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.53
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.28
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.qantas.app.bendigobank.com.au"
+  },
+  {
+   "brand": "QBANK",
+   "kind": "Customer-owned",
+   "products": 7,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.34
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://banking.qbank.com.au/openbanking"
+  },
+  {
+   "brand": "Qudos Bank",
+   "kind": "Customer-owned",
+   "products": 3,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.38
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.64
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.qudosbank.com.au"
+  },
+  {
+   "brand": "Queensland Country Bank",
+   "kind": "Customer-owned",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.44
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.64
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr-api.queenslandcountry.bank"
+  },
+  {
+   "brand": "RACQ Bank",
+   "kind": "Customer-owned",
+   "products": 18,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.89
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.69
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.74
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.09
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://cdrbank.racq.com.au"
+  },
+  {
+   "brand": "Regional Australia Bank",
+   "kind": "Customer-owned",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.77
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.77
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.08
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.08
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public-data.cdr.regaustbank.io"
+  },
+  {
+   "brand": "Southern Cross Credit Union",
+   "kind": "Customer-owned",
+   "products": 4,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 5.93
+     },
+     {
+      "maxLvr": 70,
+      "rate": 5.93
+     },
+     {
+      "maxLvr": 80,
+      "rate": 5.93
+     },
+     {
+      "maxLvr": 85,
+      "rate": 5.93
+     },
+     {
+      "maxLvr": 90,
+      "rate": 5.93
+     },
+     {
+      "maxLvr": 95,
+      "rate": 5.93
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.13
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.13
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://cdr.sccu.com.au/openbanking"
+  },
+  {
+   "brand": "St.George Bank",
+   "kind": "Other bank",
+   "products": 5,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.94
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://digital-api.stgeorge.com.au"
+  },
+  {
+   "brand": "Summerland Bank",
+   "kind": "Customer-owned",
+   "products": 8,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.09
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.34
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr-api.summerland.com.au"
+  },
+  {
+   "brand": "SWSbank",
+   "kind": "Customer-owned",
+   "products": 12,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.1
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.1
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.1
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.1
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.1
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.1
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.4
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.4
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.4
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.4
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.4
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.4
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://online.swsbank.com.au/openbanking"
+  },
+  {
+   "brand": "Teachers Mutual Bank",
+   "kind": "Customer-owned",
+   "products": 16,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.49
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ob.tmbl.com.au/tmbank"
+  },
+  {
+   "brand": "The Capricornian",
+   "kind": "Customer-owned",
+   "products": 7,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.64
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.64
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.84
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.84
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr.onlinebanking.capricornian.com.au"
+  },
+  {
+   "brand": "The Mac",
+   "kind": "Customer-owned",
+   "products": 27,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 5.92
+     },
+     {
+      "maxLvr": 70,
+      "rate": 5.92
+     },
+     {
+      "maxLvr": 80,
+      "rate": 5.92
+     },
+     {
+      "maxLvr": 85,
+      "rate": 5.92
+     },
+     {
+      "maxLvr": 90,
+      "rate": 5.92
+     },
+     {
+      "maxLvr": 95,
+      "rate": 5.92
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 70,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 80,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.04
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://onlinebanking.themaccu.com.au/OpenBanking"
+  },
+  {
+   "brand": "Tiimely Home",
+   "kind": "Online lender",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.2
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.14
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.52
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.89
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.89
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://api.tiimely.app.bendigobank.com.au"
+  },
+  {
+   "brand": "TMCU",
+   "kind": "Customer-owned",
+   "products": 11,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.14
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.49
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://banking.transportmutual.com.au/OpenBanking"
+  },
+  {
+   "brand": "UBank",
+   "kind": "Online lender",
+   "products": 11,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.24
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.54
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.39
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://public.cdr-api.86400.com.au"
+  },
+  {
+   "brand": "UniBank",
+   "kind": "Customer-owned",
+   "products": 16,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.19
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.49
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ob.tmbl.com.au/unibank"
+  },
+  {
+   "brand": "Unity Bank",
+   "kind": "Customer-owned",
+   "products": 40,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.05
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.05
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.05
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.05
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.05
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.05
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.34
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://ibank.unity.bank/OpenBanking"
+  },
+  {
+   "brand": "Unloan",
+   "kind": "Online lender",
+   "products": 1,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.14
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.44
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.44
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.59
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://public.api.cdr.unloan.com.au"
+  },
+  {
+   "brand": "Up",
+   "kind": "Online lender",
+   "products": 1,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.2
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.2
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.2
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.2
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.2
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.35
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.35
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.35
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.35
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.35
+     }
+    ],
+    "maxLvr": 90
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.up.com.au"
+  },
+  {
+   "brand": "Virgin Money",
+   "kind": "Other bank",
+   "products": 2,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.09
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.59
+     },
+     {
+      "maxLvr": 95,
+      "rate": 8.02
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.79
+     },
+     {
+      "maxLvr": 95,
+      "rate": 8.54
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://api.cds.virginmoney.com.au"
+  },
+  {
+   "brand": "Westpac",
+   "kind": "Major bank",
+   "products": 8,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.24
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.34
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.04
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.04
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.39
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.49
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.24
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.24
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.24
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://digital-api.westpac.com.au"
+  },
+  {
+   "brand": "Woolworths Team Bank",
+   "kind": "Customer-owned",
+   "products": 7,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.19
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.29
+     }
+    ],
+    "maxLvr": 90
+   },
+   "investment": {
+    "tiers": [],
+    "maxLvr": 80
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://online.woolworthsteambank.com.au/OpenBanking"
+  }
+ ]
+}

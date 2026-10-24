@@ -1,3 +1,4 @@
+import { stampDuty } from './duty';
 import type { Applicant, AuState, Household, Profile } from './types';
 
 /**
@@ -72,41 +73,29 @@ export function debtToIncome(p: Profile): number {
   return (p.loan + p.personalLoans + p.cardLimits + p.hecs) / gross;
 }
 
-/**
- * First-home-buyer stamp duty: price at or below which a full exemption usually applies
- * (approximate; owner-occupiers only). Above it we assume standard duty.
- */
-const FHB_DUTY_FREE: Record<AuState, number> = {
-  NSW: 800_000,
-  VIC: 600_000,
-  QLD: 700_000,
-  WA: 500_000,
-  SA: 0, // SA exempts new homes only
-  TAS: 0,
-  ACT: 1_020_000,
-  NT: 0,
-};
-
-/** Rough general stamp duty as a share of price. */
-const DUTY_RATE: Record<AuState, number> = {
-  NSW: 0.04, VIC: 0.055, QLD: 0.035, WA: 0.04, SA: 0.045, TAS: 0.04, ACT: 0.035, NT: 0.045,
-};
-
 export interface UpfrontCosts {
   stampDuty: number;
+  foreignSurcharge: number;
   other: number;
   total: number;
   fhbConcession: boolean;
+  concession: string | null;
+  /** First Home Owner Grant — paid at settlement, so it counts toward funds to complete. */
+  fhog: number;
 }
 
 export function upfrontCosts(p: Profile): UpfrontCosts {
-  const fhbOwner = p.firstHome && p.purpose !== 'investment';
-  const newBuild = p.condition === 'new' || p.purpose === 'construction';
-  const exemptNew = fhbOwner && newBuild && (p.state === 'SA' || p.state === 'QLD');
-  const exempt = fhbOwner && (exemptNew || p.price <= FHB_DUTY_FREE[p.state]);
-  const stampDuty = exempt ? 0 : Math.round(p.price * DUTY_RATE[p.state]);
+  const d = stampDuty(p);
   const other = p.price > 0 ? 3_000 : 0; // conveyancing, searches, registration
-  return { stampDuty, other, total: stampDuty + other, fhbConcession: exempt };
+  return {
+    stampDuty: d.duty,
+    foreignSurcharge: d.foreignSurcharge,
+    other,
+    total: Math.round(d.duty + d.foreignSurcharge + other),
+    fhbConcession: d.concession !== null && d.duty < d.generalDuty,
+    concession: d.concession,
+    fhog: d.fhog,
+  };
 }
 
 /** 5% Deposit Scheme property price caps (capital & regional centres / rest of state), from Oct 2025. */
