@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-10-24T11:17:38.769Z",
+ "fetchedAt": "2026-10-25T19:24:09.658Z",
  "source": "https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary",
  "lenders": [
   {
@@ -769,77 +769,6 @@
    "source": "https://api-gateway.bankofchina.com.au"
   },
   {
-   "brand": "Bank of Melbourne",
-   "kind": "Other bank",
-   "products": 5,
-   "owner": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.54
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.54
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.64
-     },
-     {
-      "maxLvr": 85,
-      "rate": 6.94
-     },
-     {
-      "maxLvr": 90,
-      "rate": 6.94
-     },
-     {
-      "maxLvr": 95,
-      "rate": 6.94
-     }
-    ],
-    "maxLvr": 95
-   },
-   "investment": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.79
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.79
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.89
-     },
-     {
-      "maxLvr": 85,
-      "rate": 7.19
-     },
-     {
-      "maxLvr": 90,
-      "rate": 7.19
-     },
-     {
-      "maxLvr": 95,
-      "rate": 7.19
-     }
-    ],
-    "maxLvr": 95
-   },
-   "residency": {
-    "citizen": true,
-    "permanent_resident": true,
-    "nz_citizen": true,
-    "temporary_visa": false
-   },
-   "minAge": 18,
-   "source": "https://digital-api.bankofmelbourne.com.au"
-  },
-  {
    "brand": "Bank of Queensland Limited",
    "kind": "Other bank",
    "products": 5,
@@ -1039,77 +968,6 @@
    },
    "minAge": 18,
    "source": "https://api.bankofus.com.au/OpenBanking"
-  },
-  {
-   "brand": "BankSA",
-   "kind": "Other bank",
-   "products": 5,
-   "owner": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.54
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.54
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.64
-     },
-     {
-      "maxLvr": 85,
-      "rate": 6.94
-     },
-     {
-      "maxLvr": 90,
-      "rate": 6.94
-     },
-     {
-      "maxLvr": 95,
-      "rate": 6.94
-     }
-    ],
-    "maxLvr": 95
-   },
-   "investment": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.79
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.79
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.89
-     },
-     {
-      "maxLvr": 85,
-      "rate": 7.19
-     },
-     {
-      "maxLvr": 90,
-      "rate": 7.19
-     },
-     {
-      "maxLvr": 95,
-      "rate": 7.19
-     }
-    ],
-    "maxLvr": 95
-   },
-   "residency": {
-    "citizen": true,
-    "permanent_resident": true,
-    "nz_citizen": true,
-    "temporary_visa": false
-   },
-   "minAge": 18,
-   "source": "https://digital-api.banksa.com.au"
   },
   {
    "brand": "BankVic",
@@ -1738,7 +1596,7 @@
   {
    "brand": "Cairns bank",
    "kind": "Customer-owned",
-   "products": 39,
+   "products": 40,
    "owner": {
     "tiers": [
      {
