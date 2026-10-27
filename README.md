@@ -4,12 +4,12 @@ Free Australian home-loan readiness checks for specific sub-markets. Each checks
 
 | Site | For | Preview |
 |---|---|---|
-| **KeyReady** (hub) | first home buyers, everyone | https://silas-dsc.github.io/keyready/ |
-| **LMI Waiver Check** | doctors, dentists, vets, lawyers, accountants | https://silas-dsc.github.io/keyready/professionals/ |
-| **Nurse Home Loan Check** | nurses, midwives, allied health | https://silas-dsc.github.io/keyready/nurses/ |
-| **Low Doc Check** | self-employed, tradies | https://silas-dsc.github.io/keyready/self-employed/ |
-| **Expat Loan Check** | Australians abroad, foreign income | https://silas-dsc.github.io/keyready/expats/ |
-| **MCP server** | Claude, ChatGPT, Gemini, Perplexity… | https://silas-dsc.github.io/keyready/mcp/ |
+| **KeyReady** (hub) | first home buyers, everyone | https://keyready.au/ |
+| **LMI Waiver Check** | doctors, dentists, vets, lawyers, accountants | https://keyready.au/professionals/ |
+| **Nurse Home Loan Check** | nurses, midwives, allied health | https://keyready.au/nurses/ |
+| **Low Doc Check** | self-employed, tradies | https://keyready.au/self-employed/ |
+| **Expat Loan Check** | Australians abroad, foreign income | https://keyready.au/expats/ |
+| **MCP server** | Claude, ChatGPT, Gemini, Perplexity… | https://keyready.au/mcp/ |
 
 > General information only. Not credit assistance, a comparison service or a recommendation. See docs/GROWTH.md §2 before launch.
 

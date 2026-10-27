@@ -2,8 +2,8 @@
 project_id = "keyready"
 
 [auth]
-site_url = "https://silas-dsc.github.io/keyready/"
-additional_redirect_urls = ["https://silas-dsc.github.io/keyready/**", "http://localhost:5173/**"]
+site_url = "https://keyready.au/"
+additional_redirect_urls = ["https://keyready.au/**", "https://silas-dsc.github.io/keyready/**", "http://localhost:5173/**"]
 
 # Broker sign-in links need real email delivery: the built-in sender only reaches project members.
 [auth.email.smtp]
