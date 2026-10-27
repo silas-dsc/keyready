@@ -29,7 +29,7 @@ export const nurses: SiteConfig = {
     ],
   },
   faq: [
-    ['Is it really free?', 'Yes. If you ask to be connected to the broker and your loan settles, the broker pays us a referral fee — you never pay us.'],
+    ['Is it really free?', 'Yes. The check, the report and the what-if tools are free, with no sign-up. If you choose to talk to us about a loan and go ahead, the lender pays us commission (set out in our Credit Guide). You never pay us a fee.'],
     ['Does overtime count toward the $90k?', 'Westpac says casual income is annualised over 52 weeks, and it may assess overtime and allowances at 100% for hospital-employed nurses and midwives (conditions apply). Other lenders count less. The broker will confirm how your payslips are assessed.'],
     ['Will this affect my credit score?', 'No. We don’t run a credit check.'],
     ['What happens to my answers?', 'They stay in your browser until you choose to share them with the broker.'],

@@ -8,4 +8,6 @@ export const lenderName = (L: LenderPolicy) => (SHOW_NAMES && L.brand ? L.brand 
 
 export const LENDER_COUNT = MARKET_LENDERS.length;
 export const LIVE_COUNT = MARKET_LENDERS.filter(l => l.source === 'open-banking').length;
+export const PUBLISHED_COUNT = MARKET_LENDERS.filter(l => l.source === 'published').length;
+export const MODELLED_COUNT = LENDER_COUNT - LIVE_COUNT - PUBLISHED_COUNT;
 export const DATA_DATE = new Date(MARKET_FETCHED_AT).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });

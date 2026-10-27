@@ -12,8 +12,11 @@ export const BROKER = {
   acl: '389328',
 } as const;
 
-/** Plain-English disclosure shown wherever someone can ask to be referred. */
+/** KeyReady and its sub-sites are run by the broker itself, so "we" on every site is Goodlend. */
+export const OPERATOR = BROKER;
+
+/** Plain-English disclosure shown in every footer and wherever someone can ask to be contacted. */
 export const BROKER_DISCLOSURE =
-  `If you ask to be connected, your details and report go to one broker: ${BROKER.name} ` +
-  `(Credit Representative ${BROKER.creditRepNumber} of ${BROKER.licensee}, ACL ${BROKER.acl}). ` +
-  'We receive a referral fee from the broker if your loan settles. It’s the same whichever lender you choose, and you never pay us.';
+  `This site is run by ${BROKER.name} (${BROKER.entity}), Credit Representative ${BROKER.creditRepNumber} of ` +
+  `${BROKER.licensee}, ACL ${BROKER.acl}. If you ask to be contacted, your details and report go only to us. ` +
+  'If you take out a loan with our help, the lender pays us commission, as set out in the Credit Guide we give you before we help; you never pay us a fee.';

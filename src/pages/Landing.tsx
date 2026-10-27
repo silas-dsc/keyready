@@ -4,14 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Logo, Pill } from '../components/ui';
 import { fmtShortMoney } from '../engine/finance';
 import { assess } from '../engine/match';
-import { DATA_DATE, LENDER_COUNT, LIVE_COUNT, lenderName } from '../lib/lenderDisplay';
+import { DATA_DATE, LENDER_COUNT, LIVE_COUNT, MODELLED_COUNT, PUBLISHED_COUNT, lenderName } from '../lib/lenderDisplay';
 import { clearSaved, loadSaved } from '../lib/store';
 import { SITE, SITES, siteUrl } from '../sites';
 import { BROKER_DISCLOSURE } from '../sites/broker';
 
 const lenderFaq: [string, string] = [
   'Which lenders do you check?',
-  `${LIVE_COUNT} Australian banks and lenders — majors, customer-owned banks, online lenders and more — using the rates, LVR limits and residency rules they publish through Open Banking (updated ${DATA_DATE}), plus two modelled specialist lenders. Rules banks don’t publish, like time in job, are typical settings for each type of lender.`,
+  `${LENDER_COUNT} in total: ${LIVE_COUNT} Australian banks and lenders — majors, customer-owned banks, online lenders and more — using the rates, LVR limits and residency rules they publish through Open Banking (data as of ${DATA_DATE}), ${PUBLISHED_COUNT} non-bank lenders from their own published rate sheets, and ${MODELLED_COUNT} modelled specialist lenders. Rules lenders don’t publish, like time in job, are typical settings for each type of lender.`,
 ];
 
 export default function Landing() {
@@ -82,8 +82,8 @@ export default function Landing() {
                     <div className="flex items-center justify-between">
                       <span className="font-bold">{lenderName(r.lender)}</span>
                       <span className="flex items-center gap-2">
-                        <Pill tone={r.status === 'ready' ? 'go' : r.status === 'close' ? 'amber' : 'rose'}>{r.status === 'ready' ? 'Fits' : r.status === 'close' ? 'Close' : 'Not yet'}</Pill>
-                        <span className="font-extrabold tabular-nums">{r.score}%</span>
+                        <Pill tone={r.status === 'ready' ? 'go' : r.status === 'close' ? 'amber' : 'rose'}>{r.status === 'ready' ? 'Meets rules' : r.status === 'close' ? 'Close' : 'Not yet'}</Pill>
+                        <span className="font-extrabold tabular-nums">{r.score}%</span><span className="text-xs text-muted">rules met</span>
                       </span>
                     </div>
                     <p className="mt-1 truncate text-xs text-ink-soft">{r.checks.find(c => c.status === 'fail')?.detail ?? 'No blockers found.'}</p>

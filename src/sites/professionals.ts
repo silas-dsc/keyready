@@ -30,7 +30,7 @@ export const professionals: SiteConfig = {
     ],
   },
   faq: [
-    ['Is it really free?', 'Yes. The check, the report and the what-if tools are free with no sign-up. If you ask to be connected to the broker and your loan settles, the broker pays us a referral fee.'],
+    ['Is it really free?', 'Yes. The check, the report and the what-if tools are free, with no sign-up. If you choose to talk to us about a loan and go ahead, the lender pays us commission (set out in our Credit Guide). You never pay us a fee.'],
     ['Will this affect my credit score?', 'No. We don’t run a credit check.'],
     ['Do interns and registrars qualify?', 'It depends on the lender. Westpac’s published waiver includes hospital-employed doctors from intern level; ANZ’s requires AHPRA General or Specialist registration and excludes provisional and limited registration. The check asks the questions that decide it.'],
     ['Is an LMI waiver guaranteed?', 'No. Waivers are at each lender’s discretion and their conditions change. Treat the result as “may qualify” and confirm with the broker or lender.'],

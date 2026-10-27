@@ -18,7 +18,7 @@ import { SITE } from '../sites';
 import { BROKER, BROKER_DISCLOSURE } from '../sites/broker';
 
 const STATUS: Record<MatchStatus, { label: string; tone: 'go' | 'amber' | 'rose'; color: string }> = {
-  ready: { label: 'Fits', tone: 'go', color: '#12805c' },
+  ready: { label: 'Meets rules', tone: 'go', color: '#12805c' },
   close: { label: 'Close', tone: 'amber', color: '#e2a336' },
   not_yet: { label: 'Not yet', tone: 'rose', color: '#d98c84' },
 };
@@ -148,7 +148,7 @@ function Hero({ a, p, whatIf, onConnect }: { a: Assessment; p: Profile; whatIf: 
     );
   const sub =
     a.ready > 0
-      ? `${a.close ? `${a.close} more ${a.close === 1 ? 'is' : 'are'} close. ` : ''}Your strongest match is ${lenderName(a.results[0].lender)} at ${a.results[0].score}% policy fit.`
+      ? `${a.close ? `${a.close} more ${a.close === 1 ? 'is' : 'are'} close. ` : ''}The closest fit is ${lenderName(a.results[0].lender)}, meeting ${a.results[0].score}% of its published rules.`
       : a.close > 0
         ? 'Small, specific changes would get you over the line. Your fastest wins are below.'
         : 'Use the what-if tools to find a price and deposit that work, or talk to a broker about specialist options.';
@@ -354,7 +354,7 @@ function LenderRow({ r }: { r: LenderResult }) {
         </div>
         <div className="w-20 text-right">
           <p className="text-2xl font-extrabold tabular-nums">{r.score}%</p>
-          <p className="text-xs text-muted">policy fit</p>
+          <p className="text-xs text-muted">rules met</p>
         </div>
         <span className={`text-muted transition ${open ? 'rotate-180' : ''}`} aria-hidden>⌄</span>
       </button>
@@ -374,7 +374,7 @@ function LenderRow({ r }: { r: LenderResult }) {
                 </li>
               ))}
               <li className="pt-2 text-xs text-muted">
-                {r.lender.source === 'open-banking' ? `Live rate ${r.rate.toFixed(2)}% at your LVR (Open Banking, ${DATA_DATE})` : r.lender.source === 'published' ? `Published rate ${r.rate.toFixed(2)}% at your LVR (lender's rate sheet)` : `Modelled rate ${r.rate.toFixed(2)}%`} · assessed at {r.assessmentRate.toFixed(2)}% · serviceable up to {fmtMoney(r.maxBorrow)}
+                {r.lender.source === 'open-banking' ? `Rate ${r.rate.toFixed(2)}% at your LVR (Open Banking data as of ${DATA_DATE})` : r.lender.source === 'published' ? `Published rate ${r.rate.toFixed(2)}% at your LVR (lender's rate sheet)` : `Modelled rate ${r.rate.toFixed(2)}%`} · assessed at {r.assessmentRate.toFixed(2)}% · serviceable up to {fmtMoney(r.maxBorrow)}
                 {r.lender.policySources ? ` · some rules confirmed from the lender’s website (${r.lender.policySources[0].retrieved})` : ''}
               </li>
             </ul>

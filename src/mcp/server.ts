@@ -121,7 +121,7 @@ export function readinessReport(p: Profile, site = 'core') {
     lender: r.lender.name,
     type: r.lender.kind,
     status: r.status === 'ready' ? 'fits published rules' : r.status === 'close' ? 'close' : 'not yet',
-    policy_fit: `${r.score}%`,
+    rules_met: `${r.score}%`,
     rate: `${r.rate.toFixed(2)}%`,
     lmi_waived: r.lmiWaived,
     reasons: r.checks.filter(c => c.status !== 'pass').map(c => c.detail),
@@ -262,7 +262,7 @@ export function buildServer(deps: McpDeps): McpServer {
     description:
       `Send the user’s situation and readiness report to ${BROKER.name}, a licensed mortgage broker, who will contact them. ` +
       'ONLY call this after you have shown the user this disclosure and they have explicitly agreed in this conversation: ' + BROKER_DISCLOSURE +
-      ' Collect their name, email and phone. Never call it on the user’s behalf without that agreement.',
+      ' Collect their name, email and phone. The user then gets an email link to confirm before the broker sees anything. Never call it on the user’s behalf without that agreement.',
     inputSchema: situation.extend({
       name: z.string().min(1).max(120),
       email: z.email().max(200),
@@ -282,8 +282,8 @@ export function buildServer(deps: McpDeps): McpServer {
       profile, summary: summarise(profile, assess(profile)), site: i.site, segment: site.segment, channel: 'mcp', attribution: { utm_source: 'mcp' },
     });
     return {
-      content: [text(`Done — ${BROKER.name} has the report and will contact ${i.name} (${i.preferred_time.toLowerCase()}). Reference ${id.slice(0, 8)}. ${BROKER_DISCLOSURE}`)],
-      structuredContent: { referred: true, reference: id, broker: BROKER.name },
+      content: [text(`Nearly done — we've emailed ${i.email} a link to confirm. ${BROKER.name} will only see the report and contact ${i.name} (${i.preferred_time.toLowerCase()}) after they click it; unconfirmed requests are deleted after 7 days. Reference ${id.slice(0, 8)}. ${BROKER_DISCLOSURE}`)],
+      structuredContent: { referred: false, pending_confirmation: true, reference: id, broker: BROKER.name },
     };
   });
 

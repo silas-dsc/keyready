@@ -1,5 +1,6 @@
-// Called by the leads_notify database trigger (pg_net). Sends the two transactional emails
-// through Knock: the case to the broker, and a confirmation to the borrower.
+// Called by the leads_notify database triggers (pg_net). For a new confirmed referral it sends the two
+// transactional emails through Knock: the case to the broker and a confirmation to the borrower. For an
+// AI-assistant referral still waiting on the borrower (kind 'confirm'), it sends only the confirm-link email.
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 import { SITE_CATALOG } from '../_shared/sites.js';
 import { triggerKnock } from '../_shared/knock.ts';
@@ -12,7 +13,7 @@ Deno.serve(async req => {
   if (!Deno.env.get('NOTIFY_SECRET') || req.headers.get('x-notify-secret') !== Deno.env.get('NOTIFY_SECRET'))
     return new Response('Unauthorized', { status: 401 });
 
-  const { lead, broker } = await req.json();
+  const { kind = 'new', lead, broker } = await req.json();
   const site = SITE_CATALOG[lead.site] ?? SITE_CATALOG.core;
   const s = lead.summary ?? {};
   const p = lead.profile ?? {};
@@ -57,6 +58,17 @@ Deno.serve(async req => {
     broker_name: broker?.name ?? 'our broker partner',
     broker_business: broker?.business_name ?? '',
   };
+
+  if (kind === 'confirm') {
+    const confirm = { ...data, confirm_url: `${site.url}/#/confirm?token=${lead.confirm_token}` };
+    try {
+      await triggerKnock('confirm-referral', { id: `lead-${lead.id}`, email: lead.email, name: lead.name }, confirm, `confirm-${lead.id}`);
+      return Response.json({ ok: true, errors: [] });
+    } catch (e) {
+      console.error('notify-lead confirm', lead.id, String(e));
+      return Response.json({ ok: false, errors: [String(e)] }, { status: 502 });
+    }
+  }
 
   const results = await Promise.allSettled([
     broker

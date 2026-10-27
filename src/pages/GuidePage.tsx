@@ -55,6 +55,11 @@ export default function GuidePage({ guide, appUrl }: { guide: Guide; appUrl: str
                 </table>
               </div>
             )}
+            {s.table?.head[0] === 'Lender' && (
+              <p className="mt-3 text-xs text-muted">
+                Each lender’s published criteria as at {updated}, from its own website. This is not a comparison or a recommendation: not every lender was checked, and lenders change these terms often.
+              </p>
+            )}
           </section>
         ))}
 
