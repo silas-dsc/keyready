@@ -1,0 +1,18 @@
+{
+  "name": "Confirm AI-assistant referral",
+  "steps": [
+    {
+      "ref": "email_1",
+      "type": "channel",
+      "channel_key": "resend",
+      "channel_type": "email",
+      "template": {
+        "subject": "Confirm your home loan enquiry with {{ data.site_name }}",
+        "html_body": "<h2 style=\"margin:0 0 8px\">{{ recipient.name }}, please confirm you want a call</h2>\n<p>An AI assistant asked {{ data.site_name }} to pass your home loan readiness report to Goodlend Mortgage Brokers so they can contact you ({{ data.lead.preferred_time | downcase }}). We won't share anything or call you until you confirm.</p>\n<p style=\"margin:24px 0\"><a href=\"{{ data.confirm_url }}\" style=\"background:#0e3b3a;color:#fff;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:600\">Yes, have Goodlend contact me</a></p>\n<p>If this wasn't you, ignore this email: the request is deleted after 7 days.</p>\n<p style=\"color:#5b6b6a;font-size:12px\">{{ data.site_name }} is run by Goodlend Mortgage Brokers (Credit Representative 556461 of Connective Credit Services, ACL 389328). The results are general information based on lenders' published rules, not advice or an approval. To see, correct or delete your details, email privacy@keyready.au.</p>",
+        "settings": {
+          "layout_key": "default"
+        }
+      }
+    }
+  ]
+}

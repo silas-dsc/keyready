@@ -29,7 +29,7 @@ export const selfEmployed: SiteConfig = {
     ],
   },
   faq: [
-    ['Is it really free?', 'Yes. If you ask to be connected to the broker and your loan settles, the broker pays us a referral fee — you never pay us.'],
+    ['Is it really free?', 'Yes. The check, the report and the what-if tools are free, with no sign-up. If you choose to talk to us about a loan and go ahead, the lender pays us commission (set out in our Credit Guide). You never pay us a fee.'],
     ['What is an alt-doc (low-doc) loan?', 'A home loan for the self-employed that verifies income with BAS, business bank statements or an accountant’s letter instead of tax returns. They usually have a lower maximum LVR and a higher rate.'],
     ['Will this affect my credit score?', 'No. We don’t run a credit check.'],
     ['What happens to my answers?', 'They stay in your browser until you choose to share them with the broker.'],

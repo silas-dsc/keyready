@@ -22,13 +22,13 @@ export const core: SiteConfig = {
     points: [
       ['🎯', 'Where you fit', 'Every lender checked against its own published rules, with a plain-English reason for each result.'],
       ['🧭', 'What to fix', 'Your fastest wins, ranked by how many lenders each one unlocks — like cancelling an unused card.'],
-      ['🎛️', 'What if', 'Drag the price, deposit or income and watch lenders flip to “yes” in real time.'],
+      ['🎛️', 'What if', 'Drag the price, deposit or income and see which lenders’ rules you meet change in real time.'],
     ],
   },
   faq: [
-    ['Is it really free?', 'Yes. You can answer the questions, see your report and play with the what-if tools without paying or signing up. If you choose to talk to a broker, the broker pays us a referral fee — you never pay us anything.'],
+    ['Is it really free?', 'Yes. The check, the report and the what-if tools are free, with no sign-up. If you choose to talk to us about a loan and go ahead, the lender pays us commission (set out in our Credit Guide). You never pay us a fee.'],
     ['Will this affect my credit score?', 'No. We don’t run a credit check. Your score is only touched when you formally apply with a lender — and a broker helps you apply once, to the right one, instead of collecting enquiries.'],
-    ['How does the matching work?', 'We model each lender’s policy rules — residency, time in job, how they shade overtime and bonuses, LVR limits, genuine savings, debt-to-income caps — and stress-test your repayments at 3% above the rate, as APRA requires.'],
+    ['How does the matching work?', 'We model each lender’s policy rules — residency, time in job, how they shade overtime and bonuses, LVR limits, genuine savings, debt-to-income caps — and stress-test your repayments at 3% above the rate, the buffer APRA expects banks to use.'],
     ['What happens to my answers?', 'They stay in your browser until you choose to share them with a broker. You can clear them at any time.'],
     ['How is this different from a broker?', 'Think of it as preparation. You walk in knowing where you stand and what to fix, so the conversation starts at “let’s apply” instead of “let’s see”.'],
   ],

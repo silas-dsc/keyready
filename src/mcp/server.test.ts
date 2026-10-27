@@ -67,7 +67,7 @@ describe('KeyReady MCP server', () => {
     expect(rows[0].rate).toBeLessThanOrEqual(rows[4].rate);
   });
 
-  it('refers to the broker only with consent', async () => {
+  it('refers to the broker only with consent, pending the borrower’s email confirmation', async () => {
     const { client, leads } = await connect();
     const contact = { name: 'Sam Test', email: 'sam@example.com', phone: '0400 000 000' };
     const refused = await call(client, 'refer_to_broker', { ...borrower, ...contact, consent: false });
@@ -75,7 +75,8 @@ describe('KeyReady MCP server', () => {
     expect(leads).toHaveLength(0);
 
     const ok = await call(client, 'refer_to_broker', { ...borrower, ...contact, consent: true, site: 'professionals' });
-    expect(ok.structuredContent?.referred).toBe(true);
+    expect(ok.structuredContent?.pending_confirmation).toBe(true);
+    expect(ok.content[0].text).toMatch(/emailed sam@example\.com a link to confirm/);
     expect(leads[0]).toMatchObject({ channel: 'mcp', site: 'professionals', segment: 'professionals', consent: true, email: 'sam@example.com' });
     expect(ok.content[0].text).toMatch(/Goodlend Mortgage Brokers/);
   });

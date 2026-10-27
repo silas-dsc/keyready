@@ -29,7 +29,7 @@ export const expats: SiteConfig = {
     ],
   },
   faq: [
-    ['Is it really free?', 'Yes. If you ask to be connected to the broker and your loan settles, the broker pays us a referral fee — you never pay us.'],
+    ['Is it really free?', 'Yes. The check, the report and the what-if tools are free, with no sign-up. If you choose to talk to us about a loan and go ahead, the lender pays us commission (set out in our Credit Guide). You never pay us a fee.'],
     ['Why do so few lenders show up for me?', 'Because most mainstream lenders publish that they don’t lend to borrowers living overseas, or don’t publish expat lending at all. Specialist lenders that do lend to expats often don’t publish their rules online — a broker can access them.'],
     ['Will this affect my credit score?', 'No. We don’t run a credit check.'],
   ],

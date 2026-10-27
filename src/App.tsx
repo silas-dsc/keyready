@@ -1,6 +1,7 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import Broker from './pages/Broker';
 import Check from './pages/Check';
+import Confirm from './pages/Confirm';
 import Landing from './pages/Landing';
 import Report from './pages/Report';
 
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/check" element={<Check />} />
         <Route path="/report" element={<Report />} />
         <Route path="/broker" element={<Broker />} />
+        <Route path="/confirm" element={<Confirm />} />
         <Route path="*" element={<Landing />} />
       </Routes>
     </HashRouter>

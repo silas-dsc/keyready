@@ -110,7 +110,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
       const wait = min - a.tenureMonths;
       const unit = a.employment === 'self_employed' ? 'trading on your ABN' : 'in your role';
       empFail = { id: 'employment', label: 'Time in role', status: 'fail', gap: wait <= 6 ? 'close' : 'far', weight: 3,
-        detail: `${a.tenureMonths} months ${unit} is below the ${min}-month minimum — eligible in about ${wait} month${wait === 1 ? '' : 's'}.` };
+        detail: `${a.tenureMonths} months ${unit} is below the ${min}-month minimum — you’d meet this rule in about ${wait} month${wait === 1 ? '' : 's'}.` };
       break;
     }
   }

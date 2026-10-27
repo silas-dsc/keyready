@@ -148,7 +148,7 @@ export default function Broker() {
                         ['Email', l.email], ['Mobile', l.phone], ['Best time', l.preferred_time],
                         ['Applicants', l.profile.mode === 'joint' ? 'Joint' : 'Solo'], ['First home', l.profile.firstHome ? 'Yes' : 'No'], ['Purpose', l.profile.purpose],
                         ['Income (B1)', fmtShortMoney(a0.baseIncome)], ['Employment (B1)', a0.employment.replace('_', ' ')], ['Savings', fmtShortMoney(l.profile.savings)],
-                        ['Price', fmtShortMoney(l.profile.price)], ['State', l.profile.state], ['Top matches', l.summary.topLenders.join(', ') || '—'],
+                        ['Price', fmtShortMoney(l.profile.price)], ['State', l.profile.state], ['Closest fits', l.summary.topLenders.join(', ') || '—'],
                         ['Source', [l.attribution?.utm_source, l.attribution?.utm_campaign, l.attribution?.referrer].filter(Boolean).join(' · ') || 'Direct'],
                         ['Stamp duty', l.summary.stampDuty !== undefined ? fmtShortMoney(l.summary.stampDuty) : '—'], ['Grant', l.summary.fhog ? fmtShortMoney(l.summary.fhog) : '—'],
                       ].map(([k, v]) => (

@@ -113,6 +113,17 @@ export async function listLeads(): Promise<Lead[]> {
   return localLeads();
 }
 
+export type ConfirmResult = 'confirmed' | 'already_confirmed' | 'expired' | 'not_found';
+
+/** The borrower confirms an AI-assistant referral from the link in our email. */
+export async function confirmLead(token: string): Promise<ConfirmResult> {
+  const sb = getSupabase();
+  if (!sb) return 'not_found';
+  const { data, error } = await (await sb).rpc('confirm_lead', { p_token: token });
+  if (error) throw new Error(error.message);
+  return data as ConfirmResult;
+}
+
 export const LEAD_STATUSES: LeadStatus[] = ['new', 'contacted', 'application', 'approved', 'settled', 'lost'];
 
 /** Link the signed-in broker account to its broker row (rows are added by the operator; see docs/BACKEND.md). */
