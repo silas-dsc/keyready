@@ -5,6 +5,10 @@
    "set": {
     "minTenure": {
      "self_employed": 24
+    },
+    "residency": {
+     "temporary_visa": null,
+     "awaiting_pr": null
     }
    },
    "sources": [
@@ -12,6 +16,11 @@
      "url": "https://www.westpac.com.au/home-loans/self-employed/how-to-apply",
      "retrieved": "2026-10-27",
      "quote": "in most cases you need to have had your ABN for at least two years"
+    },
+    {
+     "url": "https://www.westpac.com.au/personal-banking/home-loans/how-to-apply/",
+     "retrieved": "2026-10-27",
+     "quote": "An Australian citizen or permanent resident"
     }
    ]
   },
@@ -19,6 +28,10 @@
    "set": {
     "minTenure": {
      "self_employed": 18
+    },
+    "residency": {
+     "temporary_visa": null,
+     "awaiting_pr": null
     }
    },
    "sources": [
@@ -26,6 +39,11 @@
      "url": "https://www.anz.com.au/personal/home-loans/buying-home/home-loans-business-owners/",
      "retrieved": "2026-10-27",
      "quote": "A valid ABN/ACN which has been registered for 18 months."
+    },
+    {
+     "url": "https://www.anz.com.au/personal/home-loans/get-started/apply-home-loan/",
+     "retrieved": "2026-10-27",
+     "quote": "Be an Australian or New Zealand citizen or permanent resident"
     }
    ]
   },
@@ -47,11 +65,22 @@
    "set": {
     "minTenure": {
      "self_employed": 24,
-     "contractor": 6
+     "contractor": 6,
+     "full_time": 6,
+     "part_time": 6,
+     "casual": 6
     },
     "residency": {
      "temporary_visa": null,
      "awaiting_pr": null
+    },
+    "maxLvr": {
+     "apartment": 80
+    },
+    "shading": {
+     "overtime": 0.8,
+     "bonus": 0.8,
+     "commission": 0.8
     }
    },
    "sources": [
@@ -69,6 +98,31 @@
      "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
      "retrieved": "2026-10-27",
      "quote": "Non-Australian citizen/non-permanent resident (i.e. temporary resident or temporary visa holder) Outside guidelines."
+    },
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Casual employment – minimum 6 months in current employment OR employed for a minimum of 6 months in the same field/industry."
+    },
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Permanent salary/wage employment (full-time or part-time) and contract employment – minimum 6 months in current employment"
+    },
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "High density apartment/unit(s) Up to 80% LVR can be considered where the repayment type is Principal and Interest."
+    },
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Overtime – non essential services 80% Confirmed as regular, ongoing and evidenced."
+    },
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Commission or bonus 80% Payment is consistent, ongoing and a condition of employment."
     }
    ]
   },
@@ -113,6 +167,106 @@
      "url": "https://www.nab.com.au/personal/home-loans/nab-variable-rate-offset-home-loan",
      "retrieved": "2026-10-27",
      "quote": "and/or for applicants who require Foreign Investment Review Board (FIRB) approval"
+    }
+   ]
+  },
+  "CommBank": {
+   "set": {
+    "minTenure": {
+     "self_employed": 24
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.commbank.com.au/home-loans/applying-for-a-home-loan.html",
+     "retrieved": "2026-10-27",
+     "quote": "sole traders will need to provide two most recent years"
+    }
+   ]
+  },
+  "ING BANK (Australia) Ltd": {
+   "set": {
+    "residency": {
+     "permanent_resident": 95,
+     "temporary_visa": null,
+     "awaiting_pr": null
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.ing.com.au/pdf/ING_Home_Loan_MS_TMD.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "are an Australian citizen, New Zealand citizen or Australian permanent resident"
+    }
+   ]
+  },
+  "Bendigo Bank": {
+   "set": {
+    "minTenure": {
+     "self_employed": 12
+    },
+    "residency": {
+     "temporary_visa": null,
+     "awaiting_pr": null,
+     "other": null
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.brokers.bendigobank.com.au/siteassets/_documents/fact-sheets/flex-home-loan-fact-sheet.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Not available for companies, trusts, family pledge, self-employed less than one year, overseas or non-permanent Australian resident applicants"
+    }
+   ]
+  },
+  "Great Southern Bank": {
+   "set": {
+    "residency": {
+     "temporary_visa": null,
+     "awaiting_pr": null
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.greatsouthernbank.com.au/home-loans/refinance/are-you-eligible-to-refinance-your-home-loan",
+     "retrieved": "2026-10-27",
+     "quote": "an Australian citizen or a permanent resident of Australia."
+    }
+   ]
+  },
+  "Liberty Financial": {
+   "set": {
+    "acceptsDefaults": true,
+    "minCreditScore": 0
+   },
+   "sources": [
+    {
+     "url": "https://www.liberty.com.au/home-loans/credit-history",
+     "retrieved": "2026-10-27",
+     "quote": "Paid and unpaid defaults"
+    },
+    {
+     "url": "https://www.liberty.com.au/home-loans/credit-history",
+     "retrieved": "2026-10-27",
+     "quote": "Maximum LVR 95%"
+    }
+   ]
+  },
+  "UBank": {
+   "set": {
+    "minTenure": {
+     "self_employed": null
+    },
+    "residency": {
+     "temporary_visa": null,
+     "awaiting_pr": null
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.ubank.com.au/help/current/home-loans/hl-eligibility/who-can-apply-for-a-home-loan",
+     "retrieved": "2026-10-27",
+     "quote": "be employed on a permanent, casual or contract basis (we don’t lend to self-employed individuals)"
     }
    ]
   }
