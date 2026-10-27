@@ -149,6 +149,16 @@ export default function Landing() {
           </section>
         )}
 
+        <section id="ai" className="mx-auto max-w-6xl scroll-mt-6 px-4 pb-20">
+          <div className="rounded-3xl bg-card p-6 ring-1 ring-line sm:p-8">
+            <h2 className="text-2xl font-extrabold sm:text-3xl">Use it in your AI assistant</h2>
+            <p className="mt-3 max-w-3xl text-ink-soft">
+              Ask Claude, ChatGPT, Gemini, Perplexity or Cursor to run this check for you. Our free MCP server gives them the same rules engine: lender fit, borrowing power, 2026–27 stamp duty and grants, the 5% Deposit Scheme and live rates. No sign-in, and nothing is shared with a broker unless you say so in the chat.
+            </p>
+            <a href={`${siteUrl(SITES.core)}/mcp/`} className="mt-5 inline-flex rounded-2xl bg-ink px-5 py-3 font-semibold text-white">Set it up in 1 minute →</a>
+          </div>
+        </section>
+
         <section id="faq" className="mx-auto max-w-3xl scroll-mt-6 px-4 pb-20">
           <h2 className="text-3xl font-extrabold sm:text-4xl">Questions</h2>
           <div className="mt-8 divide-y divide-line rounded-3xl bg-card ring-1 ring-line">
@@ -172,7 +182,8 @@ export default function Landing() {
             {SITE.name} provides general information only. It is not credit assistance or financial advice. It is a self-check against lenders’ published rules, not a comparison service or a recommendation. Rates, LVR limits and residency rules come from lenders’ public Open Banking data;
             other policy rules are typical settings, not any lender’s own policy. Always confirm with a licensed mortgage broker or lender.
             {BROKER_DISCLOSURE}{' '}
-            <a href={`${import.meta.env.BASE_URL}privacy/`} className="underline underline-offset-2 hover:text-ink">Privacy policy</a>
+            <a href={`${import.meta.env.BASE_URL}privacy/`} className="underline underline-offset-2 hover:text-ink">Privacy policy</a> ·{' '}
+            <a href={`${siteUrl(SITES.core)}/mcp/`} className="underline underline-offset-2 hover:text-ink">For AI assistants (MCP)</a>
           </p>
           {SITE.id !== 'core' && (
             <p>

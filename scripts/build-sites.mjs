@@ -126,7 +126,7 @@ async function buildSite(id) {
 
   await writeFile(join(outDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod}</lastmod></url>`).join('\n')}
+${urls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod}</lastmod></url>`).join('\n')}${id === 'core' && target === 'pages' ? `\n  <url><loc>${url}mcp/</loc></url>` : ''}
 </urlset>
 `);
   // AI search and answer engines are explicitly welcome: being cited is the point.
@@ -170,33 +170,64 @@ ${site.guides.map(g => `- [${g.title}](${url}guides/${g.slug}/): ${g.description
   return { id, url, name: site.name, segment: site.segment };
 }
 
-/** Public setup page for AI assistants: the MCP endpoint plus per-client instructions. */
+/** Public setup page and docs for AI assistants: the MCP endpoint, per-client setup, example prompts and each tool. */
 async function mcpPage(outDir) {
   const supabase = process.env.VITE_SUPABASE_URL;
   const endpoint = supabase ? `${supabase.replace(/\/$/, '')}/functions/v1/mcp` : null;
-  const ep = endpoint ? `<code>${esc(endpoint)}</code>` : '<em>not deployed yet — coming soon</em>';
+  const home = `${PAGES_ORIGIN}${REPO_PATH}`;
+  const url = `${home}mcp/`;
+  const ep = endpoint
+    ? `<code id="ep">${esc(endpoint)}</code> <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('ep').textContent);this.textContent='Copied'">Copy</button>`
+    : '<em>not deployed yet — coming soon</em>';
   const clients = [
     ['Claude (claude.ai, Desktop, mobile)', 'Customize → Connectors → Add custom connector → paste the URL. No sign-in needed.'],
     ['Claude Code', `<code>claude mcp add --transport http keyready ${esc(endpoint ?? '<url>')}</code>`],
     ['ChatGPT', 'Settings → Apps &amp; connectors → developer mode → add a custom MCP server with the URL (authentication: none). Referrals ask for confirmation.'],
-    ['Google Gemini', 'Gemini app (web) → Settings → Connected apps → Custom apps → add the URL. Gemini CLI: <code>gemini mcp add --transport http keyready &lt;url&gt;</code>.'],
+    ['Google Gemini', `Gemini app (web) → Settings → Connected apps → Custom apps → add the URL. Gemini CLI: <code>gemini mcp add --transport http keyready ${esc(endpoint ?? '<url>')}</code>.`],
     ['Perplexity, Mistral Le Chat, Cursor', 'Add a custom remote MCP connector with the URL; authentication: none.'],
   ];
+  const prompts = [
+    'We earn $145k and $80k, have $90k saved and want a $780k house in Brisbane as first home buyers. Which lenders’ rules do we fit, and how much can we borrow?',
+    'What’s the stamp duty on a $650k established home in Melbourne for a first home buyer?',
+    'Am I eligible for the 5% Deposit Scheme on a $720k apartment in Perth?',
+    'I’m a nurse on $98k. Which lenders would waive LMI at 90%, and what changes would help most?',
+    'Show me the lowest owner-occupier variable rates at 85% LVR.',
+  ];
+  const tools = [
+    ['assess_home_loan_readiness', 'The full readiness check: how many lenders’ published rules the situation fits, borrowing power, LVR, stamp duty and grants, 5% Deposit Scheme eligibility, profession LMI waivers, the fastest fixes, and a link to the full interactive report.',
+      'One or two applicants (age, residency, employment, months in role, income including overtime and bonus); state, capital or regional; purpose; property type; new or existing; price; savings, gift and loan amount; card limits, personal loans and HECS; dependants; credit history; optional profession, living overseas, income currency and low-doc.'],
+    ['calculate_stamp_duty', 'Exact 2026–27 transfer duty for any state or territory, with first home buyer concessions, owner-occupier rates, the First Home Owner Grant and the foreign purchaser surcharge.',
+      'State, price, and yes/no for first home, owner-occupier, new home, vacant land, house-and-land package and foreign buyer.'],
+    ['check_5_percent_deposit_scheme', 'Eligibility for the First Home Guarantee (5% deposit) or the Family Home Guarantee (single parents, 2% deposit), with the property price cap for the area.',
+      'State, capital or regional, price, first home, single parent, whether all buyers are citizens or permanent residents, and whether they will live in it.'],
+    ['list_lender_rates', 'Live variable principal-and-interest rates at a given LVR from lenders’ Open Banking product data. Lender names are masked.',
+      'LVR (%), owner-occupier or investment, and how many to list (up to 25).'],
+    ['refer_to_broker', 'Sends the situation and contact details to one named broker so they can call. Only runs when the person has explicitly agreed to the disclosure in the conversation.',
+      'The same situation as the readiness check, plus name, email, phone, best time to call and explicit consent.'],
+  ];
+  const jsonLd = { '@context': 'https://schema.org', '@type': 'WebAPI', name: 'KeyReady MCP server', url, description: 'Australian home-loan readiness, stamp duty, 5% Deposit Scheme and lender-rate tools for AI assistants via the Model Context Protocol.', documentation: url, provider: { '@type': 'Organization', name: 'KeyReady', url: home } };
   await mkdir(join(outDir, 'mcp'), { recursive: true });
   await writeFile(join(outDir, 'mcp', 'index.html'), `<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KeyReady for AI assistants (MCP)</title><meta name="description" content="Use KeyReady's Australian home-loan readiness check inside Claude, ChatGPT, Gemini and other AI assistants via MCP.">
-<style>body{font:16px/1.6 system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;color:#0e3b3a;background:#f7f5ef}code{background:#fff;padding:2px 6px;border-radius:6px;word-break:break-all}li{margin:10px 0}.box{background:#fff;border-radius:16px;padding:16px 20px;margin:20px 0}</style></head><body>
+<title>KeyReady for AI assistants (MCP)</title><meta name="description" content="Use KeyReady's Australian home-loan readiness check, stamp duty calculator, 5% Deposit Scheme check and live lender rates inside Claude, ChatGPT, Gemini and other AI assistants via MCP.">
+<link rel="canonical" href="${url}"><meta property="og:type" content="website"><meta property="og:title" content="KeyReady for AI assistants (MCP)"><meta property="og:url" content="${url}">
+${ld(jsonLd)}
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:780px;margin:32px auto;padding:0 16px;color:#0e3b3a;background:#f7f5ef}a{color:inherit}code{background:#fff;padding:2px 6px;border-radius:6px;word-break:break-all}li{margin:10px 0}.box{background:#fff;border-radius:16px;padding:16px 20px;margin:20px 0}button{margin-left:6px;border:1px solid #0e3b3a;background:none;border-radius:8px;padding:2px 10px;cursor:pointer}h2{margin-top:36px}dt{font-weight:700;margin-top:18px}dd{margin:4px 0 0}.in{font-size:14px;color:#3d5f5d}small{color:#3d5f5d}</style></head><body>
+<p><a href="${home}">← KeyReady</a></p>
 <h1>KeyReady for AI assistants</h1>
-<p>Ask Claude, ChatGPT, Gemini and other assistants to check your home-loan readiness. They use the same rules engine as the KeyReady sites: ~90 lenders’ published rules, 2026–27 stamp duty and grants, and the 5% Deposit Scheme.</p>
-<div class="box"><strong>MCP endpoint (Streamable HTTP):</strong><br>${ep}</div>
+<p>Ask Claude, ChatGPT, Gemini and other assistants to check your home-loan readiness. They use the same rules engine as the KeyReady sites: ~90 lenders’ published rules, 2026–27 stamp duty and grants, and the 5% Deposit Scheme. It's free, needs no sign-in, and shares nothing with a broker unless you agree in the chat.</p>
+<div class="box"><strong>MCP endpoint (Streamable HTTP, no authentication):</strong><br>${ep}</div>
 <h2>Add it to your assistant</h2><ul>${clients.map(([c, h]) => `<li><strong>${c}:</strong> ${h}</li>`).join('')}</ul>
-<h2>Tools</h2><ul>
-<li><strong>assess_home_loan_readiness</strong>: which lenders’ published rules you fit, borrowing power, LVR, duty, grants, LMI waivers, fastest fixes, plus a link to the full report</li>
-<li><strong>calculate_stamp_duty</strong>: exact 2026–27 duty, concessions, First Home Owner Grant and foreign surcharge for any state</li>
-<li><strong>check_5_percent_deposit_scheme</strong>: eligibility and price cap</li>
-<li><strong>list_lender_rates</strong>: live Open Banking rates at your LVR (names masked)</li>
-<li><strong>refer_to_broker</strong>: only with your explicit consent in the conversation</li></ul>
-<p style="font-size:14px;color:#3d5f5d">General information only: not credit assistance, financial advice or a comparison service. ${esc(registry.BROKER_DISCLOSURE)}</p>
+<h2>Things to ask</h2><ul>${prompts.map(q => `<li>“${esc(q)}”</li>`).join('')}</ul>
+<h2>Tools</h2><dl>${tools.map(([n, d, i]) => `<dt><code>${n}</code></dt><dd>${esc(d)}<br><span class="in"><strong>Inputs:</strong> ${esc(i)}</span></dd>`).join('')}</dl>
+<h2>Privacy and consent</h2><ul>
+<li>The four checking tools are read-only: your answers are used for the calculation and are not stored.</li>
+<li><code>refer_to_broker</code> is the only tool that saves anything. It needs your explicit agreement in the conversation, sends your details to one named broker only, and is limited to 3 referrals per email address per day.</li>
+<li>Lender names are masked, as on the website. Rates come from lenders’ Open Banking data and are refreshed weekly.</li>
+<li>Read the full <a href="${home}privacy/">privacy policy</a>.</li></ul>
+<h2>For developers</h2>
+<p>Any MCP client that supports Streamable HTTP can connect. To list the tools directly:</p>
+<div class="box"><code>curl -s ${esc(endpoint ?? '<url>')} -H 'content-type: application/json' -H 'accept: application/json, text/event-stream' -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'</code></div>
+<p><small>General information only: not credit assistance, financial advice or a comparison service. ${esc(registry.BROKER_DISCLOSURE)}</small></p>
 </body></html>
 `);
 }
