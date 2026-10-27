@@ -25,10 +25,10 @@ Update the status and fill in the log at the bottom every time an item is checke
 
 | ID | Status | What to verify | Where |
 |---|---|---|---|
-| B1 | ⬜ | 5% Deposit Scheme property price caps for every state, capital/regional (`SCHEME_CAPS`), incl. the July 2026 Darwin/regional changes | Housing Australia price cap tool: https://www.housingaustralia.gov.au |
-| B2 | ⬜ | Official participating-lender list on housingaustralia.gov.au matches `src/data/scheme-lenders.json` (copied from firsthomebuyers.gov.au) | https://www.housingaustralia.gov.au (participating lenders page) |
-| B3 | ⬜ | 2026–27 resident tax rates (15% bottom rate) in `incomeTax` | https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents |
-| B4 | ⬜ | 2026–27 HECS/HELP repayment threshold and marginal rates (code: $67,000, 15% / 17% above $125,000) in `hecsRepayment` | https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds |
+| B1 | 🔧 | 5% Deposit Scheme property price caps for every state, capital/regional (`SCHEME_CAPS`), incl. the July 2026 Darwin/regional changes | Housing Australia price cap tool: https://www.housingaustralia.gov.au |
+| B2 | ✅ | Official participating-lender list on housingaustralia.gov.au matches `src/data/scheme-lenders.json` (copied from firsthomebuyers.gov.au) | https://www.housingaustralia.gov.au (participating lenders page) |
+| B3 | ✅ | 2026–27 resident tax rates (15% bottom rate) in `incomeTax` | https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents |
+| B4 | 🔧 | 2026–27 HECS/HELP repayment threshold and marginal rates (code: $67,000, 15% / 17% above $125,000) in `hecsRepayment` | https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds |
 | B5 | ⬜ | LMI estimate bands in `lmiEstimate` against a public LMI premium estimator (e.g. Helia) for $500k at 85%, 90% and 95% LVR | https://www.helia.com.au |
 
 ## C. Lender credit policy (`src/data/policy-overrides.json`)
@@ -75,3 +75,7 @@ Open Banking gives rates, maximum LVR and residency only. Everything else in `KI
 | 2026-10-27 | A8 | ✅ | https://qro.qld.gov.au/property-concessions-grants/first-home-grant/eligibility/ | "$30,000 for contracts signed on or after 20 November 2023", no end date; value "must be less than $750,000". Matches code. |
 | 2026-10-27 | A9 | ⚠️ | https://sro.vic.gov.au/offtheplan | Decision needed, not implemented. Concession subtracts post-contract construction costs from the dutiable value; temporary version (contracts 21 Oct 2024 – 21 Apr 2027) open to all buyers for strata lots, no value cap. Needs a new "construction cost remaining" input. |
 | 2026-10-27 | A10 | ⚠️ | https://www.wa.gov.au/government/publications/about-the-first-home-owner-grant | Confirmed: from 7 May 2026, cap is $800,000 south / $1,000,000 north of the 26th parallel. Not implemented: the profile only has capital/regional, which can't place a property north of the 26th parallel. Code keeps the stricter $800k. |
+| 2026-10-27 | B1 | 🔧 | https://firsthomebuyers.gov.au/australian-government-5-percent-deposit-scheme/property-price-caps | All state caps match. **Fixed:** NT capital city (Darwin) is $750,000, rest of Territory $600,000 (code had $600,000 for both). Note: regional centres (Central Coast, Illawarra, Newcastle, Geelong, Gold Coast, Sunshine Coast, etc.) take the capital cap; the profile's capital/regional answer can't tell them apart. |
+| 2026-10-27 | B2 | ✅ | https://firsthomebuyers.gov.au/australian-government-5-percent-deposit-scheme/5-percent-participating-lenders | All 54 participating lenders match `scheme-lenders.json` exactly (housingaustralia.gov.au/participating-lenders redirects here). Source URL and date updated. |
+| 2026-10-27 | B3 | ✅ | https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents | 2026–27: nil to $18,200; 15c to $45,000; $4,020 + 30c to $135,000; $31,020 + 37c to $190,000; $51,370 + 45c above. Excludes the 2% Medicare levy. Matches `incomeTax`. |
+| 2026-10-27 | B4 | 🔧 | https://www.ato.gov.au/tax-rates-and-codes/study-and-training-loan-minimum-repayment-income-and-rates | Code had the 2025–26 table. **Fixed** to 2026–27: nil to $69,528; 15c over $69,528 to $129,717; $9,028 + 17c over $129,717 to $186,050; 10% of total repayment income from $186,051. Test includes ATO example 1 ($86,380 → $2,527.80). |

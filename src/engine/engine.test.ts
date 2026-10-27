@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { fixActions } from './actions';
-import { depositScheme, hecsRepayment, incomeTax, lvr, principalFor, repayment, upfrontCosts } from './finance';
+import { SCHEME_CAPS, depositScheme, hecsRepayment, incomeTax, lvr, principalFor, repayment, upfrontCosts } from './finance';
 import { ILLUSTRATIVE_LENDERS } from './lenders';
 import { assess as assessWith } from './match';
 import { emptyProfile, newApplicant, sampleProfile } from './profile';
@@ -25,6 +25,12 @@ describe('finance', () => {
     expect(incomeTax(100_000)).toBeCloseTo(4_020 + 55_000 * 0.3 + 2_000, 0);
   });
 
+  it('uses the official 5% Deposit Scheme price caps (firsthomebuyers.gov.au, retrieved 2026-10-27)', () => {
+    expect(SCHEME_CAPS.NT).toEqual([750_000, 600_000]);
+    expect(SCHEME_CAPS.NSW).toEqual([1_500_000, 800_000]);
+    expect(SCHEME_CAPS.ACT).toEqual([1_000_000, 1_000_000]);
+  });
+
   it('round-trips repayment and principal', () => {
     const m = repayment(500_000, 9, 30);
     expect(principalFor(m, 9, 30)).toBeCloseTo(500_000, 0);
@@ -32,7 +38,15 @@ describe('finance', () => {
 
   it('has no HECS repayment under the threshold', () => {
     expect(hecsRepayment(60_000, 20_000)).toBe(0);
-    expect(hecsRepayment(100_000, 20_000)).toBeCloseTo(4_950, 0);
+  });
+
+  it('applies the 2026–27 HECS/HELP repayment table (ATO, retrieved 2026-10-27)', () => {
+    expect(hecsRepayment(69_528, 20_000)).toBe(0);
+    expect(hecsRepayment(86_380, 20_000)).toBeCloseTo(2_527.8, 2); // ATO example 1
+    expect(hecsRepayment(100_000, 20_000)).toBeCloseTo(4_570.8, 2);
+    expect(hecsRepayment(150_000, 20_000)).toBeCloseTo(9_028 + 20_283 * 0.17, 2);
+    expect(hecsRepayment(200_000, 50_000)).toBe(20_000);
+    expect(hecsRepayment(200_000, 5_000)).toBe(5_000);
   });
 
   it('gives first home buyers a duty exemption under the threshold', () => {
