@@ -47,7 +47,16 @@ export interface ExpatPolicy {
   sources: PolicySource[];
 }
 
-const P = policies as unknown as { lmiWaivers: LmiWaiver[]; altDoc: AltDoc[]; expat: ExpatPolicy[] };
+/** Profession-specific income treatment, e.g. overtime counted in full for hospital nurses. */
+export interface IncomeShading {
+  brand: string;
+  professions: Profession[];
+  shading: Partial<LenderPolicy['shading']>;
+  conditions?: string;
+  sources: PolicySource[];
+}
+
+const P = policies as unknown as { lmiWaivers: LmiWaiver[]; altDoc: AltDoc[]; expat: ExpatPolicy[]; incomeShading?: IncomeShading[] };
 
 const norm = (s = '') => s.toLowerCase().replace(/[^a-z]/g, '');
 const allFor = <T extends { brand: string }>(rules: T[], L: LenderPolicy) => (L.brand ? rules.filter(r => norm(r.brand) === norm(L.brand)) : []);
@@ -70,6 +79,12 @@ export function lmiWaiverFor(p: Profile, L: LenderPolicy): LmiWaiver | undefined
 export function foreignIncomeTier(p: Profile, L: LenderPolicy): ForeignIncomeTier | null {
   if (p.incomeCurrency === 'AUD') return null;
   return forLender(P.expat, L)?.foreignIncome?.find(t => t.currencies.includes(p.incomeCurrency)) ?? null;
+}
+
+/** The main borrower's income shading at this lender, with any profession rule applied. */
+export function shadingFor(p: Profile, L: LenderPolicy): LenderPolicy['shading'] {
+  const rule = p.profession ? allFor(P.incomeShading ?? [], L).find(r => r.professions.includes(p.profession!)) : undefined;
+  return rule ? { ...L.shading, ...rule.shading } : L.shading;
 }
 
 /** Lenders' alt-doc rule, for self-employed borrowers without two years of financials. */

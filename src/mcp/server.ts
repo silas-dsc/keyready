@@ -247,7 +247,7 @@ export function buildServer(deps: McpDeps): McpServer {
     }),
     annotations: ro,
   }, async i => {
-    const rows = MARKET_LENDERS.filter(L => L.source === 'open-banking' && (i.purpose === 'investment' ? L.maxLvr.investment : L.maxLvr.owner) >= i.lvr)
+    const rows = MARKET_LENDERS.filter(L => L.source !== 'illustrative' && (i.purpose === 'investment' ? L.maxLvr.investment : L.maxLvr.owner) >= i.lvr)
       .map(L => ({ lender: L.name, type: L.kind, rate: productRate(L, i.purpose, i.lvr) }))
       .sort((a, b) => a.rate - b.rate)
       .slice(0, i.limit);
