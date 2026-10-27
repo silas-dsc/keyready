@@ -33,7 +33,9 @@ const NSW: Bracket[] = [
   { from: 1_290_000, base: 52_237, per100: 5.5 },
   { from: 3_870_000, base: 194_137, per100: 7 }, // premium residential
 ];
-const nswGeneral = (v: number) => Math.max(20, schedule(v, NSW));
+// The excess rounds up to the next $100: Revenue NSW calculator gives $14,441.50 for $450,050
+// and $52,242.50 for $1,290,050 (retrieved 2026-10-27).
+const nswGeneral = (v: number) => Math.max(20, schedule(v, NSW, true));
 
 /** First Home Buyers Assistance Scheme: N(V) − ((U − V)/(U − E)) × N(E). */
 function nswFirstHome(v: number, land: boolean) {
@@ -203,7 +205,9 @@ export function stampDuty(p: Profile): DutyResult {
   const owner = p.purpose !== 'investment';
   const land = p.dwelling === 'land';
   const residents = p.applicants.every(a => ['citizen', 'permanent_resident'].includes(a.residency));
-  const fhb = p.firstHome && owner && (residents || (p.state === 'VIC' && p.applicants.some(a => ['citizen', 'permanent_resident', 'nz_citizen'].includes(a.residency))));
+  // VIC and SA need only one applicant to be a citizen, PR or NZ citizen (SA: Special Category
+  // visa); SA source: revenuesa.sa.gov.au/stamp-duty-land/first-home-buyer-relief, retrieved 2026-10-27.
+  const fhb = p.firstHome && owner && (residents || (['VIC', 'SA'].includes(p.state) && p.applicants.some(a => ['citizen', 'permanent_resident', 'nz_citizen'].includes(a.residency))));
   const newHome = isNewHome(p);
 
   let general: number;

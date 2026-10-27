@@ -10,10 +10,10 @@ Update the status and fill in the log at the bottom every time an item is checke
 
 | ID | Status | What to verify | Where | Test values to run |
 |---|---|---|---|---|
-| A1 | ⬜ | **SA** general duty table, FHB relief (new home / land, no cap), FHOG $15k, 7% foreign surcharge. All figures so far came from search extracts. | https://www.revenuesa.sa.gov.au/stamp-duty-land/rate-of-stamp-duty · RevenueSA stamp duty calculator · https://www.revenuesa.sa.gov.au/stamp-duty-land/first-home-buyer-relief | $500,000 → $21,330; $600,000 → $26,830; $900,000 → $43,330 |
-| A2 | ⬜ | **NSW** rounding: does general duty keep cents, or round per $100 / to the dollar? | Revenue NSW transfer duty calculator: https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/transfer-duty/understanding-transfer-duty/calculate-transfer-duty | $450,050; $1,290,050; FHB $900,000 → $19,593.50 |
-| A3 | ⬜ | **QLD** "per $100 or part" rounding (code rounds the excess **up**) | QRO calculator: https://qro.qld.gov.au/duties/transfer-duty/calculate/ | $540,050 general; $850,000 → $31,275; FHB $730,000 → $6,555 |
-| A4 | ⬜ | **WA** "per $100 or part" rounding; first home owner rate from 7 May 2026 | RevenueWA calculator (wa.gov.au transfer duty calculator) | $725,050 general; FHB $650,000 → $8,075 |
+| A1 | 🔧 | **SA** general duty table, FHB relief (new home / land, no cap), FHOG $15k, 7% foreign surcharge. All figures so far came from search extracts. | https://www.revenuesa.sa.gov.au/stamp-duty-land/rate-of-stamp-duty · RevenueSA stamp duty calculator · https://www.revenuesa.sa.gov.au/stamp-duty-land/first-home-buyer-relief | $500,000 → $21,330; $600,000 → $26,830; $900,000 → $43,330 |
+| A2 | 🔧 | **NSW** rounding: does general duty keep cents, or round per $100 / to the dollar? | Revenue NSW transfer duty calculator: https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/transfer-duty/understanding-transfer-duty/calculate-transfer-duty | $450,050; $1,290,050; FHB $900,000 → $19,593.50 |
+| A3 | ✅ | **QLD** "per $100 or part" rounding (code rounds the excess **up**) | QRO calculator: https://qro.qld.gov.au/duties/transfer-duty/calculate/ | $540,050 general; $850,000 → $31,275; FHB $730,000 → $6,555 |
+| A4 | ✅ | **WA** "per $100 or part" rounding; first home owner rate from 7 May 2026 | RevenueWA calculator (wa.gov.au transfer duty calculator) | $725,050 general; FHB $650,000 → $8,075 |
 | A5 | ⬜ | **ACT** owner-occupier $580,000: the code gives $11,864 (from the schedule), but the official explanatory statement says $11,128 | ACT Revenue Office duty calculator: https://www.revenue.act.gov.au/duties/conveyance-duty | Owner-occupier $580,000; investor $580,000 → $14,856 |
 | A6 | ⬜ | **NT** formula & rates still current (Act reprint dated 1 Jul 2025); HomeGrown Territory Grant $50k | Territory Revenue Office calculator: https://treasury.nt.gov.au/dtf/territory-revenue-office | $300,000 → $10,414.30; $500,000 → $23,928.60; $650,000 → $32,175 |
 | A7 | ⬜ | **TAS** FHOG $20k for 2026–27: is there a price cap? (none found) | https://www.sro.tas.gov.au/first-home-owner/eligibility | — |
@@ -65,4 +65,7 @@ Open Banking gives rates, maximum LVR and residency only. Everything else in `KI
 
 | Date | ID | Result | Source URL | Notes |
 |---|---|---|---|---|
-| | | | | |
+| 2026-10-27 | A1 | 🔧 | https://www.revenuesa.sa.gov.au/stamp-duty-land/rate-of-stamp-duty · …/first-home-buyer-relief · …/first-home-buyer-relief/relief-available · https://www.revenuesa.sa.gov.au/FHOG/grant-details | Rate table matches code bracket for bracket ($500k → $21,330). Relief (contracts from 13 Feb 2025): full relief on new homes/land "regardless of the property value"; not applied to the 7% foreign surcharge. FHOG "up to $15,000", no price cap. **Fixed:** relief needs only "at least one" applicant who is a citizen, PR or NZ citizen on a Special Category visa; code had required all applicants. |
+| 2026-10-27 | A2 | 🔧 | https://www.apps09.revenue.nsw.gov.au/erevenue/calculators/landsalesimple.php · …/fhba.php | Calculator rounds the excess up per $100: $450,050 → $14,441.50 (code had $14,439.25), $1,290,050 → $52,242.50. FHBA: $900,000 → $19,593.50 ✓, $850,050 → $9,808.80. **Fixed:** NSW schedule now uses "or part" rounding. |
+| 2026-10-27 | A3 | ✅ | https://amun.osr.qld.gov.au/sap/osrqld/wd_tfr_calc_com | Calculator: general $540,050 → $17,329.50 (confirms round-up); first home $730,000 → $6,555. Both match code. |
+| 2026-10-27 | A4 | ✅ | https://apps.osr.wa.gov.au/portal/0/calculators/transferduty | Calculator: general $725,050 → $28,458.15 (confirms round-up); FHOR new/established $650,050 → $8,091.15. Both match code. |
