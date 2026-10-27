@@ -24,6 +24,11 @@ describe('NSW', () => {
     expect(duty(mk('NSW', 4_000_000))).toBe(203_237);
     expect(duty(mk('NSW', 450_000))).toBe(14_437);
   });
+  it('rounds the excess up per $100 or part (official calculator, retrieved 2026-10-27)', () => {
+    expect(duty(mk('NSW', 450_050))).toBe(14_441.5);
+    expect(duty(mk('NSW', 1_290_050))).toBe(52_242.5);
+    expect(duty(fhb('NSW', 850_050))).toBe(9_808.8);
+  });
   it('First Home Buyers Assistance Scheme', () => {
     expect(duty(fhb('NSW', 800_000))).toBe(0);
     expect(duty(fhb('NSW', 850_000))).toBe(9_796.75);
@@ -62,6 +67,9 @@ describe('QLD', () => {
     expect(duty(owner('QLD', 950_000))).toBe(28_600);
     expect(duty(owner('QLD', 550_000))).toBe(10_600);
   });
+  it('rounds the excess up per $100 or part (official calculator, retrieved 2026-10-27)', () => {
+    expect(duty(mk('QLD', 540_050))).toBe(17_329.5);
+  });
   it('first home concession (established) and new homes', () => {
     expect(duty(fhb('QLD', 650_000))).toBe(0);
     expect(duty(fhb('QLD', 730_000))).toBe(6_555);
@@ -83,10 +91,21 @@ describe('WA', () => {
     expect(duty(fhb('WA', 700_000))).toBe(16_150);
     expect(duty(fhb('WA', 500_000, { dwelling: 'land' }))).toBe(10_070);
   });
+  it('rounds the excess up per $100 or part (official calculator, retrieved 2026-10-27)', () => {
+    expect(duty(mk('WA', 725_050))).toBe(28_458.15);
+    expect(duty(fhb('WA', 650_050))).toBe(8_091.15);
+  });
   it('foreign transfer duty (official example: $400k, one of two buyers foreign)', () => {
     const p = fhb('WA', 400_000);
     p.applicants = [{ ...newApplicant(), age: 30 }, { ...newApplicant(), age: 30, residency: 'temporary_visa' }];
     expect(stampDuty(p).foreignSurcharge).toBe(14_000);
+  });
+});
+
+describe('ACT', () => {
+  it('owner-occupier and investor $580,000 (official calculator, retrieved 2026-10-27)', () => {
+    expect(duty(owner('ACT', 580_000))).toBe(11_864);
+    expect(duty(mk('ACT', 580_000))).toBe(14_856);
   });
 });
 
@@ -99,6 +118,13 @@ describe('SA', () => {
   it('first home buyers pay nothing on new homes, full duty on established', () => {
     expect(duty(fhb('SA', 900_000, { condition: 'new' }))).toBe(0);
     expect(duty(fhb('SA', 500_000))).toBe(21_330);
+  });
+  it('relief needs only one citizen/PR applicant; the 7% surcharge is not relieved (RevenueSA, retrieved 2026-10-27)', () => {
+    const p = fhb('SA', 600_000, { condition: 'new' });
+    p.applicants = [{ ...newApplicant(), age: 30 }, { ...newApplicant(), age: 30, residency: 'temporary_visa' }];
+    const r = stampDuty(p);
+    expect(r.duty).toBe(0);
+    expect(r.foreignSurcharge).toBe(21_000);
   });
 });
 
@@ -124,10 +150,12 @@ describe('ACT', () => {
 });
 
 describe('NT', () => {
-  it('formula and flat rates', () => {
-    expect(duty(mk('NT', 300_000))).toBe(10_414.3);
+  it('formula and flat rates, rounded down to 5 cents (official calculator, retrieved 2026-10-27)', () => {
+    expect(duty(mk('NT', 300_000))).toBe(10_414.25);
     expect(duty(mk('NT', 500_000))).toBe(23_928.6);
+    expect(duty(mk('NT', 525_050))).toBe(25_989.95);
     expect(duty(mk('NT', 650_000))).toBe(32_175);
+    expect(duty(mk('NT', 3_000_000))).toBe(172_500);
   });
   it('house and land package exemption', () => {
     expect(duty(owner('NT', 650_000))).toBe(32_175);

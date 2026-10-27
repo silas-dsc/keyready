@@ -1,0 +1,61 @@
+name: Deploy backend (Supabase + Knock)
+
+# Deploys database migrations, the Edge Functions (MCP server + lead notifications) and the Knock
+# email workflows. Each job is skipped until its secrets exist — see docs/BACKEND.md.
+on:
+  push:
+    branches: [main]
+    paths: ['supabase/**', 'src/engine/**', 'src/data/**', 'src/mcp/**', 'src/sites/**', '.knock/**', 'scripts/bundle-rules.mjs']
+  # The weekly Open Banking refresh pushes with GITHUB_TOKEN, which doesn't trigger push workflows:
+  # redeploy so the MCP server serves the fresh rates.
+  workflow_run:
+    workflows: [Refresh Open Banking data, Rules watch]
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:
+  group: backend
+  cancel-in-progress: false
+
+jobs:
+  supabase:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
+    steps:
+      - id: ready
+        run: echo "ok=$([ -n "$SUPABASE_ACCESS_TOKEN" ] && [ -n "$PROJECT_REF" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - if: steps.ready.outputs.ok == 'true'
+        uses: actions/checkout@v4
+      - if: steps.ready.outputs.ok == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.ready.outputs.ok == 'true'
+        run: npm ci && npm test && npm run bundle:rules
+      - if: steps.ready.outputs.ok == 'true'
+        uses: supabase/setup-cli@v3
+      - if: steps.ready.outputs.ok == 'true'
+        name: Migrate and deploy functions
+        run: |
+          supabase link --project-ref "$PROJECT_REF"
+          supabase db push
+          supabase functions deploy mcp --project-ref "$PROJECT_REF" --use-api
+          supabase functions deploy notify-lead --project-ref "$PROJECT_REF" --use-api
+
+  knock:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_run'
+    env:
+      KNOCK_SERVICE_TOKEN: ${{ secrets.KNOCK_SERVICE_TOKEN }}
+    steps:
+      - id: ready
+        run: echo "ok=$([ -n "$KNOCK_SERVICE_TOKEN" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - if: steps.ready.outputs.ok == 'true'
+        uses: actions/checkout@v4
+      - if: steps.ready.outputs.ok == 'true'
+        name: Push workflows to Knock (development environment; promote in the dashboard)
+        run: npx -y @knocklabs/cli@1.5.0 workflow push --all --workflows-dir=.knock/workflows --service-token="$KNOCK_SERVICE_TOKEN" --commit -m "Deploy from GitHub ${{ github.sha }}"

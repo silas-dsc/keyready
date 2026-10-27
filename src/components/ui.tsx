@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { SITE } from '../sites';
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
@@ -9,7 +10,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         <rect width="32" height="32" rx="8" fill={light ? '#ffffff' : '#0e3b3a'} />
         <path d="M9 17l5 5 9-11" stroke="#50e3a4" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
-      <span className="text-lg">KeyReady</span>
+      <span className="text-lg">{SITE.name}</span>
     </Link>
   );
 }
