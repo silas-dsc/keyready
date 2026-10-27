@@ -1,0 +1,39 @@
+{
+ "$comment": "Non-bank lenders that don't publish Open Banking data, taken from each lender's own published rate sheet or product page. Same shape as market.json lenders plus sources. Re-check rates often: they are a snapshot. See docs/VERIFICATION.md D6.",
+ "lenders": [
+  {
+   "brand": "Firstmac",
+   "kind": "Other bank",
+   "products": 2,
+   "owner": { "tiers": [{ "maxLvr": 70, "rate": 6.59 }, { "maxLvr": 80, "rate": 6.69 }, { "maxLvr": 90, "rate": 6.79 }], "maxLvr": 90 },
+   "investment": { "tiers": [{ "maxLvr": 70, "rate": 6.79 }, { "maxLvr": 80, "rate": 6.89 }, { "maxLvr": 90, "rate": 6.99 }], "maxLvr": 90 },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://www.firstmac.com.au/accreditation/products-and-rates",
+   "sources": [
+    {
+     "url": "https://www.firstmac.com.au/accreditation/products-and-rates",
+     "retrieved": "2026-10-27",
+     "quote": "Simple 80 6.69% p.a. 80% … Simple 90 6.79% p.a. 90% (Rates as of 22nd October 2026.)"
+    }
+   ]
+  },
+  {
+   "brand": "La Trobe Financial",
+   "kind": "Specialist",
+   "products": 1,
+   "owner": { "tiers": [{ "maxLvr": 80, "rate": 6.79 }], "maxLvr": 80 },
+   "investment": { "tiers": [{ "maxLvr": 80, "rate": 6.79 }], "maxLvr": 80 },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://www.latrobefinancial.com.au/lending/employed-loan/",
+   "sources": [
+    {
+     "url": "https://www.latrobefinancial.com.au/lending/employed-loan/",
+     "retrieved": "2026-10-27",
+     "quote": "Owner-Occupied or Investment Full Doc loan … Current Rate^: 6.79% … Maximum LVR: 80%"
+    }
+   ]
+  }
+ ]
+}

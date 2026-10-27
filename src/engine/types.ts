@@ -136,8 +136,8 @@ export interface LenderPolicy {
   investRateTiers?: RateTier[];
   /** Real brand name — kept out of the UI unless names are switched on. */
   brand?: string;
-  /** Where the rates, LVR limits and residency rules come from. */
-  source: 'open-banking' | 'illustrative';
+  /** Where the rates, LVR limits and residency rules come from ('published' = the lender's own rate sheet). */
+  source: 'open-banking' | 'published' | 'illustrative';
   /** Set when some credit-policy rules were verified from the lender's own website. */
   policySources?: PolicySource[];
 }

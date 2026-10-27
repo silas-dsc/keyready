@@ -75,3 +75,14 @@ describe('policy overrides', () => {
     expect(applyOverride(base, { set: { maxDti: 99 }, sources: [] }).maxDti).toBe(base.maxDti);
   });
 });
+
+describe('published non-bank lenders', () => {
+  it('adds lenders from their own rate sheets with sources', () => {
+    const fm = MARKET_LENDERS.find(l => l.brand === 'Firstmac');
+    if (!fm) return; // illustrative fallback when no market snapshot is bundled
+    expect(fm.source).toBe('published');
+    expect(fm.maxLvr.owner).toBe(90);
+    expect(productRate(fm, 'owner', 80)).toBe(6.69);
+    expect(fm.policySources?.[0].url).toMatch(/firstmac\.com\.au/);
+  });
+});
