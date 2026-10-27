@@ -39,6 +39,10 @@ export const emptyProfile = (): Profile => ({
   defaults: 'no',
   bankruptcyYears: null,
   creditScore: null,
+  profession: null,
+  livesOverseas: false,
+  incomeCurrency: 'AUD',
+  lowDoc: false,
 });
 
 /** The worked example on the landing page. */

@@ -88,7 +88,7 @@ Lessons from building the importer:
 
 | State | General duty | First home buyers | FHOG (new homes) |
 |---|---|---|---|
-| NSW | Indexed brackets; premium rate above $3.87m | Nil to $800k, sliding concession to $1m (land $350k–$450k) | $10k (cap $600k; $750k land + build) |
+| NSW | Indexed brackets, per $100 or part; premium rate above $3.87m | Nil to $800k, sliding concession to $1m (land $350k–$450k) | $10k (cap $600k; $750k land + build) |
 | VIC | Schedule; flat 5.5% from $960k to $2m; PPR concession ≤ $550k | Nil to $600k, concession to $750k | $10k (cap $750k) |
 | QLD | Per $100 or part; home concession for owner-occupiers (citizen/PR from 1 Aug 2026) | Established: nil to $700k, stepped to $800k. New home or vacant land: nil, no cap | $30k (under $750k) |
 | WA | Per $100 or part | From 7 May 2026: nil to $600k, $16.15 per $100 to $800k (land $450k–$550k) | $10k (cap $800k south / $1m north) |
@@ -100,6 +100,6 @@ Lessons from building the importer:
 Foreign purchaser surcharges (NSW 9%, VIC/QLD/TAS 8%, WA/SA 7%) apply in proportion to the share of foreign buyers. The grant is counted toward funds to complete.
 
 **Not fully verified:**
-- SA figures came via search extracts of revenuesa.sa.gov.au, which blocks automated access; they match two official worked examples.
-- NSW's concession formula is derived; it matches all eight official table values to the cent.
+- SA figures were confirmed on revenuesa.sa.gov.au in a real browser on 2026-10-27 (see `docs/VERIFICATION.md` A1).
+- NSW's concession formula is derived; it matches all eight official table values to the cent, and the Revenue NSW calculators (rounding confirmed 2026-10-27).
 - The ACT explanatory statement's $580k owner-occupier example ($11,128) contradicts its own schedule ($11,864); the schedule is implemented.

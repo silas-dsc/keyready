@@ -3,7 +3,8 @@ import LvrMeter from '../components/LvrMeter';
 import { ChoiceGrid, Field, MoneyInput, Segmented, Stepper, type Choice } from '../components/ui';
 import { deposit, depositScheme, fmtMoney, lvr, upfrontCosts } from '../engine/finance';
 import { newApplicant } from '../engine/profile';
-import type { Applicant, AuState, Employment, Profile, Residency } from '../engine/types';
+import type { Applicant, AuState, Currency, Employment, Profession, Profile, Residency } from '../engine/types';
+import { SITE } from '../sites';
 
 export type SectionId = 'you' | 'work' | 'money' | 'home' | 'credit';
 
@@ -70,6 +71,13 @@ const TENURE: Choice<string>[] = [
   { value: '30', label: '2 to 3 years' },
   { value: '48', label: 'More than 3 years' },
 ];
+
+export const PROFESSION_LABEL: Record<Profession, string> = {
+  doctor: 'Doctor (GP or hospital)', specialist: 'Medical specialist', dentist: 'Dentist', vet: 'Veterinarian',
+  pharmacist: 'Pharmacist', physio: 'Physiotherapist', optometrist: 'Optometrist', psychologist: 'Psychologist',
+  nurse: 'Nurse', midwife: 'Midwife', allied_health: 'Other allied health',
+  lawyer: 'Lawyer', accountant: 'Accountant', actuary: 'Actuary', engineer: 'Engineer', other: 'Something else',
+};
 
 const STATES: Choice<AuState>[] = (['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT'] as AuState[]).map(s => ({ value: s, label: s }));
 
@@ -293,11 +301,90 @@ export function buildSteps(p: Profile): Step[] {
       summary: p => [['First home', p.firstHome ? 'Yes' : 'No']],
     },
     ...p.applicants.flatMap((_, i) => applicantSteps(i).filter(s => s.section === 'you')),
+    ...(SITE.wizard.expat
+      ? ([
+          {
+            id: 'overseas',
+            section: 'you',
+            title: p.mode === 'joint' ? 'Where do you live right now?' : 'Where do you live right now?',
+            sub: 'Most big banks won’t lend to borrowers who live overseas — this is the single biggest filter.',
+            why: 'Lenders treat Australians living abroad very differently: many decline outright, and the rest cap the LVR and haircut foreign income.',
+            auto: true,
+            render: ({ p, set, choose, answered }) => (
+              <ChoiceGrid
+                label="Where you live"
+                options={[{ value: 'au', label: 'In Australia', icon: '🇦🇺' }, { value: 'overseas', label: 'Overseas', hint: 'Buying back home', icon: '✈️' }]}
+                value={answered ? (p.livesOverseas ? 'overseas' : 'au') : null}
+                onChange={v => { set(q => ({ ...q, livesOverseas: v === 'overseas' })); choose(); }}
+              />
+            ),
+            summary: p => [['Living', p.livesOverseas ? 'Overseas' : 'In Australia']],
+          },
+          {
+            id: 'currency',
+            section: 'you',
+            title: 'What currency are you paid in?',
+            why: 'Lenders count only part of foreign-currency income (often 80%) and some only accept certain currencies.',
+            auto: true,
+            render: ({ p, set, choose, answered }) => (
+              <ChoiceGrid
+                label="Income currency"
+                cols={4}
+                options={(['AUD', 'USD', 'GBP', 'EUR', 'SGD', 'HKD', 'NZD', 'AED', 'CAD', 'JPY', 'CNY', 'other'] as Currency[]).map(c => ({ value: c, label: c === 'other' ? 'Other' : c }))}
+                value={answered ? p.incomeCurrency : null}
+                onChange={v => { set(q => ({ ...q, incomeCurrency: v })); choose(); }}
+              />
+            ),
+            summary: p => [['Paid in', p.incomeCurrency]],
+          },
+        ] satisfies Step[])
+      : []),
     ...p.applicants.flatMap((_, i) =>
       applicantSteps(i)
         .filter(s => s.section === 'work')
         .map(s => (s.id.startsWith('tenure') ? { ...s, title: tenureTitle(p, i) } : s)),
     ),
+    ...(SITE.wizard.lowDoc && p.applicants[0]?.employment === 'self_employed'
+      ? [{
+          id: 'lowdoc',
+          section: 'work' as const,
+          title: 'Have you lodged tax returns for the last two years?',
+          sub: 'For the business income you’d use to borrow.',
+          why: 'Banks want two years of tax returns from the self-employed. Without them, specialist lenders offer alt-doc (low-doc) loans using BAS, business bank statements or an accountant’s letter — usually at a lower LVR and a higher rate.',
+          auto: true,
+          render: ({ p, set, choose, answered }: StepCtx) => (
+            <ChoiceGrid
+              label="Tax returns"
+              options={[
+                { value: 'full', label: 'Yes, two years lodged', icon: '📑' },
+                { value: 'alt', label: 'Not yet', hint: 'I have BAS or an accountant’s letter', icon: '🧾' },
+              ]}
+              value={answered ? (p.lowDoc ? 'alt' : 'full') : null}
+              onChange={v => { set(q => ({ ...q, lowDoc: v === 'alt' })); choose(); }}
+            />
+          ),
+          summary: (p: Profile) => [['Documents', p.lowDoc ? 'Alt-doc (no 2 yrs returns)' : 'Full-doc'] as [string, string]],
+        } satisfies Step]
+      : []),
+    ...(SITE.wizard.profession
+      ? [{
+          id: 'profession',
+          section: 'work' as const,
+          title: SITE.wizard.profession.prompt,
+          sub: 'Some lenders waive mortgage insurance or offer special terms for particular professions.',
+          why: 'Profession-specific policies — like LMI waivers for medical professionals — can save tens of thousands, but each lender’s list of eligible professions is different.',
+          auto: true,
+          render: ({ p, set, choose, answered }: StepCtx) => (
+            <ChoiceGrid
+              label="Profession"
+              options={SITE.wizard.profession!.options.map(v => ({ value: v, label: PROFESSION_LABEL[v] }))}
+              value={answered ? (p.profession ?? 'other') : null}
+              onChange={v => { set(q => ({ ...q, profession: v === 'other' ? null : v })); choose(); }}
+            />
+          ),
+          summary: (p: Profile) => [['Profession', p.profession ? PROFESSION_LABEL[p.profession] : 'Not listed'] as [string, string]],
+        } satisfies Step]
+      : []),
     {
       id: 'savings',
       section: 'money',

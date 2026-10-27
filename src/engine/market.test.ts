@@ -58,8 +58,31 @@ describe('policy overrides', () => {
     expect(L.policySources?.[0].retrieved).toBe('2026-10-25');
   });
 
+  it('applies the verified lender facts to the live panel (lender sites, retrieved 2026-10-27)', () => {
+    const by = (brand: string) => MARKET_LENDERS.find(l => l.brand === brand);
+    if (!by('UBank')) return; // illustrative fallback when no market snapshot is bundled
+    expect(by('UBank')!.minTenure.self_employed).toBeNull();
+    expect(by('Macquarie Bank Limited')!.maxLvr.apartment).toBe(80);
+    expect(by('Macquarie Bank Limited')!.minTenure.casual).toBe(6);
+    expect(by('Bendigo Bank')!.minTenure.self_employed).toBe(12);
+    expect(by('ING BANK (Australia) Ltd')!.residency.permanent_resident).toBe(95);
+    expect(by('Westpac')!.residency.awaiting_pr).toBeNull();
+    expect(by('Liberty Financial')!.acceptsDefaults).toBe(true);
+  });
+
   it('ignores overrides without a source', () => {
     const base = toPolicy(sample, 1);
     expect(applyOverride(base, { set: { maxDti: 99 }, sources: [] }).maxDti).toBe(base.maxDti);
+  });
+});
+
+describe('published non-bank lenders', () => {
+  it('adds lenders from their own rate sheets with sources', () => {
+    const fm = MARKET_LENDERS.find(l => l.brand === 'Firstmac');
+    if (!fm) return; // illustrative fallback when no market snapshot is bundled
+    expect(fm.source).toBe('published');
+    expect(fm.maxLvr.owner).toBe(90);
+    expect(productRate(fm, 'owner', 80)).toBe(6.69);
+    expect(fm.policySources?.[0].url).toMatch(/firstmac\.com\.au/);
   });
 });

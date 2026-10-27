@@ -1,4 +1,5 @@
 import market from '../data/market.json';
+import nonbank from '../data/nonbank-lenders.json';
 import overrides from '../data/policy-overrides.json';
 import scheme from '../data/scheme-lenders.json';
 import { BASE_POLICY, ILLUSTRATIVE_LENDERS } from './lenders';
@@ -136,10 +137,17 @@ export function productRate(L: LenderPolicy, purpose: 'owner' | 'investment' | '
   return purpose === 'investment' ? L.investRate : L.rate;
 }
 
-const live = (market.lenders as MarketLender[])
-  .slice()
+/** Non-bank lenders without Open Banking data, from their own published rate sheets. */
+const published = nonbank.lenders as (MarketLender & { sources: PolicySource[] })[];
+const PUBLISHED_SOURCES = new Map(published.map(m => [m.brand, m.sources]));
+
+const live = [...(market.lenders as MarketLender[]), ...(market.lenders.length ? published : [])]
   .sort((a, b) => hash(a.brand) - hash(b.brand))
-  .map((m, i) => toPolicy(m, i + 1));
+  .map((m, i) => {
+    const L = toPolicy(m, i + 1);
+    const sources = PUBLISHED_SOURCES.get(m.brand);
+    return sources ? { ...L, source: 'published' as const, policySources: [...sources, ...(L.policySources ?? [])] } : L;
+  });
 
 /** Non-bank specialists rarely publish Open Banking data, so two modelled ones fill that gap. */
 const specialists = ILLUSTRATIVE_LENDERS.filter(l => l.kind === 'Specialist').map((l, i) => ({

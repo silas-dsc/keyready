@@ -1,0 +1,18 @@
+{
+  "name": "Lead confirmation to borrower",
+  "steps": [
+    {
+      "ref": "email_1",
+      "type": "channel",
+      "channel_key": "resend",
+      "channel_type": "email",
+      "template": {
+        "subject": "Your home loan report is with {{ data.broker_name }}",
+        "html_body": "<h2 style=\"margin:0 0 8px\">Thanks {{ recipient.name }} \u2014 your report is with {{ data.broker_name }}</h2>\n<p>{{ data.broker_name }} will be in touch ({{ data.lead.preferred_time | downcase }}) with your readiness report already in hand, so you won't need to start from scratch.</p>\n<table cellpadding=\"6\" style=\"border-collapse:collapse;font-size:14px\">\n<tr><td><strong>Lenders whose published rules you fit</strong></td><td>{{ data.summary.ready }} of {{ data.summary.lenders }}</td></tr>\n<tr><td><strong>Loan-to-value</strong></td><td>{{ data.summary.lvr }}%</td></tr>\n<tr><td><strong>Typical borrowing power</strong></td><td>{{ data.summary.borrowing_power }}</td></tr>\n<tr><td><strong>Stamp duty</strong></td><td>{{ data.summary.stamp_duty }}{% if data.summary.fhog %} \u00b7 First Home Owner Grant {{ data.summary.fhog }}{% endif %}</td></tr>\n</table>\n<p><a href=\"{{ data.site_url }}/#/report\">View your report again</a> (on the device you used).</p>\n<p style=\"color:#777;font-size:12px\">You're receiving this because you asked {{ data.site_name }} to connect you with a mortgage broker. The results are general information based on lenders' published rules, not advice or an approval. We receive a referral fee from the broker if your loan settles; you never pay us. Reply to this email to ask us to delete your details.</p>",
+        "settings": {
+          "layout_key": "default"
+        }
+      }
+    }
+  ]
+}

@@ -4,24 +4,23 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Logo, Pill } from '../components/ui';
 import { fmtShortMoney } from '../engine/finance';
 import { assess } from '../engine/match';
-import { sampleProfile } from '../engine/profile';
 import { DATA_DATE, LENDER_COUNT, LIVE_COUNT, lenderName } from '../lib/lenderDisplay';
 import { clearSaved, loadSaved } from '../lib/store';
+import { SITE, SITES, siteUrl } from '../sites';
+import { BROKER_DISCLOSURE } from '../sites/broker';
 
-const FAQ: [string, string][] = [
-  ['Is it really free?', 'Yes. You can answer the questions, see your report and play with the what-if tools without paying or signing up. If you choose to talk to a broker, they pay us — you never do.'],
-  ['Will this affect my credit score?', 'No. We don’t run a credit check. Your score is only touched when you formally apply with a lender — and a broker helps you apply once, to the right one, instead of collecting enquiries.'],
-  ['How does the matching work?', 'We model each lender’s policy rules — residency, time in job, how they shade overtime and bonuses, LVR limits, genuine savings, debt-to-income caps — and stress-test your repayments at 3% above the rate, as APRA requires.'],
-  ['Which lenders do you check?', `${LIVE_COUNT} Australian banks and lenders — majors, customer-owned banks, online lenders and more — using the rates, LVR limits and residency rules they publish through Open Banking (updated ${DATA_DATE}), plus two modelled specialist lenders. Rules banks don’t publish, like time in job, are typical settings for each type of lender.`],
-  ['What happens to my answers?', 'They stay in your browser until you choose to share them with a broker. You can clear them at any time.'],
-  ['How is this different from a broker?', 'Think of it as preparation. You walk in knowing where you stand and what to fix, so the conversation starts at “let’s apply” instead of “let’s see”.'],
+const lenderFaq: [string, string] = [
+  'Which lenders do you check?',
+  `${LIVE_COUNT} Australian banks and lenders — majors, customer-owned banks, online lenders and more — using the rates, LVR limits and residency rules they publish through Open Banking (updated ${DATA_DATE}), plus two modelled specialist lenders. Rules banks don’t publish, like time in job, are typical settings for each type of lender.`,
 ];
 
 export default function Landing() {
   const nav = useNavigate();
   const saved = loadSaved();
   const inProgress = saved && saved.answered.length > 0;
-  const sample = useMemo(() => assess(sampleProfile()), []);
+  const sample = useMemo(() => assess(SITE.sample()), []);
+  const faq = [...SITE.faq.slice(0, 2), lenderFaq, ...SITE.faq.slice(2)];
+  const [before, highlight, after] = SITE.hero.title;
 
   return (
     <div className="min-h-dvh">
@@ -38,12 +37,12 @@ export default function Landing() {
       <main>
         <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-8 lg:grid-cols-[1.1fr_1fr] lg:pt-16">
           <div>
-            <Pill tone="go">Free · 5 minutes · no credit check</Pill>
+            <Pill tone="go">{SITE.hero.pill}</Pill>
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
-              Know which lenders will say <span className="relative whitespace-nowrap text-go">yes<svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden><path d="M2 7 Q 50 1 98 6" stroke="#50e3a4" strokeWidth="4" fill="none" strokeLinecap="round" /></svg></span> — before you apply.
+              {before}<span className="text-go underline decoration-mint decoration-[0.12em] underline-offset-[0.18em] [text-decoration-skip-ink:none]">{highlight}</span>{after}
             </h1>
             <p className="mt-6 max-w-xl text-lg text-ink-soft sm:text-xl">
-              Answer a few easy questions. We check your situation against {LENDER_COUNT} lenders’ rules and show who’d say yes, who’s close, and exactly what to fix.
+              {SITE.hero.sub} <span className="whitespace-nowrap">{LENDER_COUNT} lenders checked.</span>
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/check" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-ink px-7 py-4 text-lg font-semibold text-white shadow-[0_10px_30px_-10px_rgba(14,59,58,.7)] transition hover:-translate-y-0.5">
@@ -63,7 +62,7 @@ export default function Landing() {
               </div>
             )}
             <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-2 text-sm font-semibold text-ink-soft sm:grid-cols-4">
-              {['No sign-up', 'No payslips', 'No credit check', 'Your data stays yours'].map(t => (
+              {SITE.hero.ticks.map(t => (
                 <li key={t} className="flex items-center gap-2"><span className="text-go">✓</span>{t}</li>
               ))}
             </ul>
@@ -74,7 +73,7 @@ export default function Landing() {
             <div className="rounded-3xl bg-card p-6 shadow-2xl ring-1 ring-line">
               <p className="text-xs font-bold uppercase tracking-wider text-muted">Example readiness report</p>
               <p className="mt-2 text-2xl font-extrabold leading-snug">
-                <span className="text-go">{sample.ready} of {LENDER_COUNT} lenders</span> would likely say yes.
+                Fits the published rules of <span className="text-go">{sample.ready} of {LENDER_COUNT} lenders</span>.
               </p>
               <p className="text-sm text-ink-soft">Borrowing power ~{fmtShortMoney(sample.borrowingPower.typical)} · LVR {sample.lvr.toFixed(0)}%</p>
               <ul className="mt-5 space-y-2">
@@ -83,7 +82,7 @@ export default function Landing() {
                     <div className="flex items-center justify-between">
                       <span className="font-bold">{lenderName(r.lender)}</span>
                       <span className="flex items-center gap-2">
-                        <Pill tone={r.status === 'ready' ? 'go' : r.status === 'close' ? 'amber' : 'rose'}>{r.status === 'ready' ? 'Likely yes' : r.status === 'close' ? 'Close' : 'Not yet'}</Pill>
+                        <Pill tone={r.status === 'ready' ? 'go' : r.status === 'close' ? 'amber' : 'rose'}>{r.status === 'ready' ? 'Fits' : r.status === 'close' ? 'Close' : 'Not yet'}</Pill>
                         <span className="font-extrabold tabular-nums">{r.score}%</span>
                       </span>
                     </div>
@@ -99,14 +98,10 @@ export default function Landing() {
         <section className="bg-ink py-20 text-white">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="max-w-3xl text-3xl font-extrabold leading-tight sm:text-5xl">
-              You shouldn’t need to call five brokers to find out <span className="text-mint">if you qualify.</span>
+              {SITE.pitch.title[0]}<span className="text-mint">{SITE.pitch.title[1]}</span>
             </h2>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
-              {[
-                ['🎯', 'Who says yes', 'Every lender scored against its own rules, with a plain-English reason for each result.'],
-                ['🧭', 'What to fix', 'Your fastest wins, ranked by how many lenders each one unlocks — like cancelling an unused card.'],
-                ['🎛️', 'What if', 'Drag the price, deposit or income and watch lenders flip to “yes” in real time.'],
-              ].map(([i, t, d]) => (
+              {SITE.pitch.points.map(([i, t, d]) => (
                 <div key={t} className="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
                   <span className="text-3xl" aria-hidden>{i}</span>
                   <h3 className="mt-3 text-xl font-bold">{t}</h3>
@@ -137,10 +132,27 @@ export default function Landing() {
           </div>
         </section>
 
+        {SITE.guides.length > 0 && (
+          <section id="guides" className="mx-auto max-w-6xl scroll-mt-6 px-4 pb-20">
+            <h2 className="text-3xl font-extrabold sm:text-4xl">Guides</h2>
+            <ul className="mt-8 grid gap-4 md:grid-cols-2">
+              {SITE.guides.map(g => (
+                <li key={g.slug}>
+                  <a href={`${import.meta.env.BASE_URL}guides/${g.slug}/`} className="block h-full rounded-3xl bg-card p-6 ring-1 ring-line transition hover:ring-ink/40">
+                    <h3 className="text-lg font-bold">{g.title}</h3>
+                    <p className="mt-2 text-sm text-ink-soft">{g.description}</p>
+                    <p className="mt-3 text-xs text-muted">Checked {new Date(g.updated).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <section id="faq" className="mx-auto max-w-3xl scroll-mt-6 px-4 pb-20">
           <h2 className="text-3xl font-extrabold sm:text-4xl">Questions</h2>
           <div className="mt-8 divide-y divide-line rounded-3xl bg-card ring-1 ring-line">
-            {FAQ.map(([q, a]) => (
+            {faq.map(([q, a]) => (
               <details key={q} className="group p-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">
                   {q}
@@ -157,9 +169,16 @@ export default function Landing() {
         <div className="mx-auto max-w-6xl space-y-3 px-4 py-10 text-sm text-muted">
           <Logo />
           <p className="max-w-3xl">
-            KeyReady is a prototype that provides general information only. It is not credit assistance or financial advice. Rates, LVR limits and residency rules come from lenders’ public Open Banking data;
+            {SITE.name} provides general information only. It is not credit assistance or financial advice. It is a self-check against lenders’ published rules, not a comparison service or a recommendation. Rates, LVR limits and residency rules come from lenders’ public Open Banking data;
             other policy rules are typical settings, not any lender’s own policy. Always confirm with a licensed mortgage broker or lender.
+            {BROKER_DISCLOSURE}{' '}
+            <a href={`${import.meta.env.BASE_URL}privacy/`} className="underline underline-offset-2 hover:text-ink">Privacy policy</a>
           </p>
+          {SITE.id !== 'core' && (
+            <p>
+              Part of the <a href={siteUrl(SITES.core) + '/'} className="underline underline-offset-2 hover:text-ink">{SITES.core.name}</a> family of home-loan readiness checks.
+            </p>
+          )}
         </div>
       </footer>
     </div>
