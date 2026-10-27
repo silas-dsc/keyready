@@ -37,16 +37,16 @@ Open Banking gives rates, maximum LVR and residency only. Everything else in `KI
 
 | ID | Status | Lender (brand as in market.json) | Facts to look for |
 |---|---|---|---|
-| C1 | ⬜ | CommBank | Min time in job (full-time, casual), self-employed history (ABN years / tax returns), temporary visa lending & max LVR, % of overtime/bonus counted |
-| C2 | ⬜ | Westpac | same |
+| C1 | ⚠️ | CommBank | Min time in job (full-time, casual), self-employed history (ABN years / tax returns), temporary visa lending & max LVR, % of overtime/bonus counted |
+| C2 | 🔧 | Westpac | same |
 | C3 | ⬜ | NATIONAL AUSTRALIA BANK | same |
-| C4 | ⬜ | ANZ | same |
-| C5 | ⬜ | Macquarie Bank Limited | same + maximum LVR for apartments |
-| C6 | ⬜ | ING BANK (Australia) Ltd | same |
-| C7 | ⬜ | Bendigo Bank | same |
-| C8 | ⬜ | Great Southern Bank | same |
-| C9 | ⬜ | Liberty Financial | defaults accepted? bankruptcy discharge period? min credit score? |
-| C10 | ⬜ | UBank | same as C1 |
+| C4 | 🔧 | ANZ | same |
+| C5 | 🔧 | Macquarie Bank Limited | same + maximum LVR for apartments |
+| C6 | 🔧 | ING BANK (Australia) Ltd | same |
+| C7 | 🔧 | Bendigo Bank | same |
+| C8 | ✅ | Great Southern Bank | same |
+| C9 | 🔧 | Liberty Financial | defaults accepted? bankruptcy discharge period? min credit score? |
+| C10 | 🔧 | UBank | same as C1 |
 
 ## D. Segment rules (`src/data/segment-policies.json`)
 
@@ -79,3 +79,12 @@ Open Banking gives rates, maximum LVR and residency only. Everything else in `KI
 | 2026-10-27 | B2 | ✅ | https://firsthomebuyers.gov.au/australian-government-5-percent-deposit-scheme/5-percent-participating-lenders | All 54 participating lenders match `scheme-lenders.json` exactly (housingaustralia.gov.au/participating-lenders redirects here). Source URL and date updated. |
 | 2026-10-27 | B3 | ✅ | https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents | 2026–27: nil to $18,200; 15c to $45,000; $4,020 + 30c to $135,000; $31,020 + 37c to $190,000; $51,370 + 45c above. Excludes the 2% Medicare levy. Matches `incomeTax`. |
 | 2026-10-27 | B4 | 🔧 | https://www.ato.gov.au/tax-rates-and-codes/study-and-training-loan-minimum-repayment-income-and-rates | Code had the 2025–26 table. **Fixed** to 2026–27: nil to $69,528; 15c over $69,528 to $129,717; $9,028 + 17c over $129,717 to $186,050; 10% of total repayment income from $186,051. Test includes ATO example 1 ($86,380 → $2,527.80). |
+| 2026-10-27 | C1 | ⚠️ | https://www.commbank.com.au/home-loans/applying-for-a-home-loan.html | Self-employed: sole traders give two most recent years of returns → `self_employed: 24` confirmed and sourced. Temporary visa: consumer page only says to check visa eligibility with a Home Lending Specialist, no max LVR, so left as Open Banking (not accepted). Job tenure and overtime/bonus share not published. |
+| 2026-10-27 | C2 | 🔧 | https://www.westpac.com.au/personal-banking/home-loans/how-to-apply/ | "An Australian citizen or permanent resident" → `awaiting_pr` and `temporary_visa` now null (model allowed awaiting-PR at 80%). Self-employed 24 months already sourced. Tenure/overtime not published. |
+| 2026-10-27 | C4 | 🔧 | https://www.anz.com.au/personal/home-loans/get-started/apply-home-loan/ | Citizen/NZ/PR only → `awaiting_pr`, `temporary_visa` null. ABN 18 months already sourced. Tenure/overtime not published. |
+| 2026-10-27 | C5 | 🔧 | https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf | Guidelines v15.0, updated 22 Oct 2026. Full-time, part-time, casual: 6 months in current job OR 6 months in same field (the same-field exception isn't modelled). High-density apartments 80% LVR (P&I; 70% if any IO). Overtime (non-essential) 80%, essential services 100% (not modelled), commission/bonus 80%. |
+| 2026-10-27 | C6 | 🔧 | https://www.ing.com.au/pdf/ING_Home_Loan_MS_TMD.pdf | TMD: citizen, NZ citizen or PR. Open Banking had PR as not accepted → `permanent_resident: 95`; `awaiting_pr` null. Self-employed: ING newsroom says one year of financials now accepted, but that's a press release, not policy → not applied. |
+| 2026-10-27 | C7 | 🔧 | https://www.brokers.bendigobank.com.au/siteassets/_documents/fact-sheets/flex-home-loan-fact-sheet.pdf | Flex fact sheet: not available for "self-employed less than one year, overseas or non-permanent Australian resident applicants" → `self_employed: 12`, `awaiting_pr`/`temporary_visa`/`other` null. |
+| 2026-10-27 | C8 | ✅ | https://www.greatsouthernbank.com.au/home-loans/refinance/are-you-eligible-to-refinance-your-home-loan | Citizen or PR only, matches the model; sourced. Simplified self-employed policy (2 yrs trading, ≤80% LVR) matches the 24-month default. Casual rules not published. |
+| 2026-10-27 | C9 | 🔧 | https://www.liberty.com.au/home-loans/credit-history | Paid and unpaid defaults and past bankruptcy considered, max LVR 95%; Liberty says there's no minimum credit score → `minCreditScore: 0`. Bankruptcy discharge period not published (kept specialist default of 2 years). |
+| 2026-10-27 | C10 | 🔧 | https://www.ubank.com.au/help/current/home-loans/hl-eligibility/who-can-apply-for-a-home-loan | "we don't lend to self-employed individuals" → `self_employed: null`. Citizen/NZ/PR only → `awaiting_pr` null. |
