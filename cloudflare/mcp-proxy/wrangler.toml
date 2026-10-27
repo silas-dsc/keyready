@@ -1,0 +1,12 @@
+# Cloudflare Worker that serves the public MCP endpoint at https://mcp.keyready.au/mcp
+# by forwarding to the Supabase Edge Function. Deploy: cd cloudflare/mcp-proxy && npx wrangler deploy
+name = "keyready-mcp"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+account_id = "7185747b3f3f4f09c1687499008723f8"
+workers_dev = false
+routes = [{ pattern = "mcp.keyready.au", custom_domain = true }]
+
+[vars]
+UPSTREAM = "https://qxqmhwngiubajxefzusb.supabase.co/functions/v1/mcp"
+DOCS = "https://keyready.au/mcp/"

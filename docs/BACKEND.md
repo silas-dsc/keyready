@@ -66,15 +66,25 @@ broker ──magic link──► #/broker dashboard ──set_lead_status()─�
 - **Lead path:** submit the form on any site. The broker and borrower emails should arrive within a minute. If not, check *Supabase → Edge Functions → notify-lead → Logs* and *Knock → Logs*.
 - **MCP:**
   ```bash
-  curl -s https://<ref>.supabase.co/functions/v1/mcp -H 'content-type: application/json' -H 'accept: application/json, text/event-stream' \
+  curl -s https://mcp.keyready.au/mcp -H 'content-type: application/json' -H 'accept: application/json, text/event-stream' \
     -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
   ```
   Or add the URL as a custom connector in Claude. The public setup page is at `/keyready/mcp/`.
 - **Locally:** `npm test` covers the engine and runs the MCP server end to end with the official MCP client (`src/mcp/server.test.ts`).
 
+## Custom MCP domain
+
+`https://mcp.keyready.au/mcp` is a Cloudflare Worker (`cloudflare/mcp-proxy/`) that forwards every request, streamed responses included, to the Supabase `mcp` function; a plain browser visit redirects to the docs page. It runs on Cloudflare's free Workers plan. To change or redeploy it:
+
+```bash
+cd cloudflare/mcp-proxy && npx wrangler deploy
+```
+
+`wrangler login` signs in through the browser first. If the Supabase project ever changes, update `UPSTREAM` in `wrangler.toml`.
+
 ## Publish the MCP server
 
-1. Replace `SUPABASE_PROJECT_REF` in `server.json` with your ref.
+1. `server.json` already points at `https://mcp.keyready.au/mcp`.
 2. Install `mcp-publisher` (from the modelcontextprotocol/registry GitHub releases), then run `mcp-publisher login github` and `mcp-publisher publish`. The `io.github.silas-dsc/*` namespace is verified by your GitHub login.
 3. Optionally submit it to the ChatGPT app directory once it has been validated in developer mode.
 

@@ -1,4 +1,5 @@
-// Public MCP endpoint: https://<project-ref>.supabase.co/functions/v1/mcp
+// Public MCP endpoint: https://mcp.keyready.au/mcp (Cloudflare Worker in cloudflare/mcp-proxy/ forwards here),
+// also reachable directly at https://<project-ref>.supabase.co/functions/v1/mcp
 // The server (tools, schemas, rules engine) is bundled from src/mcp/server.ts by `npm run bundle:rules`;
 // this file only connects it to the database for consented broker referrals.
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
