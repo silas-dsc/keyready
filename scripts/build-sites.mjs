@@ -172,8 +172,8 @@ ${site.guides.map(g => `- [${g.title}](${url}guides/${g.slug}/): ${g.description
 
 /** Public setup page and docs for AI assistants: the MCP endpoint, per-client setup, example prompts and each tool. */
 async function mcpPage(outDir) {
-  const supabase = process.env.VITE_SUPABASE_URL;
-  const endpoint = supabase ? `${supabase.replace(/\/$/, '')}/functions/v1/mcp` : null;
+  // Served by the Cloudflare Worker in cloudflare/mcp-proxy/, which forwards to the Supabase `mcp` function.
+  const endpoint = process.env.VITE_SUPABASE_URL ? 'https://mcp.keyready.au/mcp' : null;
   const home = `${PAGES_ORIGIN}${REPO_PATH}`;
   const url = `${home}mcp/`;
   const ep = endpoint
