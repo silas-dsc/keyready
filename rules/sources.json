@@ -23,11 +23,11 @@
     { "id": "act-duty", "url": "https://www.legislation.act.gov.au/di/2026-155/", "covers": ["src/engine/duty.ts#actDuty"], "check": "fetch", "reviewBy": "2027-06-20", "note": "New determination each 1 July" },
     { "id": "act-hbcs", "url": "https://www.legislation.act.gov.au/di/2026-157/", "covers": ["src/engine/duty.ts#ACT HBCS"], "check": "fetch", "reviewBy": "2027-06-20" },
     { "id": "nt-duty", "url": "https://legislation.nt.gov.au/Legislation/STAMP-DUTY-ACT-1978", "covers": ["src/engine/duty.ts#ntGeneral", "NT house & land exemption"], "check": "manual", "reviewBy": "2027-06-01", "note": "House & land exemption ends 30 Jun 2027" },
-    { "id": "nt-fhog", "url": "https://legislation.nt.gov.au/Legislation/FIRST-HOME-OWNER-GRANT-ACT-2000", "covers": ["src/engine/duty.ts#FHOG.NT"], "check": "manual", "reviewBy": "2027-09-01", "note": "$50k HomeGrown grant ends 30 Sep 2027" },
-    { "id": "scheme-lenders", "url": "https://firsthomebuyers.gov.au/australian-government-5-deposit-scheme/australian-government-5-deposit-scheme-participating-lenders", "covers": ["src/data/scheme-lenders.json"], "check": "fetch" },
+    { "id": "nt-fhog", "url": "https://legislation.nt.gov.au/Legislation/FIRST-HOME-OWNER-GRANT-ACT-2000", "covers": ["src/engine/duty.ts#FHOG.NT"], "check": "manual", "reviewBy": "2027-09-01", "note": "$50k HomeGrown grant: contracts to 30 Sep 2027, applications to 30 Sep 2028" },
+    { "id": "scheme-lenders", "url": "https://firsthomebuyers.gov.au/australian-government-5-percent-deposit-scheme/5-percent-participating-lenders", "covers": ["src/data/scheme-lenders.json"], "check": "fetch" },
     { "id": "scheme-caps", "url": "https://www.housingaustralia.gov.au/support-buy-home/property-price-caps", "covers": ["src/engine/finance.ts#SCHEME_CAPS"], "check": "manual", "note": "Verify exact URL with /verify-data (B1)" },
     { "id": "ato-tax-rates", "url": "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents", "covers": ["src/engine/finance.ts#incomeTax"], "check": "manual", "note": "ATO returns 403 to automated fetches", "reviewBy": "2027-06-20" },
-    { "id": "ato-help-thresholds", "url": "https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds", "covers": ["src/engine/finance.ts#hecsRepayment"], "check": "manual", "note": "ATO returns 403 to automated fetches", "reviewBy": "2027-06-20" },
+    { "id": "ato-help-thresholds", "url": "https://www.ato.gov.au/tax-rates-and-codes/study-and-training-loan-minimum-repayment-income-and-rates", "covers": ["src/engine/finance.ts#hecsRepayment"], "check": "manual", "note": "ATO returns 403 to automated fetches", "reviewBy": "2027-06-20" },
     { "id": "apra-buffer", "url": "https://www.apra.gov.au/news-and-publications", "covers": ["serviceability buffer (3%)", "DTI limits"], "check": "manual", "reviewBy": "2027-02-28", "note": "APRA reviews macroprudential settings quarterly" }
   ]
 }
