@@ -15,10 +15,16 @@ export function incomeTax(gross: number): number {
   return tax + g * 0.02;
 }
 
-/** Compulsory HECS/HELP repayment under the marginal system (approximate 2026–27 threshold). */
+/**
+ * Compulsory HECS/HELP repayment under the marginal system, 2026–27 (ATO Table 1:
+ * ato.gov.au/tax-rates-and-codes/study-and-training-loan-minimum-repayment-income-and-rates,
+ * retrieved 2026-10-27).
+ */
 export function hecsRepayment(income: number, balance: number): number {
-  if (balance <= 0 || income <= 67_000) return 0;
-  const r = income <= 125_000 ? (income - 67_000) * 0.15 : 8_700 + (income - 125_000) * 0.17;
+  if (balance <= 0 || income <= 69_528) return 0;
+  const r = income <= 129_717 ? (income - 69_528) * 0.15
+    : income <= 186_050 ? 9_028 + (income - 129_717) * 0.17
+    : income * 0.1;
   return Math.min(r, balance);
 }
 
@@ -98,7 +104,12 @@ export function upfrontCosts(p: Profile): UpfrontCosts {
   };
 }
 
-/** 5% Deposit Scheme property price caps (capital & regional centres / rest of state), from Oct 2025. */
+/**
+ * 5% Deposit Scheme property price caps (capital & regional centres / rest of state).
+ * firsthomebuyers.gov.au/australian-government-5-percent-deposit-scheme/property-price-caps,
+ * retrieved 2026-10-27. Regional centres (e.g. Gold Coast, Geelong, Newcastle) take the
+ * capital-city cap.
+ */
 export const SCHEME_CAPS: Record<AuState, [number, number]> = {
   NSW: [1_500_000, 800_000],
   VIC: [950_000, 650_000],
@@ -107,7 +118,7 @@ export const SCHEME_CAPS: Record<AuState, [number, number]> = {
   SA: [900_000, 500_000],
   TAS: [700_000, 550_000],
   ACT: [1_000_000, 1_000_000],
-  NT: [600_000, 600_000],
+  NT: [750_000, 600_000], // Darwin / rest of Territory
 };
 
 export interface SchemeCheck {
@@ -133,10 +144,15 @@ export function depositScheme(p: Profile): SchemeCheck {
   return { eligible: reasons.length === 0, variant, cap, minDepositPct: variant === 'family' ? 2 : 5, reasons };
 }
 
-/** Indicative Lenders Mortgage Insurance premium. */
+/**
+ * Indicative Lenders Mortgage Insurance premium (incl. GST, excl. stamp duty). Rates match Helia's
+ * LMI fee estimator for a $500k owner-occupier loan over 30 years, not a first home buyer
+ * (helia.com.au/the-hub/calculators-estimators/lmi-fee-estimator, retrieved 2026-10-27).
+ * Real premiums also rise with loan size and vary by insurer.
+ */
 export function lmiEstimate(loan: number, lvrPct: number): number {
   if (lvrPct <= 80) return 0;
-  const rate = lvrPct <= 85 ? 0.009 : lvrPct <= 90 ? 0.019 : 0.034;
+  const rate = lvrPct <= 85 ? 0.0104 : lvrPct <= 90 ? 0.0183 : 0.0295;
   return Math.round(loan * rate);
 }
 
