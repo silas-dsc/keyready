@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Logo, Pill } from '../components/ui';
 import { fmtShortMoney } from '../engine/finance';
-import { backendMode, getSupabase, listLeads, type Lead } from '../lib/leads';
+import { backendMode, claimBroker, getSupabase, LEAD_STATUSES, listLeads, setLeadStatus, type Lead, type LeadStatus } from '../lib/leads';
+import { SITES } from '../sites';
 
 export default function Broker() {
   const [leads, setLeads] = useState<Lead[] | null>(null);
@@ -25,8 +26,37 @@ export default function Broker() {
 
   useEffect(() => {
     if (!signedIn) return;
-    listLeads().then(setLeads).catch(e => setError((e as Error).message));
+    claimBroker()
+      .then(b => {
+        if (!b) throw new Error('This account isn’t registered as a broker yet. Ask the operator to add your email.');
+        return listLeads();
+      })
+      .then(setLeads)
+      .catch(e => setError((e as Error).message));
   }, [signedIn]);
+
+  const updateStatus = async (id: string, status: LeadStatus) => {
+    try {
+      await setLeadStatus(id, status);
+      setLeads(ls => ls?.map(l => (l.id === id ? { ...l, status } : l)) ?? null);
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  };
+
+  // Conversion by site: which sub-market is worth doubling down on.
+  const funnel = useMemo(() => {
+    const rows = new Map<string, { leads: number; contacted: number; settled: number; lost: number }>();
+    for (const l of leads ?? []) {
+      const r = rows.get(l.site ?? 'core') ?? { leads: 0, contacted: 0, settled: 0, lost: 0 };
+      r.leads++;
+      if (['contacted', 'application', 'approved', 'settled'].includes(l.status ?? 'new')) r.contacted++;
+      if (l.status === 'settled') r.settled++;
+      if (l.status === 'lost') r.lost++;
+      rows.set(l.site ?? 'core', r);
+    }
+    return [...rows.entries()];
+  }, [leads]);
 
   const signIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,6 +104,26 @@ export default function Broker() {
             <p className="mt-1 text-muted">Complete a check and choose “Connect with a broker” to see one appear here.</p>
           </div>
         ) : (
+          <>
+          <section className="mt-8 overflow-x-auto rounded-3xl bg-card ring-1 ring-line" aria-label="Conversion by site">
+            <table className="w-full min-w-[480px] text-left text-sm">
+              <thead className="bg-black/5">
+                <tr>{['Site', 'Leads', 'Contacted', 'Settled', 'Lost', 'Settle rate'].map(h => <th key={h} className="px-4 py-3 font-bold">{h}</th>)}</tr>
+              </thead>
+              <tbody className="divide-y divide-line">
+                {funnel.map(([site, r]) => (
+                  <tr key={site}>
+                    <td className="px-4 py-3 font-semibold">{SITES[site]?.name ?? site}</td>
+                    <td className="px-4 py-3">{r.leads}</td>
+                    <td className="px-4 py-3">{r.contacted}</td>
+                    <td className="px-4 py-3">{r.settled}</td>
+                    <td className="px-4 py-3">{r.lost}</td>
+                    <td className="px-4 py-3">{r.leads ? Math.round((r.settled / r.leads) * 100) : 0}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
           <ul className="mt-8 space-y-3">
             {leads.map(l => {
               const a0 = l.profile.applicants[0];
@@ -83,7 +133,9 @@ export default function Broker() {
                   <button onClick={() => setOpen(open === l.id ? null : l.id)} aria-expanded={open === l.id} className="grid w-full gap-3 p-5 text-left sm:grid-cols-[1.3fr_1fr_1fr_1fr_auto] sm:items-center">
                     <div>
                       <p className="font-bold">{l.name}</p>
-                      <p className="text-sm text-muted">{new Date(l.created_at).toLocaleString('en-AU', { dateStyle: 'medium', timeStyle: 'short' })}</p>
+                      <p className="text-sm text-muted">
+                        {new Date(l.created_at).toLocaleString('en-AU', { dateStyle: 'medium', timeStyle: 'short' })} · {SITES[l.site]?.name ?? l.site ?? 'KeyReady'}{l.channel === 'mcp' ? ' · via AI assistant' : ''}
+                      </p>
                     </div>
                     <div><Pill tone={tone}>{l.summary.ready} ready · {l.summary.close} close</Pill></div>
                     <div className="text-sm"><span className="text-muted">Loan</span> <strong>{fmtShortMoney(l.profile.loan)}</strong> · LVR {l.summary.lvr}%</div>
@@ -97,6 +149,8 @@ export default function Broker() {
                         ['Applicants', l.profile.mode === 'joint' ? 'Joint' : 'Solo'], ['First home', l.profile.firstHome ? 'Yes' : 'No'], ['Purpose', l.profile.purpose],
                         ['Income (B1)', fmtShortMoney(a0.baseIncome)], ['Employment (B1)', a0.employment.replace('_', ' ')], ['Savings', fmtShortMoney(l.profile.savings)],
                         ['Price', fmtShortMoney(l.profile.price)], ['State', l.profile.state], ['Top matches', l.summary.topLenders.join(', ') || '—'],
+                        ['Source', [l.attribution?.utm_source, l.attribution?.utm_campaign, l.attribution?.referrer].filter(Boolean).join(' · ') || 'Direct'],
+                        ['Stamp duty', l.summary.stampDuty !== undefined ? fmtShortMoney(l.summary.stampDuty) : '—'], ['Grant', l.summary.fhog ? fmtShortMoney(l.summary.fhog) : '—'],
                       ].map(([k, v]) => (
                         <div key={k} className="flex justify-between gap-3 sm:block">
                           <dt className="text-muted">{k}</dt>
@@ -105,10 +159,24 @@ export default function Broker() {
                       ))}
                     </dl>
                   )}
+                  <div className="flex flex-wrap items-center gap-2 border-t border-line px-5 py-3 text-sm">
+                    <span className="text-muted">Outcome:</span>
+                    {LEAD_STATUSES.map(s => (
+                      <button
+                        key={s}
+                        onClick={() => updateStatus(l.id, s)}
+                        aria-pressed={(l.status ?? 'new') === s}
+                        className={`rounded-full px-3 py-1 font-semibold capitalize ${(l.status ?? 'new') === s ? 'bg-ink text-white' : 'bg-black/5 text-ink-soft hover:bg-black/10'}`}
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
                 </li>
               );
             })}
           </ul>
+          </>
         )}
       </main>
     </div>

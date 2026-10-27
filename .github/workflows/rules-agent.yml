@@ -1,0 +1,52 @@
+name: Rules agent (optional)
+
+# When a rules-watch issue is opened or commented on, Claude investigates the changed official
+# sources and proposes engine/test updates as a pull request for a human to review.
+# Requires the ANTHROPIC_API_KEY repository secret; without it this workflow does nothing.
+on:
+  issues:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  propose-fix:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'rules-watch') &&
+      (github.event_name == 'issues' || github.event.comment.user.login == 'github-actions[bot]')
+    runs-on: ubuntu-latest
+    steps:
+      - id: key
+        env:
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: echo "present=$([ -n "$KEY" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - if: steps.key.outputs.present == 'true'
+        uses: actions/checkout@v4
+      - if: steps.key.outputs.present == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.key.outputs.present == 'true'
+        run: npm ci
+      - if: steps.key.outputs.present == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Read issue #${{ github.event.issue.number }} in this repository. It lists official sources
+            (state revenue offices, ATO, Housing Australia, legislation) whose text changed or which are due
+            for review. Follow CLAUDE.md. For each item:
+            1. Look at the snapshot diff in rules/snapshots/ and the official page itself.
+            2. Decide whether any figure the engine uses (src/engine/duty.ts, src/engine/finance.ts, src/data/*) changed.
+            3. If so, update the engine and add/adjust tests in src/engine/*.test.ts with the official worked example,
+               citing the source URL. Never guess a figure; if you can't confirm it, say so on the issue.
+            Run `npm test` and `npm run build:sites`. Open a pull request with the changes (or comment on the issue
+            that no engine change is needed, item by item).
+          claude_args: --allowedTools "Bash(npm *),Bash(node *),Bash(git *),Bash(gh *),WebFetch,Edit,Write,Read,Glob,Grep"

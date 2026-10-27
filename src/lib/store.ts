@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { emptyProfile } from '../engine/profile';
 import type { Profile } from '../engine/types';
+import { SITE } from '../sites';
 
-const KEY = 'keyready:v1';
+// Per site: every GitHub Pages sub-site shares one origin, so one browser storage.
+const KEY = `keyready:v1:${SITE.id}`;
+const fresh = () => (SITE.wizard.defaults ?? (p => p))(emptyProfile());
 
 export interface Saved {
   profile: Profile;
@@ -42,7 +45,7 @@ export function clearSaved() {
 
 /** Single source of truth for the questionnaire, autosaved to this device. */
 export function useSavedProfile() {
-  const [state, setState] = useState<Saved>(() => loadSaved() ?? { profile: emptyProfile(), stepId: null, completed: false, answered: [], updatedAt: Date.now() });
+  const [state, setState] = useState<Saved>(() => loadSaved() ?? { profile: fresh(), stepId: null, completed: false, answered: [], updatedAt: Date.now() });
 
   useEffect(() => save(state), [state]);
 
@@ -53,7 +56,7 @@ export function useSavedProfile() {
   const markAnswered = useCallback((id: string) => setState(s => (s.answered.includes(id) ? s : { ...s, answered: [...s.answered, id] })), []);
   const complete = useCallback(() => setState(s => ({ ...s, completed: true })), []);
   const replace = useCallback((profile: Profile) => setState(s => ({ ...s, profile, updatedAt: Date.now() })), []);
-  const reset = useCallback(() => setState({ profile: emptyProfile(), stepId: null, completed: false, answered: [], updatedAt: Date.now() }), []);
+  const reset = useCallback(() => setState({ profile: fresh(), stepId: null, completed: false, answered: [], updatedAt: Date.now() }), []);
 
   return { ...state, update, setStep, markAnswered, complete, replace, reset };
 }

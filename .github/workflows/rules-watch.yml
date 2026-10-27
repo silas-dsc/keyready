@@ -1,0 +1,47 @@
+name: Rules watch
+
+# Weekly: snapshot every official source in rules/sources.json. When a page changes, or a rule is
+# about to expire or roll over, open (or update) a "rules-watch" issue with a checklist. The
+# optional rules-agent workflow can then hand that issue to Claude to propose a fix as a PR.
+on:
+  schedule:
+    - cron: '41 20 * * 0' # Mondays ~7:40am AEDT, after the Open Banking refresh
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: watch
+        run: node scripts/watch-sources.mjs --report=rules/report.md | tee out.txt && grep -o 'needs_attention=.*' out.txt >> "$GITHUB_OUTPUT"
+      - name: Commit snapshots
+        run: |
+          git add rules/snapshots
+          if git diff --cached --quiet; then echo "No snapshot changes"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rules watch: official source snapshots changed"
+          git push
+      - name: Open or update issue
+        if: steps.watch.outputs.needs_attention == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create rules-watch --color B60205 --description "Official lending/duty source changed or due for review" --force
+          body="$(cat rules/report.md)
+
+          Snapshot commit: ${{ github.server_url }}/${{ github.repository }}/commits/main/rules/snapshots"
+          existing=$(gh issue list --label rules-watch --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "Rules watch: official sources need review" --label rules-watch --body "$body"
+          fi

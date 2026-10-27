@@ -3,3 +3,8 @@ dist
 .env
 .env.local
 *.tsbuildinfo
+.ssr
+dist-sites
+supabase/functions/_shared/*.js
+supabase/.temp
+rules/report.md

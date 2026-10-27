@@ -48,6 +48,19 @@ Open Banking gives rates, maximum LVR and residency only. Everything else in `KI
 | C9 | ⬜ | Liberty Financial | defaults accepted? bankruptcy discharge period? min credit score? |
 | C10 | ⬜ | UBank | same as C1 |
 
+## D. Segment rules (`src/data/segment-policies.json`)
+
+| ID | Status | What to verify | Where |
+|---|---|---|---|
+| D1 | ⬜ | NAB's LMI waiver: maximum LVR (not published on its consumer page) | https://www.nab.com.au/personal/home-loans/lmi/lmi-waiver |
+| D2 | ⬜ | CommBank's waiver: eligible profession list and LVR (reported 2025 changes: interns, pharmacists $100k, nurse pilot) | https://www.commbank.com.au/home-loans/low-deposit-home-loan-options.html |
+| D3 | ⬜ | Westpac/St.George legal & accounting waiver criteria (in BrokerHub only) | https://westpac.com.au/brokers/policy |
+| D4 | ⬜ | ANZ legal/accounting waiver: 90% (broker PDFs) vs "up to 95%" (consumer page) | https://www.anz.com.au/personal/home-loans/buying-home/home-loans-business-owners/ |
+| D5 | ⬜ | St.George nurse/allied waiver: capture an exact quote ($90k, 90% LVR) | https://www.stgeorge.com.au/personal/home-loans/profession-home-loans |
+| D6 | ⬜ | Non-bank lenders that don't publish Open Banking data (Pepper, La Trobe, Bluestone, Firstmac…): add their published rates and alt-doc/expat policies as lenders | Each lender's own site |
+| D7 | ⬜ | Expat lenders: which lenders *do* lend to Australians living overseas, max LVR, currencies | Lender sites |
+| D8 | ⬜ | Westpac overtime at 100% for hospital nurses: model as a nurse-specific shading rule | Westpac broker niche booklet |
+
 ## Verification log
 
 | Date | ID | Result | Source URL | Notes |

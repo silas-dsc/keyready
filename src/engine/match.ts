@@ -3,6 +3,8 @@ import {
   livingExpensesMonthly, lmiEstimate, lvr, principalFor, repayment, totalGross, upfrontCosts,
 } from './finance';
 import { MARKET_LENDERS, productRate } from './market';
+import { PROFESSION_NAME, usesAltDoc } from './segment-labels';
+import { altDocFor, expatPolicyFor, foreignIncomeTier, lmiWaiverFor } from './segments';
 import type { Check, Employment, LenderPolicy, LenderResult, MatchStatus, Profile, Residency } from './types';
 
 export const EMPLOYMENT_LABEL: Record<Employment, string> = {
@@ -38,6 +40,8 @@ export function serviceability(p: Profile, L: LenderPolicy): Serviceability {
   p.applicants.forEach((a, i) => {
     let g = a.baseIncome + a.overtime * L.shading.overtime + a.allowances * L.shading.allowances +
       a.bonus * L.shading.bonus + a.commission * L.shading.commission;
+    // Foreign-currency income is haircut (currency risk); lenders that don't publish a rate get 80%.
+    if (i === 0 && p.incomeCurrency !== 'AUD') g *= foreignIncomeTier(p, L)?.shading ?? 0.8;
     if (i === 0) g += p.rentalIncome * L.shading.rental;
     netAnnual += g - incomeTax(g);
   });
@@ -48,7 +52,7 @@ export function serviceability(p: Profile, L: LenderPolicy): Serviceability {
   const hecsIncome = p.applicants[0] ? applicantGross(p.applicants[0]) : 0;
   const commitments = p.cardLimits * L.cardFactor + p.personalLoans * 0.025 + hecsRepayment(hecsIncome, p.hecs) / 12;
   const surplus = netMonthly - expenses - commitments;
-  const rate = productRate(L, p.purpose, lvr(p));
+  const rate = productRate(L, p.purpose, lvr(p)) + (usesAltDoc(p, L) ? altDocFor(L)?.rateLoading ?? 0 : 0);
   const assessmentRate = Math.max(rate + L.buffer, L.floorRate);
   const oldest = Math.max(...p.applicants.map(a => a.age || 30));
   const termYears = Math.max(5, Math.min(30, L.maxAgeAtTermEnd - oldest));
@@ -77,7 +81,23 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   // Employment & tenure
   const workers = earners(p);
   let empFail: Check | null = null;
+  const altDoc = altDocFor(L);
+  let altDocUsed = false;
   for (const a of workers) {
+    // Self-employed without two years of tax returns, or not yet at the full-doc minimum: alt-doc path.
+    if (a.employment === 'self_employed' && (p.lowDoc || a.tenureMonths < (L.minTenure.self_employed ?? Infinity))) {
+      if (altDoc && a.tenureMonths >= (altDoc.minAbnMonths ?? 0)) {
+        altDocUsed = true;
+        continue;
+      }
+      if (p.lowDoc) {
+        empFail = { id: 'employment', label: 'Documents', status: 'fail', gap: 'far', weight: 3,
+          detail: altDoc
+            ? `Its alt-doc (low-doc) loan needs ${altDoc.minAbnMonths ?? 'a minimum period of'}+ months of ABN registration.`
+            : 'Lends to the self-employed on full documents (two years of tax returns) only.' };
+        break;
+      }
+    }
     const min = L.minTenure[a.employment];
     if (min === null) {
       empFail = { id: 'employment', label: 'Employment', status: 'fail', gap: 'far', weight: 3,
@@ -92,7 +112,28 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
       break;
     }
   }
-  add(empFail ?? { id: 'employment', label: 'Employment', status: 'pass', weight: 3, detail: 'Your work history meets policy.' });
+  add(empFail ?? (altDocUsed
+    ? { id: 'employment', label: 'Documents', status: 'pass', weight: 3,
+        detail: `May qualify for its alt-doc (low-doc) loan: ${altDoc!.evidence ?? 'BAS, business bank statements or an accountant’s letter instead of tax returns'}.` }
+    : { id: 'employment', label: 'Employment', status: 'pass', weight: 3, detail: 'Your work history meets policy.' }));
+
+  // Living overseas / foreign income
+  const expat = expatPolicyFor(L);
+  const fi = foreignIncomeTier(p, L);
+  const excludedAbroad = p.livesOverseas && !expat?.acceptsNonResidents;
+  if (p.livesOverseas) {
+    add(excludedAbroad
+      ? { id: 'expat', label: 'Living overseas', status: 'fail', gap: 'far', weight: 3,
+          detail: expat ? 'Doesn’t lend to borrowers who live overseas.' : 'Doesn’t publish lending to Australians living overseas.' }
+      : { id: 'expat', label: 'Living overseas', status: 'pass', weight: 3, detail: 'Lends to Australians living overseas.' });
+  }
+  if (p.incomeCurrency !== 'AUD' && !excludedAbroad) {
+    add(fi
+      ? { id: 'foreign-income', label: 'Foreign income', status: 'pass', weight: 2,
+          detail: `Counts about ${Math.round(fi.shading * 100)}% of ${p.incomeCurrency} income${fi.maxLvr ? `, up to ${fi.maxLvr}% LVR` : ''}.` }
+      : { id: 'foreign-income', label: 'Foreign income', status: 'warn', weight: 2,
+          detail: `Doesn’t publish how it treats ${p.incomeCurrency} income — we’ve assumed 80% is counted.` });
+  }
 
   // Credit history
   if (p.defaults === 'yes' && !L.acceptsDefaults) {
@@ -119,8 +160,14 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     : L.maxLvr.owner;
   const resMax = Math.min(...resCaps.map(c => c ?? 0));
   const schemeMax = scheme.eligible && L.depositScheme ? (scheme.variant === 'family' ? 98 : 95) : 0;
-  const maxLvr = Math.max(Math.min(policyMax, resMax), policyMax > 0 ? schemeMax : 0);
-  const usesScheme = theLvr > 80 && schemeMax > 0 && theLvr <= schemeMax;
+  const waiver = lmiWaiverFor(p, L);
+  const segmentCap = Math.min(altDocUsed ? altDoc!.maxLvr : 100, fi?.maxLvr ?? 100);
+  const maxLvr = Math.min(
+    Math.max(Math.min(policyMax, resMax), policyMax > 0 ? Math.max(schemeMax, waiver?.maxLvr ?? 0) : 0),
+    segmentCap,
+  );
+  const lmiWaived = !!waiver && theLvr > 80 && theLvr <= Math.min(waiver.maxLvr, maxLvr);
+  const usesScheme = !lmiWaived && theLvr > 80 && schemeMax > 0 && theLvr <= Math.min(schemeMax, maxLvr);
   if (policyMax === 0) {
     add({ id: 'lvr', label: 'Loan type', status: 'fail', gap: 'far', weight: 3,
       detail: `Doesn't offer ${p.purpose === 'construction' ? 'construction' : 'vacant land'} loans.` });
@@ -134,7 +181,10 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   }
 
   // LMI
-  if (theLvr > 80 && !usesScheme && theLvr <= maxLvr) {
+  if (lmiWaived) {
+    add({ id: 'lmi', label: 'Mortgage insurance', status: 'pass', weight: 1,
+      detail: `May waive LMI for ${PROFESSION_NAME[p.profession!]} up to ${waiver!.maxLvr}% LVR — about ${fmtMoney(lmiEstimate(p.loan, theLvr))} saved.${waiver!.conditions ? ` ${waiver!.conditions}` : ''}` });
+  } else if (theLvr > 80 && !usesScheme && theLvr <= maxLvr) {
     add({ id: 'lmi', label: 'Mortgage insurance', status: 'warn', weight: 1,
       detail: `Lenders Mortgage Insurance of roughly ${fmtMoney(lmiEstimate(p.loan, theLvr))} applies (usually added to the loan).` });
   }
@@ -204,6 +254,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     checks,
     maxBorrow: Math.min(sv.byService, sv.byDti),
     usesScheme,
+    lmiWaived,
     rate,
     assessmentRate: sv.assessmentRate,
     monthlyRepayment: repayment(p.loan, rate, 30),

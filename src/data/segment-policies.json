@@ -1,0 +1,362 @@
+{
+ "$comment": "Sub-market lending rules, each verified on the lender's own site (or government page) with a source. Brands match src/data/market.json. Used by src/engine/segments.ts. Waivers and low-doc options are lender discretion and change often: present them as 'may qualify'.",
+ "lmiWaivers": [
+  {
+   "brand": "Westpac",
+   "professions": [
+    "doctor",
+    "specialist",
+    "dentist"
+   ],
+   "maxLvr": 95,
+   "minIncome": null,
+   "conditions": "Covers GPs, dentists, specialists and hospital doctors from intern level; qualifications are verified; loans up to $5m.",
+   "sources": [
+    {
+     "url": "https://www.westpac.com.au/home-loans/healthcare-lmi",
+     "retrieved": "2026-10-27",
+     "quote": "No minimum income needed for these professions, with a maximum LVR of 95%"
+    },
+    {
+     "url": "https://www.westpac.com.au/content/dam/public/brokers/documents/other-resources/Broker_Niche_Booklet.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Max loan amount $5m ($7.5m total lending with LMI waiver). We will verify professional qualifications as part of their application."
+    }
+   ]
+  },
+  {
+   "brand": "Westpac",
+   "professions": [
+    "nurse",
+    "midwife",
+    "pharmacist",
+    "physio",
+    "optometrist",
+    "psychologist",
+    "vet",
+    "allied_health"
+   ],
+   "maxLvr": 90,
+   "minIncome": 90000,
+   "conditions": "Needs income of $90k or more (casual income annualised).",
+   "sources": [
+    {
+     "url": "https://www.westpac.com.au/home-loans/healthcare-lmi",
+     "retrieved": "2026-10-27",
+     "quote": "You can apply if you're a registered nurse or midwife earning over $90k annually."
+    }
+   ]
+  },
+  {
+   "brand": "Westpac",
+   "professions": [
+    "lawyer",
+    "accountant"
+   ],
+   "maxLvr": 90,
+   "minIncome": null,
+   "conditions": "Approved industry accreditation and income criteria apply.",
+   "sources": [
+    {
+     "url": "https://westpac.com.au/brokers/policy",
+     "retrieved": "2026-10-27",
+     "quote": "Your clients could borrow up to 90% LVR with no LMI if they meet the approved industry accreditation"
+    }
+   ]
+  },
+  {
+   "brand": "St.George Bank",
+   "professions": [
+    "doctor",
+    "specialist",
+    "dentist"
+   ],
+   "maxLvr": 95,
+   "minIncome": null,
+   "conditions": "Covers GPs, dentists, specialists and hospital doctors from intern level; qualifications are verified; loans up to $5m.",
+   "sources": [
+    {
+     "url": "https://www.stgeorge.com.au/broker/policy",
+     "retrieved": "2026-10-27",
+     "quote": "eligible for our 95% LVR+ LMI waiver with no minimum income requirement"
+    },
+    {
+     "url": "https://www.westpac.com.au/content/dam/public/brokers/documents/other-resources/Broker_Niche_Booklet.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Max loan amount $5m ($7.5m total lending with LMI waiver). We will verify professional qualifications as part of their application."
+    }
+   ]
+  },
+  {
+   "brand": "St.George Bank",
+   "professions": [
+    "nurse",
+    "midwife",
+    "pharmacist",
+    "physio",
+    "optometrist",
+    "psychologist",
+    "vet",
+    "allied_health"
+   ],
+   "maxLvr": 90,
+   "minIncome": 90000,
+   "conditions": "Needs income of $90k or more (casual income annualised).",
+   "sources": [
+    {
+     "url": "https://www.stgeorge.com.au/personal/home-loans/profession-home-loans",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "brand": "St.George Bank",
+   "professions": [
+    "lawyer",
+    "accountant"
+   ],
+   "maxLvr": 90,
+   "minIncome": null,
+   "conditions": "Approved industry accreditation and income criteria apply.",
+   "sources": [
+    {
+     "url": "https://westpac.com.au/brokers/policy",
+     "retrieved": "2026-10-27",
+     "quote": "Your clients could borrow up to 90% LVR with no LMI if they meet the approved industry accreditation"
+    }
+   ]
+  },
+  {
+   "brand": "ANZ",
+   "professions": [
+    "doctor",
+    "specialist",
+    "dentist"
+   ],
+   "maxLvr": 95,
+   "minIncome": null,
+   "conditions": "Needs AHPRA General or Specialist registration (not provisional or limited); loan up to $4.75m; equal or majority share of the property.",
+   "sources": [
+    {
+     "url": "https://www.anz.com.au/content/dam/anzcomau/documents/pdf/lmi-waiver-medical-and-dental-practitioners-and-specialists.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "has a loan to value ratio (LVR) of up to 95%"
+    },
+    {
+     "url": "https://www.anz.com.au/content/dam/anzcomau/documents/pdf/lmi-waiver-medical-and-dental-practitioners-and-specialists.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "They are not eligible for this waiver if they have Provisional registration, Limited registration or Non-practising registration"
+    }
+   ]
+  },
+  {
+   "brand": "ANZ",
+   "professions": [
+    "optometrist",
+    "physio",
+    "vet"
+   ],
+   "maxLvr": 90,
+   "minIncome": null,
+   "conditions": "Also chiropractors; AHPRA General registration (or state vet board); loan up to $4.5m.",
+   "sources": [
+    {
+     "url": "https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-optometrist-physio-chiro-vet.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "(LVR) of up to 90%... – with no minimum income required"
+    }
+   ]
+  },
+  {
+   "brand": "ANZ",
+   "professions": [
+    "accountant",
+    "actuary"
+   ],
+   "maxLvr": 90,
+   "minIncome": null,
+   "conditions": "Current CA ANZ, CPA, CFA Institute or FIAA membership; loan up to $4.5m.",
+   "sources": [
+    {
+     "url": "https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-accountants.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "(LVR) of up to 90%... with no minimum income required"
+    }
+   ]
+  },
+  {
+   "brand": "ANZ",
+   "professions": [
+    "lawyer"
+   ],
+   "maxLvr": 90,
+   "minIncome": null,
+   "conditions": "Current practising certificate from a state or territory regulator; loan up to $4.5m.",
+   "sources": [
+    {
+     "url": "https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-legal.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "they are a lawyer, solicitor, barrister, judge or magistrate and have a current practicing certificate"
+    }
+   ]
+  },
+  {
+   "brand": "BOQ Specialist",
+   "professions": [
+    "doctor",
+    "specialist",
+    "dentist",
+    "vet",
+    "accountant"
+   ],
+   "maxLvr": 90,
+   "minIncome": null,
+   "conditions": "BOQ Specialist banking package; up to 100% in some circumstances.",
+   "sources": [
+    {
+     "url": "https://www.boqspecialist.com.au/personal-banking/home-loans/",
+     "retrieved": "2026-10-27",
+     "quote": "You may be able to borrow up to 90% of your property's value and avoid paying lenders mortgage insurance (LMI)."
+    }
+   ]
+  },
+  {
+   "brand": "CommBank",
+   "professions": [
+    "doctor",
+    "specialist",
+    "lawyer",
+    "accountant"
+   ],
+   "maxLvr": 90,
+   "minIncome": null,
+   "conditions": "CommBank confirms whether your profession is eligible case by case.",
+   "sources": [
+    {
+     "url": "https://www.commbank.com.au/home-loans/low-deposit-home-loan-options.html",
+     "retrieved": "2026-10-27",
+     "quote": "Are you a doctor, lawyer or accountant? Speak to a Home Lending Specialist to check if your profession is eligible for a LMI waiver with a deposit of as little as 10%."
+    }
+   ]
+  }
+ ],
+ "altDoc": [
+  {
+   "brand": "Liberty Financial",
+   "minAbnMonths": null,
+   "maxLvr": 85,
+   "rateLoading": null,
+   "evidence": "bank statements, BAS or an accountant’s declaration instead of tax returns",
+   "sources": [
+    {
+     "url": "https://www.liberty.com.au/home-loans/low-doc-home-loans",
+     "retrieved": "2026-10-27",
+     "quote": "Maximum LVR 85%"
+    }
+   ]
+  }
+ ],
+ "expat": [
+  {
+   "brand": "Macquarie Bank Limited",
+   "acceptsNonResidents": false,
+   "foreignIncome": [
+    {
+     "currencies": [
+      "GBP",
+      "EUR",
+      "HKD",
+      "NZD",
+      "SGD",
+      "USD",
+      "CAD",
+      "JPY"
+     ],
+     "shading": 0.8,
+     "maxLvr": null
+    }
+   ],
+   "conditions": "Foreign PAYG income only; applicants need an Australian residential address.",
+   "sources": [
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "only 80% of the amount after conversion at current exchange rates is to be used for loan servicing"
+    },
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Current/valid Australian residential address NOT held ... Outside guidelines."
+    }
+   ]
+  },
+  {
+   "brand": "AMP - My AMP",
+   "acceptsNonResidents": false,
+   "foreignIncome": [
+    {
+     "currencies": [
+      "CAD",
+      "EUR",
+      "GBP",
+      "HKD",
+      "JPY",
+      "NZD",
+      "SGD",
+      "USD"
+     ],
+     "shading": 0.8,
+     "maxLvr": 70
+    },
+    {
+     "currencies": [
+      "CNY"
+     ],
+     "shading": 0.5,
+     "maxLvr": 50
+    }
+   ],
+   "conditions": "Foreign self-employed income isn’t accepted; new customers must live and work in Australia.",
+   "sources": [
+    {
+     "url": "https://distributor.amp.com.au/policies",
+     "retrieved": "2026-10-27",
+     "quote": "Maximum 70% LVR for Tier 1 currencies / Maximum 50% LVR for Tier 2 currencies"
+    }
+   ]
+  },
+  {
+   "brand": "NATIONAL AUSTRALIA BANK",
+   "acceptsNonResidents": false,
+   "sources": [
+    {
+     "url": "https://www.nab.com.au/personal/home-loans/nab-variable-rate-offset-home-loan",
+     "retrieved": "2026-10-27",
+     "quote": "NAB's Home loan products are not available to applicants who reside overseas (regardless of citizenship)"
+    }
+   ]
+  },
+  {
+   "brand": "Westpac",
+   "acceptsNonResidents": false,
+   "sources": [
+    {
+     "url": "https://westpac.com.au/brokers/policy",
+     "retrieved": "2026-10-27",
+     "quote": "residential lending is not available for Non-Australian resident borrowers"
+    }
+   ]
+  },
+  {
+   "brand": "St.George Bank",
+   "acceptsNonResidents": false,
+   "sources": [
+    {
+     "url": "https://www.stgeorge.com.au/broker/policy",
+     "retrieved": "2026-10-27",
+     "quote": "residential lending is not available for Non-Australian resident borrowers"
+    }
+   ]
+  }
+ ]
+}
