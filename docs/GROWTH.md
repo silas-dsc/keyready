@@ -2,20 +2,18 @@
 
 ## 1. Which sub-markets, and why
 
-The broker pays roughly **$3,500 per settled referral**. Brokers wrote a record **81.6%** of new home loans in the June 2026 quarter ([MFAA](https://www.mfaa.com.au/news/mortgage-broker-market-share-reaches-record-81-6)), so dependence on brokers is high everywhere. What separates segments is **rule complexity** (where a pre-check adds real value), **loan size**, and **how cheaply we can reach people**.
+Brokers wrote a record **81.6%** of new home loans in the June 2026 quarter ([MFAA](https://www.mfaa.com.au/news/mortgage-broker-market-share-reaches-record-81-6)), so dependence on brokers is high everywhere. What separates segments is **rule complexity** (where a pre-check adds real value), **loan size**, and **how cheaply we can reach people**.
 
-Year-1 base case for a solo operator: referrals × settlement rate × $3,500 − paid acquisition. Referral counts and settlement rates are estimates.
+Referral fee, revenue estimates and settlement-rate assumptions are kept in the private growth plan shared with the broker, not in this public repo.
 
-| Rank | Segment | Site | Referrals/yr | Settle % | Net |
-|---|---|---|---|---|---|
-| 1 | Doctors and dentists (LMI waiver to 95%) | **LMI Waiver Check** (`professionals`) | 120 | 40% | ~$158k |
-| 2 | Nurses, midwives, allied health ($90k waiver) | **Nurse Home Loan Check** (`nurses`) | 200 | 18% | ~$121k* |
-| 3 | Self-employed, tradies, ABN holders | **Low Doc Check** (`self-employed`) | 150 | 20% | ~$90k |
-| 4 | Australian expats / foreign income | **Expat Loan Check** (`expats`) | 100 | 25% | ~$80k |
-| 5 | Lawyers, accountants, actuaries (90% waivers) | folded into LMI Waiver Check | 60 | 35% | ~$68k |
-| hub | First home buyers and everyone else | **KeyReady** (`core`) | — | — | duty & scheme content |
-
-\* Nurse loans are around the average loan size or smaller. A flat $3,500 is likely more than a broker would pay on them; at a realistic fee nurses net about $40–55k.
+| Rank | Segment | Site |
+|---|---|---|
+| 1 | Doctors and dentists (LMI waiver to 95%) | **LMI Waiver Check** (`professionals`) |
+| 2 | Nurses, midwives, allied health ($90k-income waiver) | **Nurse Home Loan Check** (`nurses`) |
+| 3 | Self-employed, tradies, ABN holders | **Low Doc Check** (`self-employed`) |
+| 4 | Australian expats / foreign income | **Expat Loan Check** (`expats`) |
+| 5 | Lawyers, accountants, actuaries (90% waivers) | folded into LMI Waiver Check |
+| hub | First home buyers and everyone else | **KeyReady** (`core`): duty & scheme content |
 
 **Deprioritised:**
 - **ADF / DHOAS:** only three approved DHOAS lenders ([DHOAS fact sheet](https://www.dhoas.gov.au/files/fas03_dhoas_fact_sheet_october_2026.pdf)), and only one of them works through brokers.
@@ -23,7 +21,7 @@ Year-1 base case for a solo operator: referrals × settlement rate × $3,500 −
 - **Credit-impaired, retirees, separating buyers:** vulnerable-consumer risk.
 - **Generic first home buyers:** saturated, and the MFAA now runs a free readiness check of its own ([Broker News](https://www.brokernews.com.au/news/breaking-news/mfaa-launches-2026-consumer-push-to-funnel-more-borrowers-to-brokers-289029.aspx)).
 
-**Fee realism:** brokers settled 838,815 loans worth $495.55bn in 2025, an average of about $591k ([Broker News on the MFAA report](https://www.brokernews.com.au/news/breaking-news/mfaa-report-lifts-the-lid-on-broking-broker-income-commercial-clawbacks-and-more-290064.aspx)). At typical upfront commission of 0.50–0.65%, that's about $2,950–3,840. So $3,500 is roughly the broker's whole upfront commission on an average loan. It's realistic for doctors, expats and investors, and doubtful for smaller loans. Agree a tiered fee with Goodlend (for example by loan size), and record `settled_amount` in the dashboard so the economics are visible.
+Record `settled_amount` on each lead in the broker dashboard so the economics are visible by site.
 
 ## 2. Compliance — read before launch
 
