@@ -102,6 +102,13 @@ describe('WA', () => {
   });
 });
 
+describe('ACT', () => {
+  it('owner-occupier and investor $580,000 (official calculator, retrieved 2026-10-27)', () => {
+    expect(duty(owner('ACT', 580_000))).toBe(11_864);
+    expect(duty(mk('ACT', 580_000))).toBe(14_856);
+  });
+});
+
 describe('SA', () => {
   it('general rates (official examples)', () => {
     expect(duty(mk('SA', 600_000))).toBe(26_830);
@@ -143,10 +150,12 @@ describe('ACT', () => {
 });
 
 describe('NT', () => {
-  it('formula and flat rates', () => {
-    expect(duty(mk('NT', 300_000))).toBe(10_414.3);
+  it('formula and flat rates, rounded down to 5 cents (official calculator, retrieved 2026-10-27)', () => {
+    expect(duty(mk('NT', 300_000))).toBe(10_414.25);
     expect(duty(mk('NT', 500_000))).toBe(23_928.6);
+    expect(duty(mk('NT', 525_050))).toBe(25_989.95);
     expect(duty(mk('NT', 650_000))).toBe(32_175);
+    expect(duty(mk('NT', 3_000_000))).toBe(172_500);
   });
   it('house and land package exemption', () => {
     expect(duty(owner('NT', 650_000))).toBe(32_175);

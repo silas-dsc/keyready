@@ -153,12 +153,15 @@ function actDuty(v: number, ownerOccupier: boolean) {
 }
 
 // ── NT ───────────────────────────────────────────────────────────────────────
+/** Rounded down to the nearest 5 cents, as the Territory Revenue Office calculator does
+ *  ($300,000 → $10,414.25; $525,050 → $25,989.95; retrieved 2026-10-27). */
+const down5c = (n: number) => Math.floor(n * 20 + 1e-9) / 20;
 function ntGeneral(v: number) {
   if (v <= 525_000) {
     const V = v / 1000;
-    return cents(0.06571441 * V * V + 15 * V);
+    return down5c(0.06571441 * V * V + 15 * V);
   }
-  return cents(v * (v < 3_000_000 ? 0.0495 : v < 5_000_000 ? 0.0575 : 0.0595));
+  return down5c(v * (v < 3_000_000 ? 0.0495 : v < 5_000_000 ? 0.0575 : 0.0595));
 }
 
 // ── Grants & surcharges ─────────────────────────────────────────────────────
