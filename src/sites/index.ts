@@ -11,10 +11,11 @@ export const SITES: Record<string, SiteConfig> = { core, professionals, nurses, 
 /** The site this bundle was built for (VITE_SITE, default 'core'). */
 export const SITE: SiteConfig = SITES[(import.meta.env.VITE_SITE as string | undefined) ?? 'core'] ?? core;
 
-export const GITHUB_PAGES_ORIGIN = 'https://silas-dsc.github.io/keyready';
+/** Where the GitHub Pages deploy is served: keyready.au (custom domain on the Pages site). */
+export const PAGES_ORIGIN = 'https://keyready.au';
 
-/** Public URL of a site: its own domain when it has one, otherwise its GitHub Pages sub-path. */
+/** Public URL of a site: its own domain when it has one, otherwise its path on the Pages deploy. */
 export function siteUrl(s: SiteConfig): string {
   if (s.domain) return `https://${s.domain}`;
-  return s.id === 'core' ? GITHUB_PAGES_ORIGIN : `${GITHUB_PAGES_ORIGIN}/${s.id}`;
+  return s.id === 'core' ? PAGES_ORIGIN : `${PAGES_ORIGIN}/${s.id}`;
 }

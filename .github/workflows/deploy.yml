@@ -31,7 +31,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
-      # Builds every site in src/sites/ (hub at /keyready/, sub-sites at /keyready/<id>/) from the shared engine.
+      # Builds every site in src/sites/ (hub at keyready.au/, sub-sites at keyready.au/<id>/) from the shared engine.
       - run: npm run build
         env:
           VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}

@@ -59,7 +59,7 @@ broker ──magic link──► #/broker dashboard ──set_lead_status()─�
    insert into public.brokers (email, name, business_name, acl_number, is_default)
    values ('<broker email>', 'Trevor', 'Goodlend Mortgage Brokers', 'CR 556461 of Connective Credit Services (ACL 389328)', true);
    ```
-9. **Broker sign-in.** The broker opens `https://silas-dsc.github.io/keyready/#/broker` and requests a sign-in link with that email. The first sign-in links their account (`claim_broker()`). From then on, each lead has outcome buttons (new → contacted → application → approved → settled / lost), and the conversion-by-site table is the proof-of-concept scoreboard.
+9. **Broker sign-in.** The broker opens `https://keyready.au/#/broker` and requests a sign-in link with that email. The first sign-in links their account (`claim_broker()`). From then on, each lead has outcome buttons (new → contacted → application → approved → settled / lost), and the conversion-by-site table is the proof-of-concept scoreboard.
 
 ## Test it
 
