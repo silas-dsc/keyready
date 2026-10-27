@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { fixActions } from './actions';
-import { SCHEME_CAPS, depositScheme, hecsRepayment, incomeTax, lvr, principalFor, repayment, upfrontCosts } from './finance';
+import { SCHEME_CAPS, depositScheme, hecsRepayment, incomeTax, lmiEstimate, lvr, principalFor, repayment, upfrontCosts } from './finance';
 import { ILLUSTRATIVE_LENDERS } from './lenders';
 import { assess as assessWith } from './match';
 import { emptyProfile, newApplicant, sampleProfile } from './profile';
@@ -29,6 +29,12 @@ describe('finance', () => {
     expect(SCHEME_CAPS.NT).toEqual([750_000, 600_000]);
     expect(SCHEME_CAPS.NSW).toEqual([1_500_000, 800_000]);
     expect(SCHEME_CAPS.ACT).toEqual([1_000_000, 1_000_000]);
+  });
+
+  it('estimates LMI within 1% of Helia for $500k (Helia LMI fee estimator, retrieved 2026-10-27)', () => {
+    expect(lmiEstimate(500_000, 80)).toBe(0);
+    for (const [lvr, helia] of [[85, 5_218.18], [90, 9_131.82], [95, 14_769.32]])
+      expect(Math.abs(lmiEstimate(500_000, lvr) / helia - 1)).toBeLessThan(0.01);
   });
 
   it('round-trips repayment and principal', () => {
