@@ -160,6 +160,9 @@
    "set": {
     "residency": {
      "temporary_visa": null
+    },
+    "minTenure": {
+     "self_employed": 24
     }
    },
    "sources": [
@@ -167,6 +170,11 @@
      "url": "https://www.nab.com.au/personal/home-loans/nab-variable-rate-offset-home-loan",
      "retrieved": "2026-10-27",
      "quote": "and/or for applicants who require Foreign Investment Review Board (FIRB) approval"
+    },
+    {
+     "url": "https://www.nab.com.au/personal/home-loans/self-employed-home-loan",
+     "retrieved": "2026-10-27",
+     "quote": "Personal tax returns for the past two years"
     }
    ]
   },

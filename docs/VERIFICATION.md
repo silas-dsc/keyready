@@ -39,7 +39,7 @@ Open Banking gives rates, maximum LVR and residency only. Everything else in `KI
 |---|---|---|---|
 | C1 | ⚠️ | CommBank | Min time in job (full-time, casual), self-employed history (ABN years / tax returns), temporary visa lending & max LVR, % of overtime/bonus counted |
 | C2 | 🔧 | Westpac | same |
-| C3 | ⬜ | NATIONAL AUSTRALIA BANK | same |
+| C3 | ⚠️ | NATIONAL AUSTRALIA BANK | same |
 | C4 | 🔧 | ANZ | same |
 | C5 | 🔧 | Macquarie Bank Limited | same + maximum LVR for apartments |
 | C6 | 🔧 | ING BANK (Australia) Ltd | same |
@@ -88,3 +88,5 @@ Open Banking gives rates, maximum LVR and residency only. Everything else in `KI
 | 2026-10-27 | C8 | ✅ | https://www.greatsouthernbank.com.au/home-loans/refinance/are-you-eligible-to-refinance-your-home-loan | Citizen or PR only, matches the model; sourced. Simplified self-employed policy (2 yrs trading, ≤80% LVR) matches the 24-month default. Casual rules not published. |
 | 2026-10-27 | C9 | 🔧 | https://www.liberty.com.au/home-loans/credit-history | Paid and unpaid defaults and past bankruptcy considered, max LVR 95%; Liberty says there's no minimum credit score → `minCreditScore: 0`. Bankruptcy discharge period not published (kept specialist default of 2 years). |
 | 2026-10-27 | C10 | 🔧 | https://www.ubank.com.au/help/current/home-loans/hl-eligibility/who-can-apply-for-a-home-loan | "we don't lend to self-employed individuals" → `self_employed: null`. Citizen/NZ/PR only → `awaiting_pr` null. |
+| 2026-10-27 | C3 | ⚠️ | https://www.nab.com.au/personal/home-loans/self-employed-home-loan | Two years of personal and business returns → `self_employed: 24` sourced. NAB also says it may accept one year of financials at ≤80% LVR; the engine has one tenure figure per lender, so that exception isn't modelled. Temporary visa exclusion already sourced. Tenure/overtime not published. |
+| 2026-10-27 | Domains | ✅ | whois.auda.org.au | lmiwaivercheck.com.au, nursehomeloan.com.au, lowdoccheck.com.au, expatloancheck.com.au, keyready.au: all "Domain not found" at the .au registry WHOIS (unregistered). Not reserved — register soon. |
