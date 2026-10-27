@@ -374,7 +374,7 @@ function LenderRow({ r }: { r: LenderResult }) {
                 </li>
               ))}
               <li className="pt-2 text-xs text-muted">
-                {r.lender.source === 'open-banking' ? `Live rate ${r.rate.toFixed(2)}% at your LVR (Open Banking, ${DATA_DATE})` : `Modelled rate ${r.rate.toFixed(2)}%`} · assessed at {r.assessmentRate.toFixed(2)}% · serviceable up to {fmtMoney(r.maxBorrow)}
+                {r.lender.source === 'open-banking' ? `Live rate ${r.rate.toFixed(2)}% at your LVR (Open Banking, ${DATA_DATE})` : r.lender.source === 'published' ? `Published rate ${r.rate.toFixed(2)}% at your LVR (lender's rate sheet)` : `Modelled rate ${r.rate.toFixed(2)}%`} · assessed at {r.assessmentRate.toFixed(2)}% · serviceable up to {fmtMoney(r.maxBorrow)}
                 {r.lender.policySources ? ` · some rules confirmed from the lender’s website (${r.lender.policySources[0].retrieved})` : ''}
               </li>
             </ul>

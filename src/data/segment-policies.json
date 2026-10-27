@@ -61,6 +61,11 @@
      "url": "https://westpac.com.au/brokers/policy",
      "retrieved": "2026-10-27",
      "quote": "Your clients could borrow up to 90% LVR with no LMI if they meet the approved industry accreditation"
+    },
+    {
+     "url": "https://www.westpac.com.au/content/dam/public/brokers/documents/other-resources/Broker_Niche_Booklet.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Your clients could borrow up to 90% LVR+ with no LMI if they meet the approved industry accreditation, eligibility and income requirements. Industries include: Accounting, Legal"
     }
    ]
   },
@@ -105,7 +110,13 @@
    "sources": [
     {
      "url": "https://www.stgeorge.com.au/personal/home-loans/profession-home-loans",
-     "retrieved": "2026-10-27"
+     "retrieved": "2026-10-27",
+     "quote": "must have a minimum income of $90k per year"
+    },
+    {
+     "url": "https://www.stgeorge.com.au/personal/home-loans/profession-home-loans",
+     "retrieved": "2026-10-27",
+     "quote": "This includes self-employed or casual professionals in these fields."
     }
    ]
   },
@@ -197,6 +208,11 @@
      "url": "https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-legal.pdf",
      "retrieved": "2026-10-27",
      "quote": "they are a lawyer, solicitor, barrister, judge or magistrate and have a current practicing certificate"
+    },
+    {
+     "url": "https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-legal.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "has a loan to value ratio (LVR) of up to 90% (as assessed by ANZ), the premium is waived"
     }
    ]
   },
@@ -252,6 +268,34 @@
      "url": "https://www.liberty.com.au/home-loans/low-doc-home-loans",
      "retrieved": "2026-10-27",
      "quote": "Maximum LVR 85%"
+    }
+   ]
+  },
+  {
+   "brand": "Firstmac",
+   "minAbnMonths": null,
+   "maxLvr": 80,
+   "rateLoading": 0.4,
+   "evidence": "alternative income documents instead of tax returns",
+   "sources": [
+    {
+     "url": "https://www.firstmac.com.au/accreditation/products-and-rates",
+     "retrieved": "2026-10-27",
+     "quote": "Alt Doc 80 7.09% p.a. 80% (Rates as of 22nd October 2026.)"
+    }
+   ]
+  },
+  {
+   "brand": "La Trobe Financial",
+   "minAbnMonths": null,
+   "maxLvr": 80,
+   "rateLoading": 0.2,
+   "evidence": "accountant's letter, trading statements or BAS",
+   "sources": [
+    {
+     "url": "https://www.latrobefinancial.com.au/lending/self-employed-loan/",
+     "retrieved": "2026-10-27",
+     "quote": "Maximum LVR: 80% … Verification Required: Accountant's letter or Trading Statements or BAS … Current Rate^: 6.99%"
     }
    ]
   }
@@ -355,6 +399,58 @@
      "url": "https://www.stgeorge.com.au/broker/policy",
      "retrieved": "2026-10-27",
      "quote": "residential lending is not available for Non-Australian resident borrowers"
+    }
+   ]
+  },
+  {
+   "brand": "La Trobe Financial",
+   "acceptsNonResidents": true,
+   "conditions": "Expatriate Loan for Australian citizens working or living abroad: up to 80% LVR ($5m), fully verified income only, current rate 7.49%.",
+   "sources": [
+    {
+     "url": "https://www.latrobefinancial.com.au/lending/international-borrower-loan/",
+     "retrieved": "2026-10-27",
+     "quote": "A loan for Australian citizens working or living abroad"
+    },
+    {
+     "url": "https://www.latrobefinancial.com.au/lending/international-borrower-loan/",
+     "retrieved": "2026-10-27",
+     "quote": "Maximum LVR: 80%"
+    }
+   ]
+  },
+  {
+   "brand": "Firstmac",
+   "acceptsNonResidents": true,
+   "conditions": "Ex-Pat Variable is an investor loan for non-residents: 7.98% P&I, up to 80% LVR.",
+   "sources": [
+    {
+     "url": "https://www.firstmac.com.au/accreditation/products-and-rates",
+     "retrieved": "2026-10-27",
+     "quote": "Ex-Pat Variable# 7.98% p.a. … 80% … #Ex-Pat only available for Non-resident"
+    }
+   ]
+  }
+ ],
+ "incomeShading": [
+  {
+   "brand": "Westpac",
+   "professions": [
+    "nurse",
+    "midwife",
+    "doctor",
+    "specialist"
+   ],
+   "shading": {
+    "overtime": 1,
+    "allowances": 1
+   },
+   "conditions": "Hospital-employed nurses, midwives, doctors, surgeons and specialists (Emergency Services Policy; conditions apply).",
+   "sources": [
+    {
+     "url": "https://www.westpac.com.au/content/dam/public/brokers/documents/other-resources/Broker_Niche_Booklet.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Eligible Emergency Services front-line employed applicants could have their overtime and allowances assessed at 100% (conditions apply)."
     }
    ]
   }

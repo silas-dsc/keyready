@@ -98,3 +98,17 @@ describe('expats and foreign income', () => {
     expect(usd).toBeLessThan(aud * 0.9);
   });
 });
+
+describe('profession income shading (Westpac broker niche booklet, retrieved 2026-10-27)', () => {
+  const nurse = (profession: Profile['profession']) => {
+    const p = buyer({ profession, loan: 720_000 }, 80_000);
+    p.applicants[0].overtime = 30_000;
+    return p;
+  };
+  it("counts a nurse's overtime in full at Westpac only", () => {
+    const wbc = (prof: Profile['profession']) => evaluate(nurse(prof), lender('Westpac')).maxBorrow;
+    expect(wbc('nurse')).toBeGreaterThan(wbc('other'));
+    const anz = (prof: Profile['profession']) => evaluate(nurse(prof), lender('ANZ')).maxBorrow;
+    expect(anz('nurse')).toBe(anz('other'));
+  });
+});

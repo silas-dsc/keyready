@@ -4,7 +4,7 @@ import {
 } from './finance';
 import { MARKET_LENDERS, productRate } from './market';
 import { PROFESSION_NAME, usesAltDoc } from './segment-labels';
-import { altDocFor, expatPolicyFor, foreignIncomeTier, lmiWaiverFor } from './segments';
+import { altDocFor, expatPolicyFor, foreignIncomeTier, lmiWaiverFor, shadingFor } from './segments';
 import type { Check, Employment, LenderPolicy, LenderResult, MatchStatus, Profile, Residency } from './types';
 
 export const EMPLOYMENT_LABEL: Record<Employment, string> = {
@@ -38,8 +38,10 @@ function earners(p: Profile) {
 export function serviceability(p: Profile, L: LenderPolicy): Serviceability {
   let netAnnual = 0;
   p.applicants.forEach((a, i) => {
-    let g = a.baseIncome + a.overtime * L.shading.overtime + a.allowances * L.shading.allowances +
-      a.bonus * L.shading.bonus + a.commission * L.shading.commission;
+    // Profession rules (e.g. hospital nurses' overtime at 100%) apply to the main borrower.
+    const s = i === 0 ? shadingFor(p, L) : L.shading;
+    let g = a.baseIncome + a.overtime * s.overtime + a.allowances * s.allowances +
+      a.bonus * s.bonus + a.commission * s.commission;
     // Foreign-currency income is haircut (currency risk); lenders that don't publish a rate get 80%.
     if (i === 0 && p.incomeCurrency !== 'AUD') g *= foreignIncomeTier(p, L)?.shading ?? 0.8;
     if (i === 0) g += p.rentalIncome * L.shading.rental;
