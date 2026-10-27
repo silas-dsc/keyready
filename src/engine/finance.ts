@@ -144,10 +144,15 @@ export function depositScheme(p: Profile): SchemeCheck {
   return { eligible: reasons.length === 0, variant, cap, minDepositPct: variant === 'family' ? 2 : 5, reasons };
 }
 
-/** Indicative Lenders Mortgage Insurance premium. */
+/**
+ * Indicative Lenders Mortgage Insurance premium (incl. GST, excl. stamp duty). Rates match Helia's
+ * LMI fee estimator for a $500k owner-occupier loan over 30 years, not a first home buyer
+ * (helia.com.au/the-hub/calculators-estimators/lmi-fee-estimator, retrieved 2026-10-27).
+ * Real premiums also rise with loan size and vary by insurer.
+ */
 export function lmiEstimate(loan: number, lvrPct: number): number {
   if (lvrPct <= 80) return 0;
-  const rate = lvrPct <= 85 ? 0.009 : lvrPct <= 90 ? 0.019 : 0.034;
+  const rate = lvrPct <= 85 ? 0.0104 : lvrPct <= 90 ? 0.0183 : 0.0295;
   return Math.round(loan * rate);
 }
 
