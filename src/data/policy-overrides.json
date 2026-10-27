@@ -1,4 +1,120 @@
 {
-  "$comment": "Lender credit-policy facts that Open Banking doesn't publish, verified by hand from each lender's own public website. Keyed by brand exactly as in market.json. `set` takes any LenderPolicy fields (objects are merged); every entry needs at least one source. See .claude/skills/verify-data/SKILL.md.",
-  "lenders": {}
+ "$comment": "Lender credit-policy facts that Open Banking doesn't publish, verified by hand from each lender's own public website. Keyed by brand exactly as in market.json. `set` takes any LenderPolicy fields (objects are merged); every entry needs at least one source. See .claude/skills/verify-data/SKILL.md.",
+ "lenders": {
+  "Westpac": {
+   "set": {
+    "minTenure": {
+     "self_employed": 24
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.westpac.com.au/home-loans/self-employed/how-to-apply",
+     "retrieved": "2026-10-27",
+     "quote": "in most cases you need to have had your ABN for at least two years"
+    }
+   ]
+  },
+  "ANZ": {
+   "set": {
+    "minTenure": {
+     "self_employed": 18
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.anz.com.au/personal/home-loans/buying-home/home-loans-business-owners/",
+     "retrieved": "2026-10-27",
+     "quote": "A valid ABN/ACN which has been registered for 18 months."
+    }
+   ]
+  },
+  "Bankwest": {
+   "set": {
+    "minTenure": {
+     "self_employed": 18
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.bankwest.com.au/content/dam/bankwest/documents/legal-library/PDS_BWE-8017.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Minimum ABN/ACN registration requirement is 18 months ≤80% LVR."
+    }
+   ]
+  },
+  "Macquarie Bank Limited": {
+   "set": {
+    "minTenure": {
+     "self_employed": 24,
+     "contractor": 6
+    },
+    "residency": {
+     "temporary_visa": null,
+     "awaiting_pr": null
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Self-employed - at least 2 years trading in the current business."
+    },
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "contract employment – minimum 6 months in current employment"
+    },
+    {
+     "url": "https://www.macquarie.com.au/assets/bfs/documents/broker/mortgages/macquarie_broker-credit-guidelines.pdf",
+     "retrieved": "2026-10-27",
+     "quote": "Non-Australian citizen/non-permanent resident (i.e. temporary resident or temporary visa holder) Outside guidelines."
+    }
+   ]
+  },
+  "AMP - My AMP": {
+   "set": {
+    "minTenure": {
+     "self_employed": 24,
+     "contractor": 6
+    },
+    "residency": {
+     "temporary_visa": null,
+     "awaiting_pr": null,
+     "other": null
+    }
+   },
+   "sources": [
+    {
+     "url": "https://distributor.amp.com.au/policies",
+     "retrieved": "2026-10-27",
+     "quote": "Minimum self-employed period 2 years."
+    },
+    {
+     "url": "https://distributor.amp.com.au/policies",
+     "retrieved": "2026-10-27",
+     "quote": "PAYG contractors must demonstrate employment stability of a minimum of 6 months with current employer."
+    },
+    {
+     "url": "https://distributor.amp.com.au/policies",
+     "retrieved": "2026-10-27",
+     "quote": "Permanent residents or citizens of Australia or New Zealand"
+    }
+   ]
+  },
+  "NATIONAL AUSTRALIA BANK": {
+   "set": {
+    "residency": {
+     "temporary_visa": null
+    }
+   },
+   "sources": [
+    {
+     "url": "https://www.nab.com.au/personal/home-loans/nab-variable-rate-offset-home-loan",
+     "retrieved": "2026-10-27",
+     "quote": "and/or for applicants who require Foreign Investment Review Board (FIRB) approval"
+    }
+   ]
+  }
+ }
 }

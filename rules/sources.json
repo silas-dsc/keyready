@@ -1,0 +1,33 @@
+{
+  "$comment": "Every official source the shared rules engine depends on. scripts/watch-sources.mjs snapshots each 'fetch' page weekly and opens an issue when its text changes; 'manual' pages block bots and are checked with /verify-data. reviewBy flags rules that expire or roll over.",
+  "sources": [
+    { "id": "nsw-duty-rates", "url": "https://www.revenue.nsw.gov.au/_resources/duties-links/current-thresholds-and-rates", "covers": ["src/engine/duty.ts#NSW"], "check": "manual", "note": "Cloudflare-protected", "reviewBy": "2027-06-20" },
+    { "id": "nsw-fhbas", "url": "https://www.nsw.gov.au/housing-and-construction/buying-and-selling-property/home-buying-assistance/first-home-buyers-assistance-scheme", "covers": ["src/engine/duty.ts#nswFirstHome"], "check": "fetch" },
+    { "id": "nsw-fhog", "url": "https://www.revenue.nsw.gov.au/grants-schemes/first-home-owner-new-homes-grant", "covers": ["src/engine/duty.ts#FHOG.NSW"], "check": "manual" },
+    { "id": "vic-duty-general", "url": "https://sro.vic.gov.au/about-us/rates-and-statistics/current-rates/land-transfer-duty-non-principal-place-residence-current-rates", "covers": ["src/engine/duty.ts#vicGeneral"], "check": "fetch" },
+    { "id": "vic-duty-ppr", "url": "https://sro.vic.gov.au/about-us/rates-and-statistics/current-rates/land-transfer-duty-principal-place-residence-current-rates", "covers": ["src/engine/duty.ts#vicPpr"], "check": "fetch" },
+    { "id": "vic-fhb", "url": "https://www.sro.vic.gov.au/buying-property/land-transfer-stamp-duty/concessions-exemptions-and-waivers/first-home-buyers/first-home-buyer-duty-exemption-or-concession", "covers": ["src/engine/duty.ts#vicFirstHome"], "check": "fetch" },
+    { "id": "vic-fhog", "url": "https://sro.vic.gov.au/about-us/rates-and-statistics/current-rates/first-home-owner-grant-current-rates", "covers": ["src/engine/duty.ts#FHOG.VIC"], "check": "fetch" },
+    { "id": "vic-off-the-plan", "url": "https://sro.vic.gov.au/offtheplan", "covers": ["not implemented: VIC off-the-plan concession"], "check": "fetch", "reviewBy": "2027-04-01", "note": "Temporary concession for contracts before 21 Apr 2027" },
+    { "id": "qld-duty-rates", "url": "https://qro.qld.gov.au/duties/transfer-duty/calculate/rates/", "covers": ["src/engine/duty.ts#qldGeneral"], "check": "fetch" },
+    { "id": "qld-concession-rates", "url": "https://qro.qld.gov.au/duties/transfer-duty/calculate/concession-rates/", "covers": ["src/engine/duty.ts#qldHome", "src/engine/duty.ts#qldFirstHome"], "check": "fetch" },
+    { "id": "qld-first-home-new", "url": "https://qro.qld.gov.au/duties/transfer-duty/concessions/homes/first-home-new-home/", "covers": ["src/engine/duty.ts#QLD new home"], "check": "fetch" },
+    { "id": "qld-fhog", "url": "https://qro.qld.gov.au/property-concessions-grants/first-home-grant/eligibility/", "covers": ["src/engine/duty.ts#FHOG.QLD"], "check": "fetch", "reviewBy": "2027-06-01", "note": "$30k amount has no published end date" },
+    { "id": "wa-duty", "url": "https://www.wa.gov.au/organisation/department-of-finance/transfer-duty-assessment", "covers": ["src/engine/duty.ts#waGeneral", "src/engine/duty.ts#waFirstHome"], "check": "fetch" },
+    { "id": "wa-fhog", "url": "https://www.wa.gov.au/government/publications/about-the-first-home-owner-grant", "covers": ["src/engine/duty.ts#FHOG.WA"], "check": "fetch" },
+    { "id": "sa-duty", "url": "https://www.revenuesa.sa.gov.au/stamp-duty-land/rate-of-stamp-duty", "covers": ["src/engine/duty.ts#saGeneral"], "check": "manual", "note": "Bot-blocked" },
+    { "id": "sa-fhb", "url": "https://www.revenuesa.sa.gov.au/stamp-duty-land/first-home-buyer-relief", "covers": ["src/engine/duty.ts#SA FHB"], "check": "manual" },
+    { "id": "sa-fhog", "url": "https://www.revenuesa.sa.gov.au/grants-and-concessions/first-home-owner-grant", "covers": ["src/engine/duty.ts#FHOG.SA"], "check": "manual" },
+    { "id": "tas-duty", "url": "https://www.sro.tas.gov.au/property-transfer-duties/rates-of-duty", "covers": ["src/engine/duty.ts#tasGeneral"], "check": "fetch" },
+    { "id": "tas-fhog", "url": "https://www.sro.tas.gov.au/first-home-owner/eligibility", "covers": ["src/engine/duty.ts#FHOG.TAS"], "check": "fetch", "reviewBy": "2027-06-01", "note": "$20k applies to 2026–27 only" },
+    { "id": "act-duty", "url": "https://www.legislation.act.gov.au/di/2026-155/", "covers": ["src/engine/duty.ts#actDuty"], "check": "fetch", "reviewBy": "2027-06-20", "note": "New determination each 1 July" },
+    { "id": "act-hbcs", "url": "https://www.legislation.act.gov.au/di/2026-157/", "covers": ["src/engine/duty.ts#ACT HBCS"], "check": "fetch", "reviewBy": "2027-06-20" },
+    { "id": "nt-duty", "url": "https://legislation.nt.gov.au/Legislation/STAMP-DUTY-ACT-1978", "covers": ["src/engine/duty.ts#ntGeneral", "NT house & land exemption"], "check": "manual", "reviewBy": "2027-06-01", "note": "House & land exemption ends 30 Jun 2027" },
+    { "id": "nt-fhog", "url": "https://legislation.nt.gov.au/Legislation/FIRST-HOME-OWNER-GRANT-ACT-2000", "covers": ["src/engine/duty.ts#FHOG.NT"], "check": "manual", "reviewBy": "2027-09-01", "note": "$50k HomeGrown grant ends 30 Sep 2027" },
+    { "id": "scheme-lenders", "url": "https://firsthomebuyers.gov.au/australian-government-5-deposit-scheme/australian-government-5-deposit-scheme-participating-lenders", "covers": ["src/data/scheme-lenders.json"], "check": "fetch" },
+    { "id": "scheme-caps", "url": "https://www.housingaustralia.gov.au/support-buy-home/property-price-caps", "covers": ["src/engine/finance.ts#SCHEME_CAPS"], "check": "manual", "note": "Verify exact URL with /verify-data (B1)" },
+    { "id": "ato-tax-rates", "url": "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents", "covers": ["src/engine/finance.ts#incomeTax"], "check": "manual", "note": "ATO returns 403 to automated fetches", "reviewBy": "2027-06-20" },
+    { "id": "ato-help-thresholds", "url": "https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds", "covers": ["src/engine/finance.ts#hecsRepayment"], "check": "manual", "note": "ATO returns 403 to automated fetches", "reviewBy": "2027-06-20" },
+    { "id": "apra-buffer", "url": "https://www.apra.gov.au/news-and-publications", "covers": ["serviceability buffer (3%)", "DTI limits"], "check": "manual", "reviewBy": "2027-02-28", "note": "APRA reviews macroprudential settings quarterly" }
+  ]
+}

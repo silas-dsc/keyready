@@ -8,14 +8,17 @@ import { fixActions, type FixAction } from '../engine/actions';
 import { stampDuty } from '../engine/duty';
 import { deposit, depositScheme, fmtMoney, fmtShortMoney, lmiEstimate, lvr, upfrontCosts } from '../engine/finance';
 import { assess, type Assessment } from '../engine/match';
-import { sampleProfile } from '../engine/profile';
+import { decodeProfile } from '../engine/share';
+import { summarise } from '../engine/summary';
 import type { LenderResult, MatchStatus, Profile } from '../engine/types';
 import { backendMode, submitLead } from '../lib/leads';
 import { DATA_DATE, lenderName } from '../lib/lenderDisplay';
 import { loadSaved, useSavedProfile } from '../lib/store';
+import { SITE } from '../sites';
+import { BROKER, BROKER_DISCLOSURE } from '../sites/broker';
 
 const STATUS: Record<MatchStatus, { label: string; tone: 'go' | 'amber' | 'rose'; color: string }> = {
-  ready: { label: 'Likely yes', tone: 'go', color: '#12805c' },
+  ready: { label: 'Fits', tone: 'go', color: '#12805c' },
   close: { label: 'Close', tone: 'amber', color: '#e2a336' },
   not_yet: { label: 'Not yet', tone: 'rose', color: '#d98c84' },
 };
@@ -25,14 +28,26 @@ export default function Report() {
   const sample = params.has('sample');
   const nav = useNavigate();
   const saved = useSavedProfile();
-  const base = useMemo(() => (sample ? sampleProfile() : saved.profile), [sample, saved.profile]);
+  const base = useMemo(() => (sample ? SITE.sample() : saved.profile), [sample, saved.profile]);
   const [sim, setSim] = useState<Profile>(base);
   const [connectOpen, setConnectOpen] = useState(false);
   useEffect(() => setSim(base), [base]);
 
+  // A report handed over from an AI assistant (MCP): #/report?profile=<encoded answers>.
+  const shared = params.get('profile');
+  const { replace: replaceProfile, complete } = saved;
   useEffect(() => {
+    if (shared) {
+      const p = decodeProfile(shared);
+      if (p) {
+        replaceProfile(p);
+        complete();
+      }
+      nav('/report', { replace: true });
+      return;
+    }
     if (!sample && !loadSaved()?.completed) nav('/check', { replace: true });
-  }, [sample, nav]);
+  }, [sample, shared, nav, replaceProfile, complete]);
 
   const a = useMemo(() => assess(sim), [sim]);
   const original = useMemo(() => assess(base), [base]);
@@ -99,7 +114,7 @@ export default function Report() {
             <div>
               <h2 className="text-2xl font-extrabold sm:text-3xl">Ready to take it to a broker?</h2>
               <p className="mt-2 max-w-xl text-white/75">
-                One licensed broker gets this report and calls you at a time that suits. One enquiry instead of five — and no credit check until you choose a lender.
+                {BROKER.name} gets this report and calls you at a time that suits. One conversation instead of five — and no credit check until you choose a lender.
               </p>
             </div>
             <Button variant="soft" size="lg" onClick={() => setConnectOpen(true)}>Connect me with a broker</Button>
@@ -107,7 +122,7 @@ export default function Report() {
         </section>
 
         <p className="text-xs leading-relaxed text-muted">
-          KeyReady provides general information only — not credit assistance or financial advice — and doesn’t consider your full objectives or circumstances.
+          {SITE.name} provides general information only — not credit assistance or financial advice — and doesn’t consider your full objectives or circumstances.
           Rates, maximum LVRs and residency rules come from each lender’s public Open Banking product data (updated {DATA_DATE}); other policy rules (time in job, income
           shading, debt-to-income caps) are typical settings for that type of lender, not its own policy. Stamp duty and grants use 2026–27 state rules. Estimates use a 3%
           serviceability buffer and an expense benchmark in the style of HEM; LMI is approximate. Always confirm with a licensed broker or lender.
@@ -124,7 +139,7 @@ function Hero({ a, p, whatIf, onConnect }: { a: Assessment; p: Profile; whatIf: 
   const headline =
     a.ready > 0 ? (
       <>
-        <span className="text-go">{a.ready} of {total} lenders</span> would likely say yes{whatIf ? '' : ' today'}.
+        You fit the published rules of <span className="text-go">{a.ready} of {total} lenders</span>{whatIf ? '' : ' today'}.
       </>
     ) : a.close > 0 ? (
       <>You’re close — <span className="text-amber">{a.close} lenders</span> are within reach.</>
@@ -137,11 +152,17 @@ function Hero({ a, p, whatIf, onConnect }: { a: Assessment; p: Profile; whatIf: 
       : a.close > 0
         ? 'Small, specific changes would get you over the line. Your fastest wins are below.'
         : 'Use the what-if tools to find a price and deposit that work, or talk to a broker about specialist options.';
+  const waived = a.results.filter(r => r.lmiWaived && r.status !== 'not_yet');
   return (
     <section className="grid items-center gap-8 rounded-3xl bg-card p-6 ring-1 ring-line sm:p-10 md:grid-cols-[1fr_auto]">
       <div>
         <p className="text-sm font-bold uppercase tracking-wider text-muted">Your readiness report</p>
         <h1 className="mt-2 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl" aria-live="polite">{headline}</h1>
+        {waived.length > 0 && (
+          <p className="mt-4 inline-flex flex-wrap items-center gap-2 rounded-2xl bg-mint-soft px-4 py-2 font-semibold text-go">
+            ✓ {waived.length} lender{waived.length > 1 ? 's' : ''} publish an LMI waiver for your profession at this LVR — about {fmtMoney(lmiEstimate(p.loan, a.lvr))} saved
+          </p>
+        )}
         <p className="mt-3 max-w-xl text-lg text-ink-soft">{sub}</p>
         <div className="no-print mt-6 flex flex-wrap gap-3">
           <Button onClick={onConnect}>Connect with a broker</Button>
@@ -203,7 +224,7 @@ function KeyNumbers({ a, p }: { a: Assessment; p: Profile }) {
   const best = a.results.find(r => r.status === 'ready') ?? a.results[0];
   const scheme = depositScheme(p);
   const theLvr = lvr(p);
-  const lmi = best.usesScheme ? 0 : lmiEstimate(p.loan, theLvr);
+  const lmi = best.usesScheme || best.lmiWaived ? 0 : lmiEstimate(p.loan, theLvr);
   return (
     <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label="Key numbers">
       <Card title="Borrowing power">
@@ -224,7 +245,7 @@ function KeyNumbers({ a, p }: { a: Assessment; p: Profile }) {
       <Card title="Repayments">
         <p className="text-3xl font-extrabold tabular-nums"><CountUp value={best.monthlyRepayment} format={fmtMoney} /></p>
         <p className="text-sm text-muted">per month at {best.rate.toFixed(2)}%, 30 yrs</p>
-        <p className="mt-3 text-xs text-muted">{lmi ? `Plus ~${fmtMoney(lmi)} mortgage insurance` : best.usesScheme ? 'No LMI via the 5% Deposit Scheme' : 'No mortgage insurance'}</p>
+        <p className="mt-3 text-xs text-muted">{lmi ? `Plus ~${fmtMoney(lmi)} mortgage insurance` : best.lmiWaived ? `No LMI — profession waiver (saves ~${fmtMoney(lmiEstimate(p.loan, theLvr))})` : best.usesScheme ? 'No LMI via the 5% Deposit Scheme' : 'No mortgage insurance'}</p>
       </Card>
     </section>
   );
@@ -467,13 +488,7 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
       await submitLead({
         ...form,
         profile: p,
-        summary: {
-          ready: a.ready,
-          close: a.close,
-          lvr: Math.round(a.lvr * 10) / 10,
-          borrowingPower: Math.round(a.borrowingPower.typical),
-          topLenders: a.results.filter(r => r.status === 'ready').slice(0, 3).map(r => r.lender.brand ?? r.lender.name),
-        },
+        summary: summarise(p, a),
       });
       setState('done');
     } catch (ex) {
@@ -507,7 +522,8 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
           <form onSubmit={submit} noValidate className="space-y-4">
             <div>
               <h2 id="connect-title" className="text-2xl font-extrabold">Connect with a broker</h2>
-              <p className="mt-1 text-ink-soft">We share your report with one licensed broker. No spam, no call centres.</p>
+              <p className="mt-1 text-ink-soft">We share your report with one broker: {BROKER.name}. No spam, no call centres.</p>
+              <p className="mt-2 text-xs text-muted">{BROKER_DISCLOSURE}</p>
               {sample && <p className="mt-2 rounded-xl bg-amber-soft p-2 text-sm text-amber">You’re on the example report — this will share the sample buyer’s details.</p>}
             </div>
             <label className="block">
@@ -537,7 +553,7 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
             </fieldset>
             <label className="flex gap-3 rounded-2xl bg-card p-4 ring-1 ring-line">
               <input type="checkbox" className="mt-1 h-5 w-5 accent-[#0e3b3a]" checked={form.consent} onChange={e => setForm({ ...form, consent: e.target.checked })} />
-              <span className="text-sm">I agree to share my answers and this report with one mortgage broker so they can contact me.</span>
+              <span className="text-sm">I agree to share my answers and this report with {BROKER.name} so they can contact me about a home loan, as described in the <a href={`${import.meta.env.BASE_URL}privacy/`} target="_blank" rel="noreferrer" className="underline">privacy policy</a>.</span>
             </label>
             {touched && problems.consent && <p className="text-sm text-rose">{problems.consent}</p>}
             {state === 'error' && <p role="alert" className="rounded-xl bg-rose-soft p-3 text-sm text-rose">Couldn’t send: {err}</p>}

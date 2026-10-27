@@ -32,6 +32,15 @@ export interface Applicant {
 }
 
 export type Household = 'single' | 'couple' | 'family' | 'sharing';
+
+export type Currency = 'AUD' | 'USD' | 'GBP' | 'EUR' | 'NZD' | 'SGD' | 'HKD' | 'AED' | 'CAD' | 'JPY' | 'CNY' | 'other';
+
+/** Professions some lenders treat specially (e.g. LMI waivers). Matched against src/data/segment-policies.json. */
+export type Profession =
+  | 'doctor' | 'specialist' | 'dentist' | 'vet' | 'pharmacist' | 'physio' | 'optometrist' | 'psychologist'
+  | 'nurse' | 'midwife' | 'allied_health'
+  | 'lawyer' | 'accountant' | 'actuary' | 'engineer'
+  | 'other';
 export type Purpose = 'owner' | 'investment' | 'construction';
 export type Dwelling = 'house' | 'apartment' | 'land' | 'house_land' | 'other';
 
@@ -68,6 +77,14 @@ export interface Profile {
   bankruptcyYears: number | null;
   /** Equifax-style score (0–1200); null when unknown. */
   creditScore: number | null;
+  /** Main borrower's profession; null when not asked or not listed. */
+  profession: Profession | null;
+  /** Main borrower lives outside Australia (expat). */
+  livesOverseas: boolean;
+  /** Currency the main borrower is paid in. */
+  incomeCurrency: Currency;
+  /** Self-employed without two years of lodged tax returns: needs an alt-doc (low-doc) loan. */
+  lowDoc: boolean;
 }
 
 export type LenderKind = 'Major bank' | 'Other bank' | 'Regional bank' | 'Customer-owned' | 'Online lender' | 'Specialist';
@@ -146,6 +163,8 @@ export interface LenderResult {
   checks: Check[];
   maxBorrow: number;
   usesScheme: boolean;
+  /** LMI waived through a profession waiver (src/data/segment-policies.json). */
+  lmiWaived: boolean;
   /** Product rate at this borrower's LVR and purpose. */
   rate: number;
   assessmentRate: number;

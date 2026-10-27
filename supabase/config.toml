@@ -1,0 +1,23 @@
+# Supabase project config. `supabase link --project-ref <ref>` then `supabase config push` applies it.
+project_id = "keyready"
+
+[auth]
+site_url = "https://silas-dsc.github.io/keyready/"
+additional_redirect_urls = ["https://silas-dsc.github.io/keyready/**", "http://localhost:5173/**"]
+
+# Broker sign-in links need real email delivery: the built-in sender only reaches project members.
+[auth.email.smtp]
+enabled = true
+host = "smtp.resend.com"
+port = 465
+user = "resend"
+pass = "env(RESEND_API_KEY)"
+admin_email = "env(SMTP_SENDER_EMAIL)"
+sender_name = "KeyReady"
+
+# Public endpoints: the MCP server is open to any AI client; notify-lead checks its own shared secret.
+[functions.mcp]
+verify_jwt = false
+
+[functions.notify-lead]
+verify_jwt = false
