@@ -93,6 +93,8 @@ export interface RateTier {
   /** Upper LVR bound (%) this rate applies to. */
   maxLvr: number;
   rate: number;
+  /** Comparison rate for this rate, % p.a., as the lender publishes it ($150,000 over 25 years). */
+  comparison?: number;
 }
 
 export interface PolicySource {
@@ -167,6 +169,8 @@ export interface LenderResult {
   lmiWaived: boolean;
   /** Product rate at this borrower's LVR and purpose. */
   rate: number;
+  /** Its published comparison rate. Without one the rate must not be shown (National Credit Code s 161). */
+  comparison?: number;
   assessmentRate: number;
   monthlyRepayment: number;
 }

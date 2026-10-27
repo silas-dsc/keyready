@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { fixActions } from '../engine/actions';
 import { stampDuty } from '../engine/duty';
 import { depositScheme, upfrontCosts } from '../engine/finance';
-import { MARKET_FETCHED_AT, MARKET_LENDERS, productRate } from '../engine/market';
+import { COMPARISON_BASIS, COMPARISON_WARNING, comparisonRate, MARKET_FETCHED_AT, MARKET_LENDERS, productRate } from '../engine/market';
 import { assess } from '../engine/match';
 import { emptyProfile, newApplicant } from '../engine/profile';
 import { encodeProfile } from '../engine/share';
@@ -108,6 +108,10 @@ export function toProfile(s: Situation): Profile {
   return p;
 }
 
+/** Rates only ever go out with their comparison rate and the prescribed warning (National Credit Code s 161). */
+const COMPARISON_NOTE = `${COMPARISON_BASIS} ${COMPARISON_WARNING}`;
+const pct = (n: number) => `${n.toFixed(2)}% p.a.`;
+
 const money = (n: number) => `$${Math.round(n).toLocaleString('en-AU')}`;
 const text = (t: string) => ({ type: 'text' as const, text: t });
 
@@ -122,7 +126,7 @@ export function readinessReport(p: Profile, site = 'core') {
     type: r.lender.kind,
     status: r.status === 'ready' ? 'fits published rules' : r.status === 'close' ? 'close' : 'not yet',
     rules_met: `${r.score}%`,
-    rate: `${r.rate.toFixed(2)}%`,
+    ...(r.comparison ? { rate: pct(r.rate), comparison_rate: pct(r.comparison) } : {}),
     lmi_waived: r.lmiWaived,
     reasons: r.checks.filter(c => c.status !== 'pass').map(c => c.detail),
   }));
@@ -146,6 +150,7 @@ export function readinessReport(p: Profile, site = 'core') {
     full_report_url: reportUrl,
     data_as_of: DATA_DATE,
     notice: NOTICE,
+    comparison_rate_warning: COMPARISON_NOTE,
     broker_referral: `Available on request with the user's explicit consent (tool refer_to_broker). ${BROKER_DISCLOSURE}`,
   };
   const summary = [
@@ -239,7 +244,7 @@ export function buildServer(deps: McpDeps): McpServer {
 
   server.registerTool('list_lender_rates', {
     title: 'List lender rates',
-    description: `Live variable principal-and-interest home loan rates at a given LVR from lenders’ Open Banking product data (as of ${DATA_DATE}). Lender names are masked.`,
+    description: `Live variable principal-and-interest home loan rates, each with its comparison rate, at a given LVR from lenders’ Open Banking product data (as of ${DATA_DATE}). Lender names are masked. Always show the comparison rate beside each rate, with the warning returned.`,
     inputSchema: z.object({
       lvr: z.number().min(1).max(98).default(80).describe('Loan-to-value ratio, %'),
       purpose: z.enum(['owner', 'investment']).default('owner'),
@@ -248,12 +253,13 @@ export function buildServer(deps: McpDeps): McpServer {
     annotations: ro,
   }, async i => {
     const rows = MARKET_LENDERS.filter(L => L.source !== 'illustrative' && (i.purpose === 'investment' ? L.maxLvr.investment : L.maxLvr.owner) >= i.lvr)
-      .map(L => ({ lender: L.name, type: L.kind, rate: productRate(L, i.purpose, i.lvr) }))
+      .map(L => ({ lender: L.name, type: L.kind, rate: productRate(L, i.purpose, i.lvr), comparison_rate: comparisonRate(L, i.purpose, i.lvr) }))
+      .filter((r): r is typeof r & { comparison_rate: number } => r.comparison_rate !== undefined)
       .sort((a, b) => a.rate - b.rate)
       .slice(0, i.limit);
     return {
-      content: [text(rows.map(r => `${r.lender} (${r.type}): ${r.rate.toFixed(2)}%`).join('\n') + `\nVariable P&I, ${i.purpose}, LVR ≤ ${i.lvr}%. Open Banking data as of ${DATA_DATE}.`)],
-      structuredContent: { lvr: i.lvr, purpose: i.purpose, data_as_of: DATA_DATE, lenders: rows },
+      content: [text(rows.map(r => `${r.lender} (${r.type}): ${pct(r.rate)}, comparison rate ${pct(r.comparison_rate)}`).join('\n') + `\nVariable P&I, ${i.purpose}, LVR ≤ ${i.lvr}%. Open Banking data as of ${DATA_DATE}.\n${COMPARISON_NOTE}`)],
+      structuredContent: { lvr: i.lvr, purpose: i.purpose, data_as_of: DATA_DATE, lenders: rows, comparison_rate_warning: COMPARISON_NOTE },
     };
   });
 

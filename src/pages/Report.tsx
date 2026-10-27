@@ -7,6 +7,7 @@ import { Button, CountUp, Logo, Pill } from '../components/ui';
 import { fixActions, type FixAction } from '../engine/actions';
 import { stampDuty } from '../engine/duty';
 import { deposit, depositScheme, fmtMoney, fmtShortMoney, lmiEstimate, lvr, upfrontCosts } from '../engine/finance';
+import { COMPARISON_BASIS, COMPARISON_WARNING } from '../engine/market';
 import { assess, type Assessment } from '../engine/match';
 import { decodeProfile } from '../engine/share';
 import { summarise } from '../engine/summary';
@@ -244,7 +245,7 @@ function KeyNumbers({ a, p }: { a: Assessment; p: Profile }) {
       </Card>
       <Card title="Repayments">
         <p className="text-3xl font-extrabold tabular-nums"><CountUp value={best.monthlyRepayment} format={fmtMoney} /></p>
-        <p className="text-sm text-muted">per month at {best.rate.toFixed(2)}%, 30 yrs</p>
+        <p className="text-sm text-muted">{best.comparison ? `per month at ${rateWithComparison(best)}, 30 yrs` : 'per month (estimate), 30 yrs'}</p>
         <p className="mt-3 text-xs text-muted">{lmi ? `Plus ~${fmtMoney(lmi)} mortgage insurance` : best.lmiWaived ? `No LMI — profession waiver (saves ~${fmtMoney(lmiEstimate(p.loan, theLvr))})` : best.usesScheme ? 'No LMI via the 5% Deposit Scheme' : 'No mortgage insurance'}</p>
       </Card>
     </section>
@@ -326,6 +327,7 @@ function Lenders({ results }: { results: LenderResult[] }) {
         </AnimatePresence>
         {shown.length === 0 && <li className="rounded-2xl bg-card p-6 text-center text-muted ring-1 ring-line">No lenders in this group.</li>}
       </ul>
+      {results.some(r => r.comparison) && <p className="mt-4 text-xs text-muted">{COMPARISON_BASIS} {COMPARISON_WARNING}</p>}
       {matching.length > shown.length && (
         <button onClick={() => setAll(true)} className="no-print mt-3 w-full rounded-2xl bg-card py-3 font-semibold text-ink-soft ring-1 ring-line hover:ring-ink/40">
           Show all {matching.length} lenders
@@ -334,6 +336,9 @@ function Lenders({ results }: { results: LenderResult[] }) {
     </section>
   );
 }
+
+/** A rate is only ever shown with its comparison rate, at the same size (National Credit Code s 161). */
+const rateWithComparison = (r: LenderResult) => `${r.rate.toFixed(2)}% p.a. (comparison rate ${r.comparison!.toFixed(2)}% p.a.)`;
 
 function LenderRow({ r }: { r: LenderResult }) {
   const [open, setOpen] = useState(false);
@@ -347,7 +352,7 @@ function LenderRow({ r }: { r: LenderResult }) {
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-bold">{lenderName(r.lender)}</span>
-            <span className="text-sm text-muted">{r.lender.kind} · {r.rate.toFixed(2)}%</span>
+            <span className="text-sm text-muted">{r.lender.kind}{r.comparison ? ` · ${rateWithComparison(r)}` : ''}</span>
             <Pill tone={st.tone}>{st.label}</Pill>
           </div>
           <p className="mt-1 text-sm text-ink-soft">{lead}{issues.length > 1 ? ` (+${issues.length - 1} more)` : ''}</p>
@@ -374,7 +379,7 @@ function LenderRow({ r }: { r: LenderResult }) {
                 </li>
               ))}
               <li className="pt-2 text-xs text-muted">
-                {r.lender.source === 'open-banking' ? `Rate ${r.rate.toFixed(2)}% at your LVR (Open Banking data as of ${DATA_DATE})` : r.lender.source === 'published' ? `Published rate ${r.rate.toFixed(2)}% at your LVR (lender's rate sheet)` : `Modelled rate ${r.rate.toFixed(2)}%`} · assessed at {r.assessmentRate.toFixed(2)}% · serviceable up to {fmtMoney(r.maxBorrow)}
+                {!r.comparison ? 'Rate not shown: the lender doesn’t publish a comparison rate for it' : r.lender.source === 'open-banking' ? `Rate ${rateWithComparison(r)} at your LVR (Open Banking data as of ${DATA_DATE})` : `Rate ${rateWithComparison(r)} at your LVR (lender’s published rates)`} · assessed at {r.assessmentRate.toFixed(2)}% · serviceable up to {fmtMoney(r.maxBorrow)}
                 {r.lender.policySources ? ` · some rules confirmed from the lender’s website (${r.lender.policySources[0].retrieved})` : ''}
               </li>
             </ul>

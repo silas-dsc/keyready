@@ -67,6 +67,19 @@ describe('KeyReady MCP server', () => {
     expect(rows[0].rate).toBeLessThanOrEqual(rows[4].rate);
   });
 
+  it('never gives a rate without its comparison rate and the warning', async () => {
+    const { client } = await connect();
+    const list = await call(client, 'list_lender_rates', { lvr: 80, limit: 25 });
+    const rows = list.structuredContent?.lenders as { rate: number; comparison_rate: number }[];
+    expect(rows.every(x => x.comparison_rate >= x.rate - 0.01)).toBe(true);
+    expect(list.content[0].text).toMatch(/comparison rate .*\n[\s\S]*\$150,000 over 25 years[\s\S]*WARNING: This comparison rate is true only/);
+
+    const r = await call(client, 'assess_home_loan_readiness', borrower);
+    const top = r.structuredContent?.top_lenders as { rate?: string; comparison_rate?: string }[];
+    expect(top.every(t => (t.rate === undefined) === (t.comparison_rate === undefined))).toBe(true);
+    expect(r.structuredContent?.comparison_rate_warning).toMatch(/^Comparison rates are calculated on a secured loan of \$150,000/);
+  });
+
   it('refers to the broker only with consent, pending the borrower’s email confirmation', async () => {
     const { client, leads } = await connect();
     const contact = { name: 'Sam Test', email: 'sam@example.com', phone: '0400 000 000' };
