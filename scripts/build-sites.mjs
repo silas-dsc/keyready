@@ -16,8 +16,9 @@ import { build } from 'vite';
 
 const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, '').split('=')));
 const target = args.target ?? 'pages';
-const PAGES_ORIGIN = 'https://silas-dsc.github.io';
-const REPO_PATH = '/keyready/';
+// The Pages deploy is served from the keyready.au custom domain, so the hub sits at the root.
+const PAGES_ORIGIN = 'https://keyready.au';
+const REPO_PATH = '/';
 
 // Site ids come from the registry itself (src/sites/index.ts), via a throwaway SSR build.
 await build({ logLevel: 'warn', build: { ssr: 'src/entry-server.tsx', outDir: resolve('.ssr/_registry'), emptyOutDir: true } });
