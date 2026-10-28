@@ -17,7 +17,8 @@ Deno.serve(async req => {
   const site = SITE_CATALOG[lead.site] ?? SITE_CATALOG.core;
   const s = lead.summary ?? {};
   const p = lead.profile ?? {};
-  const a0 = p.applicants?.[0] ?? {};
+  // Anyone can insert a lead, so its JSON may not have the shape the site writes.
+  const a0 = (Array.isArray(p.applicants) && p.applicants[0]) || {};
   const data = {
     site_name: site.name,
     site_url: site.url,
@@ -38,7 +39,7 @@ Deno.serve(async req => {
       lenders: s.lenders,
       lvr: s.lvr,
       borrowing_power: money(s.borrowingPower),
-      top_lenders: (s.topLenders ?? []).join(', ') || '—',
+      top_lenders: (Array.isArray(s.topLenders) ? s.topLenders : []).join(', ') || '—',
       stamp_duty: money(s.stampDuty),
       fhog: s.fhog ? money(s.fhog) : null,
       scheme_eligible: !!s.schemeEligible,

@@ -1,4 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
+import { emptyProfile } from '../engine/profile';
+import { sanitizeProfile } from '../engine/sanitize';
 import type { LeadSummary } from '../engine/summary';
 import type { Profile } from '../engine/types';
 import { SITE } from '../sites';
@@ -55,9 +57,18 @@ export function captureAttribution() {
   }
 }
 
+function sanitizeAttribution(raw: unknown): Attribution {
+  if (typeof raw !== 'object' || raw === null) return {};
+  return Object.fromEntries(
+    (['utm_source', 'utm_medium', 'utm_campaign', 'referrer', 'landing'] as const)
+      .map(k => [k, (raw as Attribution)[k]])
+      .filter(([, v]) => typeof v === 'string'),
+  );
+}
+
 function attribution(): Attribution {
   try {
-    return JSON.parse(localStorage.getItem(ATTR_KEY) ?? '{}') as Attribution;
+    return sanitizeAttribution(JSON.parse(localStorage.getItem(ATTR_KEY) ?? '{}'));
   } catch {
     return {};
   }
@@ -79,9 +90,42 @@ export function getSupabase(): Promise<SupabaseClient> | null {
 
 const LOCAL_KEY = 'keyready:leads';
 
+const str = (v: unknown) => (typeof v === 'string' ? v : '');
+const n = (v: unknown) => (typeof v === 'number' && Number.isFinite(v) ? v : 0);
+
+/**
+ * Anyone can insert a lead, so a row's JSON is untrusted: normalise it so one malformed row can't break the
+ * broker's whole list. A profile that can't be read shows as blank answers; the contact details still show.
+ */
+export function normaliseLead(raw: unknown): Lead {
+  const l = (typeof raw === 'object' && raw !== null ? raw : {}) as Record<string, unknown>;
+  const s = (typeof l.summary === 'object' && l.summary !== null ? l.summary : {}) as Record<string, unknown>;
+  return {
+    id: str(l.id),
+    created_at: str(l.created_at),
+    name: str(l.name),
+    email: str(l.email),
+    phone: str(l.phone),
+    preferred_time: str(l.preferred_time),
+    consent: l.consent === true,
+    profile: sanitizeProfile(l.profile) ?? emptyProfile(),
+    summary: {
+      ready: n(s.ready), close: n(s.close), lenders: n(s.lenders), lvr: n(s.lvr), borrowingPower: n(s.borrowingPower),
+      topLenders: Array.isArray(s.topLenders) ? s.topLenders.filter((t): t is string => typeof t === 'string') : [],
+      stampDuty: n(s.stampDuty), fhog: n(s.fhog), schemeEligible: s.schemeEligible === true,
+    },
+    site: str(l.site) || 'core',
+    segment: str(l.segment),
+    channel: l.channel === 'mcp' ? 'mcp' : 'web',
+    attribution: sanitizeAttribution(l.attribution),
+    status: LEAD_STATUSES.includes(l.status as LeadStatus) ? (l.status as LeadStatus) : undefined,
+  };
+}
+
 function localLeads(): Lead[] {
   try {
-    return JSON.parse(localStorage.getItem(LOCAL_KEY) ?? '[]') as Lead[];
+    const all: unknown = JSON.parse(localStorage.getItem(LOCAL_KEY) ?? '[]');
+    return Array.isArray(all) ? all.map(normaliseLead) : [];
   } catch {
     return [];
   }
@@ -108,7 +152,7 @@ export async function listLeads(): Promise<Lead[]> {
   if (sb) {
     const { data, error } = await (await sb).from('leads').select('*').order('created_at', { ascending: false });
     if (error) throw new Error(error.message);
-    return (data ?? []) as Lead[];
+    return (data ?? []).map(normaliseLead);
   }
   return localLeads();
 }

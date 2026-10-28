@@ -2,10 +2,11 @@ import { createMcpHandler, McpServer } from '@modelcontextprotocol/server';
 import { z } from 'zod';
 import { fixActions } from '../engine/actions';
 import { stampDuty } from '../engine/duty';
-import { depositScheme, upfrontCosts } from '../engine/finance';
+import { depositScheme } from '../engine/finance';
 import { COMPARISON_BASIS, COMPARISON_WARNING, comparisonRate, MARKET_FETCHED_AT, MARKET_LENDERS, productRate } from '../engine/market';
 import { assess } from '../engine/match';
 import { emptyProfile, newApplicant } from '../engine/profile';
+import { derivedLoan } from '../engine/sanitize';
 import { encodeProfile } from '../engine/share';
 import { summarise } from '../engine/summary';
 import type { Profile } from '../engine/types';
@@ -100,11 +101,7 @@ export function toProfile(s: Situation): Profile {
     firstHome: s.first_home, defaults: s.credit_defaults, creditScore: s.credit_score ?? null,
     profession: s.profession ?? null, livesOverseas: s.lives_overseas, incomeCurrency: s.income_currency, lowDoc: s.low_doc,
   };
-  if (s.loan !== undefined) p.loan = s.loan;
-  else {
-    const c = upfrontCosts(p);
-    p.loan = Math.max(0, s.price - Math.max(0, s.savings + s.gift + c.fhog - c.total));
-  }
+  p.loan = s.loan ?? derivedLoan(p);
   return p;
 }
 
