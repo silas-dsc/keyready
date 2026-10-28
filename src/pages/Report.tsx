@@ -1,12 +1,12 @@
 import confetti from 'canvas-confetti';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useDeferredValue, useEffect, useMemo, useRef, useState, type ComponentProps } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import LvrMeter from '../components/LvrMeter';
 import { Button, CountUp, Logo, Pill } from '../components/ui';
 import { fixActions, type FixAction } from '../engine/actions';
 import { stampDuty } from '../engine/duty';
-import { deposit, depositScheme, fmtMoney, fmtShortMoney, lmiEstimate, lvr, upfrontCosts } from '../engine/finance';
+import { deposit, depositScheme, fmtMoney, fmtShortMoney, fundsToComplete, lmiEstimate, lvr, upfrontCosts } from '../engine/finance';
 import { COMPARISON_BASIS, COMPARISON_WARNING } from '../engine/market';
 import { assess, type Assessment } from '../engine/match';
 import { decodeProfile } from '../engine/share';
@@ -30,9 +30,10 @@ export default function Report() {
   const nav = useNavigate();
   const saved = useSavedProfile();
   const base = useMemo(() => (sample ? SITE.sample() : saved.profile), [sample, saved.profile]);
-  const [sim, setSim] = useState<Profile>(base);
+  // The what-if the user is trying, or null while they're looking at their real answers.
+  const [sim, setSim] = useState<Profile | null>(null);
   const [connectOpen, setConnectOpen] = useState(false);
-  useEffect(() => setSim(base), [base]);
+  useEffect(() => setSim(null), [base]);
 
   // A report handed over from an AI assistant (MCP): #/report?profile=<encoded answers>.
   const shared = params.get('profile');
@@ -50,10 +51,13 @@ export default function Report() {
     if (!sample && !loadSaved()?.completed) nav('/check', { replace: true });
   }, [sample, shared, nav, replaceProfile, complete]);
 
-  const a = useMemo(() => assess(sim), [sim]);
+  const isWhatIf = useMemo(() => sim !== null && JSON.stringify(sim) !== JSON.stringify(base), [sim, base]);
+  // Slider drags update `sim` at once; the report re-assesses a deferred copy, so dragging stays smooth.
+  const deferredSim = useDeferredValue(sim);
+  const shown = isWhatIf && deferredSim ? deferredSim : base;
   const original = useMemo(() => assess(base), [base]);
+  const a = useMemo(() => (shown === base ? original : assess(shown)), [shown, base, original]);
   const fixes = useMemo(() => fixActions(base, original), [base, original]);
-  const isWhatIf = JSON.stringify(sim) !== JSON.stringify(base);
 
   const celebrated = useRef(false);
   useEffect(() => {
@@ -82,21 +86,21 @@ export default function Report() {
       )}
 
       <main className="mx-auto max-w-6xl space-y-8 px-4 pt-8">
-        <Hero a={a} p={sim} whatIf={isWhatIf} onConnect={() => setConnectOpen(true)} />
+        <Hero a={a} p={shown} whatIf={isWhatIf} onConnect={() => setConnectOpen(true)} />
 
         <AnimatePresence>
           {isWhatIf && (
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="no-print flex flex-wrap items-center justify-between gap-3 rounded-2xl border-2 border-dashed border-amber bg-amber-soft px-5 py-3">
               <p className="font-semibold text-amber">You’re viewing a what-if. Your real answers haven’t changed.</p>
               <div className="flex gap-2">
-                <Button variant="ghost" onClick={() => setSim(base)}>Reset</Button>
-                {!sample && <Button variant="soft" onClick={() => saved.replace(sim)}>Keep these numbers</Button>}
+                <Button variant="ghost" onClick={() => setSim(null)}>Reset</Button>
+                {!sample && sim && <Button variant="soft" onClick={() => saved.replace(sim)}>Keep these numbers</Button>}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <KeyNumbers a={a} p={sim} />
+        <KeyNumbers a={a} p={shown} />
 
         <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
           <div className="space-y-8">
@@ -104,9 +108,9 @@ export default function Report() {
             <Lenders results={a.results} />
           </div>
           <div className="space-y-6">
-            <WhatIf p={sim} base={base} onChange={setSim} />
-            <Duty p={sim} />
-            <Scheme p={sim} />
+            <WhatIf p={sim ?? base} base={base} onChange={setSim} />
+            <Duty p={shown} />
+            <Scheme p={shown} />
           </div>
         </div>
 
@@ -219,9 +223,7 @@ function Dial({ a }: { a: Assessment }) {
 }
 
 function KeyNumbers({ a, p }: { a: Assessment; p: Profile }) {
-  const costs = upfrontCosts(p);
-  const need = deposit(p) + costs.total;
-  const have = p.savings + p.gift + costs.fhog;
+  const { costs, need, have } = fundsToComplete(p);
   const best = a.results.find(r => r.status === 'ready') ?? a.results[0];
   const scheme = depositScheme(p);
   const theLvr = lvr(p);
@@ -463,6 +465,17 @@ function Scheme({ p }: { p: Profile }) {
   );
 }
 
+
+function TextField({ label, error, input }: { label: string; error: string | false; input: ComponentProps<'input'> }) {
+  return (
+    <label className="block">
+      <span className="font-semibold">{label}</span>
+      <input className="w-full rounded-2xl border-2 border-line bg-card px-4 py-3 text-lg outline-none focus:border-ink" {...input} />
+      {error && <span className="text-sm text-rose">{error}</span>}
+    </label>
+  );
+}
+
 function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample: boolean; onClose: () => void }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', preferred_time: 'Anytime', consent: false });
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
@@ -502,7 +515,6 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
     }
   };
 
-  const input = 'w-full rounded-2xl border-2 border-line bg-card px-4 py-3 text-lg outline-none focus:border-ink';
   return (
     <motion.div className="fixed inset-0 z-50 grid place-items-end bg-ink/50 p-0 sm:place-items-center sm:p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
       <motion.div
@@ -531,21 +543,9 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
               <p className="mt-2 text-xs text-muted">{BROKER_DISCLOSURE}</p>
               {sample && <p className="mt-2 rounded-xl bg-amber-soft p-2 text-sm text-amber">You’re on the example report, so this will share the sample buyer’s details.</p>}
             </div>
-            <label className="block">
-              <span className="font-semibold">Name</span>
-              <input ref={firstRef} autoComplete="name" className={input} value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-              {touched && problems.name && <span className="text-sm text-rose">{problems.name}</span>}
-            </label>
-            <label className="block">
-              <span className="font-semibold">Email</span>
-              <input type="email" autoComplete="email" inputMode="email" className={input} value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-              {touched && problems.email && <span className="text-sm text-rose">{problems.email}</span>}
-            </label>
-            <label className="block">
-              <span className="font-semibold">Mobile</span>
-              <input type="tel" autoComplete="tel" inputMode="tel" className={input} value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} placeholder="04xx xxx xxx" />
-              {touched && problems.phone && <span className="text-sm text-rose">{problems.phone}</span>}
-            </label>
+            <TextField label="Name" error={touched && problems.name} input={{ ref: firstRef, autoComplete: 'name', value: form.name, onChange: e => setForm({ ...form, name: e.target.value }) }} />
+            <TextField label="Email" error={touched && problems.email} input={{ type: 'email', autoComplete: 'email', inputMode: 'email', value: form.email, onChange: e => setForm({ ...form, email: e.target.value }) }} />
+            <TextField label="Mobile" error={touched && problems.phone} input={{ type: 'tel', autoComplete: 'tel', inputMode: 'tel', value: form.phone, placeholder: '04xx xxx xxx', onChange: e => setForm({ ...form, phone: e.target.value }) }} />
             <fieldset>
               <legend className="font-semibold">Best time to call</legend>
               <div className="mt-1 flex flex-wrap gap-2">

@@ -5,7 +5,7 @@ name: Deploy backend (Supabase + Knock)
 on:
   push:
     branches: [main]
-    paths: ['supabase/**', 'src/engine/**', 'src/data/**', 'src/mcp/**', 'src/sites/**', '.knock/**', 'scripts/bundle-rules.mjs']
+    paths: ['supabase/**', 'src/engine/**', 'src/data/**', 'src/mcp/**', 'src/sites/**', 'src/lib/lead-email.ts', '.knock/**', 'scripts/bundle-rules.mjs']
   # The weekly Open Banking refresh pushes with GITHUB_TOKEN, which doesn't trigger push workflows:
   # redeploy so the MCP server serves the fresh rates.
   workflow_run:

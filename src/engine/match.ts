@@ -1,11 +1,12 @@
 import {
-  applicantGross, debtToIncome, deposit, depositScheme, fmtMoney, hecsRepayment, incomeTax,
-  livingExpensesMonthly, lmiEstimate, lvr, principalFor, repayment, totalGross, upfrontCosts,
+  applicantGross, debtToIncome, depositScheme, fmtMoney, fundsToComplete, hecsRepayment, incomeTax,
+  livingExpensesMonthly, lmiEstimate, lvr, principalFor, repayment, totalGross,
+  type FundsToComplete, type SchemeCheck,
 } from './finance';
 import { comparisonRate, MARKET_LENDERS, productRate } from './market';
-import { PROFESSION_NAME, usesAltDoc } from './segment-labels';
-import { altDocFor, expatPolicyFor, foreignIncomeTier, lmiWaiverFor, shadingFor } from './segments';
-import type { Check, Employment, LenderPolicy, LenderResult, MatchStatus, Profile, Residency } from './types';
+import { PROFESSION_NAME } from './segment-labels';
+import { altDocFor, expatPolicyFor, foreignIncomeTier, lmiWaiverFor, shadingFor, type AltDoc } from './segments';
+import type { Applicant, Check, Employment, LenderPolicy, LenderResult, MatchStatus, Profile, Residency } from './types';
 
 export const EMPLOYMENT_LABEL: Record<Employment, string> = {
   full_time: 'full-time', part_time: 'part-time', casual: 'casual', contractor: 'contract',
@@ -18,6 +19,17 @@ export const RESIDENCY_LABEL: Record<Residency, string> = {
 };
 
 const pct = (n: number) => `${Math.round(n * 10) / 10}%`;
+
+/** Monthly repayment assumed per dollar of personal or car loan balance. */
+const PERSONAL_LOAN_FACTOR = 0.025;
+/** Highest LVR through the 5% Deposit Scheme, and the Family Home Guarantee (2% deposit). */
+const SCHEME_MAX_LVR = { first_home: 95, family: 98 };
+const GENUINE_SAVINGS_PCT = 0.05;
+/** How far short still counts as "close": a modest, specific change gets the borrower there. */
+const CLOSE = {
+  tenureMonths: 6, bankruptcyYears: 1, creditScore: 60, lvrPoints: 5, genuineSavings: 15_000,
+  funds: 25_000, fundsPctOfPrice: 0.03, serviceRatio: 1.12, dti: 1,
+};
 
 export interface Serviceability {
   netMonthly: number;
@@ -35,7 +47,42 @@ function earners(p: Profile) {
   return p.applicants.filter(a => !(a.employment === 'not_working' && applicantGross(a) === 0) || p.applicants.length === 1);
 }
 
-export function serviceability(p: Profile, L: LenderPolicy): Serviceability {
+/** Everything about the borrower that doesn't depend on the lender, worked out once per assessment. */
+export interface Borrower {
+  lvr: number;
+  scheme: SchemeCheck;
+  funds: FundsToComplete;
+  gross: number;
+  dti: number;
+  expenses: number;
+  /** Commitments other than credit cards, whose loading varies by lender. */
+  fixedCommitments: number;
+  workers: Applicant[];
+  oldest: number;
+}
+
+export function borrower(p: Profile): Borrower {
+  const gross = totalGross(p);
+  const hecsIncome = p.applicants[0] ? applicantGross(p.applicants[0]) : 0;
+  return {
+    lvr: lvr(p),
+    scheme: depositScheme(p),
+    funds: fundsToComplete(p),
+    gross,
+    dti: debtToIncome(p),
+    expenses: livingExpensesMonthly(p.household, p.dependants, gross, p.mode === 'joint'),
+    fixedCommitments: p.personalLoans * PERSONAL_LOAN_FACTOR + hecsRepayment(hecsIncome, p.hecs) / 12,
+    workers: earners(p),
+    oldest: Math.max(...p.applicants.map(a => a.age || 30)),
+  };
+}
+
+/** Self-employed without two years of tax returns, or not yet at the full-doc minimum, who meets this lender's alt-doc rule. */
+const onAltDoc = (p: Profile, L: LenderPolicy, alt: AltDoc | undefined, a: Applicant) =>
+  a.employment === 'self_employed' && (p.lowDoc || a.tenureMonths < (L.minTenure.self_employed ?? Infinity)) &&
+  !!alt && a.tenureMonths >= (alt.minAbnMonths ?? 0);
+
+export function serviceability(p: Profile, L: LenderPolicy, b: Borrower = borrower(p), altDocUsed = false): Serviceability {
   let netAnnual = 0;
   p.applicants.forEach((a, i) => {
     // Profession rules (e.g. hospital nurses' overtime at 100%) apply to the main borrower.
@@ -49,26 +96,24 @@ export function serviceability(p: Profile, L: LenderPolicy): Serviceability {
   });
   netAnnual += p.ftb + p.childSupport;
   const netMonthly = netAnnual / 12;
-  const gross = totalGross(p);
-  const expenses = livingExpensesMonthly(p.household, p.dependants, gross, p.mode === 'joint');
-  const hecsIncome = p.applicants[0] ? applicantGross(p.applicants[0]) : 0;
-  const commitments = p.cardLimits * L.cardFactor + p.personalLoans * 0.025 + hecsRepayment(hecsIncome, p.hecs) / 12;
+  const { expenses } = b;
+  const commitments = p.cardLimits * L.cardFactor + b.fixedCommitments;
   const surplus = netMonthly - expenses - commitments;
-  const rate = productRate(L, p.purpose, lvr(p)) + (usesAltDoc(p, L) ? altDocFor(L)?.rateLoading ?? 0 : 0);
+  const rate = productRate(L, p.purpose, b.lvr) + (altDocUsed ? altDocFor(L)?.rateLoading ?? 0 : 0);
   const assessmentRate = Math.max(rate + L.buffer, L.floorRate);
-  const oldest = Math.max(...p.applicants.map(a => a.age || 30));
-  const termYears = Math.max(5, Math.min(30, L.maxAgeAtTermEnd - oldest));
+  const termYears = Math.max(5, Math.min(30, L.maxAgeAtTermEnd - b.oldest));
   const byService = Math.max(0, principalFor(surplus, assessmentRate, termYears));
-  const byDti = Math.max(0, L.maxDti * gross - (p.personalLoans + p.cardLimits + p.hecs));
+  const byDti = Math.max(0, L.maxDti * b.gross - (p.personalLoans + p.cardLimits + p.hecs));
   return { netMonthly, expenses, commitments, surplus, assessmentRate, termYears, byService, byDti };
 }
 
-export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
+export function evaluate(p: Profile, L: LenderPolicy, b: Borrower = borrower(p)): LenderResult {
   const checks: Check[] = [];
   const add = (c: Check) => checks.push(c);
-  const theLvr = lvr(p);
-  const scheme = depositScheme(p);
-  const sv = serviceability(p, L);
+  const { lvr: theLvr, scheme, workers } = b;
+  const altDoc = altDocFor(L);
+  const altDocUsed = workers.some(a => onAltDoc(p, L, altDoc, a));
+  const sv = serviceability(p, L, b, altDocUsed);
 
   // Residency
   const resCaps = p.applicants.map(a => L.residency[a.residency]);
@@ -81,24 +126,16 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   }
 
   // Employment & tenure
-  const workers = earners(p);
   let empFail: Check | null = null;
-  const altDoc = altDocFor(L);
-  let altDocUsed = false;
   for (const a of workers) {
-    // Self-employed without two years of tax returns, or not yet at the full-doc minimum: alt-doc path.
-    if (a.employment === 'self_employed' && (p.lowDoc || a.tenureMonths < (L.minTenure.self_employed ?? Infinity))) {
-      if (altDoc && a.tenureMonths >= (altDoc.minAbnMonths ?? 0)) {
-        altDocUsed = true;
-        continue;
-      }
-      if (p.lowDoc) {
-        empFail = { id: 'employment', label: 'Documents', status: 'fail', gap: 'far', weight: 3,
-          detail: altDoc
-            ? `Its alt-doc (low-doc) loan needs ${altDoc.minAbnMonths ?? 'a minimum period of'}+ months of ABN registration.`
-            : 'Lends to the self-employed on full documents (two years of tax returns) only.' };
-        break;
-      }
+    if (onAltDoc(p, L, altDoc, a)) continue;
+    if (a.employment === 'self_employed' && p.lowDoc) {
+      empFail = { id: 'employment', label: 'Documents', status: 'fail', gap: 'far', weight: 3,
+        detail: altDoc
+          // Reached only when short of the lender's minimum, so it has one.
+          ? `Its alt-doc (low-doc) loan needs ${altDoc.minAbnMonths!}+ months of ABN registration.`
+          : 'Lends to the self-employed on full documents (two years of tax returns) only.' };
+      break;
     }
     const min = L.minTenure[a.employment];
     if (min === null) {
@@ -109,7 +146,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     if (a.tenureMonths < min) {
       const wait = min - a.tenureMonths;
       const unit = a.employment === 'self_employed' ? 'trading on your ABN' : 'in your role';
-      empFail = { id: 'employment', label: 'Time in role', status: 'fail', gap: wait <= 6 ? 'close' : 'far', weight: 3,
+      empFail = { id: 'employment', label: 'Time in role', status: 'fail', gap: wait <= CLOSE.tenureMonths ? 'close' : 'far', weight: 3, waitMonths: wait,
         detail: `${a.tenureMonths} months ${unit} is below the ${min}-month minimum. You’d meet this rule in about ${wait} month${wait === 1 ? '' : 's'}.` };
       break;
     }
@@ -142,10 +179,10 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     add({ id: 'credit', label: 'Credit history', status: 'fail', gap: 'far', weight: 3, detail: "Doesn't lend with a recent default on file." });
   } else if (p.bankruptcyYears !== null && p.bankruptcyYears < L.bankruptcyMinYears) {
     const gap = L.bankruptcyMinYears - p.bankruptcyYears;
-    add({ id: 'credit', label: 'Credit history', status: 'fail', gap: gap <= 1 ? 'close' : 'far', weight: 3,
+    add({ id: 'credit', label: 'Credit history', status: 'fail', gap: gap <= CLOSE.bankruptcyYears ? 'close' : 'far', weight: 3,
       detail: L.bankruptcyMinYears >= 99 ? "Doesn't lend after a bankruptcy." : `Needs ${L.bankruptcyMinYears}+ years since bankruptcy discharge.` });
   } else if (p.creditScore !== null && p.creditScore < L.minCreditScore) {
-    add({ id: 'credit', label: 'Credit score', status: 'fail', gap: L.minCreditScore - p.creditScore <= 60 ? 'close' : 'far', weight: 3,
+    add({ id: 'credit', label: 'Credit score', status: 'fail', gap: L.minCreditScore - p.creditScore <= CLOSE.creditScore ? 'close' : 'far', weight: 3,
       detail: `A score of ${p.creditScore} is below the ~${L.minCreditScore} this lender looks for.` });
   } else if (p.defaults === 'unsure' || p.creditScore === null) {
     add({ id: 'credit', label: 'Credit history', status: 'warn', weight: 3,
@@ -161,7 +198,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     : p.dwelling === 'apartment' ? Math.min(L.maxLvr.apartment, L.maxLvr.owner)
     : L.maxLvr.owner;
   const resMax = Math.min(...resCaps.map(c => c ?? 0));
-  const schemeMax = scheme.eligible && L.depositScheme ? (scheme.variant === 'family' ? 98 : 95) : 0;
+  const schemeMax = scheme.eligible && L.depositScheme ? SCHEME_MAX_LVR[scheme.variant!] : 0;
   const waiver = lmiWaiverFor(p, L);
   const segmentCap = Math.min(altDocUsed ? altDoc!.maxLvr : 100, fi?.maxLvr ?? 100);
   const maxLvr = Math.min(
@@ -175,7 +212,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
       detail: `Doesn't offer ${p.purpose === 'construction' ? 'construction' : 'vacant land'} loans.` });
   } else if (theLvr > maxLvr) {
     const extra = p.loan - (maxLvr / 100) * p.price;
-    add({ id: 'lvr', label: 'Loan-to-value', status: 'fail', gap: theLvr - maxLvr <= 5 ? 'close' : 'far', weight: 3,
+    add({ id: 'lvr', label: 'Loan-to-value', status: 'fail', gap: theLvr - maxLvr <= CLOSE.lvrPoints ? 'close' : 'far', weight: 3,
       detail: `An LVR of ${pct(theLvr)} is above the ${maxLvr}% maximum. About ${fmtMoney(extra)} more deposit closes the gap.` });
   } else {
     add({ id: 'lvr', label: 'Loan-to-value', status: 'pass', weight: 3,
@@ -193,9 +230,9 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
 
   // Genuine savings
   if (theLvr > L.genuineSavingsAbove) {
-    const need = p.price * 0.05;
+    const need = p.price * GENUINE_SAVINGS_PCT;
     if (p.savings < need) {
-      add({ id: 'genuine', label: 'Genuine savings', status: 'fail', gap: need - p.savings <= 15_000 ? 'close' : 'far', weight: 2,
+      add({ id: 'genuine', label: 'Genuine savings', status: 'fail', gap: need - p.savings <= CLOSE.genuineSavings ? 'close' : 'far', weight: 2,
         detail: `Above ${L.genuineSavingsAbove}% LVR it wants 5% (${fmtMoney(need)}) saved yourself. Gifts don’t count toward this.` });
     } else {
       add({ id: 'genuine', label: 'Genuine savings', status: 'pass', weight: 2, detail: 'You have 5% in genuine savings.' });
@@ -203,12 +240,10 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   }
 
   // Funds to complete
-  const costs = upfrontCosts(p);
-  const need = deposit(p) + costs.total;
-  const have = p.savings + p.gift + costs.fhog;
+  const { costs, need, have } = b.funds;
   if (have < need) {
     const short = need - have;
-    add({ id: 'funds', label: 'Funds to complete', status: 'fail', gap: short <= Math.max(25_000, p.price * 0.03) ? 'close' : 'far', weight: 3,
+    add({ id: 'funds', label: 'Funds to complete', status: 'fail', gap: short <= Math.max(CLOSE.funds, p.price * CLOSE.fundsPctOfPrice) ? 'close' : 'far', weight: 3,
       detail: `Your deposit plus about ${fmtMoney(costs.total)} in upfront costs needs ${fmtMoney(need)}; you have ${fmtMoney(have)}${costs.fhog ? ` including the ${fmtMoney(costs.fhog)} grant` : ''}.` });
   } else {
     add({ id: 'funds', label: 'Funds to complete', status: 'pass', weight: 3,
@@ -217,7 +252,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
 
   // Serviceability
   if (p.loan > sv.byService) {
-    add({ id: 'service', label: 'Serviceability', status: 'fail', gap: p.loan <= sv.byService * 1.12 ? 'close' : 'far', weight: 4,
+    add({ id: 'service', label: 'Serviceability', status: 'fail', gap: p.loan <= sv.byService * CLOSE.serviceRatio ? 'close' : 'far', weight: 4,
       detail: `Assessed at ${sv.assessmentRate.toFixed(2)}%, your income supports about ${fmtMoney(sv.byService)}, which is ${fmtMoney(p.loan - sv.byService)} short.` });
   } else {
     add({ id: 'service', label: 'Serviceability', status: 'pass', weight: 4,
@@ -225,15 +260,15 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   }
 
   // Debt-to-income
-  const dti = debtToIncome(p);
+  const { dti } = b;
   if (dti > L.maxDti) {
-    add({ id: 'dti', label: 'Debt-to-income', status: 'fail', gap: dti - L.maxDti <= 1 ? 'close' : 'far', weight: 2,
+    add({ id: 'dti', label: 'Debt-to-income', status: 'fail', gap: dti - L.maxDti <= CLOSE.dti ? 'close' : 'far', weight: 2,
       detail: `Total debts of ${dti.toFixed(1)}× income are above this lender's ${L.maxDti}× limit.` });
   } else if (dti >= 6) {
     add({ id: 'dti', label: 'Debt-to-income', status: 'warn', weight: 2,
       detail: `${dti.toFixed(1)}× income counts as high DTI. APRA caps these at 20% of a bank’s new loans, so approval can depend on timing.` });
   } else {
-    add({ id: 'dti', label: 'Debt-to-income', status: 'pass', weight: 2, detail: `${isFinite(dti) ? dti.toFixed(1) : '—'}× income is comfortable.` });
+    add({ id: 'dti', label: 'Debt-to-income', status: 'pass', weight: 2, detail: `${dti.toFixed(1)}× income is comfortable.` });
   }
 
   // Age / term
@@ -249,7 +284,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   const status: MatchStatus = fails.length === 0 ? 'ready' : fails.every(f => f.gap === 'close') && fails.length <= 2 ? 'close' : 'not_yet';
   const rate = productRate(L, p.purpose, theLvr);
   // An alt-doc loading changes the rate, so the base product's comparison rate no longer applies.
-  const comparison = usesAltDoc(p, L) && altDocFor(L)?.rateLoading ? undefined : comparisonRate(L, p.purpose, theLvr);
+  const comparison = altDocUsed && altDoc?.rateLoading ? undefined : comparisonRate(L, p.purpose, theLvr);
 
   return {
     lender: L,
@@ -278,7 +313,8 @@ export interface Assessment {
 const ORDER: Record<MatchStatus, number> = { ready: 0, close: 1, not_yet: 2 };
 
 export function assess(p: Profile, lenders: LenderPolicy[] = MARKET_LENDERS): Assessment {
-  const results = lenders.map(L => evaluate(p, L)).sort((a, b) => ORDER[a.status] - ORDER[b.status] || b.score - a.score || a.rate - b.rate);
+  const b = borrower(p);
+  const results = lenders.map(L => evaluate(p, L, b)).sort((a, b) => ORDER[a.status] - ORDER[b.status] || b.score - a.score || a.rate - b.rate);
   // Borrowing power only counts lenders that would take you on non-financial grounds.
   const eligible = results.filter(r => !r.checks.some(c => c.status === 'fail' && ['residency', 'employment', 'credit'].includes(c.id) && c.gap === 'far'));
   const powers = (eligible.length ? eligible : results).map(r => r.maxBorrow).sort((a, b) => a - b);
@@ -288,6 +324,6 @@ export function assess(p: Profile, lenders: LenderPolicy[] = MARKET_LENDERS): As
     close: results.filter(r => r.status === 'close').length,
     notYet: results.filter(r => r.status === 'not_yet').length,
     borrowingPower: { typical: powers[Math.floor(powers.length / 2)] ?? 0, best: powers[powers.length - 1] ?? 0 },
-    lvr: lvr(p),
+    lvr: b.lvr,
   };
 }

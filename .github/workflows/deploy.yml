@@ -23,6 +23,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # The coverage report is posted as a comment on the pull request.
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,7 +34,17 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm test
+      # Unit tests with coverage; fails if the engine or MCP server drop below the thresholds in vite.config.ts.
+      - run: npm run test:coverage
+      - name: Report coverage
+        if: always() && hashFiles('coverage/coverage-summary.json') != ''
+        uses: davelosert/vitest-coverage-report-action@v2
+      - uses: actions/upload-artifact@v4
+        if: always() && hashFiles('coverage/index.html') != ''
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 14
       # Builds every site in src/sites/ (hub at keyready.au/, sub-sites at keyready.au/<id>/) from the shared engine.
       - run: npm run build
         env:

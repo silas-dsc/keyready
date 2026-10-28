@@ -1,7 +1,8 @@
 import { useState, type ReactNode } from 'react';
 import LvrMeter from '../components/LvrMeter';
 import { ChoiceGrid, Field, MoneyInput, Segmented, Stepper, type Choice } from '../components/ui';
-import { deposit, depositScheme, fmtMoney, lvr, upfrontCosts } from '../engine/finance';
+import { STATES } from '../engine/enums';
+import { deposit, depositScheme, derivedLoan, fmtMoney, lvr, upfrontCosts } from '../engine/finance';
 import { newApplicant } from '../engine/profile';
 import type { Applicant, AuState, Currency, Employment, Profession, Profile, Residency } from '../engine/types';
 import { SITE } from '../sites';
@@ -79,7 +80,7 @@ export const PROFESSION_LABEL: Record<Profession, string> = {
   lawyer: 'Lawyer', accountant: 'Accountant', actuary: 'Actuary', engineer: 'Engineer', other: 'Something else',
 };
 
-const STATES: Choice<AuState>[] = (['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT'] as AuState[]).map(s => ({ value: s, label: s }));
+const STATE_CHOICES: Choice<AuState>[] = STATES.map(s => ({ value: s, label: s }));
 
 const who = (p: Profile, i: number) => (p.mode === 'joint' ? (i === 0 ? 'you' : 'your co-borrower') : 'you');
 const Who = (p: Profile, i: number) => (p.mode === 'joint' && i === 1 ? 'Your co-borrower' : 'You');
@@ -112,7 +113,7 @@ function PriceStep({ ctx }: { ctx: StepCtx }) {
   const scheme = depositScheme(p);
   const costs = upfrontCosts(p);
   const funds = p.savings + p.gift;
-  const fill = () => set(q => { const c = upfrontCosts(q); return { ...q, loan: Math.max(0, q.price - Math.max(0, funds + c.fhog - c.total)) }; });
+  const fill = () => set(q => ({ ...q, loan: derivedLoan(q) }));
   return (
     <div className="space-y-5">
       <Field label="Roughly what price are you looking at?" hint="A ballpark is fine. You can play with this on your report.">
@@ -526,7 +527,7 @@ export function buildSteps(p: Profile): Step[] {
       why: 'Stamp duty, first home concessions and the 5% Deposit Scheme price caps are all set by state and region.',
       render: ({ p, set }) => (
         <div className="space-y-6">
-          <ChoiceGrid label="State" cols={4} options={STATES} value={p.state} onChange={v => set(q => ({ ...q, state: v }))} />
+          <ChoiceGrid label="State" cols={4} options={STATE_CHOICES} value={p.state} onChange={v => set(q => ({ ...q, state: v }))} />
           <Field label="Which part of the state?" hint="Regional centres include places like Newcastle, Geelong and the Gold Coast.">
             {() => (
               <Segmented
@@ -580,7 +581,7 @@ export function buildSteps(p: Profile): Step[] {
           </label>
           {p.bankruptcyYears !== null && (
             <Field label="Years since discharge">
-              {() => <Stepper label="years" value={p.bankruptcyYears ?? 0} max={20} onChange={n => set(q => ({ ...q, bankruptcyYears: n }))} />}
+              {() => <Stepper label="years" value={p.bankruptcyYears!} max={20} onChange={n => set(q => ({ ...q, bankruptcyYears: n }))} />}
             </Field>
           )}
         </div>

@@ -36,7 +36,6 @@ export default function Check() {
   }, [nav, s]);
 
   const goNext = useCallback(() => {
-    if (!step) return;
     if (step.error?.(p)) {
       setShowError(true);
       return;
@@ -74,7 +73,6 @@ export default function Check() {
     return () => window.removeEventListener('keydown', onKey);
   }, [goNext]);
 
-  if (!step) return null;
   const answered = s.answered.includes(step.id);
   const error = showError ? step.error?.(p) : null;
   const sectionIdx = SECTIONS.findIndex(x => x.id === step.section);

@@ -8,3 +8,4 @@ dist-sites
 supabase/functions/_shared/*.js
 supabase/.temp
 rules/report.md
+coverage

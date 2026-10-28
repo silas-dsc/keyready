@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { normaliseLead } from '../lib/leads';
-import { fmtMoney } from './finance';
+import { derivedLoan, fmtMoney } from './finance';
 import { assess } from './match';
 import { emptyProfile, sampleProfile } from './profile';
-import { derivedLoan, sanitizeProfile } from './sanitize';
+import { sanitizeProfile } from './sanitize';
 import { decodeProfile, encodeProfile } from './share';
 
 const encode = (o: unknown) => btoa(JSON.stringify(o)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');

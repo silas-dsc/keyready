@@ -7,6 +7,7 @@ import { SITE } from '../sites';
 // Per site: every GitHub Pages sub-site shares one origin, so one browser storage.
 const KEY = `keyready:v1:${SITE.id}`;
 const fresh = () => (SITE.wizard.defaults ?? (p => p))(emptyProfile());
+const blank = (): Saved => ({ profile: fresh(), stepId: null, completed: false, answered: [], updatedAt: Date.now() });
 
 export interface Saved {
   profile: Profile;
@@ -54,7 +55,7 @@ export function clearSaved() {
 
 /** Single source of truth for the questionnaire, autosaved to this device. */
 export function useSavedProfile() {
-  const [state, setState] = useState<Saved>(() => loadSaved() ?? { profile: fresh(), stepId: null, completed: false, answered: [], updatedAt: Date.now() });
+  const [state, setState] = useState<Saved>(() => loadSaved() ?? blank());
 
   useEffect(() => save(state), [state]);
 
@@ -65,7 +66,7 @@ export function useSavedProfile() {
   const markAnswered = useCallback((id: string) => setState(s => (s.answered.includes(id) ? s : { ...s, answered: [...s.answered, id] })), []);
   const complete = useCallback(() => setState(s => ({ ...s, completed: true })), []);
   const replace = useCallback((profile: Profile) => setState(s => ({ ...s, profile, updatedAt: Date.now() })), []);
-  const reset = useCallback(() => setState({ profile: fresh(), stepId: null, completed: false, answered: [], updatedAt: Date.now() }), []);
+  const reset = useCallback(() => setState(blank()), []);
 
   return { ...state, update, setStep, markAnswered, complete, replace, reset };
 }

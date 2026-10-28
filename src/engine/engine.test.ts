@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { fixActions } from './actions';
-import { SCHEME_CAPS, depositScheme, hecsRepayment, incomeTax, lmiEstimate, lvr, principalFor, repayment, upfrontCosts } from './finance';
+import { SCHEME_CAPS, depositScheme, fundsToComplete, hecsRepayment, incomeTax, lmiEstimate, lvr, principalFor, repayment, upfrontCosts } from './finance';
 import { ILLUSTRATIVE_LENDERS } from './lenders';
 import { assess as assessWith } from './match';
 import { emptyProfile, newApplicant, sampleProfile } from './profile';
@@ -111,11 +111,44 @@ describe('matching', () => {
 });
 
 describe('fix actions', () => {
+  const fixes = (p: Profile) => fixActions(p, undefined, ILLUSTRATIVE_LENDERS);
+
   it('suggests cutting card limits and ranks by lenders unlocked', () => {
     const p = sampleProfile();
     p.cardLimits = 30_000;
-    const fixes = fixActions(p);
-    expect(fixes.length).toBeGreaterThan(0);
-    for (let i = 1; i < fixes.length; i++) expect(fixes[i - 1].unlocks).toBeGreaterThanOrEqual(fixes[i].unlocks);
+    const f = fixes(p);
+    expect(f.map(x => x.id)).toContain('cards');
+    for (let i = 1; i < f.length; i++) expect(f[i - 1].unlocks).toBeGreaterThanOrEqual(f[i].unlocks);
+  });
+
+  it('only suggests paying off a loan with savings not needed for the deposit and upfront costs', () => {
+    // $135k covers the $120k deposit but not stamp duty and costs on top, so nothing is spare for the $15k loan.
+    const tight: Profile = { ...strong(), purpose: 'investment', firstHome: false, price: 600_000, loan: 480_000, savings: 135_000, personalLoans: 15_000 };
+    const { need, have } = fundsToComplete(tight);
+    expect(have - need).toBeLessThan(tight.personalLoans);
+    expect(fixes(tight).map(f => f.id)).not.toContain('loans');
+
+    const spare: Profile = { ...tight, savings: 250_000 };
+    const loans = fixes(spare).find(f => f.id === 'loans');
+    expect(loans?.profile).toMatchObject({ personalLoans: 0, savings: 235_000 });
+  });
+
+  it('suggests waiting the shortest time-in-role gap, read from the check, not its wording', () => {
+    const p: Profile = { ...strong(), applicants: [{ ...strong().applicants[0], tenureMonths: 4 }] };
+    const waits = assess(p).results.flatMap(r => r.checks.filter(c => c.id === 'employment' && c.gap === 'close').map(c => c.waitMonths!));
+    expect(waits.length).toBeGreaterThan(0);
+    const wait = Math.min(...waits);
+    const tenure = fixes(p).find(f => f.id === 'tenure');
+    expect(tenure?.title).toBe(`Stay in your role ${wait} more month${wait === 1 ? '' : 's'}`);
+    expect(tenure?.profile.applicants[0].tenureMonths).toBe(4 + wait);
+  });
+});
+
+describe('funds to complete', () => {
+  it('adds upfront costs to the deposit and counts the grant as funds', () => {
+    const p = strong();
+    const f = fundsToComplete(p);
+    expect(f.need).toBe(p.price - p.loan + upfrontCosts(p).total);
+    expect(f.have).toBe(p.savings + p.gift + upfrontCosts(p).fhog);
   });
 });

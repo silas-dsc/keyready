@@ -104,6 +104,25 @@ export function upfrontCosts(p: Profile): UpfrontCosts {
   };
 }
 
+export interface FundsToComplete {
+  costs: UpfrontCosts;
+  /** Deposit plus upfront costs. */
+  need: number;
+  /** Savings and gifts, plus any First Home Owner Grant. */
+  have: number;
+}
+
+export function fundsToComplete(p: Profile): FundsToComplete {
+  const costs = upfrontCosts(p);
+  return { costs, need: deposit(p) + costs.total, have: p.savings + p.gift + costs.fhog };
+}
+
+/** The loan a buyer needs when they haven't said: the price less what their savings cover after costs. */
+export function derivedLoan(p: Profile): number {
+  const c = upfrontCosts(p);
+  return Math.max(0, p.price - Math.max(0, p.savings + p.gift + c.fhog - c.total));
+}
+
 /**
  * 5% Deposit Scheme property price caps (capital & regional centres / rest of state).
  * firsthomebuyers.gov.au/australian-government-5-percent-deposit-scheme/property-price-caps,
@@ -156,9 +175,12 @@ export function lmiEstimate(loan: number, lvrPct: number): number {
   return Math.round(loan * rate);
 }
 
+// Built once: toLocaleString makes a new formatter on every call, and the engine formats hundreds of amounts per assessment.
+const AUD = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD', maximumFractionDigits: 0 });
+
 export function fmtMoney(n: number): string {
   if (!isFinite(n)) return '—';
-  return n.toLocaleString('en-AU', { style: 'currency', currency: 'AUD', maximumFractionDigits: 0 });
+  return AUD.format(n);
 }
 
 export function fmtShortMoney(n: number): string {
