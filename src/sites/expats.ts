@@ -11,7 +11,7 @@ export const expats: SiteConfig = {
   plannedDomain: 'expatloancheck.com.au',
   theme: { ink: '#123047', inkSoft: '#43607a', go: '#0f766e', mint: '#5eead4', mintSoft: '#dcf7f3', paper: '#f5f8fa' },
   seo: {
-    title: 'Expat Loan Check — buying in Australia while living overseas or earning foreign income',
+    title: 'Expat Loan Check: buying in Australia while living overseas or earning foreign income',
     description: 'Free check for Australian expats: which lenders exclude overseas residents, how foreign income is haircut by currency, LVR caps and borrowing power.',
   },
   hero: {
@@ -24,20 +24,20 @@ export const expats: SiteConfig = {
     title: ['The hardest part of an expat loan is ', 'finding a lender that will look at it.'],
     points: [
       ['🌏', 'Who lends abroad', 'NAB, Westpac and St.George publish that they don’t lend to overseas residents. We check every lender’s published position.'],
-      ['💱', 'Currency haircut', 'Lenders count around 80% of foreign income in major currencies — less, or nothing, for others.'],
+      ['💱', 'Currency haircut', 'Lenders count around 80% of foreign income in major currencies, and less or nothing for others.'],
       ['📉', 'LVR caps', 'Foreign-income loans often cap at 70–80% LVR. See what deposit you’d need.'],
     ],
   },
   faq: [
     ['Is it really free?', 'Yes. The check, the report and the what-if tools are free, with no sign-up. If you choose to talk to us about a loan and go ahead, the lender pays us commission (set out in our Credit Guide). You never pay us a fee.'],
-    ['Why do so few lenders show up for me?', 'Because most mainstream lenders publish that they don’t lend to borrowers living overseas, or don’t publish expat lending at all. Specialist lenders that do lend to expats often don’t publish their rules online — a broker can access them.'],
+    ['Why do so few lenders show up for me?', 'Because most mainstream lenders publish that they don’t lend to borrowers living overseas, or don’t publish expat lending at all. Specialist lenders that do lend to expats often don’t publish their rules online, but a broker can access them.'],
     ['Will this affect my credit score?', 'No. We don’t run a credit check.'],
   ],
   guides: [
     {
       slug: 'expat-home-loan-australia',
       title: 'Expat home loans: which Australian lenders say no, and how foreign income is counted (2026)',
-      description: 'Which Australian lenders exclude overseas residents, how much foreign income they count by currency, and the LVR caps — from lenders’ own published policies.',
+      description: 'Which Australian lenders exclude overseas residents, how much foreign income they count by currency, and the LVR caps, from lenders’ own published policies.',
       updated: '2026-10-27',
       intro: 'Australians living abroad often assume their bank will lend to them. Several major lenders publish that they won’t, and those that accept foreign income count only part of it.',
       sections: [
@@ -69,12 +69,12 @@ export const expats: SiteConfig = {
         },
       ],
       sources: [
-        { label: 'NAB — variable rate offset home loan (eligibility)', url: 'https://www.nab.com.au/personal/home-loans/nab-variable-rate-offset-home-loan' },
+        { label: 'NAB: variable rate offset home loan (eligibility)', url: 'https://www.nab.com.au/personal/home-loans/nab-variable-rate-offset-home-loan' },
         { label: 'Westpac broker policy', url: 'https://westpac.com.au/brokers/policy' },
         { label: 'St.George broker policy', url: 'https://www.stgeorge.com.au/broker/policy' },
         { label: 'Macquarie broker credit guidelines (PDF)', url: MQ },
         { label: 'AMP distributor policies', url: 'https://distributor.amp.com.au/policies' },
-        { label: 'HSBC Australia — international mortgages', url: 'https://www.hsbc.com.au/international/mortgages/' },
+        { label: 'HSBC Australia: international mortgages', url: 'https://www.hsbc.com.au/international/mortgages/' },
       ],
     },
   ],

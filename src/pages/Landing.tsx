@@ -11,7 +11,7 @@ import { BROKER_DISCLOSURE } from '../sites/broker';
 
 const lenderFaq: [string, string] = [
   'Which lenders do you check?',
-  `${LENDER_COUNT} in total: ${LIVE_COUNT} Australian banks and lenders — majors, customer-owned banks, online lenders and more — using the rates, LVR limits and residency rules they publish through Open Banking (data as of ${DATA_DATE}), ${PUBLISHED_COUNT} non-bank lenders from their own published rate sheets, and ${MODELLED_COUNT} modelled specialist lenders. Rules lenders don’t publish, like time in job, are typical settings for each type of lender.`,
+  `${LENDER_COUNT} in total: ${LIVE_COUNT} Australian banks and lenders (majors, customer-owned banks, online lenders and more) using the rates, LVR limits and residency rules they publish through Open Banking (data as of ${DATA_DATE}), ${PUBLISHED_COUNT} non-bank lenders from their own published rate sheets, and ${MODELLED_COUNT} modelled specialist lenders. Rules lenders don’t publish, like time in job, are typical settings for each type of lender.`,
 ];
 
 export default function Landing() {
@@ -54,7 +54,7 @@ export default function Landing() {
             </div>
             {inProgress && (
               <div className="mt-6 flex flex-wrap items-center gap-3 rounded-2xl bg-mint-soft px-4 py-3 text-sm">
-                <span className="font-semibold">{saved.completed ? 'Your report is ready.' : `Welcome back — you’re ${saved.answered.length} answers in.`}</span>
+                <span className="font-semibold">{saved.completed ? 'Your report is ready.' : `Welcome back. You’re ${saved.answered.length} answers in.`}</span>
                 <button onClick={() => nav(saved.completed ? '/report' : '/check')} className="font-bold text-go underline underline-offset-2">
                   {saved.completed ? 'View my report' : 'Pick up where I left off'}
                 </button>
@@ -116,8 +116,8 @@ export default function Landing() {
           <h2 className="text-3xl font-extrabold sm:text-4xl">Three steps to clarity</h2>
           <ol className="mt-10 grid gap-6 md:grid-cols-3">
             {[
-              ['Tell us your situation', 'One question at a time: work, money, the home you want. Ballparks are fine — no documents.'],
-              ['We run the numbers', 'Income shading, a 3% stress test, living-cost benchmarks, LVR, stamp duty and scheme rules — for each lender.'],
+              ['Tell us your situation', 'One question at a time: work, money, the home you want. Ballparks are fine, and you don’t need documents.'],
+              ['We run the numbers', 'Income shading, a 3% stress test, living-cost benchmarks, LVR, stamp duty and scheme rules, for each lender.'],
               ['Walk in prepared', 'See your result instantly. Share it with a broker only if and when you want to.'],
             ].map(([t, d], i) => (
               <li key={t} className="rounded-3xl bg-card p-6 ring-1 ring-line">
@@ -128,7 +128,7 @@ export default function Landing() {
             ))}
           </ol>
           <div className="mt-10 text-center">
-            <Link to="/check" className="inline-flex rounded-2xl bg-ink px-7 py-4 text-lg font-semibold text-white">Start — it takes 5 minutes</Link>
+            <Link to="/check" className="inline-flex rounded-2xl bg-ink px-7 py-4 text-lg font-semibold text-white">Start the 5-minute check</Link>
           </div>
         </section>
 

@@ -115,7 +115,7 @@ function PriceStep({ ctx }: { ctx: StepCtx }) {
   const fill = () => set(q => { const c = upfrontCosts(q); return { ...q, loan: Math.max(0, q.price - Math.max(0, funds + c.fhog - c.total)) }; });
   return (
     <div className="space-y-5">
-      <Field label="Roughly what price are you looking at?" hint="A ballpark is fine — you can play with this on your report.">
+      <Field label="Roughly what price are you looking at?" hint="A ballpark is fine. You can play with this on your report.">
         {id => <MoneyInput id={id} big autoFocus value={p.price} onChange={n => set(q => ({ ...q, price: n }))} placeholder="650,000" />}
       </Field>
       <Field
@@ -154,7 +154,7 @@ function applicantSteps(i: number): Step[] {
       id: `age${sfx}`,
       section: 'you',
       title: i === 0 ? 'How old are you?' : 'How old is your co-borrower?',
-      why: 'Age sets how long a loan term a lender will offer — they want it repaid around retirement.',
+      why: 'Age sets how long a loan term a lender will offer, since they want it repaid around retirement.',
       error: p => (p.applicants[i].age < 18 ? 'Borrowers need to be 18 or over.' : p.applicants[i].age > 90 ? 'Please check the age.' : null),
       render: ({ p, set }) => (
         <Field label="Age in years">
@@ -192,7 +192,7 @@ function applicantSteps(i: number): Step[] {
       section: 'work',
       title: i === 0 ? 'How do you earn your income?' : 'How does your co-borrower earn?',
       sub: 'More than one job? Pick the one that pays most.',
-      why: 'Lenders treat a salaried employee, a casual and a business owner very differently — mostly in how long they want to see you doing it.',
+      why: 'Lenders treat a salaried employee, a casual and a business owner very differently, mostly in how long they want to see you doing it.',
       auto: true,
       render: ({ p, set, choose, answered }) => (
         <ChoiceGrid label="Employment type" options={EMPLOYMENT} value={answered ? p.applicants[i].employment : null} onChange={v => { set(setA(i, { employment: v, ...(v === 'not_working' ? { baseIncome: 0, tenureMonths: 0 } : {}) })); choose(); }} />
@@ -215,10 +215,10 @@ function applicantSteps(i: number): Step[] {
       id: `income${sfx}`,
       section: 'work',
       title: i === 0 ? 'What do you earn?' : 'What does your co-borrower earn?',
-      sub: 'Use whatever pay cycle is easiest — we’ll convert it.',
+      sub: 'Use whatever pay cycle is easiest and we’ll convert it.',
       why: 'Your income is the single biggest driver of how much a lender will let you borrow.',
       skip: p => noIncome(p.applicants[i]),
-      error: p => (p.applicants[i].baseIncome < 1_000 ? 'Add your income before tax — a rough figure is fine.' : null),
+      error: p => (p.applicants[i].baseIncome < 1_000 ? 'Add your income before tax. A rough figure is fine.' : null),
       render: ctx => <IncomeStep ctx={ctx} i={i} />,
       summary: p => [[i ? 'Co-borrower income' : 'Income', fmtMoney(p.applicants[i].baseIncome)]],
     },
@@ -257,7 +257,7 @@ export function buildSteps(p: Profile): Step[] {
       id: 'mode',
       section: 'you',
       title: 'Are you buying on your own, or with someone?',
-      why: 'Banks combine incomes and living costs for joint borrowers — two incomes usually means more borrowing power.',
+      why: 'Banks combine incomes and living costs for joint borrowers, and two incomes usually means more borrowing power.',
       auto: true,
       render: ({ p, set, choose, answered }) => (
         <ChoiceGrid
@@ -307,7 +307,7 @@ export function buildSteps(p: Profile): Step[] {
             id: 'overseas',
             section: 'you',
             title: p.mode === 'joint' ? 'Where do you live right now?' : 'Where do you live right now?',
-            sub: 'Most big banks won’t lend to borrowers who live overseas — this is the single biggest filter.',
+            sub: 'Most big banks won’t lend to borrowers who live overseas. This is the single biggest filter.',
             why: 'Lenders treat Australians living abroad very differently: many decline outright, and the rest cap the LVR and haircut foreign income.',
             auto: true,
             render: ({ p, set, choose, answered }) => (
@@ -350,7 +350,7 @@ export function buildSteps(p: Profile): Step[] {
           section: 'work' as const,
           title: 'Have you lodged tax returns for the last two years?',
           sub: 'For the business income you’d use to borrow.',
-          why: 'Banks want two years of tax returns from the self-employed. Without them, specialist lenders offer alt-doc (low-doc) loans using BAS, business bank statements or an accountant’s letter — usually at a lower LVR and a higher rate.',
+          why: 'Banks want two years of tax returns from the self-employed. Without them, specialist lenders offer alt-doc (low-doc) loans using BAS, business bank statements or an accountant’s letter, usually at a lower LVR and a higher rate.',
           auto: true,
           render: ({ p, set, choose, answered }: StepCtx) => (
             <ChoiceGrid
@@ -372,7 +372,7 @@ export function buildSteps(p: Profile): Step[] {
           section: 'work' as const,
           title: SITE.wizard.profession.prompt,
           sub: 'Some lenders waive mortgage insurance or offer special terms for particular professions.',
-          why: 'Profession-specific policies — like LMI waivers for medical professionals — can save tens of thousands, but each lender’s list of eligible professions is different.',
+          why: 'Profession-specific policies, like LMI waivers for medical professionals, can save tens of thousands, but each lender’s list of eligible professions is different.',
           auto: true,
           render: ({ p, set, choose, answered }: StepCtx) => (
             <ChoiceGrid
@@ -406,7 +406,7 @@ export function buildSteps(p: Profile): Step[] {
       section: 'money',
       title: 'Any debts lenders will count?',
       sub: 'Leave blank whatever doesn’t apply.',
-      why: 'Lenders count your full credit card limit as debt — even if you pay it off every month. It’s one of the most common surprises.',
+      why: 'Lenders count your full credit card limit as debt, even if you pay it off every month. It’s one of the most common surprises.',
       skippable: 'No debts',
       render: ({ p, set }) => (
         <div className="grid gap-4">
@@ -452,9 +452,9 @@ export function buildSteps(p: Profile): Step[] {
       id: 'otherIncome',
       section: 'money',
       title: 'Any other regular income?',
-      sub: 'Yearly amounts — optional, but it can lift your borrowing power.',
+      sub: 'Yearly amounts. Optional, but it can lift your borrowing power.',
       why: 'Family Tax Benefit, child support and rent from a property you own can all count toward serviceability.',
-      skippable: 'Skip — none',
+      skippable: 'Skip, I have none',
       render: ({ p, set }) => (
         <div className="grid gap-4 sm:grid-cols-3">
           <Field label="Family Tax Benefit">{id => <MoneyInput id={id} value={p.ftb} onChange={n => set(q => ({ ...q, ftb: n }))} />}</Field>
@@ -546,7 +546,7 @@ export function buildSteps(p: Profile): Step[] {
       section: 'home',
       title: 'Let’s talk numbers.',
       why: 'Your loan-to-value ratio (LVR) decides which lenders can say yes, and whether you’ll pay mortgage insurance.',
-      error: p => (p.price < 50_000 ? 'Add a rough purchase price.' : p.loan <= 0 ? 'Add how much you want to borrow.' : p.loan > p.price * 1.05 ? 'The loan is more than the price — check the numbers.' : null),
+      error: p => (p.price < 50_000 ? 'Add a rough purchase price.' : p.loan <= 0 ? 'Add how much you want to borrow.' : p.loan > p.price * 1.05 ? 'The loan is more than the price. Check the numbers.' : null),
       render: ctx => <PriceStep ctx={ctx} />,
       summary: p => [['Price', fmtMoney(p.price)], ['Loan', fmtMoney(p.loan)]],
     },
@@ -554,7 +554,7 @@ export function buildSteps(p: Profile): Step[] {
       id: 'defaults',
       section: 'credit',
       title: 'Any defaults on your credit file in the last few years?',
-      sub: 'No judgement — being upfront means we only point you to lenders who can say yes.',
+      sub: 'No judgement. Being upfront means we only point you to lenders who can say yes.',
       why: 'A default is a debt a lender has listed as unpaid. Mainstream banks usually decline them, but specialist lenders can help.',
       render: ({ p, set }) => (
         <div className="space-y-6">

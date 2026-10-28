@@ -7,14 +7,14 @@ export default function LvrMeter({ lvr, schemeEligible, compact }: { lvr: number
   const msg = !lvr
     ? 'Add a price and loan to see your LVR.'
     : lvr <= 60
-      ? 'Excellent — the sharpest rates are often reserved for 60% and under.'
+      ? 'Excellent. The sharpest rates are often reserved for 60% and under.'
       : lvr <= 80
-        ? 'Under 80% — no Lenders Mortgage Insurance needed.'
+        ? 'Under 80%, so no Lenders Mortgage Insurance needed.'
         : lvr <= 95
           ? schemeEligible
             ? 'Above 80%, but the 5% Deposit Scheme could remove LMI for you.'
-            : 'Above 80% — most lenders will add Lenders Mortgage Insurance.'
-          : 'Above 95% — very few lenders go this high.';
+            : 'Above 80%, most lenders will add Lenders Mortgage Insurance.'
+          : 'Above 95%, very few lenders go this high.';
   return (
     <div>
       <div className="flex items-baseline justify-between">

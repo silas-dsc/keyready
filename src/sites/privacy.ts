@@ -66,7 +66,7 @@ export function privacyPolicy(siteName: string): Guide {
       },
     ],
     sources: [
-      { label: 'OAIC — Australian Privacy Principles', url: 'https://www.oaic.gov.au/privacy/australian-privacy-principles' },
+      { label: 'OAIC: Australian Privacy Principles', url: 'https://www.oaic.gov.au/privacy/australian-privacy-principles' },
       { label: `${BROKER.name} privacy policy`, url: `${BROKER.url}privacy-policy/` },
     ],
   };

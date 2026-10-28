@@ -178,7 +178,7 @@ async function mcpPage(outDir) {
   const url = `${home}mcp/`;
   const ep = endpoint
     ? `<code id="ep">${esc(endpoint)}</code> <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('ep').textContent);this.textContent='Copied'">Copy</button>`
-    : '<em>not deployed yet — coming soon</em>';
+    : '<em>not deployed yet, coming soon</em>';
   const clients = [
     ['Claude (claude.ai, Desktop, mobile)', 'Customize → Connectors → Add custom connector → paste the URL. No sign-in needed.'],
     ['Claude Code', `<code>claude mcp add --transport http keyready ${esc(endpoint ?? '<url>')}</code>`],

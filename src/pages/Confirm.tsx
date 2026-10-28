@@ -5,7 +5,7 @@ import { confirmLead, type ConfirmResult } from '../lib/leads';
 import { BROKER, BROKER_DISCLOSURE } from '../sites/broker';
 
 const MESSAGE: Record<ConfirmResult, string> = {
-  confirmed: `Thanks — ${BROKER.name} now has your report and will be in touch at the time you chose.`,
+  confirmed: `Thanks. ${BROKER.name} now has your report and will be in touch at the time you chose.`,
   already_confirmed: `This request was already confirmed. ${BROKER.name} will be in touch.`,
   expired: 'This link has expired: requests are deleted after 7 days. You can run the check again and ask to be contacted.',
   not_found: 'We couldn’t find this request. It may have expired, or the link may be incomplete.',

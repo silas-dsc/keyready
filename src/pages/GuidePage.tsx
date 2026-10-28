@@ -89,7 +89,7 @@ export default function GuidePage({ guide, appUrl }: { guide: Guide; appUrl: str
 
       <footer className="border-t border-line">
         <p className="mx-auto max-w-4xl px-4 py-8 text-sm text-muted">
-          {SITE.name} provides general information only — not credit assistance or financial advice. Lender policies change; always confirm with a licensed broker or the lender.
+          {SITE.name} provides general information only, not credit assistance or financial advice. Lender policies change; always confirm with a licensed broker or the lender.
           {BROKER_DISCLOSURE} <a href={`${appUrl}privacy/`} className="underline underline-offset-2">Privacy policy</a>
         </p>
       </footer>

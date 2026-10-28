@@ -74,7 +74,7 @@ Deno.serve(async req => {
   const results = await Promise.allSettled([
     broker
       ? triggerKnock('new-lead', { id: `broker-${broker.id}`, email: broker.email, name: broker.name }, data, `lead-${lead.id}`)
-      : Promise.reject(new Error('No default broker configured — add one to public.brokers')),
+      : Promise.reject(new Error('No default broker configured: add one to public.brokers')),
     triggerKnock('lead-confirmation', { id: `lead-${lead.id}`, email: lead.email, name: lead.name }, data, `lead-${lead.id}`),
   ]);
   const errors = results.filter(r => r.status === 'rejected').map(r => String((r as PromiseRejectedResult).reason));
