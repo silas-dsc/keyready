@@ -11,7 +11,7 @@ export const nurses: SiteConfig = {
   plannedDomain: 'nursehomeloan.com.au',
   theme: { ink: '#3b1f4a', inkSoft: '#6a4b7a', go: '#2e8b6e', mint: '#9be3c8', mintSoft: '#e3f6ef', paper: '#faf7fb' },
   seo: {
-    title: 'Nurse Home Loan Check — LMI waivers, overtime and borrowing power for nurses & midwives',
+    title: 'Nurse Home Loan Check: LMI waivers, overtime and borrowing power for nurses & midwives',
     description: 'Free check for nurses, midwives and allied health: which lenders publish no-LMI lending, the $90k income test, and your borrowing power with shift penalties.',
   },
   hero: {
@@ -25,7 +25,7 @@ export const nurses: SiteConfig = {
     points: [
       ['🩺', 'The $90k test', 'Westpac and St.George publish a 90% no-LMI waiver for nurses, midwives and many allied health roles earning $90k or more.'],
       ['⏱️', 'Shift income', 'Overtime and allowances are shaded differently by each lender. We apply each one’s rules to your pay.'],
-      ['🏡', 'First home?', 'The 5% Deposit Scheme can remove LMI too — we check that as well.'],
+      ['🏡', 'First home?', 'The 5% Deposit Scheme can remove LMI too, and we check that as well.'],
     ],
   },
   faq: [
@@ -38,9 +38,9 @@ export const nurses: SiteConfig = {
     {
       slug: 'nurse-midwife-lmi-waiver',
       title: 'LMI waivers for nurses and midwives (2026): who offers them, and the $90k test',
-      description: 'Which lenders publish no-LMI home loans for nurses, midwives and allied health, the 90% LVR limit and $90k income test — and which major banks exclude nurses.',
+      description: 'Which lenders publish no-LMI home loans for nurses, midwives and allied health, the 90% LVR limit and $90k income test, and which major banks exclude nurses.',
       updated: '2026-10-27',
-      intro: 'Most profession LMI waivers were built for doctors. A few lenders now include nurses, midwives and allied health — usually up to 90% LVR, with a minimum income.',
+      intro: 'Most profession LMI waivers were built for doctors. A few lenders now include nurses, midwives and allied health, usually up to 90% LVR, with a minimum income.',
       sections: [
         {
           heading: 'Lenders that publish a waiver including nurses',
@@ -69,18 +69,18 @@ export const nurses: SiteConfig = {
         {
           heading: 'First home buyer? Compare with the 5% Deposit Scheme',
           body: [
-            'Since October 2025 the government’s 5% Deposit Scheme has had no income caps and unlimited places. For a first home under the price cap it removes LMI with a 5% deposit — so the profession waiver matters most for repeat buyers and investors.',
+            'Since October 2025 the government’s 5% Deposit Scheme has had no income caps and unlimited places. For a first home under the price cap it removes LMI with a 5% deposit, so the profession waiver matters most for repeat buyers and investors.',
           ],
         },
       ],
       sources: [
-        { label: 'Westpac — Healthcare professionals LMI waiver', url: WBC_HC },
+        { label: 'Westpac: Healthcare professionals LMI waiver', url: WBC_HC },
         { label: 'Westpac broker niche booklet (overtime at 100%)', url: 'https://www.westpac.com.au/content/dam/public/brokers/documents/other-resources/Broker_Niche_Booklet.pdf' },
-        { label: 'St.George — profession home loans', url: 'https://www.stgeorge.com.au/personal/home-loans/profession-home-loans' },
-        { label: 'RAMS — nurses offer', url: 'https://rams.com.au/all-offers/nursesoffer/' },
-        { label: 'ANZ — LMI waiver fact sheet (PDF)', url: 'https://www.anz.com.au/content/dam/anzcomau/documents/pdf/lmi-waier-fact-sheet.pdf' },
-        { label: 'NAB — LMI waiver', url: 'https://www.nab.com.au/personal/home-loans/lmi/lmi-waiver' },
-        { label: 'First Home Buyers — 5% Deposit Scheme', url: 'https://firsthomebuyers.gov.au/' },
+        { label: 'St.George: profession home loans', url: 'https://www.stgeorge.com.au/personal/home-loans/profession-home-loans' },
+        { label: 'RAMS: nurses offer', url: 'https://rams.com.au/all-offers/nursesoffer/' },
+        { label: 'ANZ: LMI waiver fact sheet (PDF)', url: 'https://www.anz.com.au/content/dam/anzcomau/documents/pdf/lmi-waier-fact-sheet.pdf' },
+        { label: 'NAB: LMI waiver', url: 'https://www.nab.com.au/personal/home-loans/lmi/lmi-waiver' },
+        { label: 'First Home Buyers: 5% Deposit Scheme', url: 'https://firsthomebuyers.gov.au/' },
       ],
     },
   ],

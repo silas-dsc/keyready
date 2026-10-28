@@ -36,7 +36,7 @@ export function fixActions(p: Profile, base: Assessment = assess(p)): FixAction[
   if (p.personalLoans > 0 && p.savings + p.gift - (p.price - p.loan) >= p.personalLoans) {
     const n = clone(p); n.savings -= p.personalLoans; n.personalLoans = 0;
     consider('loans', `Pay off your ${fmtMoney(p.personalLoans)} personal/car loan`,
-      'You have spare savings beyond your deposit — clearing a loan removes a monthly commitment from the assessment.', n);
+      'You have spare savings beyond your deposit. Clearing a loan removes a monthly commitment from the assessment.', n);
   }
 
   const tenureGaps = base.results

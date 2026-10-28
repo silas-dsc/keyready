@@ -115,7 +115,7 @@ export default function Report() {
             <div>
               <h2 className="text-2xl font-extrabold sm:text-3xl">Ready to take it to a broker?</h2>
               <p className="mt-2 max-w-xl text-white/75">
-                {BROKER.name} gets this report and calls you at a time that suits. One conversation instead of five — and no credit check until you choose a lender.
+                {BROKER.name} gets this report and calls you at a time that suits. One conversation instead of five, and no credit check until you choose a lender.
               </p>
             </div>
             <Button variant="soft" size="lg" onClick={() => setConnectOpen(true)}>Connect me with a broker</Button>
@@ -123,7 +123,7 @@ export default function Report() {
         </section>
 
         <p className="text-xs leading-relaxed text-muted">
-          {SITE.name} provides general information only — not credit assistance or financial advice — and doesn’t consider your full objectives or circumstances.
+          {SITE.name} provides general information only. It isn’t credit assistance or financial advice, and doesn’t consider your full objectives or circumstances.
           Rates, maximum LVRs and residency rules come from each lender’s public Open Banking product data (updated {DATA_DATE}); other policy rules (time in job, income
           shading, debt-to-income caps) are typical settings for that type of lender, not its own policy. Stamp duty and grants use 2026–27 state rules. Estimates use a 3%
           serviceability buffer and an expense benchmark in the style of HEM; LMI is approximate. Always confirm with a licensed broker or lender.
@@ -143,9 +143,9 @@ function Hero({ a, p, whatIf, onConnect }: { a: Assessment; p: Profile; whatIf: 
         You fit the published rules of <span className="text-go">{a.ready} of {total} lenders</span>{whatIf ? '' : ' today'}.
       </>
     ) : a.close > 0 ? (
-      <>You’re close — <span className="text-amber">{a.close} lenders</span> are within reach.</>
+      <>You’re close: <span className="text-amber">{a.close} lenders</span> are within reach.</>
     ) : (
-      <>Not yet — but there’s a clear path from here.</>
+      <>Not yet, but there’s a clear path from here.</>
     );
   const sub =
     a.ready > 0
@@ -161,7 +161,7 @@ function Hero({ a, p, whatIf, onConnect }: { a: Assessment; p: Profile; whatIf: 
         <h1 className="mt-2 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl" aria-live="polite">{headline}</h1>
         {waived.length > 0 && (
           <p className="mt-4 inline-flex flex-wrap items-center gap-2 rounded-2xl bg-mint-soft px-4 py-2 font-semibold text-go">
-            ✓ {waived.length} lender{waived.length > 1 ? 's' : ''} publish an LMI waiver for your profession at this LVR — about {fmtMoney(lmiEstimate(p.loan, a.lvr))} saved
+            ✓ {waived.length} lender{waived.length > 1 ? 's' : ''} publish an LMI waiver for your profession at this LVR, saving about {fmtMoney(lmiEstimate(p.loan, a.lvr))}
           </p>
         )}
         <p className="mt-3 max-w-xl text-lg text-ink-soft">{sub}</p>
@@ -246,7 +246,7 @@ function KeyNumbers({ a, p }: { a: Assessment; p: Profile }) {
       <Card title="Repayments">
         <p className="text-3xl font-extrabold tabular-nums"><CountUp value={best.monthlyRepayment} format={fmtMoney} /></p>
         <p className="text-sm text-muted">{best.comparison ? `per month at ${rateWithComparison(best)}, 30 yrs` : 'per month (estimate), 30 yrs'}</p>
-        <p className="mt-3 text-xs text-muted">{lmi ? `Plus ~${fmtMoney(lmi)} mortgage insurance` : best.lmiWaived ? `No LMI — profession waiver (saves ~${fmtMoney(lmiEstimate(p.loan, theLvr))})` : best.usesScheme ? 'No LMI via the 5% Deposit Scheme' : 'No mortgage insurance'}</p>
+        <p className="mt-3 text-xs text-muted">{lmi ? `Plus ~${fmtMoney(lmi)} mortgage insurance` : best.lmiWaived ? `No LMI with a profession waiver (saves ~${fmtMoney(lmiEstimate(p.loan, theLvr))})` : best.usesScheme ? 'No LMI via the 5% Deposit Scheme' : 'No mortgage insurance'}</p>
       </Card>
     </section>
   );
@@ -345,7 +345,7 @@ function LenderRow({ r }: { r: LenderResult }) {
   const st = STATUS[r.status];
   const issues = r.checks.filter(c => c.status === 'fail');
   const notes = r.checks.filter(c => c.status === 'warn');
-  const lead = issues[0]?.detail ?? (r.usesScheme ? 'No blockers — and you can use the 5% Deposit Scheme here.' : 'No blockers found. A broker can start here.');
+  const lead = issues[0]?.detail ?? (r.usesScheme ? 'No blockers, and you can use the 5% Deposit Scheme here.' : 'No blockers found. A broker can start here.');
   return (
     <div className="rounded-2xl bg-card ring-1 ring-line">
       <button onClick={() => setOpen(o => !o)} aria-expanded={open} className="flex w-full items-center gap-4 p-5 text-left">
@@ -437,7 +437,7 @@ function Duty({ p }: { p: Profile }) {
         {d.foreignSurcharge > 0 && <li className="text-rose">Foreign purchaser surcharge: {fmtMoney(d.foreignSurcharge)}</li>}
       </ul>
       <p className="mt-3 text-xs text-muted">
-        2026–27 rules. <a className="underline" href={d.source} target="_blank" rel="noreferrer">Official source</a>. Conditions apply — e.g. moving in within 12 months.
+        2026–27 rules. <a className="underline" href={d.source} target="_blank" rel="noreferrer">Official source</a>. Conditions apply, such as moving in within 12 months.
       </p>
     </section>
   );
@@ -452,7 +452,7 @@ function Scheme({ p }: { p: Profile }) {
       {s.eligible ? (
         <p className="mt-2 text-sm">
           Looks like you qualify: buy with as little as {s.minDepositPct}% deposit and <strong>no mortgage insurance</strong>, up to a {fmtMoney(s.cap)} price in your area.
-          Only participating lenders offer it — we’ve factored that in.
+          Only participating lenders offer it, and we’ve factored that in.
         </p>
       ) : (
         <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-ink-soft">
@@ -520,7 +520,7 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
             <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-mint text-3xl">✓</div>
             <h2 id="connect-title" className="mt-4 text-2xl font-extrabold">You’re all set, {form.name.split(' ')[0]}.</h2>
             <p className="mt-2 text-ink-soft">A broker will be in touch {form.preferred_time === 'Anytime' ? 'soon' : `in the ${form.preferred_time.toLowerCase()}`} with your report already in hand.</p>
-            {backendMode === 'local' && <p className="mt-3 text-xs text-muted">Demo mode: the lead was saved in this browser — see it on the <Link className="underline" to="/broker">broker dashboard</Link>.</p>}
+            {backendMode === 'local' && <p className="mt-3 text-xs text-muted">Demo mode: the lead was saved in this browser. See it on the <Link className="underline" to="/broker">broker dashboard</Link>.</p>}
             <Button className="mt-6" onClick={onClose}>Back to my report</Button>
           </div>
         ) : (
@@ -529,7 +529,7 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
               <h2 id="connect-title" className="text-2xl font-extrabold">Connect with a broker</h2>
               <p className="mt-1 text-ink-soft">We share your report with one broker: {BROKER.name}. No spam, no call centres.</p>
               <p className="mt-2 text-xs text-muted">{BROKER_DISCLOSURE}</p>
-              {sample && <p className="mt-2 rounded-xl bg-amber-soft p-2 text-sm text-amber">You’re on the example report — this will share the sample buyer’s details.</p>}
+              {sample && <p className="mt-2 rounded-xl bg-amber-soft p-2 text-sm text-amber">You’re on the example report, so this will share the sample buyer’s details.</p>}
             </div>
             <label className="block">
               <span className="font-semibold">Name</span>

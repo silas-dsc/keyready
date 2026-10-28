@@ -12,20 +12,20 @@ export const professionals: SiteConfig = {
   plannedDomain: 'lmiwaivercheck.com.au',
   theme: { ink: '#1c2a4a', inkSoft: '#46557a', go: '#1f7a8c', mint: '#7fd8e6', mintSoft: '#e1f4f7', paper: '#f6f7fb' },
   seo: {
-    title: 'LMI Waiver Check — do you qualify for no-LMI lending as a doctor, dentist, lawyer or accountant?',
-    description: 'Free check of which lenders publish LMI waivers for your profession, up to what LVR, and what it saves — against live Open Banking rates. No credit check.',
+    title: 'LMI Waiver Check: do you qualify for no-LMI lending as a doctor, dentist, lawyer or accountant?',
+    description: 'Free check of which lenders publish LMI waivers for your profession, up to what LVR, and what it saves, using live Open Banking rates. No credit check.',
   },
   hero: {
     pill: 'For doctors, dentists, vets, lawyers & accountants',
     title: ['Skip ', 'mortgage insurance', ' with a 5–10% deposit.'],
-    sub: 'Several lenders publish LMI waivers for particular professions — up to 95% LVR for some medical professionals. See which ones your profession and numbers fit, and what it saves you.',
+    sub: 'Several lenders publish LMI waivers for particular professions, up to 95% LVR for some medical professionals. See which ones your profession and numbers fit, and what it saves you.',
     ticks: ['Profession-specific rules', 'Live lender rates', 'No credit check', 'Free'],
   },
   pitch: {
     title: ['LMI on a $1m home can cost ', 'more than a new car.'],
     points: [
       ['🩺', 'Your profession, their list', 'Each lender’s waiver covers a different list of professions, registrations and income tests. We check yours against each one.'],
-      ['💸', 'What it saves', 'See the mortgage insurance you’d otherwise pay at your LVR — and which lenders waive it.'],
+      ['💸', 'What it saves', 'See the mortgage insurance you’d otherwise pay at your LVR, and which lenders waive it.'],
       ['🎛️', 'What if', 'Try a 5%, 10% or 20% deposit and watch which lenders still fit.'],
     ],
   },
@@ -40,9 +40,9 @@ export const professionals: SiteConfig = {
     {
       slug: 'lmi-waiver-doctors-dentists',
       title: 'LMI waivers for doctors and dentists (2026): which lenders, what LVR',
-      description: 'Which Australian lenders publish LMI waivers for doctors, specialists and dentists, the maximum LVR, and who is excluded — with sources.',
+      description: 'Which Australian lenders publish LMI waivers for doctors, specialists and dentists, the maximum LVR, and who is excluded, with sources.',
       updated: '2026-10-27',
-      intro: 'Lenders Mortgage Insurance usually applies when you borrow more than 80% of a property’s value. Several lenders waive it for medical professionals — some up to 95% LVR — but each has its own list of eligible registrations and conditions.',
+      intro: 'Lenders Mortgage Insurance usually applies when you borrow more than 80% of a property’s value. Several lenders waive it for medical professionals (some up to 95% LVR), but each has its own list of eligible registrations and conditions.',
       sections: [
         {
           heading: 'Published medical LMI waivers',
@@ -53,7 +53,7 @@ export const professionals: SiteConfig = {
               ['Westpac (and St.George)', '95%', 'GPs, dentists, medical specialists, hospital-employed doctors (intern, resident, registrar, staff specialist)', 'No minimum income; loan up to $5m; qualifications verified'],
               ['ANZ', '95%', 'Medical practitioners, specialists and dentists with AHPRA General or Specialist registration', 'Not provisional, limited or non-practising registration; loan up to $4.75m; equal or majority share of the property'],
               ['BOQ Specialist', '90% (up to 100% in some circumstances)', 'Doctors, dentists, vets and accountants (banking package)', 'Criteria for 100% not published'],
-              ['CommBank', '90% (from a 10% deposit)', 'Doctors, lawyers and accountants — eligibility checked case by case', 'Profession list not published'],
+              ['CommBank', '90% (from a 10% deposit)', 'Doctors, lawyers and accountants; eligibility checked case by case', 'Profession list not published'],
               ['NAB', 'Not published', 'AHPRA-registered GPs, specialists, dental practitioners, pharmacists, physiotherapists, optometrists, vets and others', 'LVR limit not stated on its site'],
             ],
           },
@@ -61,7 +61,7 @@ export const professionals: SiteConfig = {
         {
           heading: 'What a waiver is worth',
           body: [
-            'LMI premiums rise steeply above 90% LVR. On an $855,000 loan at 95% LVR, an indicative premium is around $29,000 — often added to the loan, so you’d pay interest on it for decades. Our check shows the indicative LMI for your numbers and which lenders publish a waiver for your profession.',
+            'LMI premiums rise steeply above 90% LVR. On an $855,000 loan at 95% LVR, an indicative premium is around $29,000. It’s often added to the loan, so you’d pay interest on it for decades. Our check shows the indicative LMI for your numbers and which lenders publish a waiver for your profession.',
             'Premiums vary by insurer, lender, loan size and state; the figure above is our estimate, not a quote.',
           ],
         },
@@ -77,13 +77,13 @@ export const professionals: SiteConfig = {
         ['Do I need to be a first home buyer?', 'No. Profession waivers are not first-home-buyer schemes. First home buyers can also look at the government’s 5% Deposit Scheme, which removes LMI with a 5% deposit.'],
       ],
       sources: [
-        { label: 'Westpac — Healthcare professionals LMI waiver', url: WBC_HC },
+        { label: 'Westpac: Healthcare professionals LMI waiver', url: WBC_HC },
         { label: 'Westpac broker niche booklet (loan caps)', url: 'https://www.westpac.com.au/content/dam/public/brokers/documents/other-resources/Broker_Niche_Booklet.pdf' },
         { label: 'St.George broker policy', url: 'https://www.stgeorge.com.au/broker/policy' },
-        { label: 'ANZ — LMI waiver for medical and dental practitioners (PDF)', url: ANZ_MED },
+        { label: 'ANZ: LMI waiver for medical and dental practitioners (PDF)', url: ANZ_MED },
         { label: 'BOQ Specialist home loans', url: 'https://www.boqspecialist.com.au/personal-banking/home-loans/' },
-        { label: 'CommBank — low deposit home loan options', url: 'https://www.commbank.com.au/home-loans/low-deposit-home-loan-options.html' },
-        { label: 'NAB — LMI waiver', url: 'https://www.nab.com.au/personal/home-loans/lmi/lmi-waiver' },
+        { label: 'CommBank: low deposit home loan options', url: 'https://www.commbank.com.au/home-loans/low-deposit-home-loan-options.html' },
+        { label: 'NAB: LMI waiver', url: 'https://www.nab.com.au/personal/home-loans/lmi/lmi-waiver' },
       ],
     },
     {
@@ -101,7 +101,7 @@ export const professionals: SiteConfig = {
             rows: [
               ['ANZ', '90%', 'Accountants and actuaries with current CA ANZ, CPA, CFA Institute or FIAA membership (no minimum income); lawyers, solicitors, barristers, judges and magistrates with a current practising certificate. Loans up to $4.5m.'],
               ['Westpac (and St.George)', '90%', 'Accounting and legal professionals meeting its approved industry accreditation and income criteria'],
-              ['CommBank', '90% (from a 10% deposit)', 'Lawyers and accountants — eligibility checked case by case'],
+              ['CommBank', '90% (from a 10% deposit)', 'Lawyers and accountants; eligibility checked case by case'],
               ['BOQ Specialist', '90%', 'Accountants (banking package)'],
               ['NAB', 'Not published', 'Accountants (CA ANZ, CPA, IPA), actuaries (FIAA), financial analysts (CFA), barristers, lawyers and solicitors with a current certificate'],
             ],
@@ -113,12 +113,12 @@ export const professionals: SiteConfig = {
         },
       ],
       sources: [
-        { label: 'ANZ — LMI waiver for accountants (PDF)', url: 'https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-accountants.pdf' },
-        { label: 'ANZ — LMI waiver for legal professionals (PDF)', url: 'https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-legal.pdf' },
-        { label: 'ANZ — home loans for business owners', url: 'https://www.anz.com.au/personal/home-loans/buying-home/home-loans-business-owners/' },
+        { label: 'ANZ: LMI waiver for accountants (PDF)', url: 'https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-accountants.pdf' },
+        { label: 'ANZ: LMI waiver for legal professionals (PDF)', url: 'https://www.anz.com.au/content/dam/anzcomau/documents/pdf/broker-lmi-waiver-legal.pdf' },
+        { label: 'ANZ: home loans for business owners', url: 'https://www.anz.com.au/personal/home-loans/buying-home/home-loans-business-owners/' },
         { label: 'Westpac broker policy', url: 'https://westpac.com.au/brokers/policy' },
-        { label: 'CommBank — low deposit home loan options', url: 'https://www.commbank.com.au/home-loans/low-deposit-home-loan-options.html' },
-        { label: 'NAB — LMI waiver', url: 'https://www.nab.com.au/personal/home-loans/lmi/lmi-waiver' },
+        { label: 'CommBank: low deposit home loan options', url: 'https://www.commbank.com.au/home-loans/low-deposit-home-loan-options.html' },
+        { label: 'NAB: LMI waiver', url: 'https://www.nab.com.au/personal/home-loans/lmi/lmi-waiver' },
       ],
     },
   ],

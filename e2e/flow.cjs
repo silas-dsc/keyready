@@ -28,7 +28,7 @@ const shots = process.argv[3];
   await money('Savings', 105000); await cont();
   await money('Credit card limits', 10000); await money('HECS/HELP balance', 15000); await snap('04-debts'); await cont();
   await cont(); // household default: just me
-  await p.getByRole('button', { name: /Skip — none/ }).click(); await p.waitForTimeout(450);
+  await p.getByRole('button', { name: /Skip, I have none/ }).click(); await p.waitForTimeout(450);
   await choose(/Live in it/);
   await cont(); // dwelling defaults
   await p.getByRole('radio', { name: 'WA' }).click(); await cont();

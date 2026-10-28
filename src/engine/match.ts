@@ -110,7 +110,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
       const wait = min - a.tenureMonths;
       const unit = a.employment === 'self_employed' ? 'trading on your ABN' : 'in your role';
       empFail = { id: 'employment', label: 'Time in role', status: 'fail', gap: wait <= 6 ? 'close' : 'far', weight: 3,
-        detail: `${a.tenureMonths} months ${unit} is below the ${min}-month minimum — you’d meet this rule in about ${wait} month${wait === 1 ? '' : 's'}.` };
+        detail: `${a.tenureMonths} months ${unit} is below the ${min}-month minimum. You’d meet this rule in about ${wait} month${wait === 1 ? '' : 's'}.` };
       break;
     }
   }
@@ -134,7 +134,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
       ? { id: 'foreign-income', label: 'Foreign income', status: 'pass', weight: 2,
           detail: `Counts about ${Math.round(fi.shading * 100)}% of ${p.incomeCurrency} income${fi.maxLvr ? `, up to ${fi.maxLvr}% LVR` : ''}.` }
       : { id: 'foreign-income', label: 'Foreign income', status: 'warn', weight: 2,
-          detail: `Doesn’t publish how it treats ${p.incomeCurrency} income — we’ve assumed 80% is counted.` });
+          detail: `Doesn’t publish how it treats ${p.incomeCurrency} income, so we’ve assumed 80% is counted.` });
   }
 
   // Credit history
@@ -176,7 +176,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   } else if (theLvr > maxLvr) {
     const extra = p.loan - (maxLvr / 100) * p.price;
     add({ id: 'lvr', label: 'Loan-to-value', status: 'fail', gap: theLvr - maxLvr <= 5 ? 'close' : 'far', weight: 3,
-      detail: `An LVR of ${pct(theLvr)} is above the ${maxLvr}% maximum — about ${fmtMoney(extra)} more deposit closes the gap.` });
+      detail: `An LVR of ${pct(theLvr)} is above the ${maxLvr}% maximum. About ${fmtMoney(extra)} more deposit closes the gap.` });
   } else {
     add({ id: 'lvr', label: 'Loan-to-value', status: 'pass', weight: 3,
       detail: usesScheme ? `${pct(theLvr)} LVR works through the 5% Deposit Scheme.` : `${pct(theLvr)} LVR is within the ${maxLvr}% limit.` });
@@ -185,7 +185,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   // LMI
   if (lmiWaived) {
     add({ id: 'lmi', label: 'Mortgage insurance', status: 'pass', weight: 1,
-      detail: `May waive LMI for ${PROFESSION_NAME[p.profession!]} up to ${waiver!.maxLvr}% LVR — about ${fmtMoney(lmiEstimate(p.loan, theLvr))} saved.${waiver!.conditions ? ` ${waiver!.conditions}` : ''}` });
+      detail: `May waive LMI for ${PROFESSION_NAME[p.profession!]} up to ${waiver!.maxLvr}% LVR, saving about ${fmtMoney(lmiEstimate(p.loan, theLvr))}.${waiver!.conditions ? ` ${waiver!.conditions}` : ''}` });
   } else if (theLvr > 80 && !usesScheme && theLvr <= maxLvr) {
     add({ id: 'lmi', label: 'Mortgage insurance', status: 'warn', weight: 1,
       detail: `Lenders Mortgage Insurance of roughly ${fmtMoney(lmiEstimate(p.loan, theLvr))} applies (usually added to the loan).` });
@@ -196,7 +196,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     const need = p.price * 0.05;
     if (p.savings < need) {
       add({ id: 'genuine', label: 'Genuine savings', status: 'fail', gap: need - p.savings <= 15_000 ? 'close' : 'far', weight: 2,
-        detail: `Above ${L.genuineSavingsAbove}% LVR it wants 5% (${fmtMoney(need)}) saved yourself — gifts don't count toward this.` });
+        detail: `Above ${L.genuineSavingsAbove}% LVR it wants 5% (${fmtMoney(need)}) saved yourself. Gifts don’t count toward this.` });
     } else {
       add({ id: 'genuine', label: 'Genuine savings', status: 'pass', weight: 2, detail: 'You have 5% in genuine savings.' });
     }
@@ -218,7 +218,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   // Serviceability
   if (p.loan > sv.byService) {
     add({ id: 'service', label: 'Serviceability', status: 'fail', gap: p.loan <= sv.byService * 1.12 ? 'close' : 'far', weight: 4,
-      detail: `Assessed at ${sv.assessmentRate.toFixed(2)}%, your income supports about ${fmtMoney(sv.byService)} — ${fmtMoney(p.loan - sv.byService)} short.` });
+      detail: `Assessed at ${sv.assessmentRate.toFixed(2)}%, your income supports about ${fmtMoney(sv.byService)}, which is ${fmtMoney(p.loan - sv.byService)} short.` });
   } else {
     add({ id: 'service', label: 'Serviceability', status: 'pass', weight: 4,
       detail: `Assessed at ${sv.assessmentRate.toFixed(2)}%, you can service up to ${fmtMoney(sv.byService)}.` });
@@ -231,7 +231,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
       detail: `Total debts of ${dti.toFixed(1)}× income are above this lender's ${L.maxDti}× limit.` });
   } else if (dti >= 6) {
     add({ id: 'dti', label: 'Debt-to-income', status: 'warn', weight: 2,
-      detail: `${dti.toFixed(1)}× income counts as high DTI — APRA caps these at 20% of a bank's new loans, so approval can depend on timing.` });
+      detail: `${dti.toFixed(1)}× income counts as high DTI. APRA caps these at 20% of a bank’s new loans, so approval can depend on timing.` });
   } else {
     add({ id: 'dti', label: 'Debt-to-income', status: 'pass', weight: 2, detail: `${isFinite(dti) ? dti.toFixed(1) : '—'}× income is comfortable.` });
   }

@@ -43,7 +43,7 @@ const STATES = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT'] as const;
 const SITE_IDS = Object.keys(SITE_CATALOG) as [string, ...string[]];
 const DATA_DATE = MARKET_FETCHED_AT.slice(0, 10);
 const NOTICE =
-  'General information only — not credit assistance, financial advice or a comparison service. It checks the user’s answers against lenders’ published rules (Open Banking data) and typical policy settings; lenders make their own decisions. Lender names are masked.';
+  'General information only, not credit assistance, financial advice or a comparison service. It checks the user’s answers against lenders’ published rules (Open Banking data) and typical policy settings; lenders make their own decisions. Lender names are masked.';
 
 const applicant = z.object({
   age: z.number().int().min(18).max(90),
@@ -77,7 +77,7 @@ const situation = z.object({
   credit_defaults: z.enum(['no', 'yes', 'unsure']).default('no'),
   credit_score: z.number().int().min(0).max(1200).optional().describe('Equifax-style score out of 1200, if known'),
   profession: z.enum(['doctor', 'specialist', 'dentist', 'vet', 'pharmacist', 'physio', 'optometrist', 'psychologist', 'nurse', 'midwife', 'allied_health', 'lawyer', 'accountant', 'actuary', 'engineer']).optional()
-    .describe('Main borrower’s profession — some lenders waive LMI for listed professions'),
+    .describe('Main borrower’s profession. Some lenders waive LMI for listed professions.'),
   lives_overseas: z.boolean().default(false).describe('Main borrower currently lives outside Australia'),
   income_currency: z.enum(['AUD', 'USD', 'GBP', 'EUR', 'NZD', 'SGD', 'HKD', 'AED', 'CAD', 'JPY', 'CNY', 'other']).default('AUD'),
   low_doc: z.boolean().default(false).describe('Self-employed without two years of lodged tax returns'),
@@ -285,7 +285,7 @@ export function buildServer(deps: McpDeps): McpServer {
       profile, summary: summarise(profile, assess(profile)), site: i.site, segment: site.segment, channel: 'mcp', attribution: { utm_source: 'mcp' },
     });
     return {
-      content: [text(`Nearly done — we've emailed ${i.email} a link to confirm. ${BROKER.name} will only see the report and contact ${i.name} (${i.preferred_time.toLowerCase()}) after they click it; unconfirmed requests are deleted after 7 days. Reference ${id.slice(0, 8)}. ${BROKER_DISCLOSURE}`)],
+      content: [text(`Nearly done. We’ve emailed ${i.email} a link to confirm. ${BROKER.name} will only see the report and contact ${i.name} (${i.preferred_time.toLowerCase()}) after they click it; unconfirmed requests are deleted after 7 days. Reference ${id.slice(0, 8)}. ${BROKER_DISCLOSURE}`)],
       structuredContent: { referred: false, pending_confirmation: true, reference: id, broker: BROKER.name },
     };
   });

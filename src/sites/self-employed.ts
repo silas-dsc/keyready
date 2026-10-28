@@ -11,7 +11,7 @@ export const selfEmployed: SiteConfig = {
   plannedDomain: 'lowdoccheck.com.au',
   theme: { ink: '#2b2a1f', inkSoft: '#5c5a48', go: '#c2410c', mint: '#fdba74', mintSoft: '#fff1e6', paper: '#faf8f3' },
   seo: {
-    title: 'Low Doc Check — home loans for the self-employed, tradies and ABN holders',
+    title: 'Low Doc Check: home loans for the self-employed, tradies and ABN holders',
     description: 'Free check for self-employed borrowers: how long your ABN needs to be, full-doc vs alt-doc lenders, LVR limits and borrowing power. No credit check.',
   },
   hero: {
@@ -23,8 +23,8 @@ export const selfEmployed: SiteConfig = {
   pitch: {
     title: ['Your bank’s “no” might just mean ', 'wrong lender.'],
     points: [
-      ['📅', 'ABN age', 'Minimums range from 6 months (alt-doc) to 2 years — we check each lender’s published rule against yours.'],
-      ['🧾', 'Documents', 'Two years of returns, one year, or BAS and bank statements — each path has different lenders and LVR limits.'],
+      ['📅', 'ABN age', 'Minimums range from 6 months (alt-doc) to 2 years. We check each lender’s published rule against yours.'],
+      ['🧾', 'Documents', 'Two years of returns, one year, or BAS and bank statements. Each path has different lenders and LVR limits.'],
       ['🎛️', 'What if', 'See how lodging this year’s return, or a bigger deposit, changes your options.'],
     ],
   },
@@ -38,7 +38,7 @@ export const selfEmployed: SiteConfig = {
     {
       slug: 'abn-time-home-loan',
       title: 'How long do you need an ABN to get a home loan? Lender rules (2026)',
-      description: 'Minimum ABN and trading time for self-employed home loans at Westpac, ANZ, NAB, Bankwest, Macquarie, AMP, CommBank and alt-doc lenders — with sources.',
+      description: 'Minimum ABN and trading time for self-employed home loans at Westpac, ANZ, NAB, Bankwest, Macquarie, AMP, CommBank and alt-doc lenders, with sources.',
       updated: '2026-10-27',
       intro: 'The rule of thumb is two years of tax returns, but published minimums range from six months (alt-doc lenders) to two years. Here’s what each lender says on its own site.',
       sections: [
@@ -62,26 +62,26 @@ export const selfEmployed: SiteConfig = {
         },
         {
           heading: 'Full-doc beats alt-doc when you can',
-          body: ['Alt-doc loans cost more and cap the LVR. If you’re a few months from lodging your second tax return, waiting can open up the major banks — our check shows how many more lenders that would unlock.'],
+          body: ['Alt-doc loans cost more and cap the LVR. If you’re a few months from lodging your second tax return, waiting can open up the major banks. Our check shows how many more lenders that would unlock.'],
         },
       ],
       sources: [
-        { label: 'Westpac — self-employed: how to apply', url: 'https://www.westpac.com.au/home-loans/self-employed/how-to-apply' },
-        { label: 'Westpac — self-employed ideas hub (1-year assessment)', url: 'https://www.westpac.com.au/brokers/ideas-hub/self-employed/' },
-        { label: 'ANZ — home loans for business owners', url: 'https://www.anz.com.au/personal/home-loans/buying-home/home-loans-business-owners/' },
-        { label: 'Bankwest — product disclosure (BWE-8017, PDF)', url: 'https://www.bankwest.com.au/content/dam/bankwest/documents/legal-library/PDS_BWE-8017.pdf' },
-        { label: 'NAB — self-employed home loans', url: 'https://www.nab.com.au/personal/home-loans/self-employed-home-loan' },
+        { label: 'Westpac: self-employed: how to apply', url: 'https://www.westpac.com.au/home-loans/self-employed/how-to-apply' },
+        { label: 'Westpac: self-employed ideas hub (1-year assessment)', url: 'https://www.westpac.com.au/brokers/ideas-hub/self-employed/' },
+        { label: 'ANZ: home loans for business owners', url: 'https://www.anz.com.au/personal/home-loans/buying-home/home-loans-business-owners/' },
+        { label: 'Bankwest: product disclosure (BWE-8017, PDF)', url: 'https://www.bankwest.com.au/content/dam/bankwest/documents/legal-library/PDS_BWE-8017.pdf' },
+        { label: 'NAB: self-employed home loans', url: 'https://www.nab.com.au/personal/home-loans/self-employed-home-loan' },
         { label: 'Macquarie broker credit guidelines (PDF)', url: MQ },
         { label: 'AMP distributor policies', url: 'https://distributor.amp.com.au/policies' },
-        { label: 'Pepper Money — low doc vs alt doc', url: 'https://www.peppermoney.com.au/home-loans/low-doc-vs-alt-doc' },
-        { label: 'Liberty — low doc home loans', url: 'https://www.liberty.com.au/home-loans/low-doc-home-loans' },
-        { label: 'La Trobe Financial — self-employed loans', url: 'https://www.latrobefinancial.com.au/lending/self-employed-loan/' },
+        { label: 'Pepper Money: low doc vs alt doc', url: 'https://www.peppermoney.com.au/home-loans/low-doc-vs-alt-doc' },
+        { label: 'Liberty: low doc home loans', url: 'https://www.liberty.com.au/home-loans/low-doc-home-loans' },
+        { label: 'La Trobe Financial: self-employed loans', url: 'https://www.latrobefinancial.com.au/lending/self-employed-loan/' },
       ],
     },
     {
       slug: 'self-employed-add-backs',
       title: 'Add-backs: what lenders add back to your business profit',
-      description: 'Which expenses lenders add back to self-employed income for a home loan — depreciation, super, one-off costs — using Macquarie’s and AMP’s published rules.',
+      description: 'Which expenses lenders add back to self-employed income for a home loan (depreciation, super, one-off costs), using Macquarie’s and AMP’s published rules.',
       updated: '2026-10-27',
       intro: 'Lenders start from your taxable business profit, then “add back” some expenses that don’t reflect your real ability to repay. The rules differ by lender, and they can change your borrowing power a lot.',
       sections: [
@@ -101,7 +101,7 @@ export const selfEmployed: SiteConfig = {
       sources: [
         { label: 'Macquarie broker credit guidelines (PDF)', url: MQ },
         { label: 'AMP distributor policies', url: 'https://distributor.amp.com.au/policies' },
-        { label: 'Westpac — self-employed ideas hub', url: 'https://www.westpac.com.au/brokers/ideas-hub/self-employed/' },
+        { label: 'Westpac: self-employed ideas hub', url: 'https://www.westpac.com.au/brokers/ideas-hub/self-employed/' },
       ],
     },
   ],
