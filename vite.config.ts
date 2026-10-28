@@ -17,8 +17,10 @@ export default defineConfig({
       // json-summary and json feed the PR coverage comment in CI; html is uploaded as an artifact.
       reporter: ['text-summary', 'json-summary', 'json', 'html'],
       reportOnFailure: true,
-      // The rules engine and the MCP server are where a silent regression costs most: keep them covered.
+      // The rules engine and the MCP server, below, are where a silent regression costs most: keep them covered.
       thresholds: {
+        // Whole app: a floor just under today's coverage, so new code doesn't lower it.
+        lines: 45, statements: 44, branches: 40, functions: 25,
         'src/engine/**': { lines: 95, branches: 85 },
         'src/mcp/**': { lines: 90, branches: 55 },
       },
