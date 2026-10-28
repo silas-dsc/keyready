@@ -278,7 +278,7 @@ export function buildServer(deps: McpDeps): McpServer {
     if (((await deps.recentLeadCount?.(i.email)) ?? 0) >= 3)
       return { content: [text('This email address has already been referred several times today. The broker will be in touch.')], isError: true };
     const profile = toProfile(i);
-    const site = SITE_CATALOG[i.site] ?? SITE_CATALOG.core;
+    const site = SITE_CATALOG[i.site];
     const { id } = await deps.insertLead({
       name: i.name, email: i.email, phone: i.phone, preferred_time: i.preferred_time, consent: true,
       profile, summary: summarise(profile, assess(profile)), site: i.site, segment: site.segment, channel: 'mcp', attribution: { utm_source: 'mcp' },

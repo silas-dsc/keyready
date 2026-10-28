@@ -18,13 +18,8 @@ export default defineConfig({
       // json-summary and json feed the PR coverage comment in CI; html is uploaded as an artifact.
       reporter: ['text-summary', 'json-summary', 'json', 'html'],
       reportOnFailure: true,
-      thresholds: {
-        // Whole app: a floor just under today's coverage, so new code doesn't lower it.
-        lines: 45, statements: 44, branches: 40, functions: 25,
-        // The rules engine and the MCP server are where a silent regression costs most.
-        'src/engine/**': { lines: 95, branches: 85 },
-        'src/mcp/**': { lines: 90, branches: 55 },
-      },
+      // Every file must be fully covered: a new line, branch or function without a test fails CI.
+      thresholds: { lines: 100, statements: 100, branches: 100, functions: 100, perFile: true },
     },
   },
 });

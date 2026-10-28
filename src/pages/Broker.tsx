@@ -39,7 +39,7 @@ export default function Broker() {
   const updateStatus = async (id: string, status: LeadStatus) => {
     try {
       await setLeadStatus(id, status);
-      setLeads(ls => ls?.map(l => (l.id === id ? { ...l, status } : l)) ?? null);
+      setLeads(ls => ls!.map(l => (l.id === id ? { ...l, status } : l)));
     } catch (e) {
       setError((e as Error).message);
     }
@@ -119,7 +119,7 @@ export default function Broker() {
                     <td className="px-4 py-3">{r.contacted}</td>
                     <td className="px-4 py-3">{r.settled}</td>
                     <td className="px-4 py-3">{r.lost}</td>
-                    <td className="px-4 py-3">{r.leads ? Math.round((r.settled / r.leads) * 100) : 0}%</td>
+                    <td className="px-4 py-3">{Math.round((r.settled / r.leads) * 100)}%</td>
                   </tr>
                 ))}
               </tbody>

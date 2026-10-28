@@ -581,7 +581,7 @@ export function buildSteps(p: Profile): Step[] {
           </label>
           {p.bankruptcyYears !== null && (
             <Field label="Years since discharge">
-              {() => <Stepper label="years" value={p.bankruptcyYears ?? 0} max={20} onChange={n => set(q => ({ ...q, bankruptcyYears: n }))} />}
+              {() => <Stepper label="years" value={p.bankruptcyYears!} max={20} onChange={n => set(q => ({ ...q, bankruptcyYears: n }))} />}
             </Field>
           )}
         </div>

@@ -132,7 +132,8 @@ export function evaluate(p: Profile, L: LenderPolicy, b: Borrower = borrower(p))
     if (a.employment === 'self_employed' && p.lowDoc) {
       empFail = { id: 'employment', label: 'Documents', status: 'fail', gap: 'far', weight: 3,
         detail: altDoc
-          ? `Its alt-doc (low-doc) loan needs ${altDoc.minAbnMonths ?? 'a minimum period of'}+ months of ABN registration.`
+          // Reached only when short of the lender's minimum, so it has one.
+          ? `Its alt-doc (low-doc) loan needs ${altDoc.minAbnMonths!}+ months of ABN registration.`
           : 'Lends to the self-employed on full documents (two years of tax returns) only.' };
       break;
     }
@@ -267,7 +268,7 @@ export function evaluate(p: Profile, L: LenderPolicy, b: Borrower = borrower(p))
     add({ id: 'dti', label: 'Debt-to-income', status: 'warn', weight: 2,
       detail: `${dti.toFixed(1)}× income counts as high DTI. APRA caps these at 20% of a bank’s new loans, so approval can depend on timing.` });
   } else {
-    add({ id: 'dti', label: 'Debt-to-income', status: 'pass', weight: 2, detail: `${isFinite(dti) ? dti.toFixed(1) : '—'}× income is comfortable.` });
+    add({ id: 'dti', label: 'Debt-to-income', status: 'pass', weight: 2, detail: `${dti.toFixed(1)}× income is comfortable.` });
   }
 
   // Age / term
