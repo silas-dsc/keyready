@@ -42,14 +42,19 @@ export default function GuidePage({ guide, appUrl }: { guide: Guide; appUrl: str
             <h2 className="text-2xl font-extrabold">{s.heading}</h2>
             {s.body.map(b => <p key={b} className="mt-4 leading-relaxed text-ink-soft">{b}</p>)}
             {s.table && (
+              // Below sm each row stacks into a card, labelled with its column headings: wide text columns don't fit a phone.
               <div className="mt-6 overflow-x-auto rounded-2xl ring-1 ring-line">
-                <table className="w-full min-w-[480px] bg-card text-left text-sm">
-                  <thead className="bg-black/5">
+                <table className="w-full bg-card text-left text-sm sm:min-w-[480px]">
+                  <thead className="bg-black/5 max-sm:sr-only">
                     <tr>{s.table.head.map(h => <th key={h} className="px-4 py-3 font-bold">{h}</th>)}</tr>
                   </thead>
                   <tbody className="divide-y divide-line">
                     {s.table.rows.map(r => (
-                      <tr key={r.join('|')}>{r.map((c, i) => <td key={i} className="px-4 py-3 align-top">{c}</td>)}</tr>
+                      <tr key={r.join('|')} className="max-sm:block max-sm:space-y-2 max-sm:p-4">
+                        {r.map((c, i) => (
+                          <td key={i} data-label={s.table!.head[i]} className="px-4 py-3 align-top max-sm:block max-sm:p-0 max-sm:first:font-bold max-sm:[&:not(:first-child)]:before:block max-sm:[&:not(:first-child)]:before:text-xs max-sm:[&:not(:first-child)]:before:font-semibold max-sm:[&:not(:first-child)]:before:text-muted max-sm:[&:not(:first-child)]:before:content-[attr(data-label)]">{c}</td>
+                        ))}
+                      </tr>
                     ))}
                   </tbody>
                 </table>

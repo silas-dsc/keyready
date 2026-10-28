@@ -122,10 +122,19 @@ describe('Landing', () => {
 
   it('navigates to the check, the example report and the broker dashboard', async () => {
     const user = userEvent.setup();
-    for (const [name, to] of [['Start', '/check'], ['See an example report', '/report?sample'], ['For brokers', '/broker']]) {
+    for (const [name, to] of [['Start', '/check'], ['See an example report', '/report?sample']]) {
       renderLanding();
       await user.click(screen.getByRole('link', { name }));
       expect(screen.getByTestId('where')).toHaveTextContent(to);
+      cleanup();
+    }
+    // In the header, and in the footer for phones too narrow to show it in the header.
+    for (const i of [0, 1]) {
+      renderLanding();
+      const links = screen.getAllByRole('link', { name: 'For brokers' });
+      expect(links).toHaveLength(2);
+      await user.click(links[i]);
+      expect(screen.getByTestId('where')).toHaveTextContent('/broker');
       cleanup();
     }
   });

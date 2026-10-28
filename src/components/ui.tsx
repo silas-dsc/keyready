@@ -197,5 +197,5 @@ export function Pill({ tone, children }: { tone: 'go' | 'amber' | 'rose' | 'ink'
     rose: 'bg-rose-soft text-rose',
     ink: 'bg-ink/10 text-ink',
   }[tone];
-  return <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide ${t}`}>{children}</span>;
+  return <span className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide ${t}`}>{children}</span>;
 }

@@ -155,7 +155,7 @@ export default function Broker() {
                       ].map(([k, v]) => (
                         <div key={k} className="flex justify-between gap-3 sm:block">
                           <dt className="text-muted">{k}</dt>
-                          <dd className="font-semibold">{v}</dd>
+                          <dd className="min-w-0 text-right font-semibold wrap-anywhere sm:text-left">{v}</dd>
                         </div>
                       ))}
                     </dl>
