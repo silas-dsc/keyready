@@ -10,10 +10,11 @@ export default defineConfig({
   // The bundled Open Banking snapshot adds ~85 kB; still well under 200 kB gzipped overall.
   build: { chunkSizeWarningLimit: 700 },
   test: {
+    setupFiles: ['src/test/setup.ts'],
     coverage: {
       provider: 'v8',
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['**/*.test.*', 'src/**/__fixtures__/**'],
+      exclude: ['**/*.test.*', 'src/**/__fixtures__/**', 'src/test/**'],
       // json-summary and json feed the PR coverage comment in CI; html is uploaded as an artifact.
       reporter: ['text-summary', 'json-summary', 'json', 'html'],
       reportOnFailure: true,
