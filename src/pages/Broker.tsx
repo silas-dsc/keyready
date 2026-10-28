@@ -75,8 +75,7 @@ export default function Broker() {
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-4 py-10">
-        <h1 className="text-3xl font-extrabold">Pre-qualified leads</h1>
-        <p className="mt-1 text-ink-soft">Every lead arrives with a readiness report: which lenders fit, LVR and borrowing power, so the first call starts at “let’s apply”.</p>
+        <h1 className="text-3xl font-extrabold">{signedIn ? 'Your referrals' : 'Broker sign in'}</h1>
         {backendMode === 'local' && (
           <p className="mt-4 rounded-2xl bg-amber-soft p-4 text-sm text-amber">
             Demo mode: showing leads submitted from this browser. Connect Supabase (see README) to collect leads from everyone.
@@ -84,8 +83,7 @@ export default function Broker() {
         )}
 
         {!signedIn ? (
-          <form onSubmit={signIn} className="mt-8 max-w-md space-y-3 rounded-3xl bg-card p-6 ring-1 ring-line">
-            <h2 className="text-xl font-bold">Broker sign in</h2>
+          <form onSubmit={signIn} aria-label="Broker sign in" className="mt-8 max-w-md space-y-3 rounded-3xl bg-card p-6 ring-1 ring-line">
             {sent ? (
               <p>Check your inbox for a sign-in link.</p>
             ) : (
