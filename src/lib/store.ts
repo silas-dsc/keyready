@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { emptyProfile } from '../engine/profile';
+import { sanitizeProfile } from '../engine/sanitize';
 import type { Profile } from '../engine/types';
 import { SITE } from '../sites';
 
@@ -20,8 +21,16 @@ export interface Saved {
 export function loadSaved(): Saved | null {
   try {
     const raw = localStorage.getItem(KEY);
-    const s = raw ? (JSON.parse(raw) as Saved) : null;
-    return s && 'stepId' in s && Array.isArray(s.answered) && s.profile?.applicants ? s : null;
+    const s = raw ? (JSON.parse(raw) as Partial<Record<keyof Saved, unknown>> | null) : null;
+    const profile = sanitizeProfile(s?.profile);
+    if (!s || !profile) return null;
+    return {
+      profile,
+      stepId: typeof s.stepId === 'string' ? s.stepId : null,
+      completed: s.completed === true,
+      answered: Array.isArray(s.answered) ? s.answered.filter((a): a is string => typeof a === 'string') : [],
+      updatedAt: typeof s.updatedAt === 'number' ? s.updatedAt : Date.now(),
+    };
   } catch {
     return null;
   }
