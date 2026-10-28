@@ -30,9 +30,10 @@ export default function Report() {
   const nav = useNavigate();
   const saved = useSavedProfile();
   const base = useMemo(() => (sample ? SITE.sample() : saved.profile), [sample, saved.profile]);
-  const [sim, setSim] = useState<Profile>(base);
+  // The what-if the user is trying, or null while they're looking at their real answers.
+  const [sim, setSim] = useState<Profile | null>(null);
   const [connectOpen, setConnectOpen] = useState(false);
-  useEffect(() => setSim(base), [base]);
+  useEffect(() => setSim(null), [base]);
 
   // A report handed over from an AI assistant (MCP): #/report?profile=<encoded answers>.
   const shared = params.get('profile');
@@ -50,11 +51,12 @@ export default function Report() {
     if (!sample && !loadSaved()?.completed) nav('/check', { replace: true });
   }, [sample, shared, nav, replaceProfile, complete]);
 
-  // Slider drags update `sim` at once; the report re-assesses the deferred copy, so dragging stays smooth.
-  const shown = useDeferredValue(sim);
-  const isWhatIf = useMemo(() => shown !== base && JSON.stringify(shown) !== JSON.stringify(base), [shown, base]);
+  const isWhatIf = useMemo(() => sim !== null && JSON.stringify(sim) !== JSON.stringify(base), [sim, base]);
+  // Slider drags update `sim` at once; the report re-assesses a deferred copy, so dragging stays smooth.
+  const deferredSim = useDeferredValue(sim);
+  const shown = isWhatIf && deferredSim ? deferredSim : base;
   const original = useMemo(() => assess(base), [base]);
-  const a = useMemo(() => (isWhatIf ? assess(shown) : original), [isWhatIf, shown, original]);
+  const a = useMemo(() => (shown === base ? original : assess(shown)), [shown, base, original]);
   const fixes = useMemo(() => fixActions(base, original), [base, original]);
 
   const celebrated = useRef(false);
@@ -91,8 +93,8 @@ export default function Report() {
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="no-print flex flex-wrap items-center justify-between gap-3 rounded-2xl border-2 border-dashed border-amber bg-amber-soft px-5 py-3">
               <p className="font-semibold text-amber">You’re viewing a what-if. Your real answers haven’t changed.</p>
               <div className="flex gap-2">
-                <Button variant="ghost" onClick={() => setSim(base)}>Reset</Button>
-                {!sample && <Button variant="soft" onClick={() => saved.replace(sim)}>Keep these numbers</Button>}
+                <Button variant="ghost" onClick={() => setSim(null)}>Reset</Button>
+                {!sample && sim && <Button variant="soft" onClick={() => saved.replace(sim)}>Keep these numbers</Button>}
               </div>
             </motion.div>
           )}
@@ -106,7 +108,7 @@ export default function Report() {
             <Lenders results={a.results} />
           </div>
           <div className="space-y-6">
-            <WhatIf p={sim} base={base} onChange={setSim} />
+            <WhatIf p={sim ?? base} base={base} onChange={setSim} />
             <Duty p={shown} />
             <Scheme p={shown} />
           </div>
