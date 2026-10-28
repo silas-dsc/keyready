@@ -175,9 +175,12 @@ export function lmiEstimate(loan: number, lvrPct: number): number {
   return Math.round(loan * rate);
 }
 
+// Built once: toLocaleString makes a new formatter on every call, and the engine formats hundreds of amounts per assessment.
+const AUD = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD', maximumFractionDigits: 0 });
+
 export function fmtMoney(n: number): string {
   if (!isFinite(n)) return '—';
-  return n.toLocaleString('en-AU', { style: 'currency', currency: 'AUD', maximumFractionDigits: 0 });
+  return AUD.format(n);
 }
 
 export function fmtShortMoney(n: number): string {
