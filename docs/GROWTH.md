@@ -4,7 +4,7 @@
 
 Brokers wrote a record **81.6%** of new home loans in the June 2026 quarter ([MFAA](https://www.mfaa.com.au/news/mortgage-broker-market-share-reaches-record-81-6)), so dependence on brokers is high everywhere. What separates segments is **rule complexity** (where a pre-check adds real value), **loan size**, and **how cheaply we can reach people**.
 
-Referral fee, revenue estimates and settlement-rate assumptions are kept in the private growth plan shared with the broker, not in this public repo.
+Revenue estimates and settlement-rate assumptions are kept in the private growth plan, not in this public repo.
 
 | Rank | Segment | Site |
 |---|---|---|
@@ -23,14 +23,15 @@ Referral fee, revenue estimates and settlement-rate assumptions are kept in the 
 
 Record `settled_amount` on each lead in the broker dashboard so the economics are visible by site.
 
-## 2. Compliance — read before launch
+## 2. Compliance: read before launch
 
-- **Referrer exemption is unlikely to fit.** The regulations' referrer exemption (NCCP Regulations reg 25) allows only name, contact details and a brief description to be passed on, and only when the referral is *incidental* to another business. The FBAA told Treasury in May 2026 that "professional lead generation and referral businesses cannot rely on the referral exemption" ([FBAA submission](https://s3-ap-southeast-2.amazonaws.com/os-data-2/fbaa-com-au/documents/may_2026_submission_to_treasury_on_curbing_lead_generation_activity.pdf)). Goodlend is Credit Representative 556461 of Connective Credit Services (ACL 389328). **Recommended:** have Connective appoint the operator's entity as a credit representative too, sponsored by Goodlend, and get a credit lawyer to review the site copy and the referral agreement.
+- **The sites are run by the broker, not a referrer.** Goodlend, Credit Representative 556461 of Connective Credit Services (ACL 389328), operates every site, and enquiries go only to Goodlend. That avoids relying on the referrer exemption (NCCP Regulations reg 25), which allows only name, contact details and a brief description to be passed on, and only when the referral is *incidental* to another business. The FBAA told Treasury in May 2026 that "professional lead generation and referral businesses cannot rely on the referral exemption" ([FBAA submission](https://s3-ap-southeast-2.amazonaws.com/os-data-2/fbaa-com-au/documents/may_2026_submission_to_treasury_on_curbing_lead_generation_activity.pdf)). **Recommended:** confirm with Connective that the sites fall under Goodlend's authorisation, and get a credit lawyer to review the site copy.
 - **ASIC is actively pursuing this model.** It is suing Clark Family Pty Ltd over up to 70 "free assessment" sites that allegedly claimed to compare providers and give tailored recommendations ([ASIC 26-221MR](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2026-releases/26-221mr-asic-sues-lead-generation-business-over-alleged-misleading-comparison-claims/)). RG 234, updated 9 June 2026, names lead generators as promoters. The sites therefore:
   - describe the check as a **self-check against lenders' published rules**, never a comparison or recommendation;
   - keep lender names masked;
-  - name the **one** broker and its licence at every referral point;
-  - disclose that the fee is flat, paid only on settlement, and the same whichever lender is chosen.
+  - name Goodlend as the operator, with its licence, in every footer and wherever someone can ask to be contacted;
+  - disclose that borrowers never pay a fee and that the lender pays Goodlend commission, as set out in the Credit Guide given before any help;
+  - keep lead-generation language off public pages: `/broker` is a plain sign-in page, and no public page links to it.
 - **Privacy:** a privacy policy and collection notice (`/privacy/` on every site), express named-broker consent, no resale, and a note that some processors are overseas.
 - **Spam Act:** the only email sent is the transactional confirmation. Any marketing needs separate consent and an unsubscribe link.
 - **Community rules:** most finance subreddits ban self-promotion. Disclose your affiliation, answer the question in full in the post, and link only when the tool *is* the answer.
@@ -69,7 +70,7 @@ Record `settled_amount` on each lead in the broker dashboard so the economics ar
 
 **Expectations:** long-tail rankings ("LMI waiver dentist", "ABN 18 months home loan") in 3–6 months, head terms in 12–24 months ([Ahrefs](https://ahrefs.com/blog/how-long-does-it-take-to-rank/)). SEO powers months 4–12. The first 90 days come from the channels below.
 
-## 5. 90-day plan: 100 pre-qualified leads
+## 5. 90-day plan: 100 enquiries
 
 | Channel | Target | Tactics |
 |---|---|---|
