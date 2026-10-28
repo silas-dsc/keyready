@@ -23,7 +23,8 @@ export default function Landing() {
   const [before, highlight, after] = SITE.hero.title;
 
   return (
-    <div className="min-h-dvh">
+    // Clip at the viewport edge: the example card's glow reaches past it while the card tilts in on load.
+    <div className="min-h-dvh overflow-x-clip">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Logo />
         <nav className="flex items-center gap-1 text-sm font-semibold">
