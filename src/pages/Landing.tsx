@@ -29,13 +29,14 @@ export default function Landing() {
         <nav className="flex items-center gap-1 text-sm font-semibold">
           <a href="#how" className="hidden rounded-xl px-3 py-2 text-ink-soft hover:bg-black/5 sm:block">How it works</a>
           <a href="#faq" className="hidden rounded-xl px-3 py-2 text-ink-soft hover:bg-black/5 sm:block">FAQ</a>
-          <Link to="/broker" className="rounded-xl px-3 py-2 text-ink-soft hover:bg-black/5">For brokers</Link>
+          {/* No room beside the logo on the narrowest phones; the footer links to it too. */}
+          <Link to="/broker" className="whitespace-nowrap rounded-xl px-3 py-2 text-ink-soft hover:bg-black/5 max-[359px]:hidden">For brokers</Link>
           <Link to="/check" className="rounded-xl bg-ink px-4 py-2 text-white">Start</Link>
         </nav>
       </header>
 
       <main>
-        <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-8 lg:grid-cols-[1.1fr_1fr] lg:pt-16">
+        <section className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-4 pb-16 pt-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:pt-16">
           <div>
             <Pill tone="go">{SITE.hero.pill}</Pill>
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
@@ -70,7 +71,7 @@ export default function Landing() {
 
           <motion.div initial={{ opacity: 0, y: 20, rotate: 1 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.6 }} className="relative">
             <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-mint/40 to-transparent blur-2xl" aria-hidden />
-            <div className="rounded-3xl bg-card p-6 shadow-2xl ring-1 ring-line">
+            <div className="rounded-3xl bg-card p-5 shadow-2xl ring-1 ring-line sm:p-6">
               <p className="text-xs font-bold uppercase tracking-wider text-muted">Example readiness report</p>
               <p className="mt-2 text-2xl font-extrabold leading-snug">
                 Fits the published rules of <span className="text-go">{sample.ready} of {LENDER_COUNT} lenders</span>.
@@ -79,11 +80,11 @@ export default function Landing() {
               <ul className="mt-5 space-y-2">
                 {sample.results.slice(0, 2).concat(sample.results.filter(r => r.status !== 'ready').slice(0, 2)).map(r => (
                   <li key={r.lender.id} className="rounded-2xl bg-paper p-3">
-                    <div className="flex items-center justify-between">
-                      <span className="font-bold">{lenderName(r.lender)}</span>
-                      <span className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+                      <span className="whitespace-nowrap font-bold">{lenderName(r.lender)}</span>
+                      <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
                         <Pill tone={r.status === 'ready' ? 'go' : r.status === 'close' ? 'amber' : 'rose'}>{r.status === 'ready' ? 'Meets rules' : r.status === 'close' ? 'Close' : 'Not yet'}</Pill>
-                        <span className="font-extrabold tabular-nums">{r.score}%</span><span className="text-xs text-muted">rules met</span>
+                        <span className="whitespace-nowrap"><span className="font-extrabold tabular-nums">{r.score}%</span> <span className="text-xs text-muted">rules met</span></span>
                       </span>
                     </div>
                     <p className="mt-1 truncate text-xs text-ink-soft">{r.checks.find(c => c.status === 'fail')?.detail ?? 'No blockers found.'}</p>
@@ -183,7 +184,8 @@ export default function Landing() {
             other policy rules are typical settings, not any lender’s own policy. Always confirm with a licensed mortgage broker or lender.
             {BROKER_DISCLOSURE}{' '}
             <a href={`${import.meta.env.BASE_URL}privacy/`} className="underline underline-offset-2 hover:text-ink">Privacy policy</a> ·{' '}
-            <a href={`${siteUrl(SITES.core)}/mcp/`} className="underline underline-offset-2 hover:text-ink">For AI assistants (MCP)</a>
+            <a href={`${siteUrl(SITES.core)}/mcp/`} className="underline underline-offset-2 hover:text-ink">For AI assistants (MCP)</a> ·{' '}
+            <Link to="/broker" className="underline underline-offset-2 hover:text-ink">For brokers</Link>
           </p>
           {SITE.id !== 'core' && (
             <p>

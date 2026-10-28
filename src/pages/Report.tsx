@@ -278,9 +278,9 @@ function Fixes({ fixes, onTry }: { fixes: FixAction[]; onTry: (f: FixAction) => 
       <p className="mt-1 text-ink-soft">Ranked by how many lenders each change unlocks. Tap “Try it” to see the effect.</p>
       <ol className="mt-4 space-y-3">
         {fixes.map((f, i) => (
-          <motion.li key={f.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08 }} className="flex flex-wrap items-center gap-4 rounded-2xl bg-card p-5 ring-1 ring-line">
+          <motion.li key={f.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08 }} className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-3 rounded-2xl bg-card p-4 ring-1 ring-line sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:p-5">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-mint-soft text-lg font-extrabold text-go">{i + 1}</span>
-            <div className="min-w-0 flex-1">
+            <div>
               <p className="font-bold">{f.title}</p>
               <p className="text-sm text-ink-soft">{f.detail}</p>
               <div className="mt-2 flex flex-wrap gap-2">
@@ -288,7 +288,7 @@ function Fixes({ fixes, onTry }: { fixes: FixAction[]; onTry: (f: FixAction) => 
                 {f.powerGain >= 5_000 && <Pill tone="ink">+{fmtShortMoney(f.powerGain)} borrowing power</Pill>}
               </div>
             </div>
-            <Button variant="soft" className="no-print" onClick={() => onTry(f)}>Try it</Button>
+            <Button variant="soft" className="no-print col-span-2 sm:col-span-1" onClick={() => onTry(f)}>Try it</Button>
           </motion.li>
         ))}
       </ol>
@@ -350,8 +350,8 @@ function LenderRow({ r }: { r: LenderResult }) {
   const lead = issues[0]?.detail ?? (r.usesScheme ? 'No blockers, and you can use the 5% Deposit Scheme here.' : 'No blockers found. A broker can start here.');
   return (
     <div className="rounded-2xl bg-card ring-1 ring-line">
-      <button onClick={() => setOpen(o => !o)} aria-expanded={open} className="flex w-full items-center gap-4 p-5 text-left">
-        <div className="min-w-0 flex-1">
+      <button onClick={() => setOpen(o => !o)} aria-expanded={open} className="grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 p-4 text-left sm:grid-cols-[minmax(0,1fr)_5rem_auto] sm:p-5">
+        <div className="col-span-2 sm:col-span-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-bold">{lenderName(r.lender)}</span>
             <span className="text-sm text-muted">{r.lender.kind}{r.comparison ? ` · ${rateWithComparison(r)}` : ''}</span>
@@ -359,7 +359,7 @@ function LenderRow({ r }: { r: LenderResult }) {
           </div>
           <p className="mt-1 text-sm text-ink-soft">{lead}{issues.length > 1 ? ` (+${issues.length - 1} more)` : ''}</p>
         </div>
-        <div className="w-20 text-right">
+        <div className="flex items-baseline gap-1.5 sm:block sm:text-right">
           <p className="text-2xl font-extrabold tabular-nums">{r.score}%</p>
           <p className="text-xs text-muted">rules met</p>
         </div>
@@ -417,7 +417,7 @@ function WhatIf({ p, base, onChange }: { p: Profile; base: Profile; onChange: (p
               <span className="font-semibold">{r.label}</span>
               <span className="font-bold tabular-nums">{fmtMoney(r.value)}</span>
             </span>
-            <input type="range" min={r.min} max={r.max} step={r.step} value={r.value} onChange={e => r.set(Number(e.target.value))} className="mt-2 w-full" />
+            <input type="range" min={r.min} max={r.max} step={r.step} value={r.value} onChange={e => r.set(Number(e.target.value))} className="mt-1 h-8 w-full cursor-pointer" />
           </label>
         ))}
       </div>
@@ -521,7 +521,7 @@ function Connect({ p, a, sample, onClose }: { p: Profile; a: Assessment; sample:
         role="dialog"
         aria-modal="true"
         aria-labelledby="connect-title"
-        className="w-full max-w-lg rounded-t-3xl bg-paper p-6 shadow-2xl sm:rounded-3xl sm:p-8"
+        className="max-h-dvh w-full max-w-lg overflow-y-auto overscroll-contain rounded-t-3xl bg-paper p-6 shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:rounded-3xl sm:p-8"
         initial={{ y: 40 }}
         animate={{ y: 0 }}
         exit={{ y: 40 }}
