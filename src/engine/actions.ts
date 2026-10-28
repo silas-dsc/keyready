@@ -1,6 +1,7 @@
 import { fmtMoney } from './finance';
+import { MARKET_LENDERS } from './market';
 import { assess, type Assessment } from './match';
-import type { Profile } from './types';
+import type { LenderPolicy, Profile } from './types';
 
 export interface FixAction {
   id: string;
@@ -18,10 +19,11 @@ const clone = (p: Profile): Profile => ({ ...p, applicants: p.applicants.map(a =
  * Simulates concrete changes a borrower could make and ranks them by how many
  * lenders they unlock — the "what's between you and yes" list.
  */
-export function fixActions(p: Profile, base: Assessment = assess(p)): FixAction[] {
+export function fixActions(p: Profile, base?: Assessment, lenders: LenderPolicy[] = MARKET_LENDERS): FixAction[] {
+  base ??= assess(p, lenders);
   const out: FixAction[] = [];
   const consider = (id: string, title: string, detail: string, next: Profile) => {
-    const a = assess(next);
+    const a = assess(next, lenders);
     const unlocks = a.ready - base.ready;
     const powerGain = a.borrowingPower.typical - base.borrowingPower.typical;
     if (unlocks > 0 || powerGain >= 5_000) out.push({ id, title, detail, unlocks, powerGain, profile: next });
@@ -52,7 +54,7 @@ export function fixActions(p: Profile, base: Assessment = assess(p)): FixAction[
   for (const extra of [5_000, 10_000, 20_000, 35_000, 50_000, 75_000]) {
     const keepLoan = clone(p); keepLoan.savings += extra;
     const smallerLoan = clone(p); smallerLoan.savings += extra; smallerLoan.loan = Math.max(0, p.loan - extra);
-    const a = assess(keepLoan), b = assess(smallerLoan);
+    const a = assess(keepLoan, lenders), b = assess(smallerLoan, lenders);
     const best = b.ready >= a.ready ? smallerLoan : keepLoan;
     if (Math.max(a.ready, b.ready) > base.ready) {
       consider('save', `Save another ${fmtMoney(extra)}`,
@@ -63,7 +65,7 @@ export function fixActions(p: Profile, base: Assessment = assess(p)): FixAction[
 
   for (let cut = 25_000; cut <= p.price * 0.35; cut += 25_000) {
     const n = clone(p); n.price = p.price - cut; n.loan = Math.max(0, p.loan - cut);
-    if (assess(n).ready > base.ready) {
+    if (assess(n, lenders).ready > base.ready) {
       consider('price', `Look at homes around ${fmtMoney(n.price)}`,
         `Keeping the same deposit, a ${fmtMoney(cut)} lower price brings your loan to ${fmtMoney(n.loan)}.`, n);
       break;
