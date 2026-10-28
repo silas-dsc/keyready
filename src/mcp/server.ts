@@ -2,11 +2,11 @@ import { createMcpHandler, McpServer } from '@modelcontextprotocol/server';
 import { z } from 'zod';
 import { fixActions } from '../engine/actions';
 import { stampDuty } from '../engine/duty';
-import { depositScheme } from '../engine/finance';
-import { COMPARISON_BASIS, COMPARISON_WARNING, comparisonRate, MARKET_FETCHED_AT, MARKET_LENDERS, productRate } from '../engine/market';
+import { CURRENCY, DEFAULTS, DWELLING, EMPLOYMENT, HOUSEHOLD, PROFESSION, PURPOSE, RESIDENCY, STATES } from '../engine/enums';
+import { depositScheme, derivedLoan, fmtMoney } from '../engine/finance';
+import { COMPARISON_BASIS, COMPARISON_WARNING, comparisonRate, LENDER_COUNT_ROUGH, MARKET_FETCHED_AT, MARKET_LENDERS, productRate } from '../engine/market';
 import { assess } from '../engine/match';
 import { emptyProfile, newApplicant } from '../engine/profile';
-import { derivedLoan } from '../engine/sanitize';
 import { encodeProfile } from '../engine/share';
 import { summarise } from '../engine/summary';
 import type { Profile } from '../engine/types';
@@ -39,7 +39,6 @@ export interface McpDeps {
   recentLeadCount?: (email: string) => Promise<number>;
 }
 
-const STATES = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT'] as const;
 const SITE_IDS = Object.keys(SITE_CATALOG) as [string, ...string[]];
 const DATA_DATE = MARKET_FETCHED_AT.slice(0, 10);
 const NOTICE =
@@ -47,8 +46,8 @@ const NOTICE =
 
 const applicant = z.object({
   age: z.number().int().min(18).max(90),
-  residency: z.enum(['citizen', 'permanent_resident', 'nz_citizen', 'awaiting_pr', 'temporary_visa', 'other']).default('citizen'),
-  employment: z.enum(['full_time', 'part_time', 'casual', 'contractor', 'self_employed', 'not_working', 'retired']).default('full_time'),
+  residency: z.enum(RESIDENCY).default('citizen'),
+  employment: z.enum(EMPLOYMENT).default('full_time'),
   months_in_role: z.number().int().min(0).max(600).default(24).describe('Months with the current employer, or months the ABN has been registered if self-employed'),
   annual_base_income: z.number().min(0).max(10_000_000).describe('Gross annual base income in AUD (or the equivalent if paid in another currency), excluding super'),
   annual_overtime: z.number().min(0).default(0),
@@ -62,8 +61,9 @@ const situation = z.object({
   first_home: z.boolean().describe('Never owned property in Australia'),
   state: z.enum(STATES).describe('State or territory where the property is'),
   location: z.enum(['capital', 'regional']).default('capital').describe('Capital city / regional centre, or elsewhere in the state'),
-  purpose: z.enum(['owner', 'investment', 'construction']).default('owner'),
-  property_type: z.enum(['house', 'apartment', 'house_land', 'land']).default('house'),
+  purpose: z.enum(PURPOSE).default('owner'),
+  // 'other' and 'unsure' are left out of these enums: an assistant should ask rather than pick a catch-all.
+  property_type: z.enum(DWELLING).exclude(['other']).default('house'),
   new_or_existing: z.enum(['existing', 'new']).default('existing'),
   price: z.number().min(50_000).max(50_000_000).describe('Purchase price in AUD'),
   loan: z.number().min(0).optional().describe('Loan amount in AUD; if omitted, savings + gift less upfront costs is used as the deposit'),
@@ -72,14 +72,14 @@ const situation = z.object({
   credit_card_limits: z.number().min(0).default(0).describe('Total credit card limits (not balances)'),
   personal_loans: z.number().min(0).default(0).describe('Personal and car loan balances'),
   hecs_balance: z.number().min(0).default(0),
-  household: z.enum(['single', 'couple', 'family', 'sharing']).optional(),
+  household: z.enum(HOUSEHOLD).optional(),
   dependants: z.number().int().min(0).max(10).default(0),
-  credit_defaults: z.enum(['no', 'yes', 'unsure']).default('no'),
+  credit_defaults: z.enum(DEFAULTS).default('no'),
   credit_score: z.number().int().min(0).max(1200).optional().describe('Equifax-style score out of 1200, if known'),
-  profession: z.enum(['doctor', 'specialist', 'dentist', 'vet', 'pharmacist', 'physio', 'optometrist', 'psychologist', 'nurse', 'midwife', 'allied_health', 'lawyer', 'accountant', 'actuary', 'engineer']).optional()
+  profession: z.enum(PROFESSION).exclude(['other']).optional()
     .describe('Main borrower’s profession. Some lenders waive LMI for listed professions.'),
   lives_overseas: z.boolean().default(false).describe('Main borrower currently lives outside Australia'),
-  income_currency: z.enum(['AUD', 'USD', 'GBP', 'EUR', 'NZD', 'SGD', 'HKD', 'AED', 'CAD', 'JPY', 'CNY', 'other']).default('AUD'),
+  income_currency: z.enum(CURRENCY).default('AUD'),
   low_doc: z.boolean().default(false).describe('Self-employed without two years of lodged tax returns'),
 });
 type Situation = z.infer<typeof situation>;
@@ -109,14 +109,13 @@ export function toProfile(s: Situation): Profile {
 const COMPARISON_NOTE = `${COMPARISON_BASIS} ${COMPARISON_WARNING}`;
 const pct = (n: number) => `${n.toFixed(2)}% p.a.`;
 
-const money = (n: number) => `$${Math.round(n).toLocaleString('en-AU')}`;
 const text = (t: string) => ({ type: 'text' as const, text: t });
 
 export function readinessReport(p: Profile, site = 'core') {
   const a = assess(p);
-  const s = summarise(p, a);
   const duty = stampDuty(p);
   const scheme = depositScheme(p);
+  const s = summarise(p, a, duty, scheme);
   const fixes = fixActions(p, a).slice(0, 3);
   const top = a.results.slice(0, 8).map(r => ({
     lender: r.lender.name,
@@ -152,8 +151,8 @@ export function readinessReport(p: Profile, site = 'core') {
   };
   const summary = [
     `Fits the published rules of ${a.ready} of ${a.results.length} lenders; ${a.close} more are close.`,
-    `Loan ${money(p.loan)} on ${money(p.price)} (LVR ${s.lvr}%). Typical borrowing power ${money(s.borrowingPower)}.`,
-    `Stamp duty ${money(duty.duty)}${duty.concession ? ` (${duty.concession})` : ''}${duty.fhog ? `; First Home Owner Grant ${money(duty.fhog)}` : ''}. 5% Deposit Scheme: ${scheme.eligible ? 'looks eligible' : 'not eligible'}.`,
+    `Loan ${fmtMoney(p.loan)} on ${fmtMoney(p.price)} (LVR ${s.lvr}%). Typical borrowing power ${fmtMoney(s.borrowingPower)}.`,
+    `Stamp duty ${fmtMoney(duty.duty)}${duty.concession ? ` (${duty.concession})` : ''}${duty.fhog ? `; First Home Owner Grant ${fmtMoney(duty.fhog)}` : ''}. 5% Deposit Scheme: ${scheme.eligible ? 'looks eligible' : 'not eligible'}.`,
     fixes.length ? `Fastest wins: ${fixes.map(f => f.title).join('; ')}.` : '',
     `Full interactive report: ${reportUrl}`,
     NOTICE,
@@ -166,7 +165,7 @@ export function buildServer(deps: McpDeps): McpServer {
     { name: 'keyready', version: '1.0.0' },
     {
       instructions:
-        'KeyReady checks an Australian home buyer’s situation against ~90 lenders’ published rules (live Open Banking rates, LVR limits, residency rules), APRA’s 3% serviceability buffer, 2026–27 stamp duty and grants, and the 5% Deposit Scheme. ' +
+        `KeyReady checks an Australian home buyer’s situation against ${LENDER_COUNT_ROUGH} lenders’ published rules (live Open Banking rates, LVR limits, residency rules), APRA’s 3% serviceability buffer, 2026–27 stamp duty and grants, and the 5% Deposit Scheme. ` +
         'Ask for the details you need conversationally, use ballpark figures, and never invent numbers. Present results as indicative general information, not advice or a recommendation, and keep lender names masked. ' +
         `Only call refer_to_broker after the user has seen this disclosure and explicitly agreed: ${BROKER_DISCLOSURE}`,
     },
@@ -204,7 +203,7 @@ export function buildServer(deps: McpDeps): McpServer {
     const d = stampDuty(p);
     const out = { state: i.state, price: i.price, duty: d.duty, duty_at_general_rates: d.generalDuty, concession: d.concession, foreign_surcharge: d.foreignSurcharge, first_home_owner_grant: d.fhog, rules_year: '2026-27', source: d.source };
     return {
-      content: [text(`${i.state} stamp duty on ${money(i.price)}: ${money(d.duty)}${d.concession && d.duty < d.generalDuty ? ` with the ${d.concession} (general rate ${money(d.generalDuty)})` : ''}.${d.foreignSurcharge ? ` Foreign surcharge ${money(d.foreignSurcharge)}.` : ''}${d.fhog ? ` First Home Owner Grant ${money(d.fhog)}.` : ''} 2026–27 rules; source: ${d.source}`)],
+      content: [text(`${i.state} stamp duty on ${fmtMoney(i.price)}: ${fmtMoney(d.duty)}${d.concession && d.duty < d.generalDuty ? ` with the ${d.concession} (general rate ${fmtMoney(d.generalDuty)})` : ''}.${d.foreignSurcharge ? ` Foreign surcharge ${fmtMoney(d.foreignSurcharge)}.` : ''}${d.fhog ? ` First Home Owner Grant ${fmtMoney(d.fhog)}.` : ''} 2026–27 rules; source: ${d.source}`)],
       structuredContent: out,
     };
   });
@@ -233,7 +232,7 @@ export function buildServer(deps: McpDeps): McpServer {
     const s = depositScheme(p);
     return {
       content: [text(s.eligible
-        ? `Looks eligible for the ${s.variant === 'family' ? 'Family Home Guarantee' : '5% Deposit Scheme'}: minimum deposit ${s.minDepositPct}%, no LMI, price cap ${money(s.cap)} in this area. Only participating lenders offer it.`
+        ? `Looks eligible for the ${s.variant === 'family' ? 'Family Home Guarantee' : '5% Deposit Scheme'}: minimum deposit ${s.minDepositPct}%, no LMI, price cap ${fmtMoney(s.cap)} in this area. Only participating lenders offer it.`
         : `Not eligible: ${s.reasons.join(' ')}`)],
       structuredContent: { eligible: s.eligible, variant: s.variant, min_deposit_pct: s.minDepositPct, price_cap: s.cap, reasons: s.reasons },
     };

@@ -1,3 +1,4 @@
+import { LENDER_COUNT_ROUGH } from '../engine/market';
 import { sampleProfile } from '../engine/profile';
 import type { SiteConfig } from './types';
 
@@ -9,7 +10,7 @@ export const core: SiteConfig = {
   theme: { ink: '#0e3b3a', inkSoft: '#3d5f5d', go: '#12805c', mint: '#50e3a4', mintSoft: '#dcf8ea', paper: '#f7f5ef' },
   seo: {
     title: 'KeyReady: check your home loan readiness against lenders’ published rules',
-    description: 'Free 5-minute check against ~90 Australian lenders’ live rates and rules, plus exact stamp duty and grants for your state. No credit check.',
+    description: `Free 5-minute check against ${LENDER_COUNT_ROUGH} Australian lenders’ live rates and rules, plus exact stamp duty and grants for your state. No credit check.`,
   },
   hero: {
     pill: 'Free · 5 minutes · no credit check',

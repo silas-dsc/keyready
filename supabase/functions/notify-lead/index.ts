@@ -2,10 +2,9 @@
 // transactional emails through Knock: the case to the broker and a confirmation to the borrower. For an
 // AI-assistant referral still waiting on the borrower (kind 'confirm'), it sends only the confirm-link email.
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
+import { leadEmailData } from '../_shared/lead-email.js';
 import { SITE_CATALOG } from '../_shared/sites.js';
 import { triggerKnock } from '../_shared/knock.ts';
-
-const money = (n: number) => (typeof n === 'number' ? `$${Math.round(n).toLocaleString('en-AU')}` : '—');
 
 Deno.serve(async req => {
   if (req.method !== 'POST') return new Response('Method not allowed', { status: 405 });
@@ -14,51 +13,8 @@ Deno.serve(async req => {
     return new Response('Unauthorized', { status: 401 });
 
   const { kind = 'new', lead, broker } = await req.json();
+  const data = leadEmailData(lead, broker);
   const site = SITE_CATALOG[lead.site] ?? SITE_CATALOG.core;
-  const s = lead.summary ?? {};
-  const p = lead.profile ?? {};
-  // Anyone can insert a lead, so its JSON may not have the shape the site writes.
-  const a0 = (Array.isArray(p.applicants) && p.applicants[0]) || {};
-  const data = {
-    site_name: site.name,
-    site_url: site.url,
-    dashboard_url: `${SITE_CATALOG.core.url}/#/broker`,
-    channel: lead.channel === 'mcp' ? 'an AI assistant (MCP)' : 'the website',
-    lead: {
-      id: lead.id,
-      name: lead.name,
-      email: lead.email,
-      phone: lead.phone,
-      preferred_time: lead.preferred_time,
-      segment: lead.segment,
-      source: [lead.attribution?.utm_source, lead.attribution?.utm_campaign, lead.attribution?.referrer].filter(Boolean).join(' · ') || 'direct',
-    },
-    summary: {
-      ready: s.ready,
-      close: s.close,
-      lenders: s.lenders,
-      lvr: s.lvr,
-      borrowing_power: money(s.borrowingPower),
-      top_lenders: (Array.isArray(s.topLenders) ? s.topLenders : []).join(', ') || '—',
-      stamp_duty: money(s.stampDuty),
-      fhog: s.fhog ? money(s.fhog) : null,
-      scheme_eligible: !!s.schemeEligible,
-    },
-    profile: {
-      applicants: p.mode === 'joint' ? 'Joint' : 'Solo',
-      first_home: p.firstHome ? 'Yes' : 'No',
-      purpose: p.purpose,
-      state: p.state,
-      price: money(p.price),
-      loan: money(p.loan),
-      savings: money(p.savings),
-      employment: String(a0.employment ?? '').replace('_', ' '),
-      income: money(a0.baseIncome),
-      profession: p.profession ?? null,
-    },
-    broker_name: broker?.name ?? 'our broker partner',
-    broker_business: broker?.business_name ?? '',
-  };
 
   if (kind === 'confirm') {
     const confirm = { ...data, confirm_url: `${site.url}/#/confirm?token=${lead.confirm_token}` };

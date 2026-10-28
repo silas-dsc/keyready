@@ -17,8 +17,7 @@ export interface LeadSummary {
   schemeEligible: boolean;
 }
 
-export function summarise(p: Profile, a: Assessment): LeadSummary {
-  const d = stampDuty(p);
+export function summarise(p: Profile, a: Assessment, d = stampDuty(p), scheme = depositScheme(p)): LeadSummary {
   return {
     ready: a.ready,
     close: a.close,
@@ -28,6 +27,6 @@ export function summarise(p: Profile, a: Assessment): LeadSummary {
     topLenders: a.results.filter(r => r.status === 'ready').slice(0, 3).map(r => r.lender.brand ?? r.lender.name),
     stampDuty: Math.round(d.duty),
     fhog: d.fhog,
-    schemeEligible: depositScheme(p).eligible,
+    schemeEligible: scheme.eligible,
   };
 }

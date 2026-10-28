@@ -17,29 +17,20 @@ interface MarketLender {
 }
 
 export const MARKET_FETCHED_AT: string = market.fetchedAt;
-export const SCHEME_SOURCE: string = scheme.source;
 
 /**
  * Credit-policy rules that Open Banking data doesn't publish (time in job, income shading,
  * DTI caps…). These are typical settings for each type of lender, not the lender's own policy.
  */
+const MAINSTREAM_TENURE: Record<Employment, number | null> = { full_time: 3, part_time: 6, casual: 12, contractor: 12, self_employed: 24, not_working: null, retired: null };
 const KIND_DEFAULTS: Record<string, Partial<LenderPolicy> & { minTenure: Record<Employment, number | null> }> = {
-  'Major bank': {
-    maxDti: 6.5, cardFactor: 0.038, minCreditScore: 550,
-    minTenure: { full_time: 3, part_time: 6, casual: 12, contractor: 12, self_employed: 24, not_working: null, retired: null },
-  },
-  'Other bank': {
-    maxDti: 7, cardFactor: 0.038, minCreditScore: 550,
-    minTenure: { full_time: 3, part_time: 6, casual: 12, contractor: 12, self_employed: 24, not_working: null, retired: null },
-  },
+  'Major bank': { maxDti: 6.5, cardFactor: 0.038, minCreditScore: 550, minTenure: MAINSTREAM_TENURE },
+  'Other bank': { maxDti: 7, cardFactor: 0.038, minCreditScore: 550, minTenure: MAINSTREAM_TENURE },
   'Customer-owned': {
     maxDti: 7, cardFactor: 0.03, minCreditScore: 500,
-    minTenure: { full_time: 3, part_time: 6, casual: 6, contractor: 12, self_employed: 24, not_working: null, retired: 0 },
+    minTenure: { ...MAINSTREAM_TENURE, casual: 6, retired: 0 },
   },
-  'Online lender': {
-    maxDti: 6, cardFactor: 0.038, minCreditScore: 650,
-    minTenure: { full_time: 3, part_time: 6, casual: 12, contractor: 12, self_employed: 24, not_working: null, retired: null },
-  },
+  'Online lender': { maxDti: 6, cardFactor: 0.038, minCreditScore: 650, minTenure: MAINSTREAM_TENURE },
   Specialist: {
     maxDti: 8, cardFactor: 0.038, minCreditScore: 400, acceptsDefaults: true, bankruptcyMinYears: 2, buffer: 2.5,
     minTenure: { full_time: 0, part_time: 3, casual: 6, contractor: 6, self_employed: 12, not_working: null, retired: null },
@@ -47,7 +38,7 @@ const KIND_DEFAULTS: Record<string, Partial<LenderPolicy> & { minTenure: Record<
 };
 
 const norm = (s: string) =>
-  s.toLowerCase().replace(/commbank/, 'commonwealth bank').replace(/national australia bank/, 'national australia bank')
+  s.toLowerCase().replace(/commbank/, 'commonwealth bank')
     .replace(/\b(limited|ltd|australia|financial|\(.*\))\b/g, '').replace(/[^a-z&]/g, '');
 const SCHEME_NAMES = new Set(scheme.lenders.map(norm));
 const onSchemePanel = (brand: string) => SCHEME_NAMES.has(norm(brand)) || [...SCHEME_NAMES].some(n => n.length > 4 && norm(brand).startsWith(n));
@@ -172,3 +163,5 @@ const specialists = ILLUSTRATIVE_LENDERS.filter(l => l.kind === 'Specialist').ma
 }));
 
 export const MARKET_LENDERS: LenderPolicy[] = live.length ? [...live, ...specialists] : ILLUSTRATIVE_LENDERS;
+/** The lender count rounded down to ten, e.g. "~90", for copy that shouldn't change every week. */
+export const LENDER_COUNT_ROUGH = `~${Math.floor(MARKET_LENDERS.length / 10) * 10}`;

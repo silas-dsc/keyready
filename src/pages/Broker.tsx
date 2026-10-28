@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Logo, Pill } from '../components/ui';
 import { fmtShortMoney } from '../engine/finance';
+import { leadSource } from '../lib/lead-email';
 import { backendMode, claimBroker, getSupabase, LEAD_STATUSES, listLeads, setLeadStatus, type Lead, type LeadStatus } from '../lib/leads';
 import { SITES } from '../sites';
 
@@ -149,7 +150,7 @@ export default function Broker() {
                         ['Applicants', l.profile.mode === 'joint' ? 'Joint' : 'Solo'], ['First home', l.profile.firstHome ? 'Yes' : 'No'], ['Purpose', l.profile.purpose],
                         ['Income (B1)', fmtShortMoney(a0.baseIncome)], ['Employment (B1)', a0.employment.replace('_', ' ')], ['Savings', fmtShortMoney(l.profile.savings)],
                         ['Price', fmtShortMoney(l.profile.price)], ['State', l.profile.state], ['Closest fits', l.summary.topLenders.join(', ') || '—'],
-                        ['Source', [l.attribution?.utm_source, l.attribution?.utm_campaign, l.attribution?.referrer].filter(Boolean).join(' · ') || 'Direct'],
+                        ['Source', leadSource(l.attribution)],
                         ['Stamp duty', l.summary.stampDuty !== undefined ? fmtShortMoney(l.summary.stampDuty) : '—'], ['Grant', l.summary.fhog ? fmtShortMoney(l.summary.fhog) : '—'],
                       ].map(([k, v]) => (
                         <div key={k} className="flex justify-between gap-3 sm:block">

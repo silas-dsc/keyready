@@ -1,21 +1,8 @@
-export type Employment =
-  | 'full_time'
-  | 'part_time'
-  | 'casual'
-  | 'contractor'
-  | 'self_employed'
-  | 'not_working'
-  | 'retired';
+import type { CONDITION, CURRENCY, DEFAULTS, DWELLING, EMPLOYMENT, HOUSEHOLD, LOCATION, PROFESSION, PURPOSE, RESIDENCY, STATES } from './enums';
 
-export type Residency =
-  | 'citizen'
-  | 'permanent_resident'
-  | 'nz_citizen'
-  | 'awaiting_pr'
-  | 'temporary_visa'
-  | 'other';
-
-export type AuState = 'NSW' | 'VIC' | 'QLD' | 'WA' | 'SA' | 'TAS' | 'ACT' | 'NT';
+export type Employment = (typeof EMPLOYMENT)[number];
+export type Residency = (typeof RESIDENCY)[number];
+export type AuState = (typeof STATES)[number];
 
 export interface Applicant {
   age: number;
@@ -31,18 +18,12 @@ export interface Applicant {
   commission: number;
 }
 
-export type Household = 'single' | 'couple' | 'family' | 'sharing';
-
-export type Currency = 'AUD' | 'USD' | 'GBP' | 'EUR' | 'NZD' | 'SGD' | 'HKD' | 'AED' | 'CAD' | 'JPY' | 'CNY' | 'other';
-
-/** Professions some lenders treat specially (e.g. LMI waivers). Matched against src/data/segment-policies.json. */
-export type Profession =
-  | 'doctor' | 'specialist' | 'dentist' | 'vet' | 'pharmacist' | 'physio' | 'optometrist' | 'psychologist'
-  | 'nurse' | 'midwife' | 'allied_health'
-  | 'lawyer' | 'accountant' | 'actuary' | 'engineer'
-  | 'other';
-export type Purpose = 'owner' | 'investment' | 'construction';
-export type Dwelling = 'house' | 'apartment' | 'land' | 'house_land' | 'other';
+export type Household = (typeof HOUSEHOLD)[number];
+export type Currency = (typeof CURRENCY)[number];
+/** Professions some lenders treat specially (e.g. LMI waivers). */
+export type Profession = (typeof PROFESSION)[number];
+export type Purpose = (typeof PURPOSE)[number];
+export type Dwelling = (typeof DWELLING)[number];
 
 export interface Profile {
   mode: 'solo' | 'joint';
@@ -65,14 +46,14 @@ export interface Profile {
 
   purpose: Purpose;
   dwelling: Dwelling;
-  condition: 'new' | 'existing' | 'unsure';
+  condition: (typeof CONDITION)[number];
   state: AuState;
-  location: 'capital' | 'regional' | 'unsure';
+  location: (typeof LOCATION)[number];
   price: number;
   loan: number;
 
   firstHome: boolean;
-  defaults: 'no' | 'yes' | 'unsure';
+  defaults: (typeof DEFAULTS)[number];
   /** Years since bankruptcy discharge; null when never bankrupt. */
   bankruptcyYears: number | null;
   /** Equifax-style score (0–1200); null when unknown. */
