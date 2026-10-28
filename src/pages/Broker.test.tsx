@@ -83,6 +83,7 @@ describe('Broker (local demo mode)', () => {
     expect(screen.getByText(/Demo mode: showing leads submitted from this browser/)).toBeInTheDocument();
     expect(await screen.findByText('Loading…')).toBeInTheDocument();
     await act(async () => resolve([]));
+    expect(screen.getByRole('heading', { name: 'Your referrals', level: 1 })).toBeInTheDocument();
     expect(screen.getByText('No leads yet.')).toBeInTheDocument();
     expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
   });
@@ -204,7 +205,9 @@ describe('Broker (Supabase mode)', () => {
     const user = userEvent.setup();
     renderBroker();
     expect(screen.queryByText(/Demo mode/)).not.toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Broker sign in' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Broker sign in', level: 1 })).toBeInTheDocument();
+    // A sign-in page only: no pitch about leads to anyone who opens it.
+    expect(screen.queryByText(/lead|pre-qualified/i)).not.toBeInTheDocument();
     await user.type(screen.getByPlaceholderText('you@brokerage.com.au'), 'pat@broker.com.au');
     await user.click(screen.getByRole('button', { name: 'Email me a sign-in link' }));
     expect(await screen.findByText('Check your inbox for a sign-in link.')).toBeInTheDocument();

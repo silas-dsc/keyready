@@ -30,8 +30,6 @@ export default function Landing() {
         <nav className="flex items-center gap-1 text-sm font-semibold">
           <a href="#how" className="hidden rounded-xl px-3 py-2 text-ink-soft hover:bg-black/5 sm:block">How it works</a>
           <a href="#faq" className="hidden rounded-xl px-3 py-2 text-ink-soft hover:bg-black/5 sm:block">FAQ</a>
-          {/* No room beside the logo on the narrowest phones; the footer links to it too. */}
-          <Link to="/broker" className="whitespace-nowrap rounded-xl px-3 py-2 text-ink-soft hover:bg-black/5 max-[359px]:hidden">For brokers</Link>
           <Link to="/check" className="rounded-xl bg-ink px-4 py-2 text-white">Start</Link>
         </nav>
       </header>
@@ -185,8 +183,7 @@ export default function Landing() {
             other policy rules are typical settings, not any lender’s own policy. Always confirm with a licensed mortgage broker or lender.
             {BROKER_DISCLOSURE}{' '}
             <a href={`${import.meta.env.BASE_URL}privacy/`} className="underline underline-offset-2 hover:text-ink">Privacy policy</a> ·{' '}
-            <a href={`${siteUrl(SITES.core)}/mcp/`} className="underline underline-offset-2 hover:text-ink">For AI assistants (MCP)</a> ·{' '}
-            <Link to="/broker" className="underline underline-offset-2 hover:text-ink">For brokers</Link>
+            <a href={`${siteUrl(SITES.core)}/mcp/`} className="underline underline-offset-2 hover:text-ink">For AI assistants (MCP)</a>
           </p>
           {SITE.id !== 'core' && (
             <p>

@@ -120,7 +120,7 @@ describe('Landing', () => {
     }
   });
 
-  it('navigates to the check, the example report and the broker dashboard', async () => {
+  it('navigates to the check and the example report', async () => {
     const user = userEvent.setup();
     for (const [name, to] of [['Start', '/check'], ['See an example report', '/report?sample']]) {
       renderLanding();
@@ -128,15 +128,12 @@ describe('Landing', () => {
       expect(screen.getByTestId('where')).toHaveTextContent(to);
       cleanup();
     }
-    // In the header, and in the footer for phones too narrow to show it in the header.
-    for (const i of [0, 1]) {
-      renderLanding();
-      const links = screen.getAllByRole('link', { name: 'For brokers' });
-      expect(links).toHaveLength(2);
-      await user.click(links[i]);
-      expect(screen.getByTestId('where')).toHaveTextContent('/broker');
-      cleanup();
-    }
+  });
+
+  it('does not advertise the broker sign-in to borrowers', () => {
+    renderLanding();
+    expect(screen.queryByRole('link', { name: /broker/i })).not.toBeInTheDocument();
+    expect(document.querySelector('a[href*="broker"]')).toBeNull();
   });
 
   it('does not offer to resume when nothing was answered', () => {
