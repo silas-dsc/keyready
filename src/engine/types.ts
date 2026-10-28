@@ -153,6 +153,8 @@ export interface Check {
   detail: string;
   /** For fails: 'close' means a modest, specific change gets you there. */
   gap?: 'close' | 'far';
+  /** For a time-in-role fail: months until the borrower meets the minimum. */
+  waitMonths?: number;
   weight: number;
 }
 

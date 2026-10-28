@@ -1,4 +1,5 @@
 import policies from '../data/segment-policies.json';
+import { applicantGross } from './finance';
 import type { Currency, LenderPolicy, PolicySource, Profession, Profile } from './types';
 
 /**
@@ -59,38 +60,48 @@ export interface IncomeShading {
 const P = policies as unknown as { lmiWaivers: LmiWaiver[]; altDoc: AltDoc[]; expat: ExpatPolicy[]; incomeShading?: IncomeShading[] };
 
 const norm = (s = '') => s.toLowerCase().replace(/[^a-z]/g, '');
-const allFor = <T extends { brand: string }>(rules: T[], L: LenderPolicy) => (L.brand ? rules.filter(r => norm(r.brand) === norm(L.brand)) : []);
-const forLender = <T extends { brand: string }>(rules: T[], L: LenderPolicy): T | undefined => allFor(rules, L)[0];
 
-const mainGross = (p: Profile) => {
-  const a = p.applicants[0];
-  return a ? a.baseIncome + a.overtime + a.allowances + a.bonus + a.commission : 0;
-};
+/** Rules grouped by normalised brand once at load, so a lookup per lender is a map read, not a scan. */
+function byBrand<T extends { brand: string }>(rules: T[]): Map<string, T[]> {
+  const m = new Map<string, T[]>();
+  for (const r of rules) m.set(norm(r.brand), [...(m.get(norm(r.brand)) ?? []), r]);
+  return m;
+}
+const LMI_WAIVERS = byBrand(P.lmiWaivers);
+const ALT_DOC = byBrand(P.altDoc);
+const EXPAT = byBrand(P.expat);
+const INCOME_SHADING = byBrand(P.incomeShading ?? []);
+
+const brandKeys = new WeakMap<LenderPolicy, string>();
+function allFor<T>(rules: Map<string, T[]>, L: LenderPolicy): T[] {
+  if (!L.brand) return [];
+  let k = brandKeys.get(L);
+  if (k === undefined) brandKeys.set(L, (k = norm(L.brand)));
+  return rules.get(k) ?? [];
+}
 
 /** The best profession LMI waiver this borrower could get at this lender, if any. */
 export function lmiWaiverFor(p: Profile, L: LenderPolicy): LmiWaiver | undefined {
   if (!p.profession) return undefined;
-  return allFor(P.lmiWaivers, L)
-    .filter(w => w.professions.includes(p.profession!) && (!w.purposes || w.purposes.includes(p.purpose)) && !(w.minIncome && mainGross(p) < w.minIncome))
+  return allFor(LMI_WAIVERS, L)
+    .filter(w => w.professions.includes(p.profession!) && (!w.purposes || w.purposes.includes(p.purpose)) && !(w.minIncome && (p.applicants[0] ? applicantGross(p.applicants[0]) : 0) < w.minIncome))
     .sort((a, b) => b.maxLvr - a.maxLvr)[0];
 }
 
 /** How this lender treats the main borrower's foreign-currency income; null = not published. */
 export function foreignIncomeTier(p: Profile, L: LenderPolicy): ForeignIncomeTier | null {
   if (p.incomeCurrency === 'AUD') return null;
-  return forLender(P.expat, L)?.foreignIncome?.find(t => t.currencies.includes(p.incomeCurrency)) ?? null;
+  return allFor(EXPAT, L)[0]?.foreignIncome?.find(t => t.currencies.includes(p.incomeCurrency)) ?? null;
 }
 
 /** The main borrower's income shading at this lender, with any profession rule applied. */
 export function shadingFor(p: Profile, L: LenderPolicy): LenderPolicy['shading'] {
-  const rule = p.profession ? allFor(P.incomeShading ?? [], L).find(r => r.professions.includes(p.profession!)) : undefined;
+  const rule = p.profession ? allFor(INCOME_SHADING, L).find(r => r.professions.includes(p.profession!)) : undefined;
   return rule ? { ...L.shading, ...rule.shading } : L.shading;
 }
 
 /** Lenders' alt-doc rule, for self-employed borrowers without two years of financials. */
-export const altDocFor = (L: LenderPolicy) => forLender(P.altDoc, L);
+export const altDocFor = (L: LenderPolicy): AltDoc | undefined => allFor(ALT_DOC, L)[0];
 
 /** Published expat / foreign-income rules; undefined means the lender publishes none. */
-export const expatPolicyFor = (L: LenderPolicy) => forLender(P.expat, L);
-
-export const SEGMENT_POLICIES = P;
+export const expatPolicyFor = (L: LenderPolicy): ExpatPolicy | undefined => allFor(EXPAT, L)[0];

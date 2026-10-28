@@ -1199,16 +1199,6 @@ exports[`engine regression (frozen lenders) > investor 1`] = `
       "title": "Cancel $20,000 in card limits",
       "unlocks": 0,
     },
-    {
-      "detail": "You have spare savings beyond your deposit. Clearing a loan removes a monthly commitment from the assessment.",
-      "id": "loans",
-      "loan": 480000,
-      "powerGain": 44061,
-      "price": 600000,
-      "savings": 145000,
-      "title": "Pay off your $15,000 personal/car loan",
-      "unlocks": -92,
-    },
   ],
   "lenders": [
     "32 ready 100 5.940 5.98 681006 2859 | residency:pass employment:pass credit:pass lvr:pass funds:pass service:pass dti:pass",

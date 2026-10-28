@@ -104,6 +104,19 @@ export function upfrontCosts(p: Profile): UpfrontCosts {
   };
 }
 
+export interface FundsToComplete {
+  costs: UpfrontCosts;
+  /** Deposit plus upfront costs. */
+  need: number;
+  /** Savings and gifts, plus any First Home Owner Grant. */
+  have: number;
+}
+
+export function fundsToComplete(p: Profile): FundsToComplete {
+  const costs = upfrontCosts(p);
+  return { costs, need: deposit(p) + costs.total, have: p.savings + p.gift + costs.fhog };
+}
+
 /**
  * 5% Deposit Scheme property price caps (capital & regional centres / rest of state).
  * firsthomebuyers.gov.au/australian-government-5-percent-deposit-scheme/property-price-caps,
