@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-10-25T19:24:09.658Z",
+ "fetchedAt": "2026-10-27T23:39:55.111Z",
  "source": "https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary",
  "lenders": [
   {
@@ -10,27 +10,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.41
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 7.02
      },
      {
       "maxLvr": 90,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 7.02
      },
      {
       "maxLvr": 95,
-      "rate": 7.39
+      "rate": 7.39,
+      "comparison": 7.56
      }
     ],
     "maxLvr": 95
@@ -39,23 +45,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 80,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.66
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.12
      },
      {
       "maxLvr": 90,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.12
      }
     ],
     "maxLvr": 95
@@ -72,27 +83,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.38
      },
      {
       "maxLvr": 70,
-      "rate": 6.33
+      "rate": 6.33,
+      "comparison": 6.36
      },
      {
       "maxLvr": 80,
-      "rate": 6.33
+      "rate": 6.33,
+      "comparison": 6.36
      },
      {
       "maxLvr": 85,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.38
      },
      {
       "maxLvr": 90,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.38
      },
      {
       "maxLvr": 95,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 6.97
      }
     ],
     "maxLvr": 95
@@ -101,27 +118,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.42
      },
      {
       "maxLvr": 70,
-      "rate": 6.47
+      "rate": 6.47,
+      "comparison": 6.5
      },
      {
       "maxLvr": 80,
-      "rate": 6.47
+      "rate": 6.47,
+      "comparison": 6.5
      },
      {
       "maxLvr": 85,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 90,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 95,
-      "rate": 7.14
+      "rate": 7.14,
+      "comparison": 7.17
      }
     ],
     "maxLvr": 95
@@ -138,27 +161,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.64
      },
      {
       "maxLvr": 70,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.69
      },
      {
       "maxLvr": 80,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.79
      },
      {
       "maxLvr": 85,
-      "rate": 7.34
+      "rate": 7.34,
+      "comparison": 7.34
      },
      {
       "maxLvr": 90,
-      "rate": 7.34
+      "rate": 7.34,
+      "comparison": 7.34
      },
      {
       "maxLvr": 95,
-      "rate": 7.69
+      "rate": 7.69,
+      "comparison": 7.69
      }
     ],
     "maxLvr": 95
@@ -167,27 +196,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.89
      },
      {
       "maxLvr": 70,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 6.94
      },
      {
       "maxLvr": 80,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.04
      },
      {
       "maxLvr": 85,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.74
      },
      {
       "maxLvr": 90,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.74
      },
      {
       "maxLvr": 95,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.24
      }
     ],
     "maxLvr": 95
@@ -209,15 +244,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.5
+      "rate": 6.5,
+      "comparison": 6.5
      },
      {
       "maxLvr": 70,
-      "rate": 6.5
+      "rate": 6.5,
+      "comparison": 6.5
      },
      {
       "maxLvr": 80,
-      "rate": 6.5
+      "rate": 6.5,
+      "comparison": 6.5
      }
     ],
     "maxLvr": 80
@@ -226,15 +264,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.8
+      "rate": 6.8,
+      "comparison": 6.8
      },
      {
       "maxLvr": 70,
-      "rate": 6.8
+      "rate": 6.8,
+      "comparison": 6.8
      },
      {
       "maxLvr": 80,
-      "rate": 6.8
+      "rate": 6.8,
+      "comparison": 6.8
      }
     ],
     "maxLvr": 80
@@ -256,27 +297,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 9.54
+      "rate": 9.54,
+      "comparison": 9.67
      },
      {
       "maxLvr": 70,
-      "rate": 9.54
+      "rate": 9.54,
+      "comparison": 9.67
      },
      {
       "maxLvr": 80,
-      "rate": 9.54
+      "rate": 9.54,
+      "comparison": 9.67
      },
      {
       "maxLvr": 85,
-      "rate": 9.54
+      "rate": 9.54,
+      "comparison": 9.67
      },
      {
       "maxLvr": 90,
-      "rate": 9.54
+      "rate": 9.54,
+      "comparison": 9.67
      },
      {
       "maxLvr": 95,
-      "rate": 9.54
+      "rate": 9.54,
+      "comparison": 9.67
      }
     ],
     "maxLvr": null
@@ -285,27 +332,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 9.79
+      "rate": 9.79,
+      "comparison": 9.92
      },
      {
       "maxLvr": 70,
-      "rate": 9.79
+      "rate": 9.79,
+      "comparison": 9.92
      },
      {
       "maxLvr": 80,
-      "rate": 9.79
+      "rate": 9.79,
+      "comparison": 9.92
      },
      {
       "maxLvr": 85,
-      "rate": 9.79
+      "rate": 9.79,
+      "comparison": 9.92
      },
      {
       "maxLvr": 90,
-      "rate": 9.79
+      "rate": 9.79,
+      "comparison": 9.92
      },
      {
       "maxLvr": 95,
-      "rate": 9.79
+      "rate": 9.79,
+      "comparison": 9.92
      }
     ],
     "maxLvr": null
@@ -322,27 +375,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.41
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 7.02
      },
      {
       "maxLvr": 90,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 7.02
      },
      {
       "maxLvr": 95,
-      "rate": 7.39
+      "rate": 7.39,
+      "comparison": 7.56
      }
     ],
     "maxLvr": 95
@@ -351,23 +410,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 80,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.66
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.12
      },
      {
       "maxLvr": 90,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.12
      }
     ],
     "maxLvr": 95
@@ -384,27 +448,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.27
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.27
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 85,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.67
      },
      {
       "maxLvr": 90,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.67
      },
      {
       "maxLvr": 95,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.92
      }
     ],
     "maxLvr": 95
@@ -413,27 +483,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 80,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.67
      },
      {
       "maxLvr": 85,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.87
      },
      {
       "maxLvr": 90,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.87
      },
      {
       "maxLvr": 95,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.87
      }
     ],
     "maxLvr": 95
@@ -455,27 +531,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 85,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 90,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 95,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      }
     ],
     "maxLvr": 95
@@ -484,27 +566,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.39,
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.44,
+      "comparison": 6.5
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 90,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 95,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      }
     ],
     "maxLvr": 95
@@ -526,23 +614,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.48
      },
      {
       "maxLvr": 85,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.68
      },
      {
       "maxLvr": 90,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.68
      }
     ],
     "maxLvr": 95
@@ -551,23 +644,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.48
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.48
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.53
      },
      {
       "maxLvr": 85,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.93
      },
      {
       "maxLvr": 90,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.93
      }
     ],
     "maxLvr": 95
@@ -584,27 +682,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.46
      },
      {
       "maxLvr": 70,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.46
      },
      {
       "maxLvr": 80,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.46
      },
      {
       "maxLvr": 85,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.46
      },
      {
       "maxLvr": 90,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.46
      },
      {
       "maxLvr": 95,
-      "rate": 6.9
+      "rate": 6.9,
+      "comparison": 6.9
      }
     ],
     "maxLvr": 95
@@ -613,26 +717,31 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.59
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.59
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.59
      },
      {
       "maxLvr": 85,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.59
      },
      {
       "maxLvr": 90,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.59
      }
     ],
-    "maxLvr": 90
+    "maxLvr": 95
    },
    "residency": {
     "citizen": true,
@@ -651,27 +760,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.72
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.77
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.82
      },
      {
       "maxLvr": 85,
-      "rate": 7.28
+      "rate": 7.28,
+      "comparison": 7.65
      },
      {
       "maxLvr": 90,
-      "rate": 7.28
+      "rate": 7.28,
+      "comparison": 7.65
      },
      {
       "maxLvr": 95,
-      "rate": 7.78
+      "rate": 7.78,
+      "comparison": 8.15
      }
     ],
     "maxLvr": 95
@@ -680,23 +795,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.87
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.92
      },
      {
       "maxLvr": 80,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.97
      },
      {
       "maxLvr": 85,
-      "rate": 7.68
+      "rate": 7.68,
+      "comparison": 8.05
      },
      {
       "maxLvr": 90,
-      "rate": 7.68
+      "rate": 7.68,
+      "comparison": 8.05
      }
     ],
     "maxLvr": 95
@@ -718,23 +838,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.38
      },
      {
       "maxLvr": 70,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.38
      },
      {
       "maxLvr": 80,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.38
      },
      {
       "maxLvr": 85,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.38
      },
      {
       "maxLvr": 90,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.38
      }
     ],
     "maxLvr": 90
@@ -743,23 +868,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.58
      },
      {
       "maxLvr": 70,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.58
      },
      {
       "maxLvr": 80,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.58
      },
      {
       "maxLvr": 85,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.58
      },
      {
       "maxLvr": 90,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.58
      }
     ],
     "maxLvr": 90
@@ -769,34 +899,40 @@
    "source": "https://api-gateway.bankofchina.com.au"
   },
   {
-   "brand": "Bank of Queensland Limited",
+   "brand": "Bank of Melbourne",
    "kind": "Other bank",
    "products": 5,
    "owner": {
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.28
+      "rate": 6.54,
+      "comparison": 6.55
      },
      {
       "maxLvr": 70,
-      "rate": 6.28
+      "rate": 6.54,
+      "comparison": 6.55
      },
      {
       "maxLvr": 80,
-      "rate": 6.33
+      "rate": 6.64,
+      "comparison": 6.65
      },
      {
       "maxLvr": 85,
-      "rate": 6.44
+      "rate": 6.94,
+      "comparison": 6.95
      },
      {
       "maxLvr": 90,
-      "rate": 6.44
+      "rate": 6.94,
+      "comparison": 6.95
      },
      {
       "maxLvr": 95,
-      "rate": 6.84
+      "rate": 6.94,
+      "comparison": 6.95
      }
     ],
     "maxLvr": 95
@@ -805,27 +941,116 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.38
+      "rate": 6.79,
+      "comparison": 6.8
      },
      {
       "maxLvr": 70,
-      "rate": 6.38
+      "rate": 6.79,
+      "comparison": 6.8
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.89,
+      "comparison": 6.9
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 7.19,
+      "comparison": 7.2
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 7.19,
+      "comparison": 7.2
      },
      {
       "maxLvr": 95,
-      "rate": 7.24
+      "rate": 7.19,
+      "comparison": 7.2
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://digital-api.bankofmelbourne.com.au"
+  },
+  {
+   "brand": "Bank of Queensland Limited",
+   "kind": "Other bank",
+   "products": 5,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.28,
+      "comparison": 6.42
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.28,
+      "comparison": 6.42
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.33,
+      "comparison": 6.47
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.44,
+      "comparison": 6.58
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.44,
+      "comparison": 6.58
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.84,
+      "comparison": 6.96
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.38,
+      "comparison": 6.52
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.38,
+      "comparison": 6.52
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.44,
+      "comparison": 6.58
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.69,
+      "comparison": 6.83
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.69,
+      "comparison": 6.83
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.24,
+      "comparison": 7.36
      }
     ],
     "maxLvr": 95
@@ -847,27 +1072,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.28
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.48
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.48
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.73
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.73
      },
      {
       "maxLvr": 95,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.98
      }
     ],
     "maxLvr": 95
@@ -876,15 +1107,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.58
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.58
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.58
      }
     ],
     "maxLvr": 80
@@ -906,27 +1140,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.24
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.24
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.24
      },
      {
       "maxLvr": 85,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.24
      },
      {
       "maxLvr": 90,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.24
      },
      {
       "maxLvr": 95,
-      "rate": 7.39
+      "rate": 7.39,
+      "comparison": 7.46
      }
     ],
     "maxLvr": 95
@@ -935,27 +1175,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.46
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.46
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 85,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.96
      },
      {
       "maxLvr": 90,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.96
      },
      {
       "maxLvr": 95,
-      "rate": 7.64
+      "rate": 7.64,
+      "comparison": 7.74
      }
     ],
     "maxLvr": 95
@@ -970,6 +1216,89 @@
    "source": "https://api.bankofus.com.au/OpenBanking"
   },
   {
+   "brand": "BankSA",
+   "kind": "Other bank",
+   "products": 5,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54,
+      "comparison": 6.55
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54,
+      "comparison": 6.55
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64,
+      "comparison": 6.65
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94,
+      "comparison": 6.95
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94,
+      "comparison": 6.95
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.94,
+      "comparison": 6.95
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.79,
+      "comparison": 6.8
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.79,
+      "comparison": 6.8
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.89,
+      "comparison": 6.9
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.19,
+      "comparison": 7.2
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.19,
+      "comparison": 7.2
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.19,
+      "comparison": 7.2
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://digital-api.banksa.com.au"
+  },
+  {
    "brand": "BankVic",
    "kind": "Customer-owned",
    "products": 29,
@@ -977,27 +1306,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.18
      },
      {
       "maxLvr": 70,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.18
      },
      {
       "maxLvr": 80,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.18
      },
      {
       "maxLvr": 85,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.18
      },
      {
       "maxLvr": 90,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.18
      },
      {
       "maxLvr": 95,
-      "rate": 6.18
+      "rate": 6.18,
+      "comparison": 6.18
      }
     ],
     "maxLvr": null
@@ -1006,27 +1341,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.43
      },
      {
       "maxLvr": 70,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.43
      },
      {
       "maxLvr": 80,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.43
      },
      {
       "maxLvr": 85,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.43
      },
      {
       "maxLvr": 90,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.43
      },
      {
       "maxLvr": 95,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.43
      }
     ],
     "maxLvr": null
@@ -1048,15 +1389,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.29
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.29
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.29
      }
     ],
     "maxLvr": 80
@@ -1065,15 +1409,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.54
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.54
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.54
      }
     ],
     "maxLvr": 80
@@ -1090,27 +1437,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.52
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.52
      },
      {
       "maxLvr": 85,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.77
      },
      {
       "maxLvr": 90,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.77
      },
      {
       "maxLvr": 95,
-      "rate": 7.14
+      "rate": 7.14,
+      "comparison": 7.17
      }
     ],
     "maxLvr": 95
@@ -1119,27 +1472,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.72
      },
      {
       "maxLvr": 70,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.77
      },
      {
       "maxLvr": 80,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.77
      },
      {
       "maxLvr": 85,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.07
      },
      {
       "maxLvr": 90,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.07
      },
      {
       "maxLvr": 95,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.77
      }
     ],
     "maxLvr": 95
@@ -1161,27 +1520,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.27
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 85,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      },
      {
       "maxLvr": 90,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      },
      {
       "maxLvr": 95,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      }
     ],
     "maxLvr": 95
@@ -1190,23 +1555,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      },
      {
       "maxLvr": 80,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.67
      },
      {
       "maxLvr": 85,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.67
      },
      {
       "maxLvr": 90,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.67
      }
     ],
     "maxLvr": 95
@@ -1228,27 +1598,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.27
      },
      {
       "maxLvr": 70,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.27
      },
      {
       "maxLvr": 80,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.27
      },
      {
       "maxLvr": 85,
-      "rate": 6.43
+      "rate": 6.43,
+      "comparison": 6.65
      },
      {
       "maxLvr": 90,
-      "rate": 6.43
+      "rate": 6.43,
+      "comparison": 6.65
      },
      {
       "maxLvr": 95,
-      "rate": 6.43
+      "rate": 6.43,
+      "comparison": 6.65
      }
     ],
     "maxLvr": 95
@@ -1257,23 +1633,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.41
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.46
      },
      {
       "maxLvr": 80,
-      "rate": 6.48
+      "rate": 6.48,
+      "comparison": 6.5
      },
      {
       "maxLvr": 85,
-      "rate": 6.63
+      "rate": 6.63,
+      "comparison": 6.81
      },
      {
       "maxLvr": 90,
-      "rate": 6.63
+      "rate": 6.63,
+      "comparison": 6.81
      }
     ],
     "maxLvr": 95
@@ -1290,27 +1671,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.69
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.69
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.69
      },
      {
       "maxLvr": 85,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.69
      },
      {
       "maxLvr": 90,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.69
      },
      {
       "maxLvr": 95,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.74
      }
     ],
     "maxLvr": 95
@@ -1319,23 +1706,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.84
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.84
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.84
      },
      {
       "maxLvr": 85,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.84
      },
      {
       "maxLvr": 90,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.84
      }
     ],
     "maxLvr": 95
@@ -1357,27 +1749,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.3
+      "rate": 6.3,
+      "comparison": 6.33
      },
      {
       "maxLvr": 70,
-      "rate": 6.3
+      "rate": 6.3,
+      "comparison": 6.33
      },
      {
       "maxLvr": 80,
-      "rate": 6.35
+      "rate": 6.35,
+      "comparison": 6.38
      },
      {
       "maxLvr": 85,
-      "rate": 8.09
+      "rate": 8.09,
+      "comparison": 8.17
      },
      {
       "maxLvr": 90,
-      "rate": 8.22
+      "rate": 8.22,
+      "comparison": 8.25
      },
      {
       "maxLvr": 95,
-      "rate": 8.64
+      "rate": 8.64,
+      "comparison": 8.67
      }
     ],
     "maxLvr": 95
@@ -1386,23 +1784,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.5
+      "rate": 6.5,
+      "comparison": 6.59
      },
      {
       "maxLvr": 70,
-      "rate": 6.5
+      "rate": 6.5,
+      "comparison": 6.59
      },
      {
       "maxLvr": 80,
-      "rate": 6.55
+      "rate": 6.55,
+      "comparison": 6.64
      },
      {
       "maxLvr": 85,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.32
      },
      {
       "maxLvr": 90,
-      "rate": 8.27
+      "rate": 8.27,
+      "comparison": 8.37
      }
     ],
     "maxLvr": 90
@@ -1424,23 +1827,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 8.27
+      "rate": 8.27,
+      "comparison": 8.45
      },
      {
       "maxLvr": 70,
-      "rate": 8.27
+      "rate": 8.27,
+      "comparison": 8.45
      },
      {
       "maxLvr": 80,
-      "rate": 8.27
+      "rate": 8.27,
+      "comparison": 8.45
      },
      {
       "maxLvr": 85,
-      "rate": 8.27
+      "rate": 8.27,
+      "comparison": 8.45
      },
      {
       "maxLvr": 90,
-      "rate": 8.27
+      "rate": 8.27,
+      "comparison": 8.45
      }
     ],
     "maxLvr": 90
@@ -1449,23 +1857,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 8.34
+      "rate": 8.34,
+      "comparison": 8.52
      },
      {
       "maxLvr": 70,
-      "rate": 8.34
+      "rate": 8.34,
+      "comparison": 8.52
      },
      {
       "maxLvr": 80,
-      "rate": 8.34
+      "rate": 8.34,
+      "comparison": 8.52
      },
      {
       "maxLvr": 85,
-      "rate": 8.34
+      "rate": 8.34,
+      "comparison": 8.52
      },
      {
       "maxLvr": 90,
-      "rate": 8.34
+      "rate": 8.34,
+      "comparison": 8.52
      }
     ],
     "maxLvr": 90
@@ -1487,27 +1900,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.26
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.31
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.31
      },
      {
       "maxLvr": 85,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.16
      },
      {
       "maxLvr": 90,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.16
      },
      {
       "maxLvr": 95,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.16
      }
     ],
     "maxLvr": 95
@@ -1516,23 +1935,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.46
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.51
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.51
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.77
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.77
      }
     ],
     "maxLvr": 95
@@ -1554,15 +1978,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.99
      },
      {
       "maxLvr": 70,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.99
      },
      {
       "maxLvr": 80,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.99
      }
     ],
     "maxLvr": 80
@@ -1571,15 +1998,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.59
+      "rate": 6.99,
+      "comparison": 7.04
      },
      {
       "maxLvr": 70,
-      "rate": 6.59
+      "rate": 6.99,
+      "comparison": 7.04
      },
      {
       "maxLvr": 80,
-      "rate": 6.59
+      "rate": 6.99,
+      "comparison": 7.04
      }
     ],
     "maxLvr": 80
@@ -1672,27 +2102,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.3
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.4
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.55
      },
      {
       "maxLvr": 85,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 90,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 95,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      }
     ],
     "maxLvr": 95
@@ -1701,27 +2137,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 70,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 80,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 85,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.31
      },
      {
       "maxLvr": 90,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.31
      },
      {
       "maxLvr": 95,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.31
      }
     ],
     "maxLvr": 95
@@ -1738,15 +2180,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      }
     ],
     "maxLvr": 90
@@ -1755,15 +2200,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 7.46
+      "rate": 7.46,
+      "comparison": 7.52
      },
      {
       "maxLvr": 70,
-      "rate": 7.46
+      "rate": 7.46,
+      "comparison": 7.52
      },
      {
       "maxLvr": 80,
-      "rate": 7.46
+      "rate": 7.46,
+      "comparison": 7.52
      }
     ],
     "maxLvr": 90
@@ -1785,27 +2233,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.14
      },
      {
       "maxLvr": 70,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.14
      },
      {
       "maxLvr": 80,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.14
      },
      {
       "maxLvr": 85,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.14
      },
      {
       "maxLvr": 90,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.14
      },
      {
       "maxLvr": 95,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.14
      }
     ],
     "maxLvr": 95
@@ -1814,27 +2268,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.55
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.65
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.65
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.1
      },
      {
       "maxLvr": 90,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.1
      },
      {
       "maxLvr": 95,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.1
      }
     ],
     "maxLvr": 95
@@ -1856,27 +2316,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 70,
-      "rate": 6.37
+      "rate": 6.37,
+      "comparison": 6.39
      },
      {
       "maxLvr": 80,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.41
      },
      {
       "maxLvr": 85,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 90,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 95,
-      "rate": 7.99
+      "rate": 7.99,
+      "comparison": 8.35
      }
     ],
     "maxLvr": 95
@@ -1885,27 +2351,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.46
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.66
      },
      {
       "maxLvr": 90,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.66
      },
      {
       "maxLvr": 95,
-      "rate": 8.09
+      "rate": 8.09,
+      "comparison": 8.45
      }
     ],
     "maxLvr": 95
@@ -1927,27 +2399,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.15
+      "rate": 6.15,
+      "comparison": 6.2
      },
      {
       "maxLvr": 70,
-      "rate": 6.15
+      "rate": 6.15,
+      "comparison": 6.2
      },
      {
       "maxLvr": 80,
-      "rate": 6.15
+      "rate": 6.15,
+      "comparison": 6.2
      },
      {
       "maxLvr": 85,
-      "rate": 6.45
+      "rate": 6.45,
+      "comparison": 6.5
      },
      {
       "maxLvr": 90,
-      "rate": 6.45
+      "rate": 6.45,
+      "comparison": 6.5
      },
      {
       "maxLvr": 95,
-      "rate": 6.45
+      "rate": 6.45,
+      "comparison": 6.5
      }
     ],
     "maxLvr": 95
@@ -1956,27 +2434,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.44
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.44
      },
      {
       "maxLvr": 80,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.44
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.74
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.74
      },
      {
       "maxLvr": 95,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.74
      }
     ],
     "maxLvr": 95
@@ -1998,27 +2482,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.41
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 7.02
      },
      {
       "maxLvr": 90,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 7.02
      },
      {
       "maxLvr": 95,
-      "rate": 7.39
+      "rate": 7.39,
+      "comparison": 7.56
      }
     ],
     "maxLvr": 95
@@ -2027,23 +2517,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 80,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.66
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.12
      },
      {
       "maxLvr": 90,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.12
      }
     ],
     "maxLvr": 95
@@ -2060,27 +2555,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.65
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.71
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.71
      },
      {
       "maxLvr": 85,
-      "rate": 7.24
+      "rate": 7.24,
+      "comparison": 7.59
      },
      {
       "maxLvr": 90,
-      "rate": 7.24
+      "rate": 7.24,
+      "comparison": 7.59
      },
      {
       "maxLvr": 95,
-      "rate": 7.24
+      "rate": 7.24,
+      "comparison": 7.59
      }
     ],
     "maxLvr": 95
@@ -2089,27 +2590,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.85
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.9
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.9
      },
      {
       "maxLvr": 85,
-      "rate": 7.49
+      "rate": 7.49,
+      "comparison": 7.84
      },
      {
       "maxLvr": 90,
-      "rate": 7.49
+      "rate": 7.49,
+      "comparison": 7.84
      },
      {
       "maxLvr": 95,
-      "rate": 7.49
+      "rate": 7.49,
+      "comparison": 7.84
      }
     ],
     "maxLvr": 95
@@ -2126,27 +2633,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.36
      },
      {
       "maxLvr": 70,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.36
      },
      {
       "maxLvr": 80,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.36
      },
      {
       "maxLvr": 85,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.36
      },
      {
       "maxLvr": 90,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.36
      },
      {
       "maxLvr": 95,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.36
      }
     ],
     "maxLvr": null
@@ -2155,27 +2668,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 70,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 80,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 85,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 90,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 95,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      }
     ],
     "maxLvr": null
@@ -2197,27 +2716,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.44
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.44
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.44
      },
      {
       "maxLvr": 85,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.44
      },
      {
       "maxLvr": 90,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.44
      },
      {
       "maxLvr": 95,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.44
      }
     ],
     "maxLvr": 95
@@ -2226,27 +2751,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 85,
-      "rate": 6.34
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 90,
-      "rate": 6.34
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 95,
-      "rate": 6.34
+      "rate": 6.59,
+      "comparison": 6.59
      }
     ],
     "maxLvr": 95
@@ -2263,27 +2794,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.93
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.93
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.93
      },
      {
       "maxLvr": 85,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.93
      },
      {
       "maxLvr": 90,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.93
      },
      {
       "maxLvr": 95,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.93
      }
     ],
     "maxLvr": null
@@ -2292,27 +2829,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.9
+      "rate": 6.9,
+      "comparison": 6.99
      },
      {
       "maxLvr": 70,
-      "rate": 6.9
+      "rate": 6.9,
+      "comparison": 6.99
      },
      {
       "maxLvr": 80,
-      "rate": 6.9
+      "rate": 6.9,
+      "comparison": 6.99
      },
      {
       "maxLvr": 85,
-      "rate": 6.9
+      "rate": 6.9,
+      "comparison": 6.99
      },
      {
       "maxLvr": 90,
-      "rate": 6.9
+      "rate": 6.9,
+      "comparison": 6.99
      },
      {
       "maxLvr": 95,
-      "rate": 6.9
+      "rate": 6.9,
+      "comparison": 6.99
      }
     ],
     "maxLvr": null
@@ -2334,15 +2877,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.34
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.34
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.34
      }
     ],
     "maxLvr": 80
@@ -2351,15 +2897,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.34
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.34
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.34
      }
     ],
     "maxLvr": 80
@@ -2381,27 +2930,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.41
      },
      {
       "maxLvr": 70,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.41
      },
      {
       "maxLvr": 80,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.41
      },
      {
       "maxLvr": 85,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.41
      },
      {
       "maxLvr": 90,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.41
      },
      {
       "maxLvr": 95,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.41
      }
     ],
     "maxLvr": null
@@ -2410,27 +2965,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.7
      },
      {
       "maxLvr": 70,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.7
      },
      {
       "maxLvr": 80,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.7
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.7
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.7
      },
      {
       "maxLvr": 95,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.7
      }
     ],
     "maxLvr": null
@@ -2452,27 +3013,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.49
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 85,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 90,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 95,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      }
     ],
     "maxLvr": 95
@@ -2481,27 +3048,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.39,
+      "comparison": 6.69
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.44,
+      "comparison": 6.74
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.79
      },
      {
       "maxLvr": 85,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 90,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 95,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      }
     ],
     "maxLvr": 95
@@ -2523,27 +3096,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 5.99
+      "rate": 5.99,
+      "comparison": 5.99
      },
      {
       "maxLvr": 70,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.09
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.19
      },
      {
       "maxLvr": 85,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.19
      },
      {
       "maxLvr": 90,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.19
      },
      {
       "maxLvr": 95,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.19
      }
     ],
     "maxLvr": 95
@@ -2552,27 +3131,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.27
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.37
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 85,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 90,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 95,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      }
     ],
     "maxLvr": 95
@@ -2594,27 +3179,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.16
      },
      {
       "maxLvr": 70,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.16
      },
      {
       "maxLvr": 80,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.16
      },
      {
       "maxLvr": 85,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.16
      },
      {
       "maxLvr": 90,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.16
      },
      {
       "maxLvr": 95,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.16
      }
     ],
     "maxLvr": 95
@@ -2623,23 +3214,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.66
      },
      {
       "maxLvr": 70,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.66
      },
      {
       "maxLvr": 80,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.66
      },
      {
       "maxLvr": 85,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.66
      },
      {
       "maxLvr": 90,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.66
      }
     ],
     "maxLvr": 95
@@ -2656,27 +3252,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.35
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.35
      },
      {
       "maxLvr": 85,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.75
      },
      {
       "maxLvr": 90,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.75
      },
      {
       "maxLvr": 95,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.75
      }
     ],
     "maxLvr": 95
@@ -2685,27 +3287,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.55
      },
      {
       "maxLvr": 80,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.55
      },
      {
       "maxLvr": 85,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.95
      },
      {
       "maxLvr": 90,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.95
      },
      {
       "maxLvr": 95,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.95
      }
     ],
     "maxLvr": 95
@@ -2794,27 +3402,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.1
      },
      {
       "maxLvr": 70,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.1
      },
      {
       "maxLvr": 80,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.1
      },
      {
       "maxLvr": 85,
-      "rate": 7.91
+      "rate": 7.91,
+      "comparison": 8.26
      },
      {
       "maxLvr": 90,
-      "rate": 7.91
+      "rate": 7.91,
+      "comparison": 8.26
      },
      {
       "maxLvr": 95,
-      "rate": 7.91
+      "rate": 7.91,
+      "comparison": 8.26
      }
     ],
     "maxLvr": 95
@@ -2823,27 +3437,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      },
      {
       "maxLvr": 85,
-      "rate": 8.49
+      "rate": 8.49,
+      "comparison": 8.5
      },
      {
       "maxLvr": 90,
-      "rate": 8.49
+      "rate": 8.49,
+      "comparison": 8.5
      },
      {
       "maxLvr": 95,
-      "rate": 8.49
+      "rate": 8.49,
+      "comparison": 8.5
      }
     ],
     "maxLvr": 95
@@ -2865,27 +3485,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.49
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 85,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 90,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 95,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      }
     ],
     "maxLvr": 95
@@ -2894,27 +3520,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.39,
+      "comparison": 6.69
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.44,
+      "comparison": 6.74
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.79
      },
      {
       "maxLvr": 85,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 90,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 95,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      }
     ],
     "maxLvr": 95
@@ -2936,23 +3568,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 5.99
+      "rate": 5.99,
+      "comparison": 6
      },
      {
       "maxLvr": 70,
-      "rate": 5.99
+      "rate": 5.99,
+      "comparison": 6
      },
      {
       "maxLvr": 80,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.15
      },
      {
       "maxLvr": 85,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.15
      },
      {
       "maxLvr": 90,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.15
      }
     ],
     "maxLvr": 95
@@ -2961,23 +3598,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.4
      },
      {
       "maxLvr": 85,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.4
      },
      {
       "maxLvr": 90,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.4
      }
     ],
     "maxLvr": 95
@@ -2994,27 +3636,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 85,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 90,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 95,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      }
     ],
     "maxLvr": 95
@@ -3023,23 +3671,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.4
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.5
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.5
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.7
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.7
      }
     ],
     "maxLvr": 95
@@ -3061,27 +3714,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.22
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.22
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 85,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.6
      },
      {
       "maxLvr": 90,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.6
      },
      {
       "maxLvr": 95,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.95
      }
     ],
     "maxLvr": 95
@@ -3090,27 +3749,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.45
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.5
      },
      {
       "maxLvr": 85,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.65
      },
      {
       "maxLvr": 90,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.65
      },
      {
       "maxLvr": 95,
-      "rate": 7.34
+      "rate": 7.34,
+      "comparison": 7.4
      }
     ],
     "maxLvr": 95
@@ -3132,27 +3797,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.37
      },
      {
       "maxLvr": 85,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.52
      },
      {
       "maxLvr": 90,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.52
      },
      {
       "maxLvr": 95,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 7.17
      }
     ],
     "maxLvr": 95
@@ -3161,23 +3832,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.42
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.42
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 85,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.77
      },
      {
       "maxLvr": 90,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.77
      }
     ],
     "maxLvr": 95
@@ -3199,15 +3875,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.6
+      "rate": 6.6,
+      "comparison": 6.61
      },
      {
       "maxLvr": 70,
-      "rate": 6.6
+      "rate": 6.6,
+      "comparison": 6.61
      },
      {
       "maxLvr": 80,
-      "rate": 6.6
+      "rate": 6.6,
+      "comparison": 6.61
      }
     ],
     "maxLvr": 80
@@ -3216,15 +3895,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.75
+      "rate": 6.75,
+      "comparison": 6.76
      },
      {
       "maxLvr": 70,
-      "rate": 6.75
+      "rate": 6.75,
+      "comparison": 6.76
      },
      {
       "maxLvr": 80,
-      "rate": 6.75
+      "rate": 6.75,
+      "comparison": 6.76
      }
     ],
     "maxLvr": 80
@@ -3246,27 +3928,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.82
      },
      {
       "maxLvr": 70,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.82
      },
      {
       "maxLvr": 80,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.82
      },
      {
       "maxLvr": 85,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.82
      },
      {
       "maxLvr": 90,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.82
      },
      {
       "maxLvr": 95,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.82
      }
     ],
     "maxLvr": 95
@@ -3275,27 +3963,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.17
      },
      {
       "maxLvr": 70,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.17
      },
      {
       "maxLvr": 80,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.17
      },
      {
       "maxLvr": 85,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.17
      },
      {
       "maxLvr": 90,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.17
      },
      {
       "maxLvr": 95,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.17
      }
     ],
     "maxLvr": 95
@@ -3317,27 +4011,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.31
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.31
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 85,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      },
      {
       "maxLvr": 90,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      },
      {
       "maxLvr": 95,
-      "rate": 7.34
+      "rate": 7.34,
+      "comparison": 7.37
      }
     ],
     "maxLvr": 95
@@ -3346,23 +4046,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.41
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.46
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.52
      },
      {
       "maxLvr": 85,
-      "rate": 7.35
+      "rate": 7.35,
+      "comparison": 7.38
      },
      {
       "maxLvr": 90,
-      "rate": 7.35
+      "rate": 7.35,
+      "comparison": 7.38
      }
     ],
     "maxLvr": 95
@@ -3379,27 +4084,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.04
+      "rate": 6.04,
+      "comparison": 6.04
      },
      {
       "maxLvr": 70,
-      "rate": 6.04
+      "rate": 6.04,
+      "comparison": 6.04
      },
      {
       "maxLvr": 80,
-      "rate": 6.04
+      "rate": 6.04,
+      "comparison": 6.04
      },
      {
       "maxLvr": 85,
-      "rate": 6.04
+      "rate": 6.04,
+      "comparison": 6.04
      },
      {
       "maxLvr": 90,
-      "rate": 6.04
+      "rate": 6.04,
+      "comparison": 6.04
      },
      {
       "maxLvr": 95,
-      "rate": 6.04
+      "rate": 6.04,
+      "comparison": 6.04
      }
     ],
     "maxLvr": 95
@@ -3408,27 +4119,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.94
+      "rate": 6.39,
+      "comparison": 6.75
      },
      {
       "maxLvr": 70,
-      "rate": 6.94
+      "rate": 6.39,
+      "comparison": 6.75
      },
      {
       "maxLvr": 80,
-      "rate": 6.94
+      "rate": 6.39,
+      "comparison": 6.75
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.39,
+      "comparison": 6.75
      },
      {
       "maxLvr": 90,
-      "rate": 6.94
+      "rate": 6.39,
+      "comparison": 6.75
      },
      {
       "maxLvr": 95,
-      "rate": 6.94
+      "rate": 6.39,
+      "comparison": 6.75
      }
     ],
     "maxLvr": 95
@@ -3450,27 +4167,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.26
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.26
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.31
      },
      {
       "maxLvr": 85,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.96
      },
      {
       "maxLvr": 90,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.96
      },
      {
       "maxLvr": 95,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.31
      }
     ],
     "maxLvr": 95
@@ -3479,27 +4202,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.43
+      "rate": 6.43,
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
-      "rate": 6.43
+      "rate": 6.43,
+      "comparison": 6.45
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 85,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.86
      },
      {
       "maxLvr": 90,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.86
      },
      {
       "maxLvr": 95,
-      "rate": 7.94
+      "rate": 7.94,
+      "comparison": 7.96
      }
     ],
     "maxLvr": 95
@@ -3538,9 +4267,13 @@
      {
       "maxLvr": 90,
       "rate": 6.09
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.09
      }
     ],
-    "maxLvr": 90
+    "maxLvr": 95
    },
    "investment": {
     "tiers": [
@@ -3563,9 +4296,13 @@
      {
       "maxLvr": 90,
       "rate": 6.24
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.24
      }
     ],
-    "maxLvr": 90
+    "maxLvr": 95
    },
    "residency": null,
    "minAge": 18,
@@ -3579,27 +4316,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.04
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 70,
-      "rate": 6.04
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 85,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 90,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 95,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.47
      }
     ],
     "maxLvr": 95
@@ -3608,27 +4351,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.49
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.44,
+      "comparison": 6.49
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.49,
+      "comparison": 6.54
      },
      {
       "maxLvr": 85,
-      "rate": 6.64
+      "rate": 6.89,
+      "comparison": 6.94
      },
      {
       "maxLvr": 90,
-      "rate": 6.64
+      "rate": 6.89,
+      "comparison": 6.94
      },
      {
       "maxLvr": 95,
-      "rate": 7.39
+      "rate": 7.64,
+      "comparison": 7.69
      }
     ],
     "maxLvr": 95
@@ -3650,27 +4399,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.42
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.42
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.42
      },
      {
       "maxLvr": 85,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.42
      },
      {
       "maxLvr": 90,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.42
      },
      {
       "maxLvr": 95,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.42
      }
     ],
     "maxLvr": 95
@@ -3679,27 +4434,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.45
+      "rate": 6.45,
+      "comparison": 6.58
      },
      {
       "maxLvr": 70,
-      "rate": 6.45
+      "rate": 6.45,
+      "comparison": 6.58
      },
      {
       "maxLvr": 80,
-      "rate": 6.55
+      "rate": 6.55,
+      "comparison": 6.68
      },
      {
       "maxLvr": 85,
-      "rate": 7.21
+      "rate": 7.21,
+      "comparison": 7.21
      },
      {
       "maxLvr": 90,
-      "rate": 7.21
+      "rate": 7.21,
+      "comparison": 7.21
      },
      {
       "maxLvr": 95,
-      "rate": 7.21
+      "rate": 7.21,
+      "comparison": 7.21
      }
     ],
     "maxLvr": 95
@@ -3721,27 +4482,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.23
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.23
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.23
      },
      {
       "maxLvr": 85,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.03
      },
      {
       "maxLvr": 90,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.03
      },
      {
       "maxLvr": 95,
-      "rate": 6.99
+      "rate": 6.99,
+      "comparison": 7.03
      }
     ],
     "maxLvr": 95
@@ -3750,27 +4517,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.48
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.48
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.48
      },
      {
       "maxLvr": 85,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.13
      },
      {
       "maxLvr": 90,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.13
      },
      {
       "maxLvr": 95,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.13
      }
     ],
     "maxLvr": 95
@@ -3792,23 +4565,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.98
      },
      {
       "maxLvr": 70,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.98
      },
      {
       "maxLvr": 80,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.98
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 7.03
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 7.03
      }
     ],
     "maxLvr": 95
@@ -3817,15 +4595,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.98
      },
      {
       "maxLvr": 70,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.98
      },
      {
       "maxLvr": 80,
-      "rate": 5.94
+      "rate": 5.94,
+      "comparison": 5.98
      }
     ],
     "maxLvr": 95
@@ -3847,27 +4628,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.23
      },
      {
       "maxLvr": 70,
-      "rate": 6.28
+      "rate": 6.28,
+      "comparison": 6.32
      },
      {
       "maxLvr": 80,
-      "rate": 6.33
+      "rate": 6.33,
+      "comparison": 6.37
      },
      {
       "maxLvr": 85,
-      "rate": 6.58
+      "rate": 6.58,
+      "comparison": 6.78
      },
      {
       "maxLvr": 90,
-      "rate": 6.58
+      "rate": 6.58,
+      "comparison": 6.78
      },
      {
       "maxLvr": 95,
-      "rate": 7.13
+      "rate": 7.13,
+      "comparison": 7.33
      }
     ],
     "maxLvr": 95
@@ -3876,23 +4663,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.63
      },
      {
       "maxLvr": 70,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.68
      },
      {
       "maxLvr": 80,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.73
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.14
      },
      {
       "maxLvr": 90,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.14
      }
     ],
     "maxLvr": 95
@@ -3909,15 +4701,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.34
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.44
      },
      {
       "maxLvr": 80,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.44
      },
      {
       "maxLvr": 85,
@@ -3938,7 +4733,8 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.84
      },
      {
       "maxLvr": 70,
@@ -3980,27 +4776,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.41
      },
      {
       "maxLvr": 70,
-      "rate": 6.42
+      "rate": 6.42,
+      "comparison": 6.45
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.47
      },
      {
       "maxLvr": 85,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.77
      },
      {
       "maxLvr": 90,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.77
      },
      {
       "maxLvr": 95,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.07
      }
     ],
     "maxLvr": 95
@@ -4009,23 +4811,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.57
      },
      {
       "maxLvr": 80,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.62
      },
      {
       "maxLvr": 85,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.87
      },
      {
       "maxLvr": 90,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.87
      }
     ],
     "maxLvr": 95
@@ -4042,27 +4849,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.26
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.31
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.31
      },
      {
       "maxLvr": 85,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.16
      },
      {
       "maxLvr": 90,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.16
      },
      {
       "maxLvr": 95,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.16
      }
     ],
     "maxLvr": 95
@@ -4071,23 +4884,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.46
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.51
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.51
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.77
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.77
      }
     ],
     "maxLvr": 95
@@ -4109,23 +4927,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 70,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 80,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 85,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      },
      {
       "maxLvr": 90,
-      "rate": 7.74
+      "rate": 7.74,
+      "comparison": 7.81
      }
     ],
     "maxLvr": 90
@@ -4134,23 +4957,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.31
      },
      {
       "maxLvr": 70,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.31
      },
      {
       "maxLvr": 80,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.31
      },
      {
       "maxLvr": 85,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.31
      },
      {
       "maxLvr": 90,
-      "rate": 8.24
+      "rate": 8.24,
+      "comparison": 8.31
      }
     ],
     "maxLvr": 90
@@ -4172,27 +5000,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.33
+      "rate": 6.33,
+      "comparison": 6.56
      },
      {
       "maxLvr": 70,
-      "rate": 6.33
+      "rate": 6.33,
+      "comparison": 6.56
      },
      {
       "maxLvr": 80,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.61
      },
      {
       "maxLvr": 85,
-      "rate": 6.53
+      "rate": 6.53,
+      "comparison": 6.76
      },
      {
       "maxLvr": 90,
-      "rate": 6.53
+      "rate": 6.53,
+      "comparison": 6.76
      },
      {
       "maxLvr": 95,
-      "rate": 7.28
+      "rate": 7.28,
+      "comparison": 7.5
      }
     ],
     "maxLvr": 95
@@ -4201,23 +5035,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.67
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.72
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.77
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.91
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.91
      }
     ],
     "maxLvr": 95
@@ -4234,27 +5073,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.26
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.31
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 85,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 90,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 95,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      }
     ],
     "maxLvr": 95
@@ -4280,23 +5125,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.56
      },
      {
       "maxLvr": 70,
-      "rate": 6.38
+      "rate": 6.38,
+      "comparison": 6.56
      },
      {
       "maxLvr": 80,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.39
      },
      {
       "maxLvr": 85,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.82
      },
      {
       "maxLvr": 90,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.82
      }
     ],
     "maxLvr": 90
@@ -4305,23 +5155,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.72
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.72
      },
      {
       "maxLvr": 80,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.77
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.12
      },
      {
       "maxLvr": 90,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 7.12
      }
     ],
     "maxLvr": 90
@@ -4343,27 +5198,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 85,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      },
      {
       "maxLvr": 90,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      },
      {
       "maxLvr": 95,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      }
     ],
     "maxLvr": 95
@@ -4372,27 +5233,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.45
      },
      {
       "maxLvr": 85,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.65
      },
      {
       "maxLvr": 90,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.65
      },
      {
       "maxLvr": 95,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.65
      }
     ],
     "maxLvr": 95
@@ -4414,27 +5281,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.39
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.49
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.54
      },
      {
       "maxLvr": 85,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.69
      },
      {
       "maxLvr": 90,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.69
      },
      {
       "maxLvr": 95,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.89
      }
     ],
     "maxLvr": 95
@@ -4443,27 +5316,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 70,
-      "rate": 6.69
+      "rate": 6.69,
+      "comparison": 6.69
      },
      {
       "maxLvr": 80,
-      "rate": 6.74
+      "rate": 6.74,
+      "comparison": 6.74
      },
      {
       "maxLvr": 85,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.89
      },
      {
       "maxLvr": 90,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.89
      },
      {
       "maxLvr": 95,
-      "rate": 7.09
+      "rate": 7.09,
+      "comparison": 7.09
      }
     ],
     "maxLvr": 95
@@ -4485,27 +5364,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.17
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.22
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.32
      },
      {
       "maxLvr": 85,
-      "rate": 6.77
+      "rate": 6.77,
+      "comparison": 6.8
      },
      {
       "maxLvr": 90,
-      "rate": 6.77
+      "rate": 6.77,
+      "comparison": 6.8
      },
      {
       "maxLvr": 95,
-      "rate": 7.19
+      "rate": 7.19,
+      "comparison": 7.22
      }
     ],
     "maxLvr": 95
@@ -4514,23 +5399,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.37
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.42
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.52
      },
      {
       "maxLvr": 85,
-      "rate": 7.08
+      "rate": 7.08,
+      "comparison": 7.11
      },
      {
       "maxLvr": 90,
-      "rate": 7.08
+      "rate": 7.08,
+      "comparison": 7.11
      }
     ],
     "maxLvr": 95
@@ -4552,27 +5442,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 5.93
+      "rate": 5.93,
+      "comparison": 6.28
      },
      {
       "maxLvr": 70,
-      "rate": 5.93
+      "rate": 5.93,
+      "comparison": 6.28
      },
      {
       "maxLvr": 80,
-      "rate": 5.93
+      "rate": 5.93,
+      "comparison": 6.28
      },
      {
       "maxLvr": 85,
-      "rate": 5.93
+      "rate": 5.93,
+      "comparison": 6.28
      },
      {
       "maxLvr": 90,
-      "rate": 5.93
+      "rate": 5.93,
+      "comparison": 6.28
      },
      {
       "maxLvr": 95,
-      "rate": 5.93
+      "rate": 5.93,
+      "comparison": 6.28
      }
     ],
     "maxLvr": 95
@@ -4581,27 +5477,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.48
      },
      {
       "maxLvr": 70,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.48
      },
      {
       "maxLvr": 80,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.48
      },
      {
       "maxLvr": 85,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.48
      },
      {
       "maxLvr": 90,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.48
      },
      {
       "maxLvr": 95,
-      "rate": 6.13
+      "rate": 6.13,
+      "comparison": 6.48
      }
     ],
     "maxLvr": 95
@@ -4623,27 +5525,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.55
      },
      {
       "maxLvr": 70,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.55
      },
      {
       "maxLvr": 80,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.65
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 6.95
      },
      {
       "maxLvr": 90,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 6.95
      },
      {
       "maxLvr": 95,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 6.95
      }
     ],
     "maxLvr": 95
@@ -4652,27 +5560,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.8
      },
      {
       "maxLvr": 70,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.8
      },
      {
       "maxLvr": 80,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 6.9
      },
      {
       "maxLvr": 85,
-      "rate": 7.19
+      "rate": 7.19,
+      "comparison": 7.2
      },
      {
       "maxLvr": 90,
-      "rate": 7.19
+      "rate": 7.19,
+      "comparison": 7.2
      },
      {
       "maxLvr": 95,
-      "rate": 7.19
+      "rate": 7.19,
+      "comparison": 7.2
      }
     ],
     "maxLvr": 95
@@ -4694,27 +5608,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.15
      },
      {
       "maxLvr": 70,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.15
      },
      {
       "maxLvr": 80,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.15
      },
      {
       "maxLvr": 85,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.15
      },
      {
       "maxLvr": 90,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.15
      },
      {
       "maxLvr": 95,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.15
      }
     ],
     "maxLvr": null
@@ -4723,27 +5643,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.4
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.4
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.4
      },
      {
       "maxLvr": 85,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.4
      },
      {
       "maxLvr": 90,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.4
      },
      {
       "maxLvr": 95,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.4
      }
     ],
     "maxLvr": null
@@ -4765,27 +5691,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.1
+      "rate": 6.1,
+      "comparison": 6.1
      },
      {
       "maxLvr": 70,
-      "rate": 6.1
+      "rate": 6.1,
+      "comparison": 6.1
      },
      {
       "maxLvr": 80,
-      "rate": 6.1
+      "rate": 6.1,
+      "comparison": 6.1
      },
      {
       "maxLvr": 85,
-      "rate": 6.1
+      "rate": 6.1,
+      "comparison": 6.1
      },
      {
       "maxLvr": 90,
-      "rate": 6.1
+      "rate": 6.1,
+      "comparison": 6.1
      },
      {
       "maxLvr": 95,
-      "rate": 6.1
+      "rate": 6.1,
+      "comparison": 6.1
      }
     ],
     "maxLvr": null
@@ -4794,27 +5726,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.4
+      "rate": 6.4,
+      "comparison": 6.4
      },
      {
       "maxLvr": 70,
-      "rate": 6.4
+      "rate": 6.4,
+      "comparison": 6.4
      },
      {
       "maxLvr": 80,
-      "rate": 6.4
+      "rate": 6.4,
+      "comparison": 6.4
      },
      {
       "maxLvr": 85,
-      "rate": 6.4
+      "rate": 6.4,
+      "comparison": 6.4
      },
      {
       "maxLvr": 90,
-      "rate": 6.4
+      "rate": 6.4,
+      "comparison": 6.4
      },
      {
       "maxLvr": 95,
-      "rate": 6.4
+      "rate": 6.4,
+      "comparison": 6.4
      }
     ],
     "maxLvr": null
@@ -4836,27 +5774,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.49
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 85,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 90,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 95,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      }
     ],
     "maxLvr": 95
@@ -4865,27 +5809,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.39,
+      "comparison": 6.69
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.44,
+      "comparison": 6.74
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.79
      },
      {
       "maxLvr": 85,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 90,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 95,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      }
     ],
     "maxLvr": 95
@@ -4907,27 +5857,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.29
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.29
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.29
      },
      {
       "maxLvr": 85,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.69
      },
      {
       "maxLvr": 90,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.69
      },
      {
       "maxLvr": 95,
-      "rate": 6.64
+      "rate": 6.64,
+      "comparison": 6.69
      }
     ],
     "maxLvr": 95
@@ -4936,27 +5892,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.49
      },
      {
       "maxLvr": 70,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.49
      },
      {
       "maxLvr": 80,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.49
      },
      {
       "maxLvr": 85,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.89
      },
      {
       "maxLvr": 90,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.89
      },
      {
       "maxLvr": 95,
-      "rate": 6.84
+      "rate": 6.84,
+      "comparison": 6.89
      }
     ],
     "maxLvr": 95
@@ -4971,72 +5933,6 @@
    "source": "https://public.cdr.onlinebanking.capricornian.com.au"
   },
   {
-   "brand": "The Mac",
-   "kind": "Customer-owned",
-   "products": 27,
-   "owner": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 5.92
-     },
-     {
-      "maxLvr": 70,
-      "rate": 5.92
-     },
-     {
-      "maxLvr": 80,
-      "rate": 5.92
-     },
-     {
-      "maxLvr": 85,
-      "rate": 5.92
-     },
-     {
-      "maxLvr": 90,
-      "rate": 5.92
-     },
-     {
-      "maxLvr": 95,
-      "rate": 5.92
-     }
-    ],
-    "maxLvr": null
-   },
-   "investment": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 7.04
-     },
-     {
-      "maxLvr": 70,
-      "rate": 7.04
-     },
-     {
-      "maxLvr": 80,
-      "rate": 7.04
-     },
-     {
-      "maxLvr": 85,
-      "rate": 7.04
-     },
-     {
-      "maxLvr": 90,
-      "rate": 7.04
-     },
-     {
-      "maxLvr": 95,
-      "rate": 7.04
-     }
-    ],
-    "maxLvr": null
-   },
-   "residency": null,
-   "minAge": 18,
-   "source": "https://onlinebanking.themaccu.com.au/OpenBanking"
-  },
-  {
    "brand": "Tiimely Home",
    "kind": "Online lender",
    "products": 2,
@@ -5044,27 +5940,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.2
+      "rate": 6.2,
+      "comparison": 6.21
      },
      {
       "maxLvr": 70,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.3
      },
      {
       "maxLvr": 80,
-      "rate": 6.29
+      "rate": 6.29,
+      "comparison": 6.3
      },
      {
       "maxLvr": 85,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.75
      },
      {
       "maxLvr": 90,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.75
      },
      {
       "maxLvr": 95,
-      "rate": 7.14
+      "rate": 7.14,
+      "comparison": 7.3
      }
     ],
     "maxLvr": 95
@@ -5073,23 +5975,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.52
+      "rate": 6.52,
+      "comparison": 6.53
      },
      {
       "maxLvr": 70,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 80,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.59
      },
      {
       "maxLvr": 85,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 7.05
      },
      {
       "maxLvr": 90,
-      "rate": 6.89
+      "rate": 6.89,
+      "comparison": 7.05
      }
     ],
     "maxLvr": 95
@@ -5106,27 +6013,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.24
      },
      {
       "maxLvr": 70,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.24
      },
      {
       "maxLvr": 80,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.24
      },
      {
       "maxLvr": 85,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.24
      },
      {
       "maxLvr": 90,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.24
      },
      {
       "maxLvr": 95,
-      "rate": 6.14
+      "rate": 6.14,
+      "comparison": 6.24
      }
     ],
     "maxLvr": null
@@ -5135,27 +6048,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.59
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.59
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.59
      },
      {
       "maxLvr": 85,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.59
      },
      {
       "maxLvr": 90,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.59
      },
      {
       "maxLvr": 95,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.59
      }
     ],
     "maxLvr": null
@@ -5177,23 +6096,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 80,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.41
      },
      {
       "maxLvr": 85,
-      "rate": 6.94
+      "rate": 6.94,
+      "comparison": 6.96
      },
      {
       "maxLvr": 90,
-      "rate": 7.24
+      "rate": 7.24,
+      "comparison": 7.26
      }
     ],
     "maxLvr": 90
@@ -5202,23 +6126,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.44
+      "rate": 6.44,
+      "comparison": 6.46
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 80,
-      "rate": 6.54
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.31
      },
      {
       "maxLvr": 90,
-      "rate": 7.39
+      "rate": 7.39,
+      "comparison": 7.41
      }
     ],
     "maxLvr": 90
@@ -5240,27 +6169,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.49
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 85,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 90,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      },
      {
       "maxLvr": 95,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.25
      }
     ],
     "maxLvr": 95
@@ -5269,27 +6204,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.49
+      "rate": 6.39,
+      "comparison": 6.69
      },
      {
       "maxLvr": 70,
-      "rate": 6.49
+      "rate": 6.44,
+      "comparison": 6.74
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.79
      },
      {
       "maxLvr": 85,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 90,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      },
      {
       "maxLvr": 95,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.56
      }
     ],
     "maxLvr": 95
@@ -5311,27 +6252,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.05
+      "rate": 6.05,
+      "comparison": 6.1
      },
      {
       "maxLvr": 70,
-      "rate": 6.05
+      "rate": 6.05,
+      "comparison": 6.1
      },
      {
       "maxLvr": 80,
-      "rate": 6.05
+      "rate": 6.05,
+      "comparison": 6.1
      },
      {
       "maxLvr": 85,
-      "rate": 6.05
+      "rate": 6.05,
+      "comparison": 6.1
      },
      {
       "maxLvr": 90,
-      "rate": 6.05
+      "rate": 6.05,
+      "comparison": 6.1
      },
      {
       "maxLvr": 95,
-      "rate": 6.05
+      "rate": 6.05,
+      "comparison": 6.1
      }
     ],
     "maxLvr": 95
@@ -5340,23 +6287,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.59
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.59
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.59
      },
      {
       "maxLvr": 85,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.59
      },
      {
       "maxLvr": 90,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.59
      }
     ],
     "maxLvr": 95
@@ -5436,23 +6388,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.2
+      "rate": 6.2,
+      "comparison": 6.2
      },
      {
       "maxLvr": 70,
-      "rate": 6.2
+      "rate": 6.2,
+      "comparison": 6.2
      },
      {
       "maxLvr": 80,
-      "rate": 6.2
+      "rate": 6.2,
+      "comparison": 6.2
      },
      {
       "maxLvr": 85,
-      "rate": 6.2
+      "rate": 6.2,
+      "comparison": 6.2
      },
      {
       "maxLvr": 90,
-      "rate": 6.2
+      "rate": 6.2,
+      "comparison": 6.2
      }
     ],
     "maxLvr": 90
@@ -5461,23 +6418,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.35
+      "rate": 6.35,
+      "comparison": 6.35
      },
      {
       "maxLvr": 70,
-      "rate": 6.35
+      "rate": 6.35,
+      "comparison": 6.35
      },
      {
       "maxLvr": 80,
-      "rate": 6.35
+      "rate": 6.35,
+      "comparison": 6.35
      },
      {
       "maxLvr": 85,
-      "rate": 6.35
+      "rate": 6.35,
+      "comparison": 6.35
      },
      {
       "maxLvr": 90,
-      "rate": 6.35
+      "rate": 6.35,
+      "comparison": 6.35
      }
     ],
     "maxLvr": 90
@@ -5499,27 +6461,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.11
      },
      {
       "maxLvr": 70,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.11
      },
      {
       "maxLvr": 80,
-      "rate": 6.09
+      "rate": 6.09,
+      "comparison": 6.11
      },
      {
       "maxLvr": 85,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.61
      },
      {
       "maxLvr": 90,
-      "rate": 6.59
+      "rate": 6.59,
+      "comparison": 6.61
      },
      {
       "maxLvr": 95,
-      "rate": 8.02
+      "rate": 8.02,
+      "comparison": 8.04
      }
     ],
     "maxLvr": 95
@@ -5528,27 +6496,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.26
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.26
      },
      {
       "maxLvr": 80,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.26
      },
      {
       "maxLvr": 85,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.81
      },
      {
       "maxLvr": 90,
-      "rate": 6.79
+      "rate": 6.79,
+      "comparison": 6.81
      },
      {
       "maxLvr": 95,
-      "rate": 8.54
+      "rate": 8.54,
+      "comparison": 8.56
      }
     ],
     "maxLvr": 95
@@ -5570,27 +6544,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
-      "rate": 6.24
+      "rate": 6.24,
+      "comparison": 6.25
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.34,
+      "comparison": 6.35
      },
      {
       "maxLvr": 85,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 90,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      },
      {
       "maxLvr": 95,
-      "rate": 7.04
+      "rate": 7.04,
+      "comparison": 7.41
      }
     ],
     "maxLvr": 95
@@ -5599,27 +6579,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.4
      },
      {
       "maxLvr": 70,
-      "rate": 6.39
+      "rate": 6.39,
+      "comparison": 6.4
      },
      {
       "maxLvr": 80,
-      "rate": 6.49
+      "rate": 6.49,
+      "comparison": 6.5
      },
      {
       "maxLvr": 85,
-      "rate": 7.24
+      "rate": 7.24,
+      "comparison": 7.6
      },
      {
       "maxLvr": 90,
-      "rate": 7.24
+      "rate": 7.24,
+      "comparison": 7.6
      },
      {
       "maxLvr": 95,
-      "rate": 7.24
+      "rate": 7.24,
+      "comparison": 7.6
      }
     ],
     "maxLvr": 95
@@ -5636,23 +6622,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.28
      },
      {
       "maxLvr": 70,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.28
      },
      {
       "maxLvr": 80,
-      "rate": 6.19
+      "rate": 6.19,
+      "comparison": 6.28
      },
      {
       "maxLvr": 85,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.37
      },
      {
       "maxLvr": 90,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.37
      }
     ],
     "maxLvr": 90

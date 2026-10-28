@@ -123,15 +123,20 @@ function summariseProduct(p) {
   const statedMax = maxLvrFromText(p);
   const all = (p.lendingRates ?? [])
     .filter(r => !r.repaymentType || r.repaymentType === 'PRINCIPAL_AND_INTEREST')
-    .map(r => ({ type: r.lendingRateType, rate: Number(r.rate), purpose: r.loanPurpose ?? purposeFromName ?? 'OWNER_OCCUPIED', lvr: lvrRange(r) }));
+    .map(r => ({ type: r.lendingRateType, rate: Number(r.rate), comparison: num(r.comparisonRate), purpose: r.loanPurpose ?? purposeFromName ?? 'OWNER_OCCUPIED', lvr: lvrRange(r) }));
   const rates = [];
   for (const r of all.filter(x => x.type === 'VARIABLE')) {
     // Some banks publish a standard rate plus a separate DISCOUNT for the same LVR band.
     const discounts = all.filter(d => d.type === 'DISCOUNT' && d.purpose === r.purpose && sameRange(d.lvr, r.lvr) && d.rate < 0.05);
-    const rate = (r.rate - Math.max(0, ...discounts.map(d => d.rate))) * 100;
+    const best = discounts.reduce((a, d) => (!a || d.rate > a.rate ? d : a), null);
+    const rate = (r.rate - (best?.rate ?? 0)) * 100;
     // Outside this range is almost always a niche product or a data error.
     if (!(rate > 4.5 && rate < 12)) continue;
-    rates.push({ purpose: r.purpose, rate: +rate.toFixed(3), lvr: r.lvr });
+    // A discounted rate needs the discount's own comparison rate: the standard rate's would overstate it.
+    // Banks fill this field inconsistently, so keep it only when it sits at or a little above the rate.
+    const c = (best ? best.comparison : r.comparison) * 100;
+    const comparison = c >= rate - 0.005 && c < rate + 1.5 ? +c.toFixed(3) : null;
+    rates.push({ purpose: r.purpose, rate: +rate.toFixed(3), comparison, lvr: r.lvr });
   }
   const residency = (p.eligibility ?? []).filter(e => e.eligibilityType === 'RESIDENCY_STATUS')
     .map(e => String(e.additionalValue ?? e.additionalInfo ?? '').toUpperCase().replace(/\s+/g, '_'));
@@ -139,7 +144,7 @@ function summariseProduct(p) {
   return { id: p.productId, name: p.name, statedMax, rates, residency: residency.length ? residency : null, minAge };
 }
 
-/** Best variable P&I rate available at each LVR band, and the highest LVR any product offers. */
+/** Best variable P&I rate available at each LVR band (with its comparison rate), and the highest LVR any product offers. */
 function bandRates(products, purpose) {
   const rs = products.flatMap(p => p.rates.filter(r => r.purpose === purpose).map(r => ({ ...r, statedMax: p.statedMax })));
   if (!rs.length) return { tiers: [], maxLvr: null };
@@ -149,7 +154,9 @@ function bandRates(products, purpose) {
   const tiers = [];
   for (const b of BANDS) {
     const ok = rs.filter(r => (r.lvr ? r.lvr[0] < b && b <= r.lvr[1] + 0.01 : b <= (r.statedMax ?? maxLvr ?? 95)));
-    if (ok.length) tiers.push({ maxLvr: b, rate: Math.min(...ok.map(r => r.rate)) });
+    if (!ok.length) continue;
+    const top = ok.reduce((a, r) => (r.rate < a.rate || (r.rate === a.rate && !a.comparison && r.comparison) ? r : a));
+    tiers.push({ maxLvr: b, rate: top.rate, ...(top.comparison ? { comparison: top.comparison } : {}) });
   }
   return { tiers, maxLvr };
 }

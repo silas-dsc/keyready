@@ -55,7 +55,8 @@ const onSchemePanel = (brand: string) => SCHEME_NAMES.has(norm(brand)) || [...SC
 /** Stable pseudo-random order so masked numbers don't reveal alphabetical brand order. */
 const hash = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
 
-const rateAt = (tiers: RateTier[], lvr: number) => tiers.find(t => lvr <= t.maxLvr)?.rate ?? tiers[tiers.length - 1]?.rate;
+const tierAt = (tiers: RateTier[], lvr: number) => tiers.find(t => lvr <= t.maxLvr) ?? tiers[tiers.length - 1];
+const rateAt = (tiers: RateTier[], lvr: number) => tierAt(tiers, lvr)?.rate;
 
 export interface PolicyOverride {
   set: Partial<Omit<LenderPolicy, 'minTenure' | 'residency' | 'maxLvr' | 'shading'>> & {
@@ -135,6 +136,20 @@ export function productRate(L: LenderPolicy, purpose: 'owner' | 'investment' | '
   const tiers = purpose === 'investment' ? L.investRateTiers : L.rateTiers;
   if (tiers?.length) return rateAt(tiers, lvrPct);
   return purpose === 'investment' ? L.investRate : L.rate;
+}
+
+/**
+ * Must appear wherever a rate is shown with its comparison rate (National Credit Code Part 10,
+ * ss 160–166 and the prescribed warning). Every rate shown needs a comparison rate beside it.
+ */
+export const COMPARISON_BASIS = 'Comparison rates are calculated on a secured loan of $150,000 over 25 years.';
+export const COMPARISON_WARNING =
+  'WARNING: This comparison rate is true only for the examples given and may not include all fees and charges. Different terms, fees or other loan amounts might result in a different comparison rate.';
+
+/** The published comparison rate for productRate(), when the lender publishes one; modelled rates have none. */
+export function comparisonRate(L: LenderPolicy, purpose: 'owner' | 'investment' | 'construction', lvrPct: number): number | undefined {
+  const tiers = purpose === 'investment' ? L.investRateTiers : L.rateTiers;
+  return tiers?.length ? tierAt(tiers, lvrPct)?.comparison : undefined;
 }
 
 /** Non-bank lenders without Open Banking data, from their own published rate sheets. */

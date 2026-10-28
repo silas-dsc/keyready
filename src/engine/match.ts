@@ -2,7 +2,7 @@ import {
   applicantGross, debtToIncome, deposit, depositScheme, fmtMoney, hecsRepayment, incomeTax,
   livingExpensesMonthly, lmiEstimate, lvr, principalFor, repayment, totalGross, upfrontCosts,
 } from './finance';
-import { MARKET_LENDERS, productRate } from './market';
+import { comparisonRate, MARKET_LENDERS, productRate } from './market';
 import { PROFESSION_NAME, usesAltDoc } from './segment-labels';
 import { altDocFor, expatPolicyFor, foreignIncomeTier, lmiWaiverFor, shadingFor } from './segments';
 import type { Check, Employment, LenderPolicy, LenderResult, MatchStatus, Profile, Residency } from './types';
@@ -248,6 +248,8 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
   const fails = checks.filter(c => c.status === 'fail');
   const status: MatchStatus = fails.length === 0 ? 'ready' : fails.every(f => f.gap === 'close') && fails.length <= 2 ? 'close' : 'not_yet';
   const rate = productRate(L, p.purpose, theLvr);
+  // An alt-doc loading changes the rate, so the base product's comparison rate no longer applies.
+  const comparison = usesAltDoc(p, L) && altDocFor(L)?.rateLoading ? undefined : comparisonRate(L, p.purpose, theLvr);
 
   return {
     lender: L,
@@ -258,6 +260,7 @@ export function evaluate(p: Profile, L: LenderPolicy): LenderResult {
     usesScheme,
     lmiWaived,
     rate,
+    comparison,
     assessmentRate: sv.assessmentRate,
     monthlyRepayment: repayment(p.loan, rate, 30),
   };

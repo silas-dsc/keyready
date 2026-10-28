@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { assess } from './match';
-import { applyOverride, MARKET_LENDERS, productRate, toPolicy } from './market';
+import { applyOverride, comparisonRate, MARKET_LENDERS, productRate, toPolicy } from './market';
 import { emptyProfile, newApplicant } from './profile';
 
 const sample = {
@@ -84,5 +84,32 @@ describe('published non-bank lenders', () => {
     expect(fm.maxLvr.owner).toBe(90);
     expect(productRate(fm, 'owner', 80)).toBe(6.69);
     expect(fm.policySources?.[0].url).toMatch(/firstmac\.com\.au/);
+  });
+});
+
+describe('comparison rates', () => {
+  it('come with most Open Banking rates and sit at or just above the rate', () => {
+    const live = MARKET_LENDERS.filter(L => L.source === 'open-banking');
+    const withComparison = live.filter(L => comparisonRate(L, 'owner', 80) !== undefined);
+    expect(withComparison.length / live.length).toBeGreaterThan(0.85);
+    for (const L of withComparison) {
+      const c = comparisonRate(L, 'owner', 80)!;
+      expect(c).toBeGreaterThanOrEqual(productRate(L, 'owner', 80) - 0.01);
+      expect(c).toBeLessThan(productRate(L, 'owner', 80) + 1.5);
+    }
+  });
+
+  it('are never invented: modelled lenders and Firstmac have none, La Trobe has its published one', () => {
+    for (const L of MARKET_LENDERS.filter(L => L.source === 'illustrative')) expect(comparisonRate(L, 'owner', 80)).toBeUndefined();
+    const byBrand = (b: string) => MARKET_LENDERS.find(L => L.brand === b)!;
+    expect(comparisonRate(byBrand('Firstmac'), 'owner', 80)).toBeUndefined();
+    expect(comparisonRate(byBrand('La Trobe Financial'), 'owner', 80)).toBe(7.05);
+  });
+
+  it('reach every lender result whose rate the report shows', () => {
+    const p = { ...emptyProfile(), applicants: [{ ...newApplicant(), age: 34, baseIncome: 140_000, tenureMonths: 48 }], price: 650_000, loan: 520_000, savings: 160_000, state: 'WA' as const };
+    const a = assess(p);
+    expect(a.results.filter(r => r.comparison).length).toBeGreaterThan(60);
+    for (const r of a.results.filter(r => r.lender.source === 'illustrative')) expect(r.comparison).toBeUndefined();
   });
 });
