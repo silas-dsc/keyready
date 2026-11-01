@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-10-27T23:39:55.111Z",
+ "fetchedAt": "2026-11-01T19:22:34.454Z",
  "source": "https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary",
  "lenders": [
   {
@@ -2028,69 +2028,39 @@
    "kind": "Customer-owned",
    "products": 40,
    "owner": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.24
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.24
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.24
-     },
-     {
-      "maxLvr": 85,
-      "rate": 6.24
-     },
-     {
-      "maxLvr": 90,
-      "rate": 6.24
-     },
-     {
-      "maxLvr": 95,
-      "rate": 6.24
-     }
-    ],
+    "tiers": [],
     "maxLvr": null
    },
    "investment": {
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34
+      "rate": 6.59
      },
      {
       "maxLvr": 70,
-      "rate": 6.34
+      "rate": 6.59
      },
      {
       "maxLvr": 80,
-      "rate": 6.34
+      "rate": 6.59
      },
      {
       "maxLvr": 85,
-      "rate": 6.34
+      "rate": 6.59
      },
      {
       "maxLvr": 90,
-      "rate": 6.34
+      "rate": 6.59
      },
      {
       "maxLvr": 95,
-      "rate": 6.34
+      "rate": 6.59
      }
     ],
     "maxLvr": null
    },
-   "residency": {
-    "citizen": true,
-    "permanent_resident": false,
-    "nz_citizen": false,
-    "temporary_visa": false
-   },
+   "residency": null,
    "minAge": 18,
    "source": "https://openbanking.cairnsbank.com.au/OpenBanking"
   },
@@ -2180,18 +2150,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.19,
-      "comparison": 6.25
+      "rate": 6.34,
+      "comparison": 6.4
      },
      {
       "maxLvr": 70,
-      "rate": 6.19,
-      "comparison": 6.25
+      "rate": 6.34,
+      "comparison": 6.4
      },
      {
       "maxLvr": 80,
-      "rate": 6.19,
-      "comparison": 6.25
+      "rate": 6.34,
+      "comparison": 6.4
      }
     ],
     "maxLvr": 90
@@ -2550,7 +2520,7 @@
   {
    "brand": "Credit Union SA",
    "kind": "Customer-owned",
-   "products": 25,
+   "products": 26,
    "owner": {
     "tiers": [
      {
@@ -3179,33 +3149,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.14,
-      "comparison": 6.16
+      "rate": 6.19,
+      "comparison": 6.19
      },
      {
       "maxLvr": 70,
-      "rate": 6.14,
-      "comparison": 6.16
+      "rate": 6.19,
+      "comparison": 6.19
      },
      {
       "maxLvr": 80,
-      "rate": 6.14,
-      "comparison": 6.16
+      "rate": 6.19,
+      "comparison": 6.19
      },
      {
       "maxLvr": 85,
-      "rate": 6.14,
-      "comparison": 6.16
+      "rate": 6.24,
+      "comparison": 6.52
      },
      {
       "maxLvr": 90,
-      "rate": 6.14,
-      "comparison": 6.16
+      "rate": 6.24,
+      "comparison": 6.52
      },
      {
       "maxLvr": 95,
-      "rate": 6.14,
-      "comparison": 6.16
+      "rate": 6.24,
+      "comparison": 6.52
      }
     ],
     "maxLvr": 95
@@ -4006,7 +3976,7 @@
   {
    "brand": "Macquarie Bank Limited",
    "kind": "Other bank",
-   "products": 3,
+   "products": 2,
    "owner": {
     "tiers": [
      {
@@ -4072,7 +4042,12 @@
     ],
     "maxLvr": 95
    },
-   "residency": null,
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": false,
+    "temporary_visa": false
+   },
    "minAge": 18,
    "source": "https://api.macquariebank.io"
   },
@@ -4267,13 +4242,9 @@
      {
       "maxLvr": 90,
       "rate": 6.09
-     },
-     {
-      "maxLvr": 95,
-      "rate": 6.09
      }
     ],
-    "maxLvr": 95
+    "maxLvr": 90
    },
    "investment": {
     "tiers": [
@@ -4296,13 +4267,9 @@
      {
       "maxLvr": 90,
       "rate": 6.24
-     },
-     {
-      "maxLvr": 95,
-      "rate": 6.24
      }
     ],
-    "maxLvr": 95
+    "maxLvr": 90
    },
    "residency": null,
    "minAge": 18,
@@ -5518,89 +5485,6 @@
    "source": "https://cdr.sccu.com.au/openbanking"
   },
   {
-   "brand": "St.George Bank",
-   "kind": "Other bank",
-   "products": 5,
-   "owner": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.54,
-      "comparison": 6.55
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.54,
-      "comparison": 6.55
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.64,
-      "comparison": 6.65
-     },
-     {
-      "maxLvr": 85,
-      "rate": 6.94,
-      "comparison": 6.95
-     },
-     {
-      "maxLvr": 90,
-      "rate": 6.94,
-      "comparison": 6.95
-     },
-     {
-      "maxLvr": 95,
-      "rate": 6.94,
-      "comparison": 6.95
-     }
-    ],
-    "maxLvr": 95
-   },
-   "investment": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.79,
-      "comparison": 6.8
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.79,
-      "comparison": 6.8
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.89,
-      "comparison": 6.9
-     },
-     {
-      "maxLvr": 85,
-      "rate": 7.19,
-      "comparison": 7.2
-     },
-     {
-      "maxLvr": 90,
-      "rate": 7.19,
-      "comparison": 7.2
-     },
-     {
-      "maxLvr": 95,
-      "rate": 7.19,
-      "comparison": 7.2
-     }
-    ],
-    "maxLvr": 95
-   },
-   "residency": {
-    "citizen": true,
-    "permanent_resident": true,
-    "nz_citizen": true,
-    "temporary_visa": false
-   },
-   "minAge": 18,
-   "source": "https://digital-api.stgeorge.com.au"
-  },
-  {
    "brand": "Summerland Bank",
    "kind": "Customer-owned",
    "products": 8,
@@ -5931,6 +5815,72 @@
    },
    "minAge": 18,
    "source": "https://public.cdr.onlinebanking.capricornian.com.au"
+  },
+  {
+   "brand": "The Mac",
+   "kind": "Customer-owned",
+   "products": 27,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.17
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.17
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.17
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.17
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.17
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.17
+     }
+    ],
+    "maxLvr": null
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 70,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 80,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.29
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.29
+     }
+    ],
+    "maxLvr": null
+   },
+   "residency": null,
+   "minAge": 18,
+   "source": "https://onlinebanking.themaccu.com.au/OpenBanking"
   },
   {
    "brand": "Tiimely Home",
