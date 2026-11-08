@@ -35,7 +35,7 @@ broker ──magic link──► #/broker dashboard ──set_lead_status()─�
    - Create a **service token**, for the CLI and CI.
    - Copy the **secret API key** for the development environment (`sk_…`).
 4. **GitHub**, under *Settings → Secrets and variables → Actions*:
-   - Secrets: `SUPABASE_ACCESS_TOKEN` (from supabase.com/dashboard/account/tokens), `SUPABASE_DB_PASSWORD`, `KNOCK_SERVICE_TOKEN`, and optionally `ANTHROPIC_API_KEY` for the rules agent.
+   - Secrets: `SUPABASE_ACCESS_TOKEN` (from supabase.com/dashboard/account/tokens; set its expiry to *Never*, or deploys stop when it lapses), `SUPABASE_DB_PASSWORD`, `KNOCK_SERVICE_TOKEN`, and optionally `ANTHROPIC_API_KEY` for the rules agent.
    - Variables: `SUPABASE_PROJECT_REF`, `VITE_SUPABASE_URL` (`https://<ref>.supabase.co`), `VITE_SUPABASE_ANON_KEY` (the publishable key, which is safe in the browser), and optionally `VITE_CONTACT_EMAIL` (shown in the privacy policy).
 5. **Push to `main`** (or run *Deploy backend* manually). CI then:
    - applies `supabase/migrations/`
@@ -60,6 +60,17 @@ broker ──magic link──► #/broker dashboard ──set_lead_status()─�
    values ('<broker email>', 'Trevor', 'Goodlend Mortgage Brokers', 'CR 556461 of Connective Credit Services (ACL 389328)', true);
    ```
 9. **Broker sign-in.** The broker opens `https://keyready.au/#/broker` and requests a sign-in link with that email. The first sign-in links their account (`claim_broker()`). From then on, each lead has outcome buttons (new → contacted → application → approved → settled / lost), and the conversion-by-site table is the proof-of-concept scoreboard.
+
+## Renewing the Supabase access token
+
+If *Deploy backend* fails at **Check Supabase access token**, the token has expired or been revoked:
+
+1. At supabase.com/dashboard/account/tokens, generate a new token with expiry *Never*, named for its use (e.g. `github-actions-keyready`), and revoke the old one.
+2. Put it in your local `.env` as `SUPABASE_ACCESS_TOKEN`, then copy it to GitHub without printing it:
+   ```bash
+   set -a; . ./.env; set +a; printf %s "$SUPABASE_ACCESS_TOKEN" | gh secret set SUPABASE_ACCESS_TOKEN
+   ```
+3. Re-run the failed workflow.
 
 ## Test it
 
