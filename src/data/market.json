@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-11-01T19:22:34.454Z",
+ "fetchedAt": "2026-11-08T19:22:37.536Z",
  "source": "https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary",
  "lenders": [
   {
@@ -74,84 +74,6 @@
    "residency": null,
    "minAge": 18,
    "source": "https://api.afg.app.bendigobank.com.au"
-  },
-  {
-   "brand": "AMP - My AMP",
-   "kind": "Other bank",
-   "products": 7,
-   "owner": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.38,
-      "comparison": 6.38
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.33,
-      "comparison": 6.36
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.33,
-      "comparison": 6.36
-     },
-     {
-      "maxLvr": 85,
-      "rate": 6.38,
-      "comparison": 6.38
-     },
-     {
-      "maxLvr": 90,
-      "rate": 6.38,
-      "comparison": 6.38
-     },
-     {
-      "maxLvr": 95,
-      "rate": 6.94,
-      "comparison": 6.97
-     }
-    ],
-    "maxLvr": 95
-   },
-   "investment": {
-    "tiers": [
-     {
-      "maxLvr": 60,
-      "rate": 6.39,
-      "comparison": 6.42
-     },
-     {
-      "maxLvr": 70,
-      "rate": 6.47,
-      "comparison": 6.5
-     },
-     {
-      "maxLvr": 80,
-      "rate": 6.47,
-      "comparison": 6.5
-     },
-     {
-      "maxLvr": 85,
-      "rate": 6.59,
-      "comparison": 6.59
-     },
-     {
-      "maxLvr": 90,
-      "rate": 6.59,
-      "comparison": 6.59
-     },
-     {
-      "maxLvr": 95,
-      "rate": 7.14,
-      "comparison": 7.17
-     }
-    ],
-    "maxLvr": 95
-   },
-   "residency": null,
-   "minAge": 18,
-   "source": "https://api.cdr-api.amp.com.au"
   },
   {
    "brand": "ANZ",
@@ -989,33 +911,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.28,
-      "comparison": 6.42
+      "rate": 6.53,
+      "comparison": 6.55
      },
      {
       "maxLvr": 70,
-      "rate": 6.28,
-      "comparison": 6.42
+      "rate": 6.53,
+      "comparison": 6.55
      },
      {
       "maxLvr": 80,
-      "rate": 6.33,
-      "comparison": 6.47
+      "rate": 6.58,
+      "comparison": 6.6
      },
      {
       "maxLvr": 85,
-      "rate": 6.44,
-      "comparison": 6.58
+      "rate": 6.69,
+      "comparison": 6.71
      },
      {
       "maxLvr": 90,
-      "rate": 6.44,
-      "comparison": 6.58
+      "rate": 6.69,
+      "comparison": 6.71
      },
      {
       "maxLvr": 95,
-      "rate": 6.84,
-      "comparison": 6.96
+      "rate": 7.09,
+      "comparison": 7.37
      }
     ],
     "maxLvr": 95
@@ -1024,33 +946,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.38,
-      "comparison": 6.52
+      "rate": 6.63,
+      "comparison": 6.65
      },
      {
       "maxLvr": 70,
-      "rate": 6.38,
-      "comparison": 6.52
+      "rate": 6.63,
+      "comparison": 6.65
      },
      {
       "maxLvr": 80,
-      "rate": 6.44,
-      "comparison": 6.58
+      "rate": 6.69,
+      "comparison": 6.71
      },
      {
       "maxLvr": 85,
-      "rate": 6.69,
-      "comparison": 6.83
+      "rate": 6.94,
+      "comparison": 6.96
      },
      {
       "maxLvr": 90,
-      "rate": 6.69,
-      "comparison": 6.83
+      "rate": 6.94,
+      "comparison": 6.96
      },
      {
       "maxLvr": 95,
-      "rate": 7.24,
-      "comparison": 7.36
+      "rate": 7.49,
+      "comparison": 7.77
      }
     ],
     "maxLvr": 95
@@ -1342,32 +1264,32 @@
      {
       "maxLvr": 60,
       "rate": 6.38,
-      "comparison": 6.43
+      "comparison": 6.38
      },
      {
       "maxLvr": 70,
       "rate": 6.38,
-      "comparison": 6.43
+      "comparison": 6.38
      },
      {
       "maxLvr": 80,
       "rate": 6.38,
-      "comparison": 6.43
+      "comparison": 6.38
      },
      {
       "maxLvr": 85,
       "rate": 6.38,
-      "comparison": 6.43
+      "comparison": 6.38
      },
      {
       "maxLvr": 90,
       "rate": 6.38,
-      "comparison": 6.43
+      "comparison": 6.38
      },
      {
       "maxLvr": 95,
       "rate": 6.38,
-      "comparison": 6.43
+      "comparison": 6.38
      }
     ],
     "maxLvr": null
@@ -1452,18 +1374,18 @@
      },
      {
       "maxLvr": 85,
-      "rate": 6.74,
-      "comparison": 6.77
+      "rate": 6.64,
+      "comparison": 6.67
      },
      {
       "maxLvr": 90,
-      "rate": 6.74,
-      "comparison": 6.77
+      "rate": 6.64,
+      "comparison": 6.67
      },
      {
       "maxLvr": 95,
-      "rate": 7.14,
-      "comparison": 7.17
+      "rate": 6.94,
+      "comparison": 6.97
      }
     ],
     "maxLvr": 95
@@ -1599,17 +1521,17 @@
      {
       "maxLvr": 60,
       "rate": 6.14,
-      "comparison": 6.27
+      "comparison": 6.29
      },
      {
       "maxLvr": 70,
       "rate": 6.14,
-      "comparison": 6.27
+      "comparison": 6.29
      },
      {
       "maxLvr": 80,
       "rate": 6.14,
-      "comparison": 6.27
+      "comparison": 6.29
      },
      {
       "maxLvr": 85,
@@ -1633,18 +1555,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.39,
-      "comparison": 6.41
+      "rate": 6.34,
+      "comparison": 6.49
      },
      {
       "maxLvr": 70,
-      "rate": 6.44,
-      "comparison": 6.46
+      "rate": 6.34,
+      "comparison": 6.49
      },
      {
       "maxLvr": 80,
-      "rate": 6.48,
-      "comparison": 6.5
+      "rate": 6.34,
+      "comparison": 6.49
      },
      {
       "maxLvr": 85,
@@ -1827,28 +1749,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 8.27,
-      "comparison": 8.45
+      "rate": 8.52,
+      "comparison": 8.7
      },
      {
       "maxLvr": 70,
-      "rate": 8.27,
-      "comparison": 8.45
+      "rate": 8.52,
+      "comparison": 8.7
      },
      {
       "maxLvr": 80,
-      "rate": 8.27,
-      "comparison": 8.45
+      "rate": 8.52,
+      "comparison": 8.7
      },
      {
       "maxLvr": 85,
-      "rate": 8.27,
-      "comparison": 8.45
+      "rate": 8.52,
+      "comparison": 8.7
      },
      {
       "maxLvr": 90,
-      "rate": 8.27,
-      "comparison": 8.45
+      "rate": 8.52,
+      "comparison": 8.7
      }
     ],
     "maxLvr": 90
@@ -1857,28 +1779,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 8.34,
-      "comparison": 8.52
+      "rate": 8.59,
+      "comparison": 8.77
      },
      {
       "maxLvr": 70,
-      "rate": 8.34,
-      "comparison": 8.52
+      "rate": 8.59,
+      "comparison": 8.77
      },
      {
       "maxLvr": 80,
-      "rate": 8.34,
-      "comparison": 8.52
+      "rate": 8.59,
+      "comparison": 8.77
      },
      {
       "maxLvr": 85,
-      "rate": 8.34,
-      "comparison": 8.52
+      "rate": 8.59,
+      "comparison": 8.77
      },
      {
       "maxLvr": 90,
-      "rate": 8.34,
-      "comparison": 8.52
+      "rate": 8.59,
+      "comparison": 8.77
      }
     ],
     "maxLvr": 90
@@ -2035,27 +1957,27 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.59
+      "rate": 6.69
      },
      {
       "maxLvr": 70,
-      "rate": 6.59
+      "rate": 6.69
      },
      {
       "maxLvr": 80,
-      "rate": 6.59
+      "rate": 6.69
      },
      {
       "maxLvr": 85,
-      "rate": 6.59
+      "rate": 6.69
      },
      {
       "maxLvr": 90,
-      "rate": 6.59
+      "rate": 6.69
      },
      {
       "maxLvr": 95,
-      "rate": 6.59
+      "rate": 6.69
      }
     ],
     "maxLvr": null
@@ -2984,7 +2906,7 @@
      {
       "maxLvr": 60,
       "rate": 6.19,
-      "comparison": 6.49
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
@@ -3019,17 +2941,17 @@
      {
       "maxLvr": 60,
       "rate": 6.39,
-      "comparison": 6.69
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
       "rate": 6.44,
-      "comparison": 6.74
+      "comparison": 6.5
      },
      {
       "maxLvr": 80,
       "rate": 6.49,
-      "comparison": 6.79
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
@@ -3456,7 +3378,7 @@
      {
       "maxLvr": 60,
       "rate": 6.19,
-      "comparison": 6.49
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
@@ -3491,17 +3413,17 @@
      {
       "maxLvr": 60,
       "rate": 6.39,
-      "comparison": 6.69
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
       "rate": 6.44,
-      "comparison": 6.74
+      "comparison": 6.5
      },
      {
       "maxLvr": 80,
       "rate": 6.49,
-      "comparison": 6.79
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
@@ -3845,18 +3767,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.6,
-      "comparison": 6.61
+      "rate": 6.85,
+      "comparison": 6.87
      },
      {
       "maxLvr": 70,
-      "rate": 6.6,
-      "comparison": 6.61
+      "rate": 6.85,
+      "comparison": 6.87
      },
      {
       "maxLvr": 80,
-      "rate": 6.6,
-      "comparison": 6.61
+      "rate": 6.85,
+      "comparison": 6.87
      }
     ],
     "maxLvr": 80
@@ -3865,18 +3787,18 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.75,
-      "comparison": 6.76
+      "rate": 7,
+      "comparison": 7.07
      },
      {
       "maxLvr": 70,
-      "rate": 6.75,
-      "comparison": 6.76
+      "rate": 7,
+      "comparison": 7.07
      },
      {
       "maxLvr": 80,
-      "rate": 6.75,
-      "comparison": 6.76
+      "rate": 7,
+      "comparison": 7.07
      }
     ],
     "maxLvr": 80
@@ -4142,33 +4064,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24,
-      "comparison": 6.26
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 70,
-      "rate": 6.24,
-      "comparison": 6.26
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 80,
-      "rate": 6.29,
-      "comparison": 6.31
+      "rate": 6.54,
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
-      "rate": 6.59,
-      "comparison": 6.96
+      "rate": 6.84,
+      "comparison": 6.86
      },
      {
       "maxLvr": 90,
-      "rate": 6.59,
-      "comparison": 6.96
+      "rate": 6.84,
+      "comparison": 6.86
      },
      {
       "maxLvr": 95,
-      "rate": 7.29,
-      "comparison": 7.31
+      "rate": 7.54,
+      "comparison": 7.56
      }
     ],
     "maxLvr": 95
@@ -4177,33 +4099,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.43,
-      "comparison": 6.45
+      "rate": 6.68,
+      "comparison": 6.7
      },
      {
       "maxLvr": 70,
-      "rate": 6.43,
-      "comparison": 6.45
+      "rate": 6.68,
+      "comparison": 6.7
      },
      {
       "maxLvr": 80,
-      "rate": 6.49,
-      "comparison": 6.51
+      "rate": 6.74,
+      "comparison": 6.76
      },
      {
       "maxLvr": 85,
-      "rate": 6.84,
-      "comparison": 6.86
+      "rate": 7.09,
+      "comparison": 7.11
      },
      {
       "maxLvr": 90,
-      "rate": 6.84,
-      "comparison": 6.86
+      "rate": 7.09,
+      "comparison": 7.11
      },
      {
       "maxLvr": 95,
-      "rate": 7.94,
-      "comparison": 7.96
+      "rate": 8.19,
+      "comparison": 8.21
      }
     ],
     "maxLvr": 95
@@ -4242,9 +4164,13 @@
      {
       "maxLvr": 90,
       "rate": 6.09
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.29
      }
     ],
-    "maxLvr": 90
+    "maxLvr": 95
    },
    "investment": {
     "tiers": [
@@ -4267,9 +4193,13 @@
      {
       "maxLvr": 90,
       "rate": 6.24
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.44
      }
     ],
-    "maxLvr": 90
+    "maxLvr": 95
    },
    "residency": null,
    "minAge": 18,
@@ -5485,6 +5415,89 @@
    "source": "https://cdr.sccu.com.au/openbanking"
   },
   {
+   "brand": "St.George Bank",
+   "kind": "Other bank",
+   "products": 5,
+   "owner": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.54,
+      "comparison": 6.55
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.54,
+      "comparison": 6.55
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.64,
+      "comparison": 6.65
+     },
+     {
+      "maxLvr": 85,
+      "rate": 6.94,
+      "comparison": 6.95
+     },
+     {
+      "maxLvr": 90,
+      "rate": 6.94,
+      "comparison": 6.95
+     },
+     {
+      "maxLvr": 95,
+      "rate": 6.94,
+      "comparison": 6.95
+     }
+    ],
+    "maxLvr": 95
+   },
+   "investment": {
+    "tiers": [
+     {
+      "maxLvr": 60,
+      "rate": 6.79,
+      "comparison": 6.8
+     },
+     {
+      "maxLvr": 70,
+      "rate": 6.79,
+      "comparison": 6.8
+     },
+     {
+      "maxLvr": 80,
+      "rate": 6.89,
+      "comparison": 6.9
+     },
+     {
+      "maxLvr": 85,
+      "rate": 7.19,
+      "comparison": 7.2
+     },
+     {
+      "maxLvr": 90,
+      "rate": 7.19,
+      "comparison": 7.2
+     },
+     {
+      "maxLvr": 95,
+      "rate": 7.19,
+      "comparison": 7.2
+     }
+    ],
+    "maxLvr": 95
+   },
+   "residency": {
+    "citizen": true,
+    "permanent_resident": true,
+    "nz_citizen": true,
+    "temporary_visa": false
+   },
+   "minAge": 18,
+   "source": "https://digital-api.stgeorge.com.au"
+  },
+  {
    "brand": "Summerland Bank",
    "kind": "Customer-owned",
    "products": 8,
@@ -5570,7 +5583,7 @@
   {
    "brand": "SWSbank",
    "kind": "Customer-owned",
-   "products": 12,
+   "products": 10,
    "owner": {
     "tiers": [
      {
@@ -5659,7 +5672,7 @@
      {
       "maxLvr": 60,
       "rate": 6.19,
-      "comparison": 6.49
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
@@ -5694,17 +5707,17 @@
      {
       "maxLvr": 60,
       "rate": 6.39,
-      "comparison": 6.69
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
       "rate": 6.44,
-      "comparison": 6.74
+      "comparison": 6.5
      },
      {
       "maxLvr": 80,
       "rate": 6.49,
-      "comparison": 6.79
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
@@ -5824,27 +5837,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.17
+      "rate": 6.17,
+      "comparison": 6.24
      },
      {
       "maxLvr": 70,
-      "rate": 6.17
+      "rate": 6.17,
+      "comparison": 6.24
      },
      {
       "maxLvr": 80,
-      "rate": 6.17
+      "rate": 6.17,
+      "comparison": 6.24
      },
      {
       "maxLvr": 85,
-      "rate": 6.17
+      "rate": 6.17,
+      "comparison": 6.24
      },
      {
       "maxLvr": 90,
-      "rate": 6.17
+      "rate": 6.17,
+      "comparison": 6.24
      },
      {
       "maxLvr": 95,
-      "rate": 6.17
+      "rate": 6.17,
+      "comparison": 6.24
      }
     ],
     "maxLvr": null
@@ -5853,27 +5872,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.36
      },
      {
       "maxLvr": 70,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.36
      },
      {
       "maxLvr": 80,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.36
      },
      {
       "maxLvr": 85,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.36
      },
      {
       "maxLvr": 90,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.36
      },
      {
       "maxLvr": 95,
-      "rate": 7.29
+      "rate": 7.29,
+      "comparison": 7.36
      }
     ],
     "maxLvr": null
@@ -6120,7 +6145,7 @@
      {
       "maxLvr": 60,
       "rate": 6.19,
-      "comparison": 6.49
+      "comparison": 6.25
      },
      {
       "maxLvr": 70,
@@ -6155,17 +6180,17 @@
      {
       "maxLvr": 60,
       "rate": 6.39,
-      "comparison": 6.69
+      "comparison": 6.45
      },
      {
       "maxLvr": 70,
       "rate": 6.44,
-      "comparison": 6.74
+      "comparison": 6.5
      },
      {
       "maxLvr": 80,
       "rate": 6.49,
-      "comparison": 6.79
+      "comparison": 6.56
      },
      {
       "maxLvr": 85,
@@ -6202,33 +6227,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.05,
-      "comparison": 6.1
+      "rate": 6.3,
+      "comparison": 6.35
      },
      {
       "maxLvr": 70,
-      "rate": 6.05,
-      "comparison": 6.1
+      "rate": 6.3,
+      "comparison": 6.35
      },
      {
       "maxLvr": 80,
-      "rate": 6.05,
-      "comparison": 6.1
+      "rate": 6.3,
+      "comparison": 6.35
      },
      {
       "maxLvr": 85,
-      "rate": 6.05,
-      "comparison": 6.1
+      "rate": 6.3,
+      "comparison": 6.35
      },
      {
       "maxLvr": 90,
-      "rate": 6.05,
-      "comparison": 6.1
+      "rate": 6.3,
+      "comparison": 6.35
      },
      {
       "maxLvr": 95,
-      "rate": 6.05,
-      "comparison": 6.1
+      "rate": 6.3,
+      "comparison": 6.35
      }
     ],
     "maxLvr": 95
@@ -6237,28 +6262,28 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.34,
-      "comparison": 6.59
+      "rate": 6.6,
+      "comparison": 6.65
      },
      {
       "maxLvr": 70,
-      "rate": 6.34,
-      "comparison": 6.59
+      "rate": 6.7,
+      "comparison": 6.75
      },
      {
       "maxLvr": 80,
-      "rate": 6.34,
-      "comparison": 6.59
+      "rate": 6.7,
+      "comparison": 6.75
      },
      {
       "maxLvr": 85,
-      "rate": 6.34,
-      "comparison": 6.59
+      "rate": 6.79,
+      "comparison": 6.84
      },
      {
       "maxLvr": 90,
-      "rate": 6.34,
-      "comparison": 6.59
+      "rate": 6.79,
+      "comparison": 6.84
      }
     ],
     "maxLvr": 95
@@ -6411,33 +6436,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.09,
-      "comparison": 6.11
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 70,
-      "rate": 6.09,
-      "comparison": 6.11
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 80,
-      "rate": 6.09,
-      "comparison": 6.11
+      "rate": 6.34,
+      "comparison": 6.36
      },
      {
       "maxLvr": 85,
-      "rate": 6.59,
-      "comparison": 6.61
+      "rate": 6.84,
+      "comparison": 6.86
      },
      {
       "maxLvr": 90,
-      "rate": 6.59,
-      "comparison": 6.61
+      "rate": 6.84,
+      "comparison": 6.86
      },
      {
       "maxLvr": 95,
-      "rate": 8.02,
-      "comparison": 8.04
+      "rate": 8.27,
+      "comparison": 8.29
      }
     ],
     "maxLvr": 95
@@ -6446,33 +6471,33 @@
     "tiers": [
      {
       "maxLvr": 60,
-      "rate": 6.24,
-      "comparison": 6.26
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 70,
-      "rate": 6.24,
-      "comparison": 6.26
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 80,
-      "rate": 6.24,
-      "comparison": 6.26
+      "rate": 6.49,
+      "comparison": 6.51
      },
      {
       "maxLvr": 85,
-      "rate": 6.79,
-      "comparison": 6.81
+      "rate": 7.04,
+      "comparison": 7.06
      },
      {
       "maxLvr": 90,
-      "rate": 6.79,
-      "comparison": 6.81
+      "rate": 7.04,
+      "comparison": 7.06
      },
      {
       "maxLvr": 95,
-      "rate": 8.54,
-      "comparison": 8.56
+      "rate": 8.79,
+      "comparison": 8.81
      }
     ],
     "maxLvr": 95
@@ -6567,7 +6592,7 @@
   {
    "brand": "Woolworths Team Bank",
    "kind": "Customer-owned",
-   "products": 7,
+   "products": 8,
    "owner": {
     "tiers": [
      {
@@ -6587,13 +6612,11 @@
      },
      {
       "maxLvr": 85,
-      "rate": 7.29,
-      "comparison": 7.37
+      "rate": 6.29
      },
      {
       "maxLvr": 90,
-      "rate": 7.29,
-      "comparison": 7.37
+      "rate": 6.29
      }
     ],
     "maxLvr": 90
