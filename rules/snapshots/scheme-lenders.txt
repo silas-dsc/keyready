@@ -11,6 +11,7 @@ Bank First
 Bank of Melbourne
 BankSA
 Bank of Us
+Bankwest
 BankVic
 BCU
 Bendigo Bank
@@ -57,6 +58,7 @@ UniBank
 Unity Bank
 Westpac
 Bank WAW
+Woolworths Team Bank
 Important information
 This page gives general information about the Australian Government 5% Deposit Scheme. To apply for the Scheme, you’ll need to speak to one our Participating Lenders. They’ll look at your individual situation and let you know if you’re eligible.
 More information

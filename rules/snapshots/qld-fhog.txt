@@ -1,5 +1,7 @@
 First home owner grant eligibility criteria – Queensland Revenue Office
 Skip to content
+The Home Ownership and Other Legislation Amendment Act 2026 received Royal Assent on 22 October 2026.
+Read more
 The Commissioner has updated several public rulings and practice directions.
 Learn more
 Home
@@ -21,15 +23,15 @@ Instructions for approved agents
 Contact us
 For buying or building a new home
 New home
-First home owner grant
-A new home is:
+A new home is one of the following:
 a home that has not been previously
-occupied
+occupied as a place of residence
 or
 sold as a place of residence
 or
-a substantially renovated home (completed by the seller in limited circumstances).
-From 1 December 2020, a home acquired under a ‘builders’ terms arrangement’ may also be a new home—see Public Ruling FHOGA006.2 .
+a substantially renovated home .
+From 1 December 2020, a home acquired under a ‘builders’ terms arrangement’ may also be a new home.
+See the definitions for builders’ terms arrangement and substantially renovated home .
 , the grant amount is:
 $30,000 for contracts signed on or after 20 November 2023
 $15,000 for contracts signed before 20 November 2023.
@@ -49,13 +51,18 @@ Value of home and land
 The value of your new home must be less than $750,000 (including land and any contract variations).
 That is, you are not eligible for the grant if the value is $750,000 or more.
 New (not established) home
-The grant is only available for new homes —that is:
-a home that has not been previously
-occupied
-or
-sold as a place of residence
-or
+The grant is only available for new homes , which are categorised as one of the following:
+a home that has not been previously occupied or sold as a place of residence
 a substantially renovated home .
+a home purchased under a builders&#8217; terms arrangement.
+Builders’ terms arrangement
+An arrangement under which:
+a licensed builder under the Queensland Building and Construction Commission Act 1991 enters into a contract with a developer of land to purchase land that is vacant
+the builder is allowed, under the contract, to enter the land and build a residence on the land
+both the following happen before settlement of the contract
+the building is ready for occupation as a residence
+a final inspection certificate under the Building Act 1975 has been issued for the building.
+See the definition for final inspection certificate .
 There are no home owner grants for established homes.
 Age
 You are a natural person
@@ -116,15 +123,15 @@ If there is a disqualifying arrangement, we will not pay the grant. If the grant
 Eligible transactions
 You must be buying or building a new home
 New home
-First home owner grant
-A new home is:
+A new home is one of the following:
 a home that has not been previously
-occupied
+occupied as a place of residence
 or
 sold as a place of residence
 or
-a substantially renovated home (completed by the seller in limited circumstances).
-From 1 December 2020, a home acquired under a ‘builders’ terms arrangement’ may also be a new home—see Public Ruling FHOGA006.2 .
+a substantially renovated home .
+From 1 December 2020, a home acquired under a ‘builders’ terms arrangement’ may also be a new home.
+See the definitions for builders’ terms arrangement and substantially renovated home .
 valued less than $750,000 (including land and any contract variations).
 The home:
 must not have been previously occupied or sold as a place of residence at the time of completion
@@ -133,6 +140,15 @@ house, unit, duplex or townhouse; or a detached dwelling built on a relative’s
 home that has been moved from one site to another (including kit homes or modular homes)
 home in a manufactured home park
 substantially renovated home
+home purchased under a builders&#8217; terms arrangement.
+Builders’ terms arrangement
+An arrangement under which:
+a licensed builder under the Queensland Building and Construction Commission Act 1991 enters into a contract with a developer of land to purchase land that is vacant
+the builder is allowed, under the contract, to enter the land and build a residence on the land
+both the following happen before settlement of the contract
+the building is ready for occupation as a residence
+a final inspection certificate under the Building Act 1975 has been issued for the building.
+See the definition for final inspection certificate .
 must be one of the following eligible transactions
 new home
 off-the-plan purchase
@@ -154,15 +170,15 @@ When applying for the grant, you will need to provide supporting documents , suc
 New home
 A new home
 New home
-First home owner grant
-A new home is:
+A new home is one of the following:
 a home that has not been previously
-occupied
+occupied as a place of residence
 or
 sold as a place of residence
 or
-a substantially renovated home (completed by the seller in limited circumstances).
-From 1 December 2020, a home acquired under a ‘builders’ terms arrangement’ may also be a new home—see Public Ruling FHOGA006.2 .
+a substantially renovated home .
+From 1 December 2020, a home acquired under a ‘builders’ terms arrangement’ may also be a new home.
+See the definitions for builders’ terms arrangement and substantially renovated home .
 is a brand new dwelling that has not been previously occupied or sold as a place of residence.
 You do not have a contract to purchase a new home (including off-the-plan purchases or substantial renovations ) if you have both a land purchase contract and a building contract .
 The grant may be available for homes that have been moved from one site to another, as long as the home has not been occupied since being fixed to the new site (including kit homes, manufactured homes).
@@ -307,7 +323,6 @@ building contract, signed and dated by the builder and applicants (including any
 statutory declaration from the related person giving authorisation to build on their land, or a copy of a written agreement
 final inspection certificate
 Final inspection certificate
-First home owner grant
 This document proves that your home is approved as a class 1a dwelling and is usually given to you by your builder.
 Learn about the stages of a building inspection .
 issued by your local council or private building certifier
@@ -337,7 +352,6 @@ undertake the responsibility of building your own home from start to finish as a
 have a building contract with one or more builders where one builder is not solely responsible for the home from start to finish.
 The home must be a qualifying residence (i.e. a class 1a dwelling as defined by the Australian Building Codes Board ) and have a final inspection certificate.
 Final inspection certificate
-First home owner grant
 This document proves that your home is approved as a class 1a dwelling and is usually given to you by your builder.
 Learn about the stages of a building inspection .
 Depending on the commencement date

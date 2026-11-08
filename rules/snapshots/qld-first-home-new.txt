@@ -1,5 +1,7 @@
 First home (new home) concession - Queensland Revenue Office
 Skip to content
+The Home Ownership and Other Legislation Amendment Act 2026 received Royal Assent on 22 October 2026.
+Read more
 The Commissioner has updated several public rulings and practice directions.
 Learn more
 Home
@@ -51,21 +53,29 @@ If you are a transfer duty self assessor, you can:
 refer to the residential land concession toolkit for help with the first home (new home) concession
 view a list of all self-assessed transactions , concessions and exemptions, and their related toolkits.
 New homes
-A new home is one that:
-has not been previously occupied or sold as a place of residence
-or
-is a substantially renovated home.
+A new home is a home that meets any of the following criteria:
+It has not been previously occupied or sold as a place of residence.
+For transactions entered into on or after 1 May 2025—it has only been previously sold as a place of residence under a builders’ terms arrangement.
+Builders’ terms arrangement
+An arrangement under which all the following criteria are met:
+a licensed builder under the Queensland Building and Construction Commission Act 1991 enters into a contract with a developer of land to purchase land that is vacant
+the builder is allowed, under the contract, to enter the land and build a residence on the land
+both the following happen before settlement of the contract
+the building is ready for occupation as a residence
+a final inspection certificate under the Building Act 1975 has been issued in relation to the building.
+See the definition for final inspection certificate .
+It’s a substantially renovated home.
 A substantially renovated home is where:
 the sale or lease of the home under the transaction is, under the A New Tax System (Goods and Services Tax) Act 1999 (Cwlth), a taxable supply as a sale or supply of new residential premises as defined under section 40-75(1)(b) of that Act
 the home, as renovated, has not been previously occupied or sold as a place of residence.
 Eligibility
 To be eligible for a first home (new home) concession when you buy a new home
 New home
-A new home is:
-a home that has not been previously occupied or sold as a place of residence
-or
-a substantially renovated home.
-See also the definition for substantially renovated home .
+A new home is a home that meets any of the following criteria:
+It has not been previously occupied or sold as a place of residence.
+For transactions entered into on or after 1 May 2025—it has only been previously sold as a place of residence under a builders&#8217; terms arrangement.
+It&#8217;s a substantially renovated home.
+See also the definitions for substantially renovated home and builders’ terms arrangement .
 , you must:
 be legally acquiring the property as an individual
 for transactions entered into on or after 1 August 2026—be an Australian citizen, permanent resident or specified foreign retiree (This doesn’t apply to transactions entered into before 1 August 2026.)
@@ -244,14 +254,25 @@ Submit the following documentation and forms when lodging them for stamping:
 Document lodgement form ( Form TR1 )
 your contract and evidence of the new home
 New home
-A new home is:
-a home that has not been previously occupied or sold as a place of residence
-or
-a substantially renovated home.
-See also the definition for substantially renovated home .
+A new home is a home that meets any of the following criteria:
+It has not been previously occupied or sold as a place of residence.
+For transactions entered into on or after 1 May 2025—it has only been previously sold as a place of residence under a builders&#8217; terms arrangement.
+It&#8217;s a substantially renovated home.
+See also the definitions for substantially renovated home and builders’ terms arrangement .
 a valuation (if required)
 covering letter with any additional information or details you want to provide
 Claim a home, first home or first home (new home) transfer duty concession ( Form D2.1 )
+vendor statement
+Vendor statement
+This is a statement from the seller that must show the name and title of the person authorised to sign it.
+If the vendor is a company or trust, the statement should be on their letterhead.
+For newly-built homes, it must state that the home has not been previously occupied or sold as a place of residence.
+For renovated homes, it must confirm:
+the home has not been previously occupied or sold as a place of residence since the renovations
+the type and extent of renovations
+the sale of the home is a taxable supply under the GST Act and was in the course of the seller’s business.
+A vendor statement completed by a financial institution or any other party not mentioned above will not be accepted.
+for a newly built home or a substantially renovated home (not required for off-the-plan purchases)
 Identity details annexure for each non-Australian transferee for transactions entered into before 1 August 2026
 Form 1 Transfer and Form 24 from Titles Queensland .
 For help completing the Title Queensland forms, read part 1 (transfer) of the Land Title Practice Manual and the guide to Form 24 (property information).
