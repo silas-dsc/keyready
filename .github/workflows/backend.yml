@@ -27,6 +27,15 @@ jobs:
     steps:
       - id: ready
         run: echo "ok=$([ -n "$SUPABASE_ACCESS_TOKEN" ] && [ -n "$PROJECT_REF" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      # Fail fast, and say why, if the token has expired or been revoked: the CLI's own error is vague.
+      - if: steps.ready.outputs.ok == 'true'
+        name: Check Supabase access token
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" "https://api.supabase.com/v1/projects/$PROJECT_REF")
+          if [ "$code" != 200 ]; then
+            echo "::error title=Supabase access token rejected (HTTP $code)::The SUPABASE_ACCESS_TOKEN secret has expired or been revoked. Generate a new token with no expiry at supabase.com/dashboard/account/tokens and update the secret. See docs/BACKEND.md."
+            exit 1
+          fi
       - if: steps.ready.outputs.ok == 'true'
         uses: actions/checkout@v4
       - if: steps.ready.outputs.ok == 'true'
@@ -36,8 +45,12 @@ jobs:
           cache: npm
       - if: steps.ready.outputs.ok == 'true'
         run: npm ci && npm test && npm run bundle:rules
+      # Pinned: v3.0.0 made `db push` target a local database by default, which broke this deploy.
+      # Upgrade deliberately, after checking the release notes for these commands.
       - if: steps.ready.outputs.ok == 'true'
         uses: supabase/setup-cli@v3
+        with:
+          version: 2.122.0
       - if: steps.ready.outputs.ok == 'true'
         name: Migrate and deploy functions
         run: |
